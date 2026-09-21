@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    
+    <meta name="author" content="The Redefine Team">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2026/09/21/论文阅读/leta_阅读笔记/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LETA论文完整阅读笔记">
+<meta property="og:url" content="http://example.com/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LETA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="G-Clara的学习笔记">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/redefine-og.webp">
+<meta property="article:published_time" content="2026-09-21T04:02:31.000Z">
+<meta property="article:modified_time" content="2026-09-21T06:24:33.867Z">
+<meta property="article:author" content="G-Clara">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            LETA论文完整阅读笔记 | Theme Redefine
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"zh-CN"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Theme Redefine","subtitle":{"text":[],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":[{"icon":"fa-brands fa-github","url":null},{"icon":"fa-brands fa-twitter","url":null},{"icon":"fa-solid fa-at","url":"you@example.com"},{"icon":"fa-brands fa-telegram","url":null},{"icon":"/images/custom-icon.svg","url":null}],"qrs":[{"icon":"fa-brands fa-weixin","qr":null},{"icon":"/images/custom-icon.svg","qr":null}]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2022/8/17 11:45:14","statistics":true,"customize":null,"icp":{"enable":false,"number":null,"url":null}},"footerStart":"2022/8/17 11:45:14","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.i18n = {"search":"站内搜索您需要的内容...","toc":"目录","prev":"上一页","next":"下一页","prev_posts":"上一篇","next_posts":"下一篇","page":"第 %d 页","recent_posts":"最新文章","share":"分享","powered_by":"由 %s 驱动","theme":"主题","rss_feed":"RSS Feed","category":"分类","categories":"分类","tag":"标签","tags":"标签","post":"文章","posts":"文章","tagcloud":"标签云","comment":"评论","comments":"评论","top":"置顶","sticky":"置顶","go-back-home":"回到首页","masonry_loading":"照片加载中...","image_viewer":"图片查看器","close":"关闭","exif":{"title":"EXIF","cards":{"camera":"相机","lens":"镜头","exposure":"曝光","other":"其他"},"fields":{"make":"品牌","model":"机型","date_taken":"拍摄时间","lens_model":"镜头","focal_length":"焦距","focus_mode":"对焦模式","shutter":"快门","aperture":"光圈","iso":"感光度","exposure_program":"曝光程序","exposure_compensation":"曝光补偿","metering_mode":"测光模式","flash":"闪光灯","white_balance":"白平衡","latitude":"纬度","longitude":"经度","altitude":"海拔"},"status":{"loading":"加载中...","no_exif":"无 EXIF 信息","library_missing":"EXIF 库未加载","image_source_missing":"图片地址不可用","unavailable":"EXIF 不可用（可能被 CORS 阻止或缺少元数据）","flag_unavailable":"EXIF 不可用"}},"home":"首页","archive":"归档","archives":"归档","about":"关于","links":"链接","link":"链接","friends":"友情链接","friend":"友情链接","timeline":"时间轴","shuoshuo":"说说","bookmarks":"书签","site_uv":"访问人数","site_pv":"总访问量","read_more":"阅读全文","wordcount":"字","min2read":"分钟","changelog":"更新日志","status":"状态","runtime":"博客已运行","days":"天","hours":"小时","minutes":"分钟","seconds":"秒","optimized_by":"并由 Evan 进行优化","rights":"版权所有","site_posts":"共撰写了 %s 篇文章","site_wordcount":"共 %s 字","copyright":{"title":"标题","author":"作者","link":"链接","create_time":"创建于","update_time":"更新于","license_title":"版权声明","license_content":"本文章采用 %s 进行许可。","all_rights_reserved":"版权所有 &#169 %s，禁止转载。","public_domain":"本文为公有领域作品，可自由转载、引用。"},"ago":{"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"},"create_time":"创建","update_time":"更新","expired":"这篇文章最后更新于 %s 天前，内容可能已经过时。"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Theme Redefine
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">11</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">LETA论文完整阅读笔记</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="/images/redefine-avatar.svg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">The Redefine Team</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv2</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-09-21 12:02:31</span>
+        <span class="mobile">2026-09-21 12:02:31</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-09-21 14:24:33</span>
+            <span class="mobile">2026-09-21 14:24:33</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h1 id="LETA-论文完整阅读笔记"><a href="#LETA-论文完整阅读笔记" class="headerlink" title="LETA 论文完整阅读笔记"></a>LETA 论文完整阅读笔记</h1><blockquote>
+<p><strong>论文信息：</strong> Qichang Li, Yingjie Xia (夏莹杰, 杭电), Xuejiao Liu (杭师大), Xiyuan Chen (杭电), Zhiquan Liu (暨南大学), Zhen Guo (海南大学), Zhe Liu (之江实验室), Liming Fang (南航) — <strong>跨团队合作</strong><br><strong>期刊：</strong> IEEE Journal on Selected Areas in Communications (IEEE JSAC) — <strong>CCF-A 类期刊</strong><br><strong>卷号&#x2F;页码：</strong> Vol. 44, 2026<br><strong>DOI：</strong> 10.1109&#x2F;JSAC.2025.3636982<br><strong>所属团队：</strong> 杭州电子科技大学夏莹杰组（EPP-GAS&#x2F;LETA&#x2F; CD-BASA 同一团队）+ 暨南大学翁健组（PPCDA 团队）+ 南京航空航天大学方黎明组 + 海南大学 + 之江实验室<br><strong>阅读日期：</strong> 2026-07-15</p>
+</blockquote>
+<hr>
+<h2 id="📌-LETA-在夏莹杰团队研究脉络中的位置"><a href="#📌-LETA-在夏莹杰团队研究脉络中的位置" class="headerlink" title="📌 LETA 在夏莹杰团队研究脉络中的位置"></a>📌 LETA 在夏莹杰团队研究脉络中的位置</h2><p>LETA 是夏莹杰教授团队学术脉络的<strong>第三步</strong>，代表了整个团队从”传统安全”向”后量子安全”的<strong>重大转向</strong>：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">夏莹杰团队的研究演进（2024-2026）：</span><br><span class="line"></span><br><span class="line">2024年4月：CD-BASA (IEEE TITS)</span><br><span class="line">           区块链 + RSA累加器 + IPFS + 跨域批量认证</span><br><span class="line">           针对通用 VANET，不做编队</span><br><span class="line"></span><br><span class="line">2024年8月：EPP-GAS (IEEE TITS)</span><br><span class="line">           区块链 + Shamir门限 + BM-Tree + 群组假名</span><br><span class="line">           针对车辆编队跨域</span><br><span class="line"></span><br><span class="line">2026年2月：LETA (IEEE JSAC) ← 本文！</span><br><span class="line">           格密码 + VPD-Tree + ZKP + 后量子安全</span><br><span class="line">           针对车辆编队，但只做单域（尚未跨域）</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>更关键的是合作阵容的升级：</strong> LETA 的合作者中包含了<strong>暨南大学翁健组的 Zhiquan Liu</strong>（他是 PPCDA 的通讯作者！）和<strong>南航的方黎明</strong>（格密码专家）。这意味着 LETA 是 EPP-GAS 的编队场景 + CD-BASA 的密码学积累 + 翁健组的认证协议设计 + 方黎明组的格密码专长 —— <strong>四股力量的合流</strong>。</p>
+<hr>
+<h2 id="第一遍：5分钟快速筛选"><a href="#第一遍：5分钟快速筛选" class="headerlink" title="第一遍：5分钟快速筛选"></a>第一遍：5分钟快速筛选</h2><h3 id="①-标题拆解"><a href="#①-标题拆解" class="headerlink" title="① 标题拆解"></a>① 标题拆解</h3><blockquote>
+<p><strong>LETA: A Lattice-Based Efficient and Traceable Privacy-Preserving Batch Authentication Scheme for Vehicle Platoon in VANETs</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Lattice-Based</strong></td>
+<td>基于<strong>格密码</strong> — 能抵抗量子计算机攻击！你前面读的所有论文（除 LETA 外）都是传统 ECC&#x2F;RSA&#x2F;配对</td>
+</tr>
+<tr>
+<td><strong>Efficient</strong></td>
+<td>高效的</td>
+</tr>
+<tr>
+<td><strong>Traceable</strong></td>
+<td>可追溯 — 发现恶意车辆后能追踪</td>
+</tr>
+<tr>
+<td><strong>Privacy-Preserving</strong></td>
+<td>保护隐私</td>
+</tr>
+<tr>
+<td><strong>Batch Authentication</strong></td>
+<td>批量认证</td>
+</tr>
+<tr>
+<td><strong>Vehicle Platoon</strong></td>
+<td>车辆编队</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>标题信号：</strong> 这是目前唯一一篇同时做到「后量子安全 + 编队场景 + 批量认证 + 恶意追溯」的论文。</p>
+</blockquote>
+<h3 id="②-Abstract-三句话提炼"><a href="#②-Abstract-三句话提炼" class="headerlink" title="② Abstract 三句话提炼"></a>② Abstract 三句话提炼</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">问题：编队中恶意车辆威胁整个编队安全。现有批量认证方案①无法高效追溯恶意车</span><br><span class="line">      （传统方案要全量重验证，O(n)开销）、②无法抵抗量子攻击。</span><br><span class="line"></span><br><span class="line">方案：三件套 —</span><br><span class="line">     ① VPD-Tree（哈希树动态编队身份结构，支持成员增删、防隐私泄露）</span><br><span class="line">     ② 格密码聚合签名（Ring-LWE安全性，批量验证整个编队）</span><br><span class="line">     ③ ZKP 匿名追溯（二分查找+零知识证明，只暴露恶意车，不泄露其他车隐私）</span><br><span class="line"></span><br><span class="line">效果：安全性（抗量子）优于所有对比方案，计算/通信开销在格密码方案中最低，</span><br><span class="line">      恶意追溯 O(log n) vs 传统 O(n)。</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="③-Introduction-末尾-—-三大贡献"><a href="#③-Introduction-末尾-—-三大贡献" class="headerlink" title="③ Introduction 末尾 — 三大贡献"></a>③ Introduction 末尾 — 三大贡献</h3><blockquote>
+<p><strong>贡献1：VPD-Tree</strong> — 基于哈希树的动态编队身份结构，叶子存伪名+签名哈希，<strong>支持局部更新</strong>（加入&#x2F;离开只需更新对应分支，O(log n) 而非 O(n)），支持<strong>并行更新</strong>（多车同时变动的分支独立处理）</p>
+<p><strong>贡献2：格密码聚合签名</strong> — VPD-Tree 的叶子哈希值作为输入，生成基于 Ring-LWE 的聚合签名。<strong>一次验证 &#x3D; 验证整个编队</strong>。比格密码单签名方案通信量更低（聚合后只需传一个聚合签名）</p>
+<p><strong>贡献3：ZKP 匿名追溯</strong> — 利用 VPD-Tree 的层次结构做<strong>二分定位</strong> + 叶子的<strong>零知识证明</strong>验证具体车辆。验证者只知道”这辆车是恶意的”，不知道其他任何车的身份</p>
+</blockquote>
+<h3 id="④-安全模型-—-威胁假设"><a href="#④-安全模型-—-威胁假设" class="headerlink" title="④ 安全模型 — 威胁假设"></a>④ 安全模型 — 威胁假设</h3><p>LETA 的威胁模型是<strong>你读过的所有论文中最严格的之一</strong>，因为它明确加入了<strong>量子攻击者</strong>：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">攻击者能力（Dolev-Yao + 量子增强）：</span><br><span class="line">  ✅ 窃听、截获、重放、篡改公开信道上的所有消息</span><br><span class="line">  ✅ 可以观察区块链上的公开数据但无法篡改（联盟链防篡改）</span><br><span class="line">  ✅ ★ 拥有量子计算能力 — 可以用 Shor 算法破解传统 ECC/RSA</span><br><span class="line">  ✅ 可以伪造签名来假冒合法车辆</span><br><span class="line">  ✅ 可以重放历史消息来冒充</span><br><span class="line">  </span><br><span class="line">PF（跟随车）和 RSU 是&quot;半可信（诚实但好奇）&quot;的：</span><br><span class="line">  → 会正确执行协议</span><br><span class="line">  → 但可能尝试从数据中推断其他车辆的身份</span><br><span class="line">  → 协议允许部分参与者是恶意的（可篡改消息、泄露密钥、共谋攻击）</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="⑤-安全需求清单（6项-—-特别强调量子抵抗）"><a href="#⑤-安全需求清单（6项-—-特别强调量子抵抗）" class="headerlink" title="⑤ 安全需求清单（6项 — 特别强调量子抵抗）"></a>⑤ 安全需求清单（6项 — 特别强调量子抵抗）</h3><table>
+<thead>
+<tr>
+<th>#</th>
+<th>安全需求</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S1</td>
+<td>Privacy Preserving</td>
+<td>认证过程中不泄露真实身份</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>Unlinkability</td>
+<td>同一车辆的不同消息无法被关联</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>Traceability</td>
+<td>TA 可追溯到恶意车辆的<strong>真实身份</strong></td>
+</tr>
+<tr>
+<td>S4</td>
+<td>Non-Repudiation</td>
+<td>签名不可否认 — 恶意者无法伪造有效聚合签名</td>
+</tr>
+<tr>
+<td>S5</td>
+<td><strong>Quantum Resistance</strong></td>
+<td>★ <strong>能抵抗量子计算机攻击（LETA 独有！你读过的其他论文都没做到）</strong></td>
+</tr>
+<tr>
+<td>S6</td>
+<td>Resistance to Other Attacks</td>
+<td>抗重放、中间人、伪造、冒充、生日碰撞、劫持</td>
+</tr>
+</tbody></table>
+<h3 id="✅-第一遍判断：LETA-是编队认证领域的”后量子安全天花板”。核心限制是没有跨域。精读它。"><a href="#✅-第一遍判断：LETA-是编队认证领域的”后量子安全天花板”。核心限制是没有跨域。精读它。" class="headerlink" title="✅ 第一遍判断：LETA 是编队认证领域的”后量子安全天花板”。核心限制是没有跨域。精读它。"></a>✅ 第一遍判断：LETA 是编队认证领域的”后量子安全天花板”。核心限制是没有跨域。精读它。</h3><hr>
+<h2 id="第二遍：结构化提取（60分钟）"><a href="#第二遍：结构化提取（60分钟）" class="headerlink" title="第二遍：结构化提取（60分钟）"></a>第二遍：结构化提取（60分钟）</h2><h3 id="1-场景与问题"><a href="#1-场景与问题" class="headerlink" title="1. 场景与问题"></a>1. 场景与问题</h3><p><strong>三个核心痛点：</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">痛点1 ── 恶意车辆追溯效率低</span><br><span class="line">         ├── 批量认证失败后，传统方案要全量重验证 → O(n)</span><br><span class="line">         ├── 在编队高动态场景下不可接受（编队规模可达50-100辆车）</span><br><span class="line">         └── 重验证过程中可能泄露所有伪名 → 隐私风险</span><br><span class="line"></span><br><span class="line">痛点2 ── 缺乏结构化身份管理</span><br><span class="line">         ├── 普通 VANET 认证方案把车当独立节点</span><br><span class="line">         ├── 编队有「PL→PF」的层次结构 → 应该利用这个结构！</span><br><span class="line">         └── 现有方案没有针对编队拓扑做优化</span><br><span class="line"></span><br><span class="line">痛点3 ── 量子威胁（LETA 最大的 motivation！）</span><br><span class="line">         ├── Shor 算法可以在量子计算机上高效破解 ECC 和 RSA</span><br><span class="line">         ├── 你前面读的所有论文（EPP-GAS, CD-BASA, PPCDA, BCCG）都不抗量子</span><br><span class="line">         └── 学术界共识：后量子迁移必须从现在开始</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="2-系统模型"><a href="#2-系统模型" class="headerlink" title="2. 系统模型"></a>2. 系统模型</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">┌──────────────────────────────────────────────────────────┐</span><br><span class="line">│                TA (完全可信)                               │</span><br><span class="line">│  • 系统初始化、车辆/RSU 注册、追溯恶意车辆                    │</span><br><span class="line">│  • 是唯一能解密伪名 → 追溯真实身份的实体                      │</span><br><span class="line">│  • 可撤销恶意车辆的通信权限                                  │</span><br><span class="line">└──────────────────────┬───────────────────────────────────┘</span><br><span class="line">                       │</span><br><span class="line">┌──────────────────────┴───────────────────────────────────┐</span><br><span class="line">│               TEC (可信边缘计算中心)                        │</span><br><span class="line">│  • 认证编队的身份                                          │</span><br><span class="line">│  • 作为区块链节点：检索链上数据 + 调用智能合约                 │</span><br><span class="line">│  • 验证聚合签名                                            │</span><br><span class="line">└──────────────────────┬───────────────────────────────────┘</span><br><span class="line">                       │ 安全有线链路</span><br><span class="line">┌──────────────────────┴───────────────────────────────────┐</span><br><span class="line">│               RSU (半可信 — 诚实但好奇)                      │</span><br><span class="line">│  • 路边部署，连接 TEC（有线）和车辆（无线）                    │</span><br><span class="line">│  • 通信中继（不是认证主体！认证由 TEC 做）                    │</span><br><span class="line">└──────────────────────┬───────────────────────────────────┘</span><br><span class="line">                       │ 无线 (LTE-V2X / 5G NR-V2X)</span><br><span class="line">┌──────────────────────┴───────────────────────────────────┐</span><br><span class="line">│              车辆编队 VP                                    │</span><br><span class="line">│  ┌──────┐                                                │</span><br><span class="line">│  │  PL   │ ← 可信实体：管理编队、对外通信、构建VPD-Tree       │</span><br><span class="line">│  │(领航) │   指定方式：RSU/云端指定 或 能力投票 或 人工预分配   │</span><br><span class="line">│  └──────┘                                                │</span><br><span class="line">│  ┌──┐ ┌──┐ ┌──┐      ┌──┐                               │</span><br><span class="line">│  │PF│ │PF│ │PF│ ...  │PF│ ← 半可信：一般合规、偶有恶意        │</span><br><span class="line">│  └──┘ └──┘ └──┘      └──┘                                │</span><br><span class="line">└──────────────────────────────────────────────────────────┘</span><br><span class="line"></span><br><span class="line">                       ┌──────────────────┐</span><br><span class="line">                       │ Consortium BC    │</span><br><span class="line">                       │ (联盟链，TEC维护) │</span><br><span class="line">                       │ 存储：伪名 + 公钥 │</span><br><span class="line">                       └──────────────────┘</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>五类实体完整职责：</strong></p>
+<table>
+<thead>
+<tr>
+<th>实体</th>
+<th>信任级别</th>
+<th>核心职责</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>TA</strong></td>
+<td><strong>完全可信</strong></td>
+<td>系统初始化（格密码参数）、车辆&#x2F;RSU 注册并签发伪名、追溯和撤销恶意车辆、定期更新伪名</td>
+</tr>
+<tr>
+<td><strong>TEC</strong></td>
+<td><strong>可信</strong></td>
+<td>边缘计算中心。认证编队身份、验证聚合签名、作为区块链节点存储&#x2F;检索链上数据</td>
+</tr>
+<tr>
+<td><strong>RSU</strong></td>
+<td><strong>半可信（诚实但好奇）</strong></td>
+<td>中继节点。有线连 TEC、无线连车辆。不参与认证决策，只转发</td>
+</tr>
+<tr>
+<td><strong>VP(PL + PF)</strong></td>
+<td>PL 可信、PF 半可信</td>
+<td>PL 管理编队、构建 VPD-Tree、聚合签名。PF 生成签名发给 PL，跟随 PL 指令</td>
+</tr>
+<tr>
+<td><strong>Blockchain</strong></td>
+<td><strong>联盟链</strong></td>
+<td>TEC 节点维护。存储伪名和公钥、支持智能合约自动化</td>
+</tr>
+</tbody></table>
+<h3 id="3-密码学工具箱（3-1-个工具）"><a href="#3-密码学工具箱（3-1-个工具）" class="headerlink" title="3. 密码学工具箱（3+1 个工具）"></a>3. 密码学工具箱（3+1 个工具）</h3><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>在方案中的作用</th>
+<th>为什么选它</th>
+<th>对比前面的论文</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Ring-LWE 格密码</strong></td>
+<td>①公私钥生成 ②签名&#x2F;验证 ③聚合签名</td>
+<td>★ <strong>能抗量子</strong>。NIST 后量子密码标准的数学基础之一。基于”格中难题在当前无已知量子高效算法”</td>
+<td>EPP-GAS&#x2F;CD-BASA&#x2F;BCCG&#x2F;PPCDA 都用 ECC&#x2F;RSA → <strong>不抗量子</strong></td>
+</tr>
+<tr>
+<td><strong>VPD-Tree（哈希树）</strong></td>
+<td>①编队身份的层次化表示 ②快速追溯（二分查找） ③支持局部更新</td>
+<td>树的层次结构天然适合二分查找 → 追溯从 O(n) 降到 O(log n)</td>
+<td>PPCDA 用 IBF（集合结构，无序，追溯效率不如树）、CD-BASA 用累加器（无层次）</td>
+</tr>
+<tr>
+<td><strong>零知识证明(ZKP)</strong></td>
+<td>①签名生成时嵌入叶子节点 ②追溯时在不暴露身份的前提下验证恶意车辆</td>
+<td>只证明”我知道私钥签了这个名”但不透露私钥</td>
+<td>BCCG 的 ProVerif 验证的是协议整体安全性，LETA 的 ZKP 是每个车证明自己”没作恶”</td>
+</tr>
+<tr>
+<td><strong>模格(Modular Lattice)</strong></td>
+<td>减小签名尺寸 → 降低通信开销</td>
+<td>格的天然代价是签名大，模格比一般格在相同安全级别下参数更小</td>
+<td>LETA对比的Wani&#x2F;Nath&#x2F;Li&#x2F;Prajapat都是格方案，LETA签名&#x3D;（ri,ci）共180B，是最小的</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>“模格”的通俗理解：</strong> 普通格密码的签名可能是几 KB，对车联网通信负担太大。模格在多项式环 Rq &#x3D; Zq[x]&#x2F;(x^n+1) 上做运算（引入了”模多项式”约束），使得同样安全等级下参数大幅缩小。LETA 的单签名 &#x3D; 180 字节（相比之下其他格方案可能要 200+ 字节）。</p>
+</blockquote>
+<h3 id="4-核心方案-—-四个阶段详解"><a href="#4-核心方案-—-四个阶段详解" class="headerlink" title="4. 核心方案 — 四个阶段详解"></a>4. 核心方案 — 四个阶段详解</h3><hr>
+<h4 id="Phase-A：系统初始化（System-Initialization）"><a href="#Phase-A：系统初始化（System-Initialization）" class="headerlink" title="Phase A：系统初始化（System Initialization）"></a>Phase A：系统初始化（System Initialization）</h4><p><strong>谁做：</strong> TA</p>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 【人话翻译】TA 生成格密码系统参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 1：选安全参数 λ → 决定整格密码系统的安全强度</span></span><br><span class="line"><span class="comment"># 选大素数 q → 格密码的模数</span></span><br><span class="line"><span class="comment"># 定义多项式环 Rq = Zq[x] / (x^n + 1)</span></span><br><span class="line"><span class="comment">#   ↑ 人话：所有运算都在&quot;模 q&quot;和&quot;模 x^n+1&quot;的约束下进行</span></span><br><span class="line"><span class="comment">#   例如 x^3 · x^4 mod (x^5+1) 在环中 = x^2 (因为 x^7 mod x^5+1)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 2：生成公私钥（Ring-LWE 密钥生成）</span></span><br><span class="line">A = 随机矩阵 ∈ Rq^&#123;k×l&#125;        <span class="comment"># 公开矩阵（类似椭圆曲线的生成元P）</span></span><br><span class="line">s1, s2 = 从离散高斯分布 χ 采样  <span class="comment"># 私钥（两个小的多项式向量）</span></span><br><span class="line"><span class="comment"># &quot;离散高斯分布&quot; → 采样出来的多项式系数是小的（≈16位的整数）</span></span><br><span class="line">b = A·s1 + s2 mod q             <span class="comment"># 公钥组件</span></span><br><span class="line">公钥 = (A, b)，私钥 = (s1, s2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 3：定义三个哈希函数</span></span><br><span class="line">h0: &#123;<span class="number">0</span>,<span class="number">1</span>&#125;* → Rq           <span class="comment"># 把任意字符串映射到多项式环中</span></span><br><span class="line">h1: &#123;<span class="number">0</span>,<span class="number">1</span>&#125;* → &#123;短向量&#125;     <span class="comment"># 映射到小范数的向量</span></span><br><span class="line">h2: &#123;<span class="number">0</span>,<span class="number">1</span>&#125;* → &#123;小多项式&#125;   <span class="comment"># 映射到系数小的多项式</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 4：TA 持有主密钥 s = (s1, s2)，广播 params</span></span><br><span class="line">params = &#123;k, q, h0, h1, h2, A, b&#125;</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p><strong>「离散高斯分布」的人话解释：</strong> TA 生成 s1 和 s2 时，每个多项式系数是从一个特殊的钟形曲线上取的。这个曲线的特性是——大部分取值集中在 0 附近（所以系数都很”小”）。系数的”小”性是格密码安全的关键：如果系数变大（噪声增大），R-LWE 问题就可能变容易。</p>
+</blockquote>
+<hr>
+<h4 id="Phase-B：VP-集成身份构建（核心阶段，对应-VPD-Tree-构建）"><a href="#Phase-B：VP-集成身份构建（核心阶段，对应-VPD-Tree-构建）" class="headerlink" title="Phase B：VP 集成身份构建（核心阶段，对应 VPD-Tree 构建）"></a>Phase B：VP 集成身份构建（核心阶段，对应 VPD-Tree 构建）</h4><h5 id="B-1：车辆注册"><a href="#B-1：车辆注册" class="headerlink" title="B-1：车辆注册"></a>B-1：车辆注册</h5><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ====== 车辆 Vi 生成真实身份标识并向 TA 注册 ======</span></span><br><span class="line"><span class="comment"># Vi 计算真实身份 RVi</span></span><br><span class="line">RVi = h0(ID_Vi || N_Vi || s)</span><br><span class="line"><span class="comment"># ID_Vi = 真实身份 (如 VIN码), N_Vi = 驾驶员姓名, s = TA主密钥</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交给 TA → TA 验证后生成伪名 PVi</span></span><br><span class="line">ωVi = 从离散高斯分布采样的随机数 ∈ χ</span><br><span class="line">PVi = RVi ⊕ h0(ωVi)</span><br><span class="line"><span class="comment"># ↑ &quot;⊕&quot; 表示在多项式环中的加法</span></span><br><span class="line"><span class="comment"># 伪名 = 真实身份哈希 + TA随机值哈希</span></span><br><span class="line"><span class="comment"># 攻击者没有 ωVi 就无法从 PVi 逆推 RVi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ====== Vi 生成自己的格密码私钥 ======</span></span><br><span class="line"><span class="comment"># Vi 从离散高斯分布采样自己的私钥</span></span><br><span class="line">s1<span class="string">&#x27; = (s1,1, ..., s1,n), s2&#x27;</span> = (s2,<span class="number">1</span>, ..., s2,n)  <span class="comment"># 每个系数都小</span></span><br><span class="line">私钥 sVi = (s1<span class="string">&#x27;, s2&#x27;</span>)</span><br><span class="line">公钥 bVi = A · s1<span class="string">&#x27; + s2&#x27;</span> mod q</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上链存储：</span></span><br><span class="line">区块链写入：&#123;PVi, (A, bVi), T1&#125;</span><br><span class="line"><span class="comment"># T1 = 当前时间戳</span></span><br></pre></td></tr></table></figure></div>
+
+<h5 id="B-2：RSU-注册（类似车辆）"><a href="#B-2：RSU-注册（类似车辆）" class="headerlink" title="B-2：RSU 注册（类似车辆）"></a>B-2：RSU 注册（类似车辆）</h5><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># RSU 注册流程和车辆相同：</span></span><br><span class="line">生成真实身份 → TA 生成伪名 PRSUi → 生成公私钥对 → 上链</span><br><span class="line"><span class="comment"># 区块链存储：&#123;PRSUi, (A, bRSUi), T1&#125;</span></span><br></pre></td></tr></table></figure></div>
+
+<h5 id="B-3：签名生成"><a href="#B-3：签名生成" class="headerlink" title="B-3：签名生成"></a>B-3：签名生成</h5><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 【人话翻译】每辆车对自己要发送的消息 mi 生成格签名</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Vi 要对消息 mi ∈ &#123;0,1&#125;* 签名</span></span><br><span class="line"><span class="comment"># 输入：伪名 PVi、私钥 sVi、公钥 (A, bVi)</span></span><br><span class="line"><span class="comment"># 输出：签名 SignVi = (ri, ci)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step a：生成两个随机短向量（承诺用的随机掩码）</span></span><br><span class="line">zi,<span class="number">1</span>, zi,<span class="number">2</span> = 从 Zq[x]/(x^n+<span class="number">1</span>) 的 l 维空间随机采样（确保系数都小）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算临时承诺值 Θi</span></span><br><span class="line">Θi = A · zi,<span class="number">1</span> + zi,<span class="number">2</span> mod q      </span><br><span class="line"><span class="comment"># 类比的 ECC 理解：这相当于 ECDSA 中的 &quot;r = k·G&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step b：用哈希生成挑战值 ci（Fiat-Shamir 变换，非交互化关键）</span></span><br><span class="line">ci = h2(bVi || Θi || mi)         </span><br><span class="line"><span class="comment"># 把公钥+承诺+消息一起哈希 → 生成挑战</span></span><br><span class="line"><span class="comment"># 挑战值 ci 是一个系数很小的多项式</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step c：用私钥计算签名响应</span></span><br><span class="line">ri,<span class="number">1</span> = zi,<span class="number">1</span> + ci · s1<span class="string">&#x27; mod q      # 分量1</span></span><br><span class="line"><span class="string">ri,2 = zi,2 + ci · s2&#x27;</span> mod q      <span class="comment"># 分量2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将两个分量合并为一个响应值（通过 A^&#123;-1&#125; 变换）：</span></span><br><span class="line">ri = ri,<span class="number">1</span> + A^&#123;-<span class="number">1</span>&#125; · ri,<span class="number">2</span> mod q</span><br><span class="line"><span class="comment"># A^&#123;-1&#125; 是 A 在环中的逆。为什么要合并？</span></span><br><span class="line"><span class="comment"># → 减少签名的分量数（从(ri,1,ri,2)变为ri），通信开销减半！</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step d：构造零知识证明 ZVi = (Θi, ri, ci)</span></span><br><span class="line"><span class="comment"># ZVi 证明&quot;我知道私钥 sVi，而且我确实用它签了名&quot;</span></span><br><span class="line"><span class="comment"># 但不透露 sVi 的任何信息！</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step e：最终签名</span></span><br><span class="line">SignVi = (ri, ci)</span><br><span class="line"><span class="comment"># 简短！只有两个分量</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step f：上链存储</span></span><br><span class="line">区块链写入：&#123;PVi, h0(mi), (A, bVi), ri, ZVi, T2&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="B-4：VPD-Tree-构建"><a href="#B-4：VPD-Tree-构建" class="headerlink" title="B-4：VPD-Tree 构建"></a>B-4：VPD-Tree 构建</h5><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 【人话翻译】PL 把整个编队的身份信息组织成一棵哈希树</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step a：每辆车计算自己的身份哈希值</span></span><br><span class="line">HashVi = h1(PVi || ri || εi || T2)</span><br><span class="line"><span class="comment"># PVi = 伪名, ri = 签名响应, εi = 随机掩码, T2 = 时间戳</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># PF 把 (HashVi, ZVi) 发给 PL</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step b：PL 构建二叉树</span></span><br><span class="line"><span class="comment"># 叶子节点 ← 所有 HashVi</span></span><br><span class="line"><span class="comment"># 如果叶子数不是 2 的幂 → 补空节点</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step c：自底向上计算父节点哈希</span></span><br><span class="line"><span class="keyword">for</span> each pair (Hash_left, Hash_right):</span><br><span class="line">    Hash_parent = h1(Hash_left || Hash_right)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 迭代直到只剩一个根节点 → Root</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step d：Root → 整个编队的唯一身份标识！</span></span><br><span class="line"><span class="comment"># Root 被广播给编队所有成员</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># VPD-Tree 的结构示例：</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#                     Root</span></span><br><span class="line"><span class="comment">#                    /    \</span></span><br><span class="line"><span class="comment">#              Hash_01    Hash_23</span></span><br><span class="line"><span class="comment">#              /    \      /    \</span></span><br><span class="line"><span class="comment">#          HashV1 HashV2 HashV3 HashV4</span></span><br><span class="line"><span class="comment">#          (车1)   (车2)  (车3)   (车4)</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 每片叶子存：(HashVi, ZVi)</span></span><br><span class="line"><span class="comment"># 每个内部节点存：(Hash_parent, 左右子节点的引用)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ★ 局部更新特性：</span></span><br><span class="line"><span class="comment"># 如果车2离开 → 只需更新 Hash_01 → Root</span></span><br><span class="line"><span class="comment">#   HashV1 和 HashV3/V4 都不需要改变！</span></span><br><span class="line"><span class="comment">#   更新复杂度 O(log n) 而非 O(n)</span></span><br></pre></td></tr></table></figure></div>
+
+<h5 id="B-5：会话密钥协商"><a href="#B-5：会话密钥协商" class="headerlink" title="B-5：会话密钥协商"></a>B-5：会话密钥协商</h5><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编队内部通信需要共享的会话密钥</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># PL 计算并广播自己的公开值：</span></span><br><span class="line">BP_L = A · s1<span class="string">&#x27; mod q     # PL 的私钥分量 s1&#x27;</span> 乘公开矩阵 A</span><br><span class="line"></span><br><span class="line"><span class="comment"># 每个 PF 计算自己的公开值和会话密钥：</span></span><br><span class="line">Bi = A · s1,i<span class="string">&#x27; mod q     # PF 用自己私钥计算</span></span><br><span class="line"><span class="string">Ki = BP_L · s1,i&#x27;</span> mod q <span class="comment"># PF 用 PL 的公开值 × 自己的私钥 = 会话密钥</span></span><br><span class="line"><span class="comment"># ↑ 因为乘法可交换：BP_L · s1,i&#x27; = (A·s1_PL) · s1,i&#x27; = A·s1_PL·s1,i&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># PL 计算所有 PF 的会话密钥：</span></span><br><span class="line">Ksession = Bi · s1_PL<span class="string">&#x27; mod q</span></span><br><span class="line"><span class="string"># ↑ 同样原理：Bi · s1_PL = (A·s1,i&#x27;</span>) · s1_PL = A·s1,i<span class="string">&#x27;·s1_PL = Ki</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 全部相等：Ksession = K1 = K2 = ... = Kn</span></span><br><span class="line"><span class="string"># 安全性基于：从 A 和 A·s1 计算 s1 约等于求解 R-LWE 问题（难！）</span></span><br><span class="line"><span class="string"># 后量子安全的 DH 密钥交换的格版本</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h4 id="Phase-C：批量认证（VP-身份认证）"><a href="#Phase-C：批量认证（VP-身份认证）" class="headerlink" title="Phase C：批量认证（VP 身份认证）"></a>Phase C：批量认证（VP 身份认证）</h4><h5 id="Step-1：签名聚合"><a href="#Step-1：签名聚合" class="headerlink" title="Step 1：签名聚合"></a>Step 1：签名聚合</h5><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ====== PL 收集所有 PF 的签名并聚合 ======</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step a：PL 计算每辆车的哈希系数 λi</span></span><br><span class="line"><span class="comment"># 哈希系数 λi 是根据每辆车的签名和 VPD-Tree 结构计算的权重：</span></span><br><span class="line">λi = h2(SignV1, t1, Θ<span class="number">1</span>, ..., SignVn, tn, Θn, VP_identity)</span><br><span class="line"><span class="comment"># 输出 n 个系数 (λ1, λ2, ..., λn)</span></span><br><span class="line"><span class="comment"># 每个 λi 是一个&quot;小多项式&quot;（来自 h2 的输出空间）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step b：聚合挑战值</span></span><br><span class="line">c_agg = Σ (λi · ci) mod q</span><br><span class="line"><span class="comment"># 把所有车的挑战值加权求和</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step c：聚合响应值</span></span><br><span class="line">r_agg = Σ (λi · ri) mod q</span><br><span class="line"><span class="comment"># 把所有车的签名响应加权求和</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step d：聚合签名</span></span><br><span class="line">AggSign = (r_agg, c_agg)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Step e：RSU 转发 &#123;VP_identity, AggSign, T5&#125; 给 TEC</span></span><br></pre></td></tr></table></figure></div>
+
+<h5 id="Step-2：TEC-验证聚合签名"><a href="#Step-2：TEC-验证聚合签名" class="headerlink" title="Step 2：TEC 验证聚合签名"></a>Step 2：TEC 验证聚合签名</h5><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ====== TEC 收到聚合签名后验证整个编队是否合法 ======</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step a：检查时间戳 T5 是否新鲜</span></span><br><span class="line"><span class="keyword">if</span> T_now - T5 &gt; ΔT: 拒绝（防重放）</span><br><span class="line"></span><br><span class="line"><span class="comment"># Step b：重新计算 λi（用同样的公式）</span></span><br><span class="line"><span class="comment"># TEC 和 PL 用相同输入 → 得到相同的 λi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step c：验证核心等式 ★</span></span><br><span class="line">A · r_agg ?= Σ λi · (Θi + ci · bVi) mod q</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推导（理解即可，不需要死记）：</span></span><br><span class="line"><span class="comment"># 左边 = A · Σ λi·ri </span></span><br><span class="line"><span class="comment">#      = A · Σ λi·(zi,1 + ci·s1&#x27; + A^&#123;-1&#125;(zi,2 + ci·s2&#x27;))</span></span><br><span class="line"><span class="comment">#      = Σ λi·(A·zi,1 + A·ci·s1&#x27; + zi,2 + ci·s2&#x27;)</span></span><br><span class="line"><span class="comment">#      = Σ λi·(A·zi,1 + zi,2 + ci·(A·s1&#x27; + s2&#x27;))</span></span><br><span class="line"><span class="comment">#      = Σ λi·(Θi + ci·bVi) = 右边 ✓</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果验证通过 → 所有编队成员都合法 → 编队认证成功 ✅</span></span><br><span class="line"><span class="comment"># 如果验证失败 → 存在恶意车辆 → 进入追溯阶段（Phase D）</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h4 id="Phase-D：恶意车辆追溯（ZKP-匿名追溯）"><a href="#Phase-D：恶意车辆追溯（ZKP-匿名追溯）" class="headerlink" title="Phase D：恶意车辆追溯（ZKP 匿名追溯）"></a>Phase D：恶意车辆追溯（ZKP 匿名追溯）</h4><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 【人话翻译】聚合签名验证失败后，如何找&quot;叛徒&quot;但不泄露&quot;好人&quot;身份</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Algorithm 1：基于 VPD-Tree 的高效追溯</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 0：从根节点开始</span></span><br><span class="line"><span class="comment"># 重新计算 Root&#x27; = h1(Hash_left || Hash_right)</span></span><br><span class="line"><span class="comment"># if Root&#x27; == 原Root: 整个编队合法（不应该发生，因为验证已失败）</span></span><br><span class="line"><span class="comment"># else: 根节点验证失败 → 向下追溯</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 1：递归二分查找</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find_malicious</span>(<span class="params">node</span>):</span><br><span class="line">    <span class="keyword">if</span> node 是叶子节点:</span><br><span class="line">        <span class="comment"># ★ Step 2：用 ZKP 验证该叶子的车辆是否恶意</span></span><br><span class="line">        ZVi = (Θi, ri, ci)  <span class="comment"># 从叶子节点的 ZVi 字段取出</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 重新计算承诺值 Θi&#x27;</span></span><br><span class="line">        Θi<span class="string">&#x27; = A · ri - ci · bVi mod q</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        if Θi&#x27;</span> != Θi:</span><br><span class="line">            <span class="comment"># 承诺不一致 → 签名有问题 → 标记为恶意节点！</span></span><br><span class="line">            mark_as_malicious(node)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 进一步验证：重新计算挑战值</span></span><br><span class="line">        ci<span class="string">&#x27; = h2(bVi || Θi&#x27;</span> || m)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ci<span class="string">&#x27; != ci:</span></span><br><span class="line"><span class="string">            # 挑战不一致 → 签名人不是私钥持有者 → 恶意！</span></span><br><span class="line"><span class="string">            mark_as_malicious(node)</span></span><br><span class="line"><span class="string">        else:</span></span><br><span class="line"><span class="string">            # 通过 ZKP 验证 → 本车合法</span></span><br><span class="line"><span class="string">            pass</span></span><br><span class="line"><span class="string">        return</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    # 非叶子节点 → 分别检查左右子树</span></span><br><span class="line"><span class="string">    重新计算 Hash_left&#x27;</span>, Hash_righ<span class="string">t&#x27;</span></span><br><span class="line"><span class="string">    if Hash_left&#x27;</span> != 原Hash_left: find_malicious(node.left)</span><br><span class="line">    <span class="keyword">if</span> Hash_righ<span class="string">t&#x27; != 原Hash_right: find_malicious(node.right)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># Step 3：PL 在区块链上查找恶意车的伪名 → 提交给 TA</span></span><br><span class="line"><span class="string"># PL 不能看到真实身份！只有 TA 能解密</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># Step 4：TA 解密伪名 → 追溯真实身份 → 撤销 → 更新编队记录 → 广播通知</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># Step 5：TA 定期更新所有车辆的伪名（防止身份关联攻击）</span></span><br><span class="line"><span class="string"># 每辆车的新伪名：PVi_new = RVi ⊕ h0(ωVi_new)</span></span><br><span class="line"><span class="string"># RSU 的新伪名：PRSUi_new = RRSUi ⊕ h0(ωRSUi_new)</span></span><br><span class="line"><span class="string"># 更新到区块链 + PL 更新 VPD-Tree 中的对应叶子</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>追溯效率分析：</strong></p>
+<table>
+<thead>
+<tr>
+<th>编队规模</th>
+<th>传统全量重验证</th>
+<th>VPD-Tree 追溯</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10 辆</td>
+<td>O(10)</td>
+<td>O(log 10) ≈ 4 步</td>
+</tr>
+<tr>
+<td>50 辆</td>
+<td>O(50)</td>
+<td>O(log 50) ≈ 6 步</td>
+</tr>
+<tr>
+<td>100 辆</td>
+<td>O(100)</td>
+<td>O(log 100) ≈ 7 步</td>
+</tr>
+<tr>
+<td>相差</td>
+<td>-</td>
+<td><strong>效率优势随规模增大</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="5-安全性分析（详情）"><a href="#5-安全性分析（详情）" class="headerlink" title="5. 安全性分析（详情）"></a>5. 安全性分析（详情）</h3><h4 id="5a：形式化证明-—-Q-ROM-模型下的不可伪造性"><a href="#5a：形式化证明-—-Q-ROM-模型下的不可伪造性" class="headerlink" title="5a：形式化证明 — Q-ROM 模型下的不可伪造性"></a>5a：形式化证明 — Q-ROM 模型下的不可伪造性</h4><p>LETA 采用<strong>量子随机预言机模型（Q-ROM）</strong>，这是比一般 ROM 更强的安全模型——攻击者可以做<strong>量子并行查询</strong>。</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">★ 核心区别：</span><br><span class="line">   ROM（你前面论文用的）：攻击者只能经典查询预言机（一个一个问）</span><br><span class="line">   Q-ROM（LETA 用的）：攻击者可以用量子叠加态并行查询 → 模型更强</span><br><span class="line"></span><br><span class="line">LETA 是你在本领域读到的第一篇在 Q-ROM 下做安全的论文！</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>Theorem 1（聚合签名不可伪造性）：</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">如果存在一个 Q-PPT 攻击者 A 能在时间 t 内以一个非可忽略的概率伪造有效聚合签名，</span><br><span class="line">那么可以构造一个模拟器 B 以相关的概率求解 R-LWE 问题。</span><br><span class="line"></span><br><span class="line">攻击优势上界：</span><br><span class="line">  Adv_A ≤ </span><br><span class="line">    q0³/(2^n) + q1³/(2^n)     ← 哈希碰撞概率</span><br><span class="line">    + q2/(2^&#123;λ/2&#125;)            ← h2 的碰撞概率  </span><br><span class="line">    + (qs + qsk)/2^&#123;λ-1&#125;     ← 签名查询+私钥查询的概率</span><br><span class="line">    + 2·Adv_A^&#123;R-LWE&#125;         ← ★ R-LWE 的核心困难度</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>证明方法：6 个游戏跳转（Game0 → Game5）</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Game0: 真实 ROM — 攻击者和真实方案交互</span><br><span class="line">  Pr[Win0] = (Adv_A + 1)/2</span><br><span class="line"></span><br><span class="line">Game1: 替换 h0, h1, h2 为量子随机预言机 (Q-RO)</span><br><span class="line">  → Q-RO 和真实哈希在计算上不可区分</span><br><span class="line">  → Pr[Win1] = Pr[Win0]</span><br><span class="line"></span><br><span class="line">Game2: 检测 h0 和 h1 的碰撞</span><br><span class="line">  → 如果碰撞 → 游戏终止</span><br><span class="line">  → |Pr[Win2] - Pr[Win1]| ≤ q0³/2^&#123;n+1&#125; + q1³/2^&#123;n+1&#125;</span><br><span class="line">  （基于生日悖论）</span><br><span class="line"></span><br><span class="line">Game3: 攻击者试图不依赖私钥伪造签名</span><br><span class="line">  → 必须猜对 h2 输出 → 概率 ≤ q2/2^&#123;λ/2&#125;</span><br><span class="line">  → |Pr[Win3] - Pr[Win2]| ≤ q2/2^&#123;λ/2&#125;</span><br><span class="line"></span><br><span class="line">Game4: 攻击者试图伪造含未知签名的聚合签名</span><br><span class="line">  → qs 次签名查询后的最大成功概率 ≤ qs/2^λ</span><br><span class="line">  → |Pr[Win4] - Pr[Win3]| ≤ qs/2^λ</span><br><span class="line"></span><br><span class="line">Game5: 替换真实私钥为随机密钥</span><br><span class="line">  → 基于 R-LWE 假设，攻击者无法区分</span><br><span class="line">  → 如果攻击者能区分 → 破解 R-LWE</span><br><span class="line">  → |Pr[Win5] - Pr[Win4]| ≤ Adv_A^&#123;R-LWE&#125; + qsk/2^λ</span><br><span class="line"></span><br><span class="line">最终 Pr[Win5] = 1/2（如果所有查询都没用上 → 攻击者只能随机猜）</span><br><span class="line">代入所有不等式 → 得到 Adv_A 的上界</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="5b：非形式化安全分析（Table-II）"><a href="#5b：非形式化安全分析（Table-II）" class="headerlink" title="5b：非形式化安全分析（Table II）"></a>5b：非形式化安全分析（Table II）</h4><p>LETA 与 4 个已有方案的安全特性对比：</p>
+<table>
+<thead>
+<tr>
+<th>安全特性</th>
+<th>LETA</th>
+<th>[37]DVAS</th>
+<th>[38]PCAS</th>
+<th>[39]SAS</th>
+<th>[30]IBAGS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>条件隐私保护</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>不可链接性</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>消息认证与完整性</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>匿名可追溯</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>不可否认性</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>★ 抗量子攻击</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>抗重放攻击</td>
+<td>✅</td>
+<td>❌</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>抗假冒攻击</td>
+<td>✅</td>
+<td>❌</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意 LETA 的两个「独有」：<strong>匿名可追溯</strong>和<strong>抗量子攻击</strong>。其他方案至少在这两项上缺失一项。</p>
+</blockquote>
+<p><strong>各项安全属性的实现方式：</strong></p>
+<table>
+<thead>
+<tr>
+<th>安全属性</th>
+<th>如何实现</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>条件隐私</strong></td>
+<td>伪名 PVi &#x3D; RVi ⊕ h0(ωVi)，只有 TA 能解密（持有 ωVi）</td>
+</tr>
+<tr>
+<td><strong>不可链接性</strong></td>
+<td>伪名动态生成 + VPD-Tree 嵌入随机值 + 定期更新伪名</td>
+</tr>
+<tr>
+<td><strong>消息认证与完整性</strong></td>
+<td>聚合签名的不可伪造性（Theorem 1 保证）</td>
+</tr>
+<tr>
+<td><strong>匿名可追溯</strong></td>
+<td>VPD-Tree + ZKP：二分定位 + 零知识验证 &#x3D; 只知恶意不知好人</td>
+</tr>
+<tr>
+<td><strong>不可否认性</strong></td>
+<td>聚合签名的不可伪造性 → 编队不能否认发送了消息 → 可通过 VPD-Tree 定位到具体车 → TA 解密伪名</td>
+</tr>
+<tr>
+<td><strong>抗量子</strong></td>
+<td>基于 R-LWE 问题，目前没有已知的量子高效算法</td>
+</tr>
+<tr>
+<td><strong>抗重放</strong></td>
+<td>每步检查时间戳 T_i 的新鲜性</td>
+</tr>
+<tr>
+<td><strong>抗中间人</strong></td>
+<td>编队签名验证确保每辆车身份的合法性</td>
+</tr>
+<tr>
+<td><strong>抗伪造</strong></td>
+<td>任何数据修改导致验证等式 A·r_agg ≠ Σ λi·(Θi+ci·bVi) 不成立</td>
+</tr>
+<tr>
+<td><strong>抗冒充</strong></td>
+<td>正确性&#x2F;不可伪造性&#x2F;真实性 &#x3D; 三方连锁保证伪身份无法通过签名验证</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="6-实验设置与结果"><a href="#6-实验设置与结果" class="headerlink" title="6. 实验设置与结果"></a>6. 实验设置与结果</h3><p><strong>实验环境：</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>配置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CPU</td>
+<td>Apple M3 芯片（8核 CPU + 10核 GPU）</td>
+</tr>
+<tr>
+<td>系统</td>
+<td>macOS</td>
+</tr>
+<tr>
+<td>实现语言</td>
+<td><strong>Python</strong></td>
+</tr>
+<tr>
+<td>调试方案</td>
+<td>每个场景测试 5 次取平均</td>
+</tr>
+</tbody></table>
+<p><strong>对比方案（4个格密码方案）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>全称</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SAS [39]</td>
+<td>Wang &amp; Wu 的序贯聚合签名</td>
+<td>格密码聚合，但非编队</td>
+</tr>
+<tr>
+<td>LBAS [29]</td>
+<td>Li 等的格密码动态身份撤销批认证</td>
+<td>支持动态身份撤销</td>
+</tr>
+<tr>
+<td>IBAGS [30]</td>
+<td>Prajapat 等的格密码身份基聚合签名</td>
+<td>批验证+聚合签名</td>
+</tr>
+<tr>
+<td>ES-DA-LBCLA [27]</td>
+<td>Wani 等的动态匿名批可验证认证</td>
+<td>用模糊提取器实现动态匿名</td>
+</tr>
+</tbody></table>
+<p><strong>密码学运算耗时（Table IV）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>符号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>多项式加法</td>
+<td>Ta</td>
+<td>在 Rq 环上的多项式加（最轻量）</td>
+</tr>
+<tr>
+<td>多项式乘法</td>
+<td>Tm</td>
+<td>在 Rq 环上乘，mod (x^n+1) 和 mod q</td>
+</tr>
+<tr>
+<td>哈希运算</td>
+<td>Th</td>
+<td>哈希函数计算</td>
+</tr>
+</tbody></table>
+<p><strong>LETA 的运算耗时（Table V）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>操作</th>
+<th>耗时</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>签名单车</strong></td>
+<td>4Ta + 3Tm + Th</td>
+<td><strong>≈ 5.53 ms</strong></td>
+</tr>
+<tr>
+<td><strong>验证</strong></td>
+<td>主要是 Ta+Tm（具体数值见论文）</td>
+<td>对比方案中最低</td>
+</tr>
+</tbody></table>
+<p><strong>通信开销（Table III，每辆车单签名大小）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>签名大小</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>LETA</strong></td>
+<td>**</td>
+<td>Rq</td>
+</tr>
+<tr>
+<td>SAS</td>
+<td>~212 字节</td>
+<td>序贯聚合</td>
+</tr>
+<tr>
+<td>LBAS</td>
+<td>~200+ 字节</td>
+<td></td>
+</tr>
+<tr>
+<td>IBAGS</td>
+<td>~196 字节</td>
+<td></td>
+</tr>
+<tr>
+<td>ES-DA-LBCLA</td>
+<td>~210+ 字节</td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>为什么格密码签名这么大？</strong> ECC 签名（如 ECDSA）只有 64-96 字节。格密码的签名通常在 200-3000 字节范围内。180 字节在格密码方案中是非常小的——这得益于 LETA 使用了模格（Modular Lattice）减小参数。</p>
+</blockquote>
+<p><strong>Fig. 4：不同编队规模下的通信开销</strong></p>
+<ul>
+<li>LETA 在所有编队规模（10-50辆）下通信开销都是最低的</li>
+<li>随着编队增大，LETA 的优势更加明显</li>
+<li>单签名场景最低 + 聚合后只需传一份聚合签名</li>
+</ul>
+<p><strong>Fig. 5：计算开销三阶段对比</strong></p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>LETA vs SAS&#x2F;ES-DA</th>
+<th>LETA vs LBAS&#x2F;IBAGS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>签名生成</td>
+<td>显著低于 SAS 和 ES-DA</td>
+<td>略低于 LBAS 和 IBAGS</td>
+</tr>
+<tr>
+<td>签名验证</td>
+<td>最低</td>
+<td>最低</td>
+</tr>
+<tr>
+<td>总时间</td>
+<td>最低</td>
+<td>最低</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>验证阶段的优势在于：LETA 只需轻量级多项式加法和乘法（没有配对运算！）。而 SAS 和 ES-DA 可能涉及更多操作。</p>
+</blockquote>
+<p><strong>恶意车辆追溯效率（Fig. 6-7）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>编队规模</th>
+<th>5% 恶意比例</th>
+<th>10% 恶意比例</th>
+<th>传统全量重验证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>20辆</td>
+<td>~5 μs</td>
+<td>~8 μs</td>
+<td>O(20)</td>
+</tr>
+<tr>
+<td>100辆</td>
+<td>~15 μs</td>
+<td>~25 μs</td>
+<td>O(100)</td>
+</tr>
+</tbody></table>
+<p><strong>Fig. 7 的核心发现：</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(a) 恶意比例从 1% → 20%：追溯开销增长 &lt; 5 倍（恶意车增长20倍）</span><br><span class="line">    → VPD-Tree 的层次结构使追溯开销受恶意比例影响小</span><br><span class="line"></span><br><span class="line">(b) 编队规模从 10 → 100（10倍）：追溯开销增长 ≈ 8 倍</span><br><span class="line">    → 增长主要来自 VPD-Tree 层数增加（log₂10=4层 → log₂100=7层）</span><br><span class="line"></span><br><span class="line">(c) 20% 恶意比例，100辆编队：仅需 ≈35 μs 完成全部追溯</span><br><span class="line">    → 微秒级追溯，完全满足实时性要求</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h3 id="7-局限性分析"><a href="#7-局限性分析" class="headerlink" title="7. 局限性分析"></a>7. 局限性分析</h3><table>
+<thead>
+<tr>
+<th>#</th>
+<th>局限性</th>
+<th>为什么是问题</th>
+<th>可能的改进方向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>L1</strong></td>
+<td><strong>★ 没有跨域！</strong></td>
+<td>LETA 是单域内的编队认证方案。编队从域 A 到域 B 时，LETA 没有给出解决方案。论文的 Future Work 也明确写道：”we will address VP identity authentication in cross-trust-domain scenarios”——<strong>这就是你的直接切入点！</strong></td>
+<td>将 LETA 的格密码+VPD-Tree 扩展到跨域场景：多域 TA&#x2F;TEC 之间的信任传递</td>
+</tr>
+<tr>
+<td><strong>L2</strong></td>
+<td><strong>格密码签名仍比 ECC 大</strong></td>
+<td>LETA 签名 180B vs ECC 签名 64-96B。虽然已在格方案中最优，但和传统方案比仍有差距</td>
+<td>用更高效的 NIST 标准格方案（如 ML-DSA&#x2F;Dilithium、Falcon）或硬件加速</td>
+</tr>
+<tr>
+<td><strong>L3</strong></td>
+<td><strong>VPD-Tree 并发更新的一致性</strong></td>
+<td>论文提到”多车同时加入&#x2F;离开可以并行更新分支”，但没讨论两个分支如果共享父节点发生冲突怎么办</td>
+<td>加入分布式并发控制（乐观锁、版本号）</td>
+</tr>
+<tr>
+<td><strong>L4</strong></td>
+<td><strong>未讨论编队合并&#x2F;拆分</strong></td>
+<td>两个编队合并时，两棵 VPD-Tree 如何融合？一棵拆分时如何分割？</td>
+<td>设计 VPD-Tree 的 Merge 和 Split 算法 — 这是一个可行的新方向</td>
+</tr>
+<tr>
+<td><strong>L5</strong></td>
+<td><strong>集成到现有 VANET 基础设施困难</strong></td>
+<td>论文自己也承认：”due to the use of lattice-based cryptography, integration with existing VANETs infrastructure may be challenging”。传统 VANET 用的是 ECC&#x2F;ECDSA 标准</td>
+<td>混合密码架构 + FPGA 硬件加速</td>
+</tr>
+<tr>
+<td><strong>L6</strong></td>
+<td><strong>TEC 是单点认证依赖</strong></td>
+<td>虽然 TEC 是可信的，但如果 TEC 宕机 → 整个域的编队认证瘫痪</td>
+<td>用多个冗余 TEC 或去中心化共识机制</td>
+</tr>
+<tr>
+<td><strong>L7</strong></td>
+<td><strong>没有 ProVerif&#x2F;形式化验证</strong></td>
+<td>LETA 用了 Q-ROM 理论证明（很好的理论分析），但没有用工具自动化验证。BCCG 是唯一用了 ProVerif 的</td>
+<td>用 Tamarin&#x2F;ProVerif 在 Q-ROM 假设下验证</td>
+</tr>
+<tr>
+<td><strong>L8</strong></td>
+<td><strong>实验仅在单机上用 Python 跑密码运算</strong></td>
+<td>没有在真实的车辆网络仿真器（如 Plexe&#x2F;Veins）中测试端到端延迟</td>
+<td>在 Plexe 中实现 LETA 的端到端仿真，测量真实车载网络下的延迟&#x2F;丢包影响</td>
+</tr>
+<tr>
+<td><strong>L9</strong></td>
+<td><strong>伪名更新依赖 TA 的周期性操作</strong></td>
+<td>如果 TA 没有及时更新伪名 → 不可链接性可能被时间相关性攻击打破</td>
+<td>车辆本地自主生成临时伪名（无需 TA 参与）</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="8-Future-Work（论文自己说的）"><a href="#8-Future-Work（论文自己说的）" class="headerlink" title="8. Future Work（论文自己说的）"></a>8. Future Work（论文自己说的）</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. ★ &quot;我们将处理跨信任域场景中的 VP 身份认证&quot; ← 直接指向你的方向</span><br><span class="line">2. &quot;将计算部分卸载到 RSU 或 MEC，使计算能力有限的车辆也能满足格密码需求&quot;</span><br><span class="line">3. &quot;提高追溯机制的可扩展性，实现负载均衡和低延迟性能&quot;</span><br><span class="line">4. &quot;采用混合密码架构 + FPGA 硬件加速，提高兼容性和实际可部署性&quot;</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h2 id="🔗-LETA-和你研究方向的关联"><a href="#🔗-LETA-和你研究方向的关联" class="headerlink" title="🔗 LETA 和你研究方向的关联"></a>🔗 LETA 和你研究方向的关联</h2><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">LETA 已经做了：</span><br><span class="line">  ✅ 后量子安全编队认证（格密码聚合签名）</span><br><span class="line">  ✅ 高效恶意追溯（VPD-Tree + ZKP，O(log n)）</span><br><span class="line">  ✅ 动态成员管理（VPD-Tree 局部更新）</span><br><span class="line"></span><br><span class="line">LETA 没做的：</span><br><span class="line">  ❌ 跨域认证（最重要的缺口！）</span><br><span class="line">  ❌ 形式化验证工具（ProVerif/Tamarin）</span><br><span class="line">  ❌ 真实的网络级仿真（Plexe/Veins）</span><br><span class="line">  ❌ 编队合并/拆分</span><br><span class="line">  ❌ 异构密码互通</span><br><span class="line"></span><br><span class="line">你的研究 = LETA的格密码+VPD-Tree + 跨域框架（参考EPP-GAS/PPCDA）</span><br><span class="line">→ ★ 后量子安全的跨域编队认证方案</span><br><span class="line">→ 这是目前在公开文献中完全空白的领域</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<blockquote>
+<p><strong>论文文件：</strong> <code>LETA_A_Lattice-Based_Efficient_and_Traceable_Privacy-Preserving_Batch_Authentication_Scheme_for_Vehicle_Platoon_in_VANETs.pdf</code></p>
+</blockquote>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> LETA论文完整阅读笔记</li>
+        <li><strong>作者:</strong> The Redefine Team</li>
+        <li><strong>创建于
+                :</strong> 2026-09-21 12:02:31</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2026-09-21 14:24:33
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://redefine.ohevan.com/2026/09/21/论文阅读/LETA_阅读笔记/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/EPP-GAS_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">EPP-GAS群组密钥协商论文完整阅读笔记</span>
+						<span class="post-nav-item">上一篇</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/PPCDA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">PPCDA论文完整阅读笔记</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.js';
+
+      (function() {
+        const startPath = location.pathname;
+        const startTime = Date.now();
+        const retryDelay = 200;
+        const retryLimit = 5000;
+
+        const runWaline = () => {
+          if (location.pathname !== startPath) {
+            return;
+          }
+
+          const container = document.getElementById('waline');
+          if (!container) {
+            if (Date.now() - startTime < retryLimit) {
+              setTimeout(runWaline, retryDelay);
+            }
+            return;
+          }
+
+          if (window.redefineWalineInstance?.destroy) {
+            window.redefineWalineInstance.destroy();
+          }
+
+          container.innerHTML = '';
+          window.redefineWalineInstance = init({
+            el: '#waline',
+            serverURL: 'https://example.example.com',
+            path: location.pathname,
+            dark: 'body[class~="dark-mode"]',
+            reaction: false,
+            requiredMeta: ['nick', 'mail'],
+            emoji: [],
+                      lang: 'zh-CN',
+          });
+        };
+
+        runWaline();
+      })();
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">目录</div>
+		<div class="page-title">LETA论文完整阅读笔记</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LETA-%E8%AE%BA%E6%96%87%E5%AE%8C%E6%95%B4%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0"><span class="nav-text">LETA 论文完整阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-LETA-%E5%9C%A8%E5%A4%8F%E8%8E%B9%E6%9D%B0%E5%9B%A2%E9%98%9F%E7%A0%94%E7%A9%B6%E8%84%89%E7%BB%9C%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-text">📌 LETA 在夏莹杰团队研究脉络中的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%81%8D%EF%BC%9A5%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E7%AD%9B%E9%80%89"><span class="nav-text">第一遍：5分钟快速筛选</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A0-%E6%A0%87%E9%A2%98%E6%8B%86%E8%A7%A3"><span class="nav-text">① 标题拆解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A1-Abstract-%E4%B8%89%E5%8F%A5%E8%AF%9D%E6%8F%90%E7%82%BC"><span class="nav-text">② Abstract 三句话提炼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A2-Introduction-%E6%9C%AB%E5%B0%BE-%E2%80%94-%E4%B8%89%E5%A4%A7%E8%B4%A1%E7%8C%AE"><span class="nav-text">③ Introduction 末尾 — 三大贡献</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A3-%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B-%E2%80%94-%E5%A8%81%E8%83%81%E5%81%87%E8%AE%BE"><span class="nav-text">④ 安全模型 — 威胁假设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A4-%E5%AE%89%E5%85%A8%E9%9C%80%E6%B1%82%E6%B8%85%E5%8D%95%EF%BC%886%E9%A1%B9-%E2%80%94-%E7%89%B9%E5%88%AB%E5%BC%BA%E8%B0%83%E9%87%8F%E5%AD%90%E6%8A%B5%E6%8A%97%EF%BC%89"><span class="nav-text">⑤ 安全需求清单（6项 — 特别强调量子抵抗）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E7%AC%AC%E4%B8%80%E9%81%8D%E5%88%A4%E6%96%AD%EF%BC%9ALETA-%E6%98%AF%E7%BC%96%E9%98%9F%E8%AE%A4%E8%AF%81%E9%A2%86%E5%9F%9F%E7%9A%84%E2%80%9D%E5%90%8E%E9%87%8F%E5%AD%90%E5%AE%89%E5%85%A8%E5%A4%A9%E8%8A%B1%E6%9D%BF%E2%80%9D%E3%80%82%E6%A0%B8%E5%BF%83%E9%99%90%E5%88%B6%E6%98%AF%E6%B2%A1%E6%9C%89%E8%B7%A8%E5%9F%9F%E3%80%82%E7%B2%BE%E8%AF%BB%E5%AE%83%E3%80%82"><span class="nav-text">✅ 第一遍判断：LETA 是编队认证领域的”后量子安全天花板”。核心限制是没有跨域。精读它。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%81%8D%EF%BC%9A%E7%BB%93%E6%9E%84%E5%8C%96%E6%8F%90%E5%8F%96%EF%BC%8860%E5%88%86%E9%92%9F%EF%BC%89"><span class="nav-text">第二遍：结构化提取（60分钟）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%9C%BA%E6%99%AF%E4%B8%8E%E9%97%AE%E9%A2%98"><span class="nav-text">1. 场景与问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B"><span class="nav-text">2. 系统模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%B7%A5%E5%85%B7%E7%AE%B1%EF%BC%883-1-%E4%B8%AA%E5%B7%A5%E5%85%B7%EF%BC%89"><span class="nav-text">3. 密码学工具箱（3+1 个工具）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%A0%B8%E5%BF%83%E6%96%B9%E6%A1%88-%E2%80%94-%E5%9B%9B%E4%B8%AA%E9%98%B6%E6%AE%B5%E8%AF%A6%E8%A7%A3"><span class="nav-text">4. 核心方案 — 四个阶段详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%AE%89%E5%85%A8%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88%E8%AF%A6%E6%83%85%EF%BC%89"><span class="nav-text">5. 安全性分析（详情）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%AE%9E%E9%AA%8C%E8%AE%BE%E7%BD%AE%E4%B8%8E%E7%BB%93%E6%9E%9C"><span class="nav-text">6. 实验设置与结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%B1%80%E9%99%90%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-text">7. 局限性分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-Future-Work%EF%BC%88%E8%AE%BA%E6%96%87%E8%87%AA%E5%B7%B1%E8%AF%B4%E7%9A%84%EF%BC%89"><span class="nav-text">8. Future Work（论文自己说的）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%97-LETA-%E5%92%8C%E4%BD%A0%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91%E7%9A%84%E5%85%B3%E8%81%94"><span class="nav-text">🔗 LETA 和你研究方向的关联</span></a></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">The Redefine Team</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 11 篇文章
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="图片查看器">
+	<button class="image-viewer-close" type="button" aria-label="关闭">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="上一页">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="关闭">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="下一页">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    window.swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+
+    window.dispatchEvent(
+        new CustomEvent("redefine:swup:ready", {
+            detail: {
+                swup: window.swup,
+            },
+        }),
+    );
+</script>
+
+
+
+
+	
+<script src="/js/build/main.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
+</body>
+
+</html>

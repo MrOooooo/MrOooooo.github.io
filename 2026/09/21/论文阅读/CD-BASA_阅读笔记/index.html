@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    
+    <meta name="author" content="The Redefine Team">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2026/09/21/论文阅读/cd-basa_阅读笔记/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CD-BASA 论文完整阅读笔记">
+<meta property="og:url" content="http://example.com/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/CD-BASA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="G-Clara的学习笔记">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/redefine-og.webp">
+<meta property="article:published_time" content="2026-09-21T04:02:31.000Z">
+<meta property="article:modified_time" content="2026-09-21T06:23:18.861Z">
+<meta property="article:author" content="G-Clara">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            CD-BASA 论文完整阅读笔记 | Theme Redefine
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"zh-CN"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Theme Redefine","subtitle":{"text":[],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":[{"icon":"fa-brands fa-github","url":null},{"icon":"fa-brands fa-twitter","url":null},{"icon":"fa-solid fa-at","url":"you@example.com"},{"icon":"fa-brands fa-telegram","url":null},{"icon":"/images/custom-icon.svg","url":null}],"qrs":[{"icon":"fa-brands fa-weixin","qr":null},{"icon":"/images/custom-icon.svg","qr":null}]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2022/8/17 11:45:14","statistics":true,"customize":null,"icp":{"enable":false,"number":null,"url":null}},"footerStart":"2022/8/17 11:45:14","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.i18n = {"search":"站内搜索您需要的内容...","toc":"目录","prev":"上一页","next":"下一页","prev_posts":"上一篇","next_posts":"下一篇","page":"第 %d 页","recent_posts":"最新文章","share":"分享","powered_by":"由 %s 驱动","theme":"主题","rss_feed":"RSS Feed","category":"分类","categories":"分类","tag":"标签","tags":"标签","post":"文章","posts":"文章","tagcloud":"标签云","comment":"评论","comments":"评论","top":"置顶","sticky":"置顶","go-back-home":"回到首页","masonry_loading":"照片加载中...","image_viewer":"图片查看器","close":"关闭","exif":{"title":"EXIF","cards":{"camera":"相机","lens":"镜头","exposure":"曝光","other":"其他"},"fields":{"make":"品牌","model":"机型","date_taken":"拍摄时间","lens_model":"镜头","focal_length":"焦距","focus_mode":"对焦模式","shutter":"快门","aperture":"光圈","iso":"感光度","exposure_program":"曝光程序","exposure_compensation":"曝光补偿","metering_mode":"测光模式","flash":"闪光灯","white_balance":"白平衡","latitude":"纬度","longitude":"经度","altitude":"海拔"},"status":{"loading":"加载中...","no_exif":"无 EXIF 信息","library_missing":"EXIF 库未加载","image_source_missing":"图片地址不可用","unavailable":"EXIF 不可用（可能被 CORS 阻止或缺少元数据）","flag_unavailable":"EXIF 不可用"}},"home":"首页","archive":"归档","archives":"归档","about":"关于","links":"链接","link":"链接","friends":"友情链接","friend":"友情链接","timeline":"时间轴","shuoshuo":"说说","bookmarks":"书签","site_uv":"访问人数","site_pv":"总访问量","read_more":"阅读全文","wordcount":"字","min2read":"分钟","changelog":"更新日志","status":"状态","runtime":"博客已运行","days":"天","hours":"小时","minutes":"分钟","seconds":"秒","optimized_by":"并由 Evan 进行优化","rights":"版权所有","site_posts":"共撰写了 %s 篇文章","site_wordcount":"共 %s 字","copyright":{"title":"标题","author":"作者","link":"链接","create_time":"创建于","update_time":"更新于","license_title":"版权声明","license_content":"本文章采用 %s 进行许可。","all_rights_reserved":"版权所有 &#169 %s，禁止转载。","public_domain":"本文为公有领域作品，可自由转载、引用。"},"ago":{"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"},"create_time":"创建","update_time":"更新","expired":"这篇文章最后更新于 %s 天前，内容可能已经过时。"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Theme Redefine
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">11</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">CD-BASA 论文完整阅读笔记</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="/images/redefine-avatar.svg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">The Redefine Team</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv2</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-09-21 12:02:31</span>
+        <span class="mobile">2026-09-21 12:02:31</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-09-21 14:23:18</span>
+            <span class="mobile">2026-09-21 14:23:18</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h1 id="CD-BASA-论文阅读笔记"><a href="#CD-BASA-论文阅读笔记" class="headerlink" title="CD-BASA 论文阅读笔记"></a>CD-BASA 论文阅读笔记</h1><blockquote>
+<p><strong>论文信息：</strong> Qiang Zhong (钟强), Xiang Zhao (赵翔), Yingjie Xia (夏莹杰), Xuejiao Liu (刘雪娇), “CD-BASA: An Efficient Cross-Domain Batch Authentication Scheme Based on Blockchain With Accumulator for VANETs”<br><strong>期刊：</strong> IEEE Transactions on Intelligent Transportation Systems (IEEE TITS) — <strong>中科院一区 TOP 期刊</strong><br><strong>年份：</strong> 2024 年 4 月（在线发表），2024 年 10 月正式出版<br><strong>卷号&#x2F;页码：</strong> Vol. 25, No. 10, pp. 14560–14571<br><strong>DOI：</strong> 10.1109&#x2F;TITS.2024.3386730<br><strong>所属团队：</strong> 杭州电子科技大学微电子研究院芯片与安全实验室（CSL）+ 杭州师范大学<br><strong>资助项目：</strong> 浙江省自然科学基金重点项目 (LZ22F030004)、浙江省”尖兵领雁”重大研发攻关项目 (2024C01179)<br><strong>阅读日期：</strong> 2026-07-15</p>
+</blockquote>
+<hr>
+<h2 id="📌-先说明：CD-BASA-在团队研究脉络中的位置"><a href="#📌-先说明：CD-BASA-在团队研究脉络中的位置" class="headerlink" title="📌 先说明：CD-BASA 在团队研究脉络中的位置"></a>📌 先说明：CD-BASA 在团队研究脉络中的位置</h2><p>CD-BASA 和 EPP-GAS 是夏莹杰教授团队在 <strong>同一时期（2024）、同一期刊（IEEE TITS）</strong> 发表的<strong>姐妹篇</strong>。两篇论文有共同的研究背景（跨域认证），但采用了不同的技术路线：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">夏莹杰教授团队 2024 年双箭齐发：</span><br><span class="line"></span><br><span class="line">EPP-GAS (2024年8月)                CD-BASA (2024年4月)</span><br><span class="line">  ├─ 针对：车辆编队（Platoon）         ├─ 针对：通用 VANET（不限编队）</span><br><span class="line">  ├─ 核心技术：Shamir 门限+群组假名    ├─ 核心技术：RSA 累加器+IPFS</span><br><span class="line">  ├─ 认证粒度：编队级群组认证          ├─ 认证粒度：单车级批量认证</span><br><span class="line">  └─ 区块链角色：BM-Tree 存储认证参数  └─ 区块链角色：链上存累加器+IPFS存witness</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p><strong>关键理解：</strong> CD-BASA 不是车辆编队方案！它是通用 VANET 跨域方案。但它提出的「累加器 + 区块链 + IPFS」的存储和计算基础设施，对你有重要的方法借鉴意义。</p>
+</blockquote>
+<hr>
+<h2 id="第一遍：5-分钟快速筛选"><a href="#第一遍：5-分钟快速筛选" class="headerlink" title="第一遍：5 分钟快速筛选"></a>第一遍：5 分钟快速筛选</h2><h3 id="标题拆解"><a href="#标题拆解" class="headerlink" title="标题拆解"></a>标题拆解</h3><blockquote>
+<p><strong>CD-BASA: An Efficient Cross-Domain Batch Authentication Scheme Based on Blockchain With Accumulator for VANETs</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Cross-Domain</strong></td>
+<td>跨不同管理域</td>
+</tr>
+<tr>
+<td><strong>Batch Authentication</strong></td>
+<td>批量认证 — 一次验证多辆车的身份</td>
+</tr>
+<tr>
+<td><strong>Blockchain</strong></td>
+<td>用区块链做分布式信任基础设施</td>
+</tr>
+<tr>
+<td><strong>Accumulator</strong></td>
+<td><strong>密码学累加器</strong> — 本文最核心的技术</td>
+</tr>
+<tr>
+<td><strong>VANETs</strong></td>
+<td>通用车载自组网，不是专为编队设计的</td>
+</tr>
+</tbody></table>
+<h3 id="Abstract-三句话提炼"><a href="#Abstract-三句话提炼" class="headerlink" title="Abstract 三句话提炼"></a>Abstract 三句话提炼</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">问题：大量跨域车辆认证时，区块链存储开销爆炸、查询延迟高、累加器逐车证明效率低。</span><br><span class="line">方案：区块链只存累加值（极小） + IPFS 存 witness + 跨域批量认证协议 + 多累加器批量证明算法。</span><br><span class="line">效果：跨域批量认证开销降低 ≥18.2%，累加器证明开销降低 ≥69.9%。</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="三大贡献"><a href="#三大贡献" class="headerlink" title="三大贡献"></a>三大贡献</h3><blockquote>
+<p><strong>贡献1：存储计算基础设施</strong> — 累加器+区块链+IPFS 三位一体。链上只存累加值（极省存储），IPFS 存 witness，累加器将大量身份信息”压缩”为一个常数值。</p>
+<p><strong>贡献2：跨域批量认证协议</strong> — 将不同域的参数翻译为全局参数，实现一次性批量验证来自多个域的车辆。本质是 ECC 签名 + 域参数统一化。</p>
+<p><strong>贡献3：多累加器批量证明算法</strong> — 用<strong>动态规划</strong>优化多累加器的批量身份验证，将从属于不同 MEC 累加器的车辆身份一次性证明。这是本文最大的算法创新。</p>
+</blockquote>
+<h3 id="Table-V-—-安全性对比"><a href="#Table-V-—-安全性对比" class="headerlink" title="Table V — 安全性对比"></a>Table V — 安全性对比</h3><table>
+<thead>
+<tr>
+<th>安全属性</th>
+<th>CD-BASA</th>
+<th>BBMDA</th>
+<th>CBMC</th>
+<th>MDPA</th>
+<th>EACA</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>相互认证</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>密钥保密</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>跨域批量认证</td>
+<td>✓</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>匿名性</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>分布式认证</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>不可链接性</td>
+<td>✓</td>
+<td>✗</td>
+<td>✗</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>可追溯性</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>抗常见攻击</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>CD-BASA 独有「跨域批量认证」</strong> — 其他方案要么不能跨域批量、要么只能逐车做累加器证明。</p>
+</blockquote>
+<h3 id="✅-第一遍判断：这篇论文的核心方法论（累加器-IPFS-动态规划批量证明）可能可以应用到你的编队场景中。精读它。"><a href="#✅-第一遍判断：这篇论文的核心方法论（累加器-IPFS-动态规划批量证明）可能可以应用到你的编队场景中。精读它。" class="headerlink" title="✅ 第一遍判断：这篇论文的核心方法论（累加器+IPFS+动态规划批量证明）可能可以应用到你的编队场景中。精读它。"></a>✅ 第一遍判断：这篇论文的核心方法论（累加器+IPFS+动态规划批量证明）可能可以应用到你的编队场景中。精读它。</h3><hr>
+<h2 id="第二遍：结构化提取"><a href="#第二遍：结构化提取" class="headerlink" title="第二遍：结构化提取"></a>第二遍：结构化提取</h2><h3 id="1-研究动机与问题"><a href="#1-研究动机与问题" class="headerlink" title="1. 研究动机与问题"></a>1. 研究动机与问题</h3><p><strong>场景：</strong> 灾难救援场景——多个域的救援车辆同时涌入灾区。灾区现场的 MEC 在短时间内收到海量跨域认证请求。如果不能快速批量认证，救援效率将严重受影响。</p>
+<p><strong>三个具体的技术痛点：</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">痛点1 ── 区块链存储爆炸</span><br><span class="line">         ├── 传统方案把每辆车的身份信息直接存链上</span><br><span class="line">         ├── 车辆越多 → 链上数据越多 → 存储开销线性增长</span><br><span class="line">         └── 如 MDPA 方案，每个域存储 65.4 kB 身份信息</span><br><span class="line"></span><br><span class="line">痛点2 ── 跨域逐车认证效率低</span><br><span class="line">         ├── 不同域有不同私钥和域参数 → 只能逐个验证</span><br><span class="line">         └── 低频、高延迟，无法满足车联网实时性要求</span><br><span class="line"></span><br><span class="line">痛点3 ── 累加器证明开销大</span><br><span class="line">         ├── 现有累加器方案（BBMDA用双线性配对、EACA用RSA）只能逐个证明</span><br><span class="line">         └── 不同累加器的证明算法不同 → 不能批量处理</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="2-系统模型"><a href="#2-系统模型" class="headerlink" title="2. 系统模型"></a>2. 系统模型</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────────────────────────────────┐</span><br><span class="line">│                  区块链 (Consortium Blockchain)               │</span><br><span class="line">│                                                              │</span><br><span class="line">│   ┌──────────┐  ┌──────────┐  ┌──────────┐                 │</span><br><span class="line">│   │ 区块 #1   │  │ 区块 #2   │  │ 区块 #n   │                │</span><br><span class="line">│   │ 存储:     │  │ 存储:     │  │ 存储:     │                │</span><br><span class="line">│   │ Am_1(累加值)│  │ Am_2(累加值)│  │ Am_n(累加值)│                │</span><br><span class="line">│   └──────────┘  └──────────┘  └──────────┘                 │</span><br><span class="line">│        ▲              ▲              ▲                       │</span><br><span class="line">└────────┼──────────────┼──────────────┼───────────────────────┘</span><br><span class="line">         │              │              │</span><br><span class="line">   ┌─────┴──────────────┴──────────────┴─────┐</span><br><span class="line">   │              IPFS (星际文件系统)          │</span><br><span class="line">   │   存储每辆车的 witness (身份证明密钥)      │</span><br><span class="line">   │   通过 IPNS 实现动态更新 (witness 随累加器更新而变) │</span><br><span class="line">   └─────┬──────────────┬──────────────┬─────┘</span><br><span class="line">         │              │              │</span><br><span class="line">   ┌─────┴─────┐  ┌─────┴─────┐  ┌─────┴─────┐</span><br><span class="line">   │   MEC_1   │  │   MEC_2   │  │   MEC_n   │</span><br><span class="line">   │ (域1边缘)  │  │ (域2边缘)  │  │ (域n边缘)  │</span><br><span class="line">   │ 维护:      │  │ 维护:      │  │           │</span><br><span class="line">   │ 累加器A_m1 │  │ 累加器A_m2 │  │           │</span><br><span class="line">   │ IPFS节点   │  │ IPFS节点   │  │           │</span><br><span class="line">   └─────┬─────┘  └─────┬─────┘  └─────┬─────┘</span><br><span class="line">         │              │              │</span><br><span class="line">         │   V2I 通信    │              │</span><br><span class="line">         │              │              │</span><br><span class="line">   ┌─────┴──────────────┴──────────────┴─────┐</span><br><span class="line">   │            车辆 (来自不同域)              │</span><br><span class="line">   │   每辆车持有：伪名 PID、witness、认证参数  │</span><br><span class="line">   └──────────────────────────────────────────┘</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>四类核心实体：</strong></p>
+<table>
+<thead>
+<tr>
+<th>实体</th>
+<th>缩写</th>
+<th>核心职责</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>信任机构</strong></td>
+<td>TA</td>
+<td>各域的权威管理机构，签发伪名、管理域参数</td>
+</tr>
+<tr>
+<td><strong>多接入边缘计算</strong></td>
+<td>MEC</td>
+<td>维护累加器+区块链+IPFS，执行认证和批量证明。<strong>计算能力强，相当于若干服务器的集群</strong></td>
+</tr>
+<tr>
+<td><strong>路边单元</strong></td>
+<td>RSU</td>
+<td>中继节点，转发车辆和 MEC 之间的消息</td>
+</tr>
+<tr>
+<td><strong>车辆</strong></td>
+<td>V</td>
+<td>持有伪名和 witness，发起跨域认证请求</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>关键理解：</strong> CD-BASA 中，MEC 是主角。MEC 不只是”认证服务器”，它同时是区块链节点、IPFS 节点、累加器管理者。这种设计充分利用了 5G 边缘计算的优势——把重计算任务交给边缘而不是车辆。</p>
+</blockquote>
+<h3 id="3-密码学工具箱（3-1-个核心工具）"><a href="#3-密码学工具箱（3-1-个核心工具）" class="headerlink" title="3. 密码学工具箱（3+1 个核心工具）"></a>3. 密码学工具箱（3+1 个核心工具）</h3><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>在方案中的作用</th>
+<th>为什么选它</th>
+<th>与其他论文对比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>RSA 累加器</strong></td>
+<td>① 将域内所有合法车辆身份”压缩”为一个常数值 ② 每辆车持有一个 witness 证明自己在累加器中</td>
+<td>基于强 RSA 假设，证明计算不需要双线性配对</td>
+<td>EPP-GAS 用 BM-Tree，PPCDA 用 IBF</td>
+</tr>
+<tr>
+<td><strong>IPFS + IPNS</strong></td>
+<td>① 存储每辆车的 witness（链下）② IPNS 允许用固定名字检索最新 witness（支持动态更新）</td>
+<td>链上只存累加值→存储极小；witness 更新通过 IPNS 自动指向最新版本</td>
+<td>EPP-GAS 的 BM-Tree 也是存储方案</td>
+</tr>
+<tr>
+<td><strong>ECC（椭圆曲线）</strong></td>
+<td>① 签名&#x2F;验证 ② 密钥协商(ECDHE)</td>
+<td>轻量级、无配对</td>
+<td>CD-BASA 不用双线性配对！</td>
+</tr>
+<tr>
+<td><strong>动态规划（算法优化）</strong></td>
+<td>用动态规划优化多累加器批量证明，减少模指数运算</td>
+<td>传统方法逐个证明 &#x3D; O(n) 次模指数，动态规划大幅减少</td>
+<td><strong>本文独创</strong></td>
+</tr>
+</tbody></table>
+<h3 id="4-累加器的工作原理（本文最核心的概念）"><a href="#4-累加器的工作原理（本文最核心的概念）" class="headerlink" title="4. 累加器的工作原理（本文最核心的概念）"></a>4. 累加器的工作原理（本文最核心的概念）</h3><p>在理解协议之前，必须先理解”累加器是什么”。</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">概念类比：</span><br><span class="line">  想象一个&quot;密码学搅拌机&quot;——</span><br><span class="line">  你把 100 辆车的身份信息倒进去 → 搅拌 → 输出一个固定大小的值（累加值 A）</span><br><span class="line">  </span><br><span class="line">  每辆车持有一把&quot;钥匙&quot;（witness），能证明&quot;我的身份在搅拌机里&quot;</span><br><span class="line">  验证者只需要检查：witness^x mod N ?= A</span><br><span class="line">  </span><br><span class="line">  关键性质：</span><br><span class="line">  1. 累加值 A 的大小是固定的（256 字节），不管里面有 100 辆还是 10000 辆车！</span><br><span class="line">  2. 不是成员的车无法构造有效的 witness</span><br><span class="line">  3. 有新成员加入 → 只需更新 A 和更新相关 witness（不需要全部重建）</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>RSA 累加器的数学本质：</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">初始累加值：A_0 = g（随机生成元）</span><br><span class="line"></span><br><span class="line">加入车辆 b_1：</span><br><span class="line">  x_1 = Hprime(b_1)           # 将身份信息映射为素数</span><br><span class="line">  A_1 = A_0^&#123;x_1&#125; mod N      # 累加 = 指数运算</span><br><span class="line">  wit_1 = g                   # 第一辆车的 witness</span><br><span class="line"></span><br><span class="line">加入车辆 b_2：</span><br><span class="line">  x_2 = Hprime(b_2)</span><br><span class="line">  A_2 = A_1^&#123;x_2&#125; mod N = g^&#123;x_1·x_2&#125; mod N</span><br><span class="line">  wit_1 = g^&#123;x_2&#125; mod N       # 第一辆车的 witness 也要更新！</span><br><span class="line">  wit_2 = g^&#123;x_1&#125; mod N</span><br><span class="line"></span><br><span class="line">一般的：</span><br><span class="line">  A = g^&#123;x_1·x_2·...·x_n&#125; mod N</span><br><span class="line">  wit_i = g^&#123;∏_&#123;j≠i&#125; x_j&#125; mod N</span><br><span class="line"></span><br><span class="line">验证：wit_i^&#123;x_i&#125; mod N ?= A</span><br><span class="line">因为：wit_i^&#123;x_i&#125; = (g^&#123;∏_&#123;j≠i&#125; x_j&#125;)^&#123;x_i&#125; = g^&#123;∏_all x_j&#125; = A</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p><strong>为什么用 IPFS？</strong> 因为每次有新成员加入，<strong>已有成员的 witness 都要更新</strong>。如果存链上，每次更新都要写链→开销太大。IPFS+IPNS 允许离线更新，通过名字映射自动指向最新 witness。</p>
+</blockquote>
+<h3 id="5-核心方案-—-四个阶段-批量证明算法"><a href="#5-核心方案-—-四个阶段-批量证明算法" class="headerlink" title="5. 核心方案 — 四个阶段 + 批量证明算法"></a>5. 核心方案 — 四个阶段 + 批量证明算法</h3><hr>
+<h4 id="Phase-1：系统初始化（Initialization）"><a href="#Phase-1：系统初始化（Initialization）" class="headerlink" title="Phase 1：系统初始化（Initialization）"></a>Phase 1：系统初始化（Initialization）</h4><p><strong>谁做：</strong> 各域 TA + MEC</p>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ====== 全局参数（所有域共享）======</span></span><br><span class="line">选择加法群 G，阶为 q，生成元 P</span><br><span class="line">r = 随机主密钥 ∈ Z_q</span><br><span class="line">P_mpk = r · P              <span class="comment"># 主公钥</span></span><br><span class="line">定义 <span class="number">4</span> 个哈希函数 H0, H1, H2, H3</span><br><span class="line"></span><br><span class="line">全局参数 = &#123;G, P, q, P_mpk, r, H0-H3&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># ====== RSA 累加器参数（各域统一模数 N）======</span></span><br><span class="line">选择安全参数 k</span><br><span class="line">p = <span class="number">2</span>·p_a + <span class="number">1</span>, q = <span class="number">2</span>·q_a + <span class="number">1</span>  <span class="comment"># 安全素数（p_a, q_a 也是素数）</span></span><br><span class="line">N = p · q                    <span class="comment"># RSA 模数（所有 MEC 共用同一个 N！）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ====== 各域个性化参数 ======</span></span><br><span class="line">TA_i 随机选 m_i ∈ Z_q</span><br><span class="line">计算 M_i = m_i · P</span><br><span class="line">η_i = H0(ID_i || M_i || P_r)</span><br><span class="line">域私钥 s_i = (m_i + η_i · r) mod q</span><br><span class="line">域公钥 P_i = s_i · P</span><br><span class="line"></span><br><span class="line"><span class="comment"># 域标识参数</span></span><br><span class="line">K_i = &#123;ID_i, M_i&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 广播域内公开参数</span></span><br><span class="line">&#123;G, P, q, K_i, P_i, P_r, H0-H3&#125;</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h4 id="Phase-2：注册（Registration）"><a href="#Phase-2：注册（Registration）" class="headerlink" title="Phase 2：注册（Registration）"></a>Phase 2：注册（Registration）</h4><h5 id="2a：MEC-注册"><a href="#2a：MEC-注册" class="headerlink" title="2a：MEC 注册"></a>2a：MEC 注册</h5><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MEC_mj 在域 j 注册</span></span><br><span class="line">x_mj = 随机私钥</span><br><span class="line">RID_mj = x_mj · P            <span class="comment"># 公钥</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过安全信道发送注册请求</span></span><br><span class="line">&#123;MID_mj, RID_mj&#125; → TA_j</span><br><span class="line"></span><br><span class="line"><span class="comment"># TA_j 验证后生成 MEC 的注册凭证：</span></span><br><span class="line">a_mj = 随机数 ∈ Z_q</span><br><span class="line">A_mj = a_mj · P</span><br><span class="line">R_mj = x_mj + H2(MID_mj || RID_mj || A_mj || T_mj) · s_j</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回 &#123;R_mj, A_mj, T_mj&#125; 给 MEC_mj</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># MEC 验证：</span></span><br><span class="line">R_mj · P ?= RID_mj + H2(MID_mj||RID_mj||A_mj||T_mj) · P_j</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="2b：车辆注册"><a href="#2b：车辆注册" class="headerlink" title="2b：车辆注册"></a>2b：车辆注册</h5><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 车辆 V_i 向 TA_i 注册</span></span><br><span class="line"><span class="comment"># 先用真实身份 RID_i 在 TA 注册</span></span><br><span class="line"><span class="comment"># TA 验证后返回注册身份</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 车辆生成第一个伪名组件</span></span><br><span class="line">pid_i = 随机数 ∈ Z_q</span><br><span class="line">PID_i,<span class="number">1</span> = pid_i · P</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送 &#123;RID_i, pid_i&#125; → TA_i</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># TA_i 计算第二个伪名组件</span></span><br><span class="line">PID_i,<span class="number">2</span> = RID_i ⊕ H0(s_j · PID_i,<span class="number">1</span> || P_j || T_pse)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成伪名</span></span><br><span class="line">PID_i = &#123;PID_i,<span class="number">2</span>, T_pse&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成伪名注册参数</span></span><br><span class="line">Rt_i = pid_i + H1(PID_i,<span class="number">2</span> || PID_i,<span class="number">1</span>) · s_i</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回 &#123;Rt_i, PID_i, K_i&#125; 给车辆</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 车辆验证：</span></span><br><span class="line">Rt_i · P ?= PID_i,<span class="number">1</span> + H1(PID_i,<span class="number">2</span>||PID_i,<span class="number">1</span>) · P_i</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="2c：身份信息累加-区块生成"><a href="#2c：身份信息累加-区块生成" class="headerlink" title="2c：身份信息累加 + 区块生成"></a>2c：身份信息累加 + 区块生成</h5><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">🚀 这是 CD-BASA 基础设施的核心操作！</span><br><span class="line"></span><br><span class="line"># MEC_mi 做的事（Algorithm 1）：</span><br><span class="line">1. 接收获批车辆的身份信息 &#123;Rt_i, PID_i, ID_i&#125;</span><br><span class="line">2. 计算哈希 b_i = H(PID_i || Rt_i || ID_i)</span><br><span class="line">3. 映射为素数 x_i = Hprime(b_i)</span><br><span class="line">4. 累加：A_mi_new = A_mi^&#123;x_i&#125; mod N</span><br><span class="line">5. 计算 witness：wit_xi = g^&#123;Π_&#123;m≠i&#125; x_m&#125; mod N</span><br><span class="line">6. 上链：累加值 A_mi_new 写入区块链（Kafka 共识）</span><br><span class="line">7. 上 IPFS：witness wit_xi → 获得文件地址 Hwit_xi</span><br><span class="line">8. 返回 Hwit_xi 给车辆（车辆用它来在认证时取 witness）</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h4 id="Phase-3：跨域认证（核心协议）"><a href="#Phase-3：跨域认证（核心协议）" class="headerlink" title="Phase 3：跨域认证（核心协议）"></a>Phase 3：跨域认证（核心协议）</h4><p><strong>场景：</strong> 域 A 的车 V_i 驶入域 B 的 MEC_mj 覆盖范围。</p>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ====== Step 1: MEC 周期广播 ======</span></span><br><span class="line"><span class="comment"># MEC_mj 广播自己的信息</span></span><br><span class="line">&#123;R_mj, MID_mj, RID_mj, A_mj, T_mj&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># ====== Step 2: 车辆验证 MEC 并生成认证请求 ======</span></span><br><span class="line"><span class="comment"># 车辆先验证 MEC 的合法性：</span></span><br><span class="line">R_mj · P ?= RID_mj + H2(MID_mj||RID_mj||A_mj||T_mj) · P_j</span><br><span class="line"></span><br><span class="line"><span class="comment"># 选择通信伪名 PID_i</span></span><br><span class="line"><span class="comment"># 生成新鲜参数</span></span><br><span class="line">c_i = 随机数 ∈ Z_q</span><br><span class="line">C_i = c_i · P</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算辅助参数</span></span><br><span class="line">g_i = H3(C_i || RID_mj || MID_mj || PID_i,<span class="number">2</span> || T_aut)</span><br><span class="line">w_i = g_i · H1(PID_i,<span class="number">2</span> || PID_i,<span class="number">1</span>)^&#123;-<span class="number">1</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成认证签名参数</span></span><br><span class="line">Rt_i,<span class="number">2</span> = c_i + w_i · Rt_i</span><br><span class="line">Pt_i,<span class="number">1</span> = w_i · PID_i,<span class="number">1</span></span><br><span class="line">Pt_i,<span class="number">2</span> = g_i · M_i</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造跨域认证请求</span></span><br><span class="line">A_req = &#123;K_i, PID_i, Pt_i,<span class="number">1</span>, Pt_i,<span class="number">2</span>, Rt_i,<span class="number">2</span>, Hwit_xi, C_i, T_aut&#125;</span><br><span class="line">发送到 MEC_mj</span><br><span class="line"></span><br><span class="line"><span class="comment"># ====== Step 3: MEC 验证认证请求 ======</span></span><br><span class="line"><span class="comment"># 1. 检查时间戳 T_aut 和 T_pse 是否新鲜</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 计算 g_i&#x27;</span></span><br><span class="line">g_i<span class="string">&#x27; = H3(C_i || x_mj || MID_mj || PID_i,2 || T_aut)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 3. 验证 ECC 签名（公式(4)的单一版本）</span></span><br><span class="line"><span class="string">Rt_i,2 · P ?= C_i + Pt_i,1 + g_i&#x27;</span> · P_i</span><br><span class="line"><span class="comment"># 推导：Rt_i,2 · P = (c_i + w_i·Rt_i) · P</span></span><br><span class="line"><span class="comment">#       = c_i·P + w_i·(pid_i + H1(...)·s_i) · P</span></span><br><span class="line"><span class="comment">#       = C_i + Pt_i,1 + w_i·H1·s_i·P</span></span><br><span class="line"><span class="comment">#       = C_i + Pt_i,1 + g_i · P_i  ✓</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 从 IPFS 取 witness</span></span><br><span class="line">wit_PID_i = IPFS.get(Hwit_xi)  <span class="comment"># 通过 IPNS 获取最新 witness</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 从区块链取累加值</span></span><br><span class="line">A_mi = Blockchain.get(域A的累加值)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 6. 验证身份在累加器中（Algorithm 2）</span></span><br><span class="line">b_i = H(PID_i || Rt_i || ID_i)</span><br><span class="line">x_i = Hprime(b_i)</span><br><span class="line">result = wit_PID_i^&#123;x_i&#125; mod N</span><br><span class="line"><span class="keyword">if</span> result == A_mi: 身份合法 ✓</span><br><span class="line"><span class="keyword">else</span>: 拒绝 ✗</span><br><span class="line"></span><br><span class="line"><span class="comment"># ====== Step 4: 密钥协商 (ECDHE) ======</span></span><br><span class="line"><span class="comment"># MEC 选随机数 c_mj</span></span><br><span class="line">c_mj = 随机数</span><br><span class="line">C_mj = c_mj · P</span><br><span class="line"></span><br><span class="line"><span class="comment"># MEC 生成会话密钥</span></span><br><span class="line">sk_mj,i = H3(c_mj · C_i || C_mj || PID_i || MID_mj)</span><br><span class="line">B_mj,i = H3(sk_mj,i || g_i || T_s)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送 &#123;B_mj,i, PID_i, C_mj, T_s&#125; 给车辆</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 车辆计算并验证</span></span><br><span class="line">sk_i,mj = H3(c_i · C_mj || C_mj || PID_i || MID_mj)</span><br><span class="line">B_i,mj = H3(sk_i,mj || g_i || T_s)</span><br><span class="line"><span class="keyword">if</span> B_i,mj == B_mj,i: 密钥协商成功 ✓</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h4 id="Phase-4：批量认证（核心创新！）"><a href="#Phase-4：批量认证（核心创新！）" class="headerlink" title="Phase 4：批量认证（核心创新！）"></a>Phase 4：批量认证（核心创新！）</h4><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MEC_mj 同时收到来自不同域的 n 辆车的认证请求</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 批量验证 ECC 签名（公式(4)）：</span></span><br><span class="line"><span class="comment"># 验证 n 辆车的签名是否都有效</span></span><br><span class="line"></span><br><span class="line">Σ (Rt_i,<span class="number">2</span>) · P ?= Σ C_i + Σ Pt_i,<span class="number">1</span> + Σ Pt_i,<span class="number">2</span> + Σ (g_i · η_i) · P_mpk</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推导过程（人话版）：</span></span><br><span class="line"><span class="comment"># 单车的验证等式：Rt_i,2 · P = C_i + Pt_i,1 + g_i · P_i</span></span><br><span class="line"><span class="comment"># 而 P_i = s_i · P = (m_i + η_i · r) · P = M_i + η_i · P_mpk</span></span><br><span class="line"><span class="comment"># 所以 g_i · P_i = g_i · M_i + g_i · η_i · P_mpk = Pt_i,2 + (g_i · η_i) · P_mpk</span></span><br><span class="line"><span class="comment"># 代回：Rt_i,2 · P = C_i + Pt_i,1 + Pt_i,2 + (g_i · η_i) · P_mpk</span></span><br><span class="line"><span class="comment"># 对所有 i 求和 → 批量验证等式(4)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 关键：需要一个补充参数 η_i = H1(TA_i || M_i || P_mpk)</span></span><br><span class="line"><span class="comment"># 这个参数统一了不同域的域公钥，使它们能用同一个批量等式验证！</span></span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p><strong>批量认证的核心在于”域参数翻译”：</strong> 每个域有不同的 P_i（域公钥），但通过在全局参数 P_mpk 下的统一表示，可以在一个等式中同时验证来自不同域的签名。这就是「将域参数翻译为全局参数」的含义。</p>
+</blockquote>
+<hr>
+<h4 id="Phase-5：多累加器批量证明算法（Algorithm-3-—-本文最大创新）"><a href="#Phase-5：多累加器批量证明算法（Algorithm-3-—-本文最大创新）" class="headerlink" title="Phase 5：多累加器批量证明算法（Algorithm 3 — 本文最大创新）"></a>Phase 5：多累加器批量证明算法（Algorithm 3 — 本文最大创新）</h4><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">问题：n 辆车可能来自不同域，它们的身份信息分布在不同的累加器中。</span><br><span class="line">      传统方案：对每辆车做一次独立的累加器证明 → n 次模指数运算 → 太慢。</span><br><span class="line"></span><br><span class="line">解决：用一个算法同时验证 n 个来自不同累加器的身份！</span><br><span class="line"></span><br><span class="line">算法思路（动态规划优化）：</span><br><span class="line">  本质要计算：w_1^&#123;x_1&#125; · w_2^&#123;x_2&#125; · ... · w_n^&#123;x_n&#125; mod N</span><br><span class="line">  并验证它是否等于 A_1 · A_2 · ... · A_n mod N</span><br><span class="line">  </span><br><span class="line">  直接计算需要 n 次模指数（每次都很贵）。</span><br><span class="line">  </span><br><span class="line">  优化思路：</span><br><span class="line">  1. 预计算：提前算好不同规模下批量组合的最优计算步长（动态规划）</span><br><span class="line">  2. 快速幂：用平方-乘算法将模指数转为一系列乘法和平方</span><br><span class="line">  3. 组合优化：将 n 个证明分批，每批内共用中间计算结果</span><br><span class="line">  </span><br><span class="line">  结果：证明开销从 O(n) 次模指数降为大幅更低（论文结果显示降了 69.9%）</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>Algorithm 3 的逻辑流程（人话版）：</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">输入：n 个车辆的 (witness_i, x_i, 累加值 A_i, 模数 N)</span><br><span class="line">输出：True（全部合法）或 False（至少一个不合法）</span><br><span class="line"></span><br><span class="line">Step 1: 预计算最优分组</span><br><span class="line">  - 对前 t 个元素做穷举，找到最优分组步长</span><br><span class="line">  - 对于 i = t+1 到 n，用动态规划确定最优划分</span><br><span class="line"></span><br><span class="line">Step 2: 按分组批量计算</span><br><span class="line">  - 每个分组内，将所有 witness 组合为一个来减少乘法次数</span><br><span class="line">  - result = Π wit_com · 每个分组的累加值聚合</span><br><span class="line"></span><br><span class="line">Step 3: 验证</span><br><span class="line">  - 每个分组的 A_agg ?= result</span><br><span class="line">  - 全部匹配 → True，否则 → False</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h3 id="6-安全性分析"><a href="#6-安全性分析" class="headerlink" title="6. 安全性分析"></a>6. 安全性分析</h3><table>
+<thead>
+<tr>
+<th>安全属性</th>
+<th>实现方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>相互认证</strong></td>
+<td>车辆验证 MEC → 验证 <code>R_mj·P</code> 等式；MEC 验证车辆 → 验证 <code>Rt_i,2·P</code> 等式 + 累加器证明</td>
+</tr>
+<tr>
+<td><strong>密钥保密</strong></td>
+<td>ECDHE 密钥协商：&#96;sk &#x3D; H3(c_mj·C_i</td>
+</tr>
+<tr>
+<td><strong>跨域批量认证</strong></td>
+<td>域参数统一化：&#96;η_i &#x3D; H1(TA_i</td>
+</tr>
+<tr>
+<td><strong>匿名性</strong></td>
+<td>车辆使用伪名 PID，真实身份 RID 不暴露</td>
+</tr>
+<tr>
+<td><strong>分布式认证</strong></td>
+<td>不依赖 TA 实时参与，MEC 直接从链上获取累加值完成认证</td>
+</tr>
+<tr>
+<td><strong>不可链接性</strong></td>
+<td>每次通信使用不同的伪名（车辆提前申请一批伪名）</td>
+</tr>
+<tr>
+<td><strong>可追溯性</strong></td>
+<td>&#96;RID_i &#x3D; PID_i,2 ⊕ H0(s_j·PID_i,1</td>
+</tr>
+<tr>
+<td><strong>抗假冒</strong></td>
+<td>只有持有合法伪名和对应私钥的车辆才能生成有效认证请求</td>
+</tr>
+<tr>
+<td><strong>抗重放</strong></td>
+<td>时间戳机制 (<code>T_mj</code>, <code>T_aut</code>)</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="7-实验设置与结果"><a href="#7-实验设置与结果" class="headerlink" title="7. 实验设置与结果"></a>7. 实验设置与结果</h3><p><strong>实验环境：</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>配置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CPU</td>
+<td>Intel i5-10500, 3.10 GHz</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>16 GB</td>
+</tr>
+<tr>
+<td>系统</td>
+<td>Ubuntu 18.04</td>
+</tr>
+<tr>
+<td>密码学库</td>
+<td><strong>MIRACL</strong></td>
+</tr>
+<tr>
+<td>区块链</td>
+<td><strong>Hyperledger Fabric v2.2</strong></td>
+</tr>
+<tr>
+<td>区块链基准测试</td>
+<td><strong>Hyperledger Caliper v0.4.0</strong></td>
+</tr>
+<tr>
+<td>共识机制</td>
+<td>Kafka</td>
+</tr>
+<tr>
+<td>椭圆曲线</td>
+<td><code>y² = x³ + ax + b mod p</code>（256-bit 素数）</td>
+</tr>
+</tbody></table>
+<p><strong>核心性能数据：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>CD-BASA</th>
+<th>对比方案</th>
+<th>提升幅度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>链上存储</strong></td>
+<td>1.125 kB&#x2F;域</td>
+<td>EACA: 31.6 kB, MDPA: 65.4 kB, CBMC: 68.8 kB</td>
+<td>降低 <strong>96%+</strong></td>
+</tr>
+<tr>
+<td><strong>链上查询延迟</strong></td>
+<td>~30 ms（稳定）</td>
+<td>CBMC: 94 ms, MDPA: 64 ms</td>
+<td>降低 <strong>53%+</strong></td>
+</tr>
+<tr>
+<td><strong>单车认证总开销</strong></td>
+<td>0.5832 ms</td>
+<td>BBMDA: 15.71 ms, EACA: 1.12 ms</td>
+<td><strong>最快</strong></td>
+</tr>
+<tr>
+<td><strong>12 车批量认证</strong></td>
+<td><strong>0.6554 ms</strong></td>
+<td>CBMC: 11.63 ms, EACA: 11.25 ms</td>
+<td>降低 <strong>94%+</strong></td>
+</tr>
+<tr>
+<td><strong>批量认证总开销</strong></td>
+<td>130.36 ms</td>
+<td>MDPA: 143.5 ms, EACA: 159 ms</td>
+<td>降低 <strong>18.2%+</strong></td>
+</tr>
+<tr>
+<td><strong>累加器证明开销(平均)</strong></td>
+<td><strong>2.59 ms</strong></td>
+<td>BBMDA: 15.5 ms, EACA: 8.62 ms</td>
+<td>降低 <strong>69.9%+</strong></td>
+</tr>
+<tr>
+<td><strong>通信总开销</strong></td>
+<td><strong>544 bytes</strong></td>
+<td>BBMDA: 730B, MDPA: 700B</td>
+<td>最低</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>核心发现：</strong> CD-BASA 的批量认证开销几乎不随车辆数量线性增长，因为累加器 + 批量证明的优化。当验证 50 辆车时，优势最明显。</p>
+</blockquote>
+<hr>
+<h3 id="8-局限性分析"><a href="#8-局限性分析" class="headerlink" title="8. 局限性分析"></a>8. 局限性分析</h3><table>
+<thead>
+<tr>
+<th>#</th>
+<th>局限性</th>
+<th>为什么是问题</th>
+<th>可能的改进方向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>L1</strong></td>
+<td><strong>Witness 更新同步开销</strong></td>
+<td>每次新成员加入累加器，所有已有成员的 witness 都要更新并同步到 IPFS。论文自己承认这是”巨大开销”</td>
+<td>设计增量式 witness 更新或基于区块链事件通知的同步机制</td>
+</tr>
+<tr>
+<td><strong>L2</strong></td>
+<td><strong>不针对车辆编队</strong></td>
+<td>CD-BASA 是通用 VANET 方案。和 EPP-GAS 不同，没有编队级批量认证（编队作为一个整体认证）</td>
+<td>将累加器技术引入编队场景：编队累加器</td>
+</tr>
+<tr>
+<td><strong>L3</strong></td>
+<td><strong>RSA 模数 N 必须所有 MEC 共享</strong></td>
+<td>所有 MEC 使用相同的 N &#x3D; p·q。如果任何一个 MEC 泄露了 p 或 q → 所有域的安全崩溃</td>
+<td>用门限方式分散 N 的因子、或者用无需信任 setup 的累加器</td>
+</tr>
+<tr>
+<td><strong>L4</strong></td>
+<td><strong>RSA 累加器的模指数运算仍然较贵</strong></td>
+<td>尤其是当 N 的比特长度很大时（论文中为安全参数 k）</td>
+<td>用更高效的累加器（如基于类群的累加器）</td>
+</tr>
+<tr>
+<td><strong>L5</strong></td>
+<td><strong>需要 MEC 有强大计算能力</strong></td>
+<td>方案假设 MEC 可以处理模指数和累加器操作，但实际中边缘节点的算力可能有限</td>
+<td>考虑计算卸载或分层架构</td>
+</tr>
+<tr>
+<td><strong>L6</strong></td>
+<td><strong>伪名管理依赖 TA 预生成</strong></td>
+<td>车辆需要提前向 TA 申请一批伪名。如果伪名用完 → 必须联系原域 TA</td>
+<td>引入自主伪名生成（如基于层次化身份的方案）</td>
+</tr>
+<tr>
+<td><strong>L7</strong></td>
+<td><strong>不支持编队动态变化</strong></td>
+<td>和你的研究方向直接相关 — 没有考虑编队合并、拆分等场景</td>
+<td>设计编队级累加器 + 动态更新</td>
+</tr>
+<tr>
+<td><strong>L8</strong></td>
+<td><strong>无形式化安全证明</strong></td>
+<td>论文只做了非形式化安全分析（Section IV-E），没有 ROM 模型下的规约证明</td>
+<td>补充形式化安全证明（ProVerif&#x2F;Tamarin 或 ROM）</td>
+</tr>
+<tr>
+<td><strong>L9</strong></td>
+<td><strong>未考虑后量子安全</strong></td>
+<td>RSA 累加器在 Shor 算法下不安全</td>
+<td>替换为格基累加器或哈希累加器</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="9-论文自述的-Future-Work（从-Conclusion-中提取）"><a href="#9-论文自述的-Future-Work（从-Conclusion-中提取）" class="headerlink" title="9. 论文自述的 Future Work（从 Conclusion 中提取）"></a>9. 论文自述的 Future Work（从 Conclusion 中提取）</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. 高效的累加器更新生成机制</span><br><span class="line">   → 论文自认累加器频繁同步更新的开销是实际部署中的瓶颈</span><br><span class="line"></span><br><span class="line">2. 全局共识机制优化</span><br><span class="line">   → Kafka 共识（中心化程度较高）替换为更适合去中心化场景的共识</span><br><span class="line"></span><br><span class="line">3. 冗余和预测式认证方法</span><br><span class="line">   → 提高通信的可靠性和认证效率（预判车辆的行进方向，提前做认证）</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h2 id="🆚-CD-BASA-vs-EPP-GAS-vs-PPCDA-三方对比"><a href="#🆚-CD-BASA-vs-EPP-GAS-vs-PPCDA-三方对比" class="headerlink" title="🆚 CD-BASA vs EPP-GAS vs PPCDA 三方对比"></a>🆚 CD-BASA vs EPP-GAS vs PPCDA 三方对比</h2><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>CD-BASA (2024)</th>
+<th>EPP-GAS (2024)</th>
+<th>PPCDA (2026)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>期刊</strong></td>
+<td>IEEE TITS (一区TOP)</td>
+<td>IEEE TITS (一区TOP)</td>
+<td>IEEE TDSC (CCF-A)</td>
+</tr>
+<tr>
+<td><strong>场景</strong></td>
+<td>通用 VANET 跨域</td>
+<td>车辆编队(Platoon)跨域</td>
+<td>车辆编队(Platoon)跨域</td>
+</tr>
+<tr>
+<td><strong>核心技术</strong></td>
+<td>RSA 累加器 + IPFS + 动态规划批量证明</td>
+<td>Shamir 门限 + BM-Tree + 群组假名</td>
+<td>Paillier + IBF + BGLS</td>
+</tr>
+<tr>
+<td><strong>有无区块链</strong></td>
+<td>✅ 联盟链 (Fabric+Kafka)</td>
+<td>✅ 联盟链 (BM-Tree)</td>
+<td>❌ 无</td>
+</tr>
+<tr>
+<td><strong>存储方案</strong></td>
+<td>链上存累加值 + 链下 IPFS 存 witness</td>
+<td>链上 BM-Tree 存认证参数</td>
+<td>链下 IBF + RTA</td>
+</tr>
+<tr>
+<td><strong>认证粒度</strong></td>
+<td>单车级 → 批量</td>
+<td>编队级 → 群组</td>
+<td>编队级 → 批量 + 多队列</td>
+</tr>
+<tr>
+<td><strong>动态支持</strong></td>
+<td>❌（频繁同步是个问题）</td>
+<td>✅ 增量更新</td>
+<td>✅ IBF 增删</td>
+</tr>
+<tr>
+<td><strong>配对不起</strong></td>
+<td>❌ 不用配对（用 ECC）</td>
+<td>✅ 可能用</td>
+<td>✅ 用 J 次</td>
+</tr>
+<tr>
+<td><strong>累加器</strong></td>
+<td>✅ RSA 累加器（核心）</td>
+<td>❌ 不用</td>
+<td>❌ 不用</td>
+</tr>
+<tr>
+<td><strong>形式化证明</strong></td>
+<td>❌</td>
+<td>❌</td>
+<td>✅ ROM 规约</td>
+</tr>
+<tr>
+<td><strong>密码学库</strong></td>
+<td>MIRACL (C)</td>
+<td>-</td>
+<td>JPBC (Java)</td>
+</tr>
+<tr>
+<td><strong>区块链平台</strong></td>
+<td>Hyperledger Fabric v2.2</td>
+<td>-</td>
+<td>无</td>
+</tr>
+<tr>
+<td><strong>最大卖点</strong></td>
+<td>累加器把身份压缩为常数大小 + 动态规划批量证明</td>
+<td>去中心化群组认证 + 实际落地</td>
+<td>无区块链 + 多队列批量 + 动态</td>
+</tr>
+<tr>
+<td><strong>数学基础假设</strong></td>
+<td>强 RSA + ECDLP</td>
+<td>Shamir 门限 + ECDLP</td>
+<td>CDH + t-BSDH + t-SDH</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🔗-CD-BASA-和你的研究方向的关联"><a href="#🔗-CD-BASA-和你的研究方向的关联" class="headerlink" title="🔗 CD-BASA 和你的研究方向的关联"></a>🔗 CD-BASA 和你的研究方向的关联</h2><h3 id="CD-BASA-可以给你的编队跨域研究带来什么？"><a href="#CD-BASA-可以给你的编队跨域研究带来什么？" class="headerlink" title="CD-BASA 可以给你的编队跨域研究带来什么？"></a>CD-BASA 可以给你的编队跨域研究带来什么？</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">CD-BASA 的累加器思想 → 改编后可应用到编队场景：</span><br><span class="line"></span><br><span class="line">原始 CD-BASA：累加器存域内所有合法车辆的身份</span><br><span class="line">  → 每个域一个累加器，单车级证明</span><br><span class="line"></span><br><span class="line">改编版（你的方向）：</span><br><span class="line">  1. 编队累加器：每个编队一个累加器，存编队成员身份</span><br><span class="line">     → 编队跨域时，只需传递编队累加器值（常数大小）</span><br><span class="line">     → 每个编队成员持有自己的 witness </span><br><span class="line">     → 目标域验证：批量验证所有成员的 witness</span><br><span class="line">     → 优势：编队规模变大时，认证开销不变！</span><br><span class="line"></span><br><span class="line">  2. 动态编队累加器：</span><br><span class="line">     → 成员加入：A&#x27; = A^&#123;x_new&#125; mod N</span><br><span class="line">     → 成员离开：A&#x27; = A^&#123;x_leave^&#123;-1&#125;&#125; mod N（RSA累加器支持删除）</span><br><span class="line">     → 和 PPCDA 的 IBF 思路不同，但都能实现动态更新</span><br><span class="line">     </span><br><span class="line">  3. 多编队累加器批量证明：</span><br><span class="line">     → 多编队 → 多累加器 → 用 CD-BASA 的 Algorithm 3</span><br><span class="line">     → 多个编队同时跨域认证时，批量证明开销大幅降低</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="CD-BASA-EPP-GAS-PPCDA-的组合思路"><a href="#CD-BASA-EPP-GAS-PPCDA-的组合思路" class="headerlink" title="CD-BASA + EPP-GAS + PPCDA 的组合思路"></a>CD-BASA + EPP-GAS + PPCDA 的组合思路</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">三种技术路线的融合点：</span><br><span class="line"></span><br><span class="line">EPP-GAS 的场景 + CD-BASA 的累加器 + PPCDA 的无区块链路线</span><br><span class="line">  = &quot;基于累加器的无区块链车辆编队跨域认证方案&quot;</span><br><span class="line">  </span><br><span class="line">具体做法：</span><br><span class="line">  - EPP-GAS 的编队群组假名 → 替换为 CD-BASA 的编队累加器</span><br><span class="line">  - CD-BASA 的链上存储 → 替换为 PPCDA 的 IBF（去区块链）</span><br><span class="line">  - CD-BASA 的批量证明算法 → 直接复用（多队列 + 多累加器）</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h2 id="🎓-读完-CD-BASA-你应该能回答的问题"><a href="#🎓-读完-CD-BASA-你应该能回答的问题" class="headerlink" title="🎓 读完 CD-BASA 你应该能回答的问题"></a>🎓 读完 CD-BASA 你应该能回答的问题</h2><ol>
+<li><p><strong>CD-BASA 的累加器是干什么的？</strong> → 把大量车辆身份信息”压缩”为一个固定大小的常数（256B）。链上只存这个常数，大幅节约存储。每辆车用 witness 证明”我在累加器里”。</p>
+</li>
+<li><p><strong>为什么需要 IPFS？</strong> → 累加器每次有新成员加入，已有成员的 witness 都要更新。频繁更新写链太贵，用 IPFS+IPNS 可以低成本更新。</p>
+</li>
+<li><p><strong>CD-BASA 的批量认证为什么能批量处理不同域的车？</strong> → 通过域参数统一化：用全局参数 <code>η_i</code> 把不同域的域公钥转化为统一形式，然后求和验证。</p>
+</li>
+<li><p><strong>多累加器批量证明算法（Algorithm 3）的核心优化是什么？</strong> → 动态规划：预计算最优分组步长，把 n 次模指数运算优化为更少的乘法和平方。</p>
+</li>
+<li><p><strong>CD-BASA 和 EPP-GAS 是什么关系？</strong> → 同一团队的姐妹篇，同一期刊同年发表。CD-BASA 面向通用 VANET 用累加器，EPP-GAS 面向编队用 Shamir 门限。</p>
+</li>
+<li><p><strong>CD-BASA 最大的不足是什么？</strong> → Witness 频繁同步更新（论文自认）、不支持编队场景、RSA 共享模数 N 的安全风险。</p>
+</li>
+</ol>
+<hr>
+<blockquote>
+<p><strong>论文文件：</strong> <code>CD-BASA_An_Efficient_Cross-Domain_Batch_Authentication_Scheme_Based_on_Blockchain_With_Accumulator_for_VANETs.pdf</code></p>
+</blockquote>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> CD-BASA 论文完整阅读笔记</li>
+        <li><strong>作者:</strong> The Redefine Team</li>
+        <li><strong>创建于
+                :</strong> 2026-09-21 12:02:31</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2026-09-21 14:23:18
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://redefine.ohevan.com/2026/09/21/论文阅读/CD-BASA_阅读笔记/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BVPM_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">BVPM 论文完整阅读笔记</span>
+						<span class="post-nav-item">上一篇</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/CRT_%E7%BE%A4%E7%BB%84%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">CRT 群组密钥协商论文完整阅读笔记</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.js';
+
+      (function() {
+        const startPath = location.pathname;
+        const startTime = Date.now();
+        const retryDelay = 200;
+        const retryLimit = 5000;
+
+        const runWaline = () => {
+          if (location.pathname !== startPath) {
+            return;
+          }
+
+          const container = document.getElementById('waline');
+          if (!container) {
+            if (Date.now() - startTime < retryLimit) {
+              setTimeout(runWaline, retryDelay);
+            }
+            return;
+          }
+
+          if (window.redefineWalineInstance?.destroy) {
+            window.redefineWalineInstance.destroy();
+          }
+
+          container.innerHTML = '';
+          window.redefineWalineInstance = init({
+            el: '#waline',
+            serverURL: 'https://example.example.com',
+            path: location.pathname,
+            dark: 'body[class~="dark-mode"]',
+            reaction: false,
+            requiredMeta: ['nick', 'mail'],
+            emoji: [],
+                      lang: 'zh-CN',
+          });
+        };
+
+        runWaline();
+      })();
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">目录</div>
+		<div class="page-title">CD-BASA 论文完整阅读笔记</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CD-BASA-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0"><span class="nav-text">CD-BASA 论文阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-%E5%85%88%E8%AF%B4%E6%98%8E%EF%BC%9ACD-BASA-%E5%9C%A8%E5%9B%A2%E9%98%9F%E7%A0%94%E7%A9%B6%E8%84%89%E7%BB%9C%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-text">📌 先说明：CD-BASA 在团队研究脉络中的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%81%8D%EF%BC%9A5-%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E7%AD%9B%E9%80%89"><span class="nav-text">第一遍：5 分钟快速筛选</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%E6%8B%86%E8%A7%A3"><span class="nav-text">标题拆解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-%E4%B8%89%E5%8F%A5%E8%AF%9D%E6%8F%90%E7%82%BC"><span class="nav-text">Abstract 三句话提炼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%A4%A7%E8%B4%A1%E7%8C%AE"><span class="nav-text">三大贡献</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Table-V-%E2%80%94-%E5%AE%89%E5%85%A8%E6%80%A7%E5%AF%B9%E6%AF%94"><span class="nav-text">Table V — 安全性对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E7%AC%AC%E4%B8%80%E9%81%8D%E5%88%A4%E6%96%AD%EF%BC%9A%E8%BF%99%E7%AF%87%E8%AE%BA%E6%96%87%E7%9A%84%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95%E8%AE%BA%EF%BC%88%E7%B4%AF%E5%8A%A0%E5%99%A8-IPFS-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%89%B9%E9%87%8F%E8%AF%81%E6%98%8E%EF%BC%89%E5%8F%AF%E8%83%BD%E5%8F%AF%E4%BB%A5%E5%BA%94%E7%94%A8%E5%88%B0%E4%BD%A0%E7%9A%84%E7%BC%96%E9%98%9F%E5%9C%BA%E6%99%AF%E4%B8%AD%E3%80%82%E7%B2%BE%E8%AF%BB%E5%AE%83%E3%80%82"><span class="nav-text">✅ 第一遍判断：这篇论文的核心方法论（累加器+IPFS+动态规划批量证明）可能可以应用到你的编队场景中。精读它。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%81%8D%EF%BC%9A%E7%BB%93%E6%9E%84%E5%8C%96%E6%8F%90%E5%8F%96"><span class="nav-text">第二遍：结构化提取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%A0%94%E7%A9%B6%E5%8A%A8%E6%9C%BA%E4%B8%8E%E9%97%AE%E9%A2%98"><span class="nav-text">1. 研究动机与问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B"><span class="nav-text">2. 系统模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%B7%A5%E5%85%B7%E7%AE%B1%EF%BC%883-1-%E4%B8%AA%E6%A0%B8%E5%BF%83%E5%B7%A5%E5%85%B7%EF%BC%89"><span class="nav-text">3. 密码学工具箱（3+1 个核心工具）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%B4%AF%E5%8A%A0%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%88%E6%9C%AC%E6%96%87%E6%9C%80%E6%A0%B8%E5%BF%83%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%89"><span class="nav-text">4. 累加器的工作原理（本文最核心的概念）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%A0%B8%E5%BF%83%E6%96%B9%E6%A1%88-%E2%80%94-%E5%9B%9B%E4%B8%AA%E9%98%B6%E6%AE%B5-%E6%89%B9%E9%87%8F%E8%AF%81%E6%98%8E%E7%AE%97%E6%B3%95"><span class="nav-text">5. 核心方案 — 四个阶段 + 批量证明算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%AE%89%E5%85%A8%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-text">6. 安全性分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%AE%9E%E9%AA%8C%E8%AE%BE%E7%BD%AE%E4%B8%8E%E7%BB%93%E6%9E%9C"><span class="nav-text">7. 实验设置与结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E5%B1%80%E9%99%90%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-text">8. 局限性分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E8%AE%BA%E6%96%87%E8%87%AA%E8%BF%B0%E7%9A%84-Future-Work%EF%BC%88%E4%BB%8E-Conclusion-%E4%B8%AD%E6%8F%90%E5%8F%96%EF%BC%89"><span class="nav-text">9. 论文自述的 Future Work（从 Conclusion 中提取）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%86%9A-CD-BASA-vs-EPP-GAS-vs-PPCDA-%E4%B8%89%E6%96%B9%E5%AF%B9%E6%AF%94"><span class="nav-text">🆚 CD-BASA vs EPP-GAS vs PPCDA 三方对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%97-CD-BASA-%E5%92%8C%E4%BD%A0%E7%9A%84%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91%E7%9A%84%E5%85%B3%E8%81%94"><span class="nav-text">🔗 CD-BASA 和你的研究方向的关联</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CD-BASA-%E5%8F%AF%E4%BB%A5%E7%BB%99%E4%BD%A0%E7%9A%84%E7%BC%96%E9%98%9F%E8%B7%A8%E5%9F%9F%E7%A0%94%E7%A9%B6%E5%B8%A6%E6%9D%A5%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">CD-BASA 可以给你的编队跨域研究带来什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CD-BASA-EPP-GAS-PPCDA-%E7%9A%84%E7%BB%84%E5%90%88%E6%80%9D%E8%B7%AF"><span class="nav-text">CD-BASA + EPP-GAS + PPCDA 的组合思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8E%93-%E8%AF%BB%E5%AE%8C-CD-BASA-%E4%BD%A0%E5%BA%94%E8%AF%A5%E8%83%BD%E5%9B%9E%E7%AD%94%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">🎓 读完 CD-BASA 你应该能回答的问题</span></a></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">The Redefine Team</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 11 篇文章
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="图片查看器">
+	<button class="image-viewer-close" type="button" aria-label="关闭">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="上一页">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="关闭">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="下一页">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    window.swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+
+    window.dispatchEvent(
+        new CustomEvent("redefine:swup:ready", {
+            detail: {
+                swup: window.swup,
+            },
+        }),
+    );
+</script>
+
+
+
+
+	
+<script src="/js/build/main.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
+</body>
+
+</html>

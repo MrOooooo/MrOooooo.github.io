@@ -78,7 +78,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/"/>
+    <link rel="canonical" href="http://example.com/page/2/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -88,7 +88,7 @@
         <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="G-Clara的学习笔记">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="G-Clara的学习笔记">
 <meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="zh_CN">
@@ -185,91 +185,46 @@
 <main class="page-container" id="swup">
 
 	
-	
-    <style>
-        .home-banner-container {
-            background: none !important;
-        }
-        .home-article-item,
-        .sidebar-links,
-        .sidebar-content,
-        a.page-number,
-        a.extend,
-        .sidebar-links .links:hover,
-        .right-bottom-tools,
-        footer.footer {
-            background-color: var(--background-color-transparent-80) !important;
-        }
-        .right-bottom-tools:hover,
-        a.page-number:hover,
-        a.extend:hover {
-            background-color: var(--primary-color) !important;
-        }
-        .site-info,
-        .home-article-sticky-label {
-            background-color: var(--background-color-transparent-15) !important;
-        }
-        .home-article-sticky-label {
-            backdrop-filter: none !important;
-        }
-    </style>
-    <div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
-        <img src="/images/wallhaven-wqery6-light.webp" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
-        <img src="/images/wallhaven-wqery6-dark.webp" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
-    </div>
+	<style>
+    .home-article-item,
+    .sidebar-links,
+    .sidebar-content,
+    a.page-number,
+    a.extend,
+    .sidebar-links .links:hover,
+    .right-bottom-tools,
+    footer.footer {
+        background-color: var(--background-color-transparent-80) !important;
+    }
+    .right-bottom-tools:hover,
+    a.page-number:hover,
+    a.extend:hover {
+        background-color: var(--primary-color) !important;
+    }
+    .site-info,
+    .home-article-sticky-label {
+        background-color: var(--background-color-transparent-15) !important;
+    }
+    .home-article-sticky-label {
+        backdrop-filter: none !important;
+    }
+    .home-banner-background {
+        filter: blur(15px);
+    }
+</style>
 
-
-<div class="home-banner-container flex justify-center items-center transition-fade relative">
-    
-    <div class="content mt-8 flex flex-col justify-center items-center transition-fade-down">
-        <div class="description flex flex-col justify-center items-center w-screen font-medium text-center"
-        
-        >
-            Theme Redefine
-            
-            
-            
-            
-            
-        </div>
-        
-    </div>
-    <style>
-        /* Mobile-specific QR code styles */
-        .qr-toggle-item.qr-active .qr-popup {
-            visibility: visible !important;
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-        
-        /* Prevent button from staying in focus/hover state on mobile */
-        @media (hover: none) and (pointer: coarse) {
-            .qr-toggle-item:focus,
-            .qr-toggle-item:hover {
-                background-color: transparent;
-            }
-            
-            .qr-toggle-item .qr-trigger:focus,
-            .qr-toggle-item .qr-trigger:hover {
-                background-color: transparent;
-                color: inherit;
-            }
-            
-            /* Only show active state when explicitly toggled */
-            .qr-popup {
-                visibility: hidden !important;
-                opacity: 0 !important;
-            }
-        }
-    </style>
+<div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
+    <img src="/images/wallhaven-wqery6-light.webp" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
+    <img src="/images/wallhaven-wqery6-dark.webp" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
 </div>
+
 
 	
 
 	<div class="main-content-container flex flex-col justify-between min-h-dvh">
 		<div class="main-content-header">
 			<header class="navbar-container px-6 md:px-12">
-    <div class="navbar-content transition-navbar has-home-banner">
+    <div class="navbar-content transition-navbar ">
         <div class="left">
             
             <a class="logo-title" href="/">
@@ -418,72 +373,16 @@
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
-                        <a href="/2026/09/21/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
-                            面向对象
+                        <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/RTRA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+                            RTRA论文完整阅读笔记
                         </a>
                     </h3>
 
                     <div class="home-article-content markdown-body">
                         
                             
-                            
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Sep 21 2026 12:02:31 GMT+0800">
-                
-                    2026-09-21
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/java%E5%9F%BA%E7%A1%80/">java基础</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/09/21/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">阅读全文<span class="seo-reader-text">面向对象</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BCADS_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
-                            BCADS 论文阅读笔记
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            BCADS 论文阅读笔记
-论文信息： Jiayin Wang, Chang Xu, Liehuang Zhu 等, “BCADS: Blockchain-Assisted Cross-Domain Authentication with Decentralized Identity for VANETs under Strict Oversight”期刊： IEEE Transactions...
+                            RTRA 论文完整阅读笔记
+论文信息： Hang Yu, Hao Sun, Shuqin Luo, Ziyuan Pu (通讯, 东南大学交通学院), “RTRA: A Robust and Trustworthy Real-Time V2V Authentication Protocol Based on Geohash and Reputation Mechanisms”期刊： IEEE...
                         
                     </div>
 
@@ -516,463 +415,7 @@
         
     </div>
 
-    <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BCADS_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读全文<span class="seo-reader-text">BCADS 论文阅读笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BCCG_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
-                            BCCG 论文阅读笔记
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            BCCG 论文阅读笔记
-论文信息： Lizhe Liu (刘力哲), Weijie Tan (谭伟杰), Zhimin He (何志敏), Shangyu Lv, Kun Niu, Rui Zhao, Yangmei Zhang, Chunguo Li, “BCCG: Blockchain-Assisted Cross-Domain and Group Authentication Prot...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Sep 21 2026 12:02:31 GMT+0800">
-                
-                    2026-09-21
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BCCG_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读全文<span class="seo-reader-text">BCCG 论文阅读笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BMMHSC_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
-                            BMMHSC 论文完整阅读笔记
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            BMMHSC 论文完整阅读笔记
-论文信息： Guangheng Wang, Liangliang Wang (通讯), Zhiquan Liu (暨南大学翁健组), Kai Zhang, Mingze He, Weiwei Li, “An Innovative Blockchain-Assisted Multi-Message and Multi-Receiver Heterogeneous...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Sep 21 2026 12:02:31 GMT+0800">
-                
-                    2026-09-21
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BMMHSC_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读全文<span class="seo-reader-text">BMMHSC 论文完整阅读笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BVPM_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
-                            BVPM 论文完整阅读笔记
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            BVPM 论文完整阅读笔记
-论文信息： Piaoxiong Huang, Lin Wan, Zhiquan Liu (通讯, 暨南大学), Libo Wang, Heng Sun, Feixiang Ye, Jianfeng Ma, “BVPM: A Blockchain-Based Scheme for Secure and Efficient Vehicle Platoon Manage...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Sep 21 2026 12:02:31 GMT+0800">
-                
-                    2026-09-21
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BVPM_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读全文<span class="seo-reader-text">BVPM 论文完整阅读笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/CD-BASA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
-                            CD-BASA 论文完整阅读笔记
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            CD-BASA 论文阅读笔记
-论文信息： Qiang Zhong (钟强), Xiang Zhao (赵翔), Yingjie Xia (夏莹杰), Xuejiao Liu (刘雪娇), “CD-BASA: An Efficient Cross-Domain Batch Authentication Scheme Based on Blockchain With Accumulator fo...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Sep 21 2026 12:02:31 GMT+0800">
-                
-                    2026-09-21
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/CD-BASA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读全文<span class="seo-reader-text">CD-BASA 论文完整阅读笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/CRT_%E7%BE%A4%E7%BB%84%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
-                            CRT 群组密钥协商论文完整阅读笔记
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            CRT 群组密钥协商 论文完整阅读笔记
-论文信息： Zisang Xu, Peng Huang (通讯), Kuan-Ching Li, Wei Liang (通讯), Hao Peng, “An Efficient Vehicle Group Key Agreement Scheme Based on the Chinese Remainder Theorem in VANETs”期刊： ...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Sep 21 2026 12:02:31 GMT+0800">
-                
-                    2026-09-21
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/CRT_%E7%BE%A4%E7%BB%84%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读全文<span class="seo-reader-text">CRT 群组密钥协商论文完整阅读笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/EPP-GAS_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
-                            EPP-GAS群组密钥协商论文完整阅读笔记
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            EPP-GAS 论文阅读笔记
-论文信息： Yingjie Xia (夏莹杰), Siyu Zhu (朱思宇), Xuejiao Liu (刘雪娇), Qiang Zhong (钟强), “EPP-GAS: An Efficient and Privacy-Preserving Cross Trust-Domain Group Authentication Scheme for Vehicle...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Sep 21 2026 12:02:31 GMT+0800">
-                
-                    2026-09-21
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/EPP-GAS_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读全文<span class="seo-reader-text">EPP-GAS群组密钥协商论文完整阅读笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LETA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
-                            LETA论文完整阅读笔记
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            LETA 论文完整阅读笔记
-论文信息： Qichang Li, Yingjie Xia (夏莹杰, 杭电), Xuejiao Liu (杭师大), Xiyuan Chen (杭电), Zhiquan Liu (暨南大学), Zhen Guo (海南大学), Zhe Liu (之江实验室), Liming Fang (南航) — 跨团队合作期刊： IEEE Journal on Selecte...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Sep 21 2026 12:02:31 GMT+0800">
-                
-                    2026-09-21
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LETA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读全文<span class="seo-reader-text">LETA论文完整阅读笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/PPCDA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
-                            PPCDA论文完整阅读笔记
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            PPCDA 论文阅读笔记
-论文信息： Nuo Xu, Zhiquan Liu, Jian Weng 等, “PPCDA: A Privacy-Preserving Cross-Domain Authentication Scheme for Vehicular Platoons”期刊： IEEE Transactions on Dependable and Secure Computing ...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Sep 21 2026 12:02:31 GMT+0800">
-                
-                    2026-09-21
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/PPCDA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读全文<span class="seo-reader-text">PPCDA论文完整阅读笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/RTRA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读全文<span class="seo-reader-text">RTRA论文完整阅读笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>
@@ -982,7 +425,7 @@
 
     <div class="home-paginator px-7 py-5">
         <div class="paginator">
-	<span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa-regular fa-angle-right"></i></a>
+	<a class="extend prev" rel="prev" href="/"><i class="fa-regular fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
 </div>
   
     </div>

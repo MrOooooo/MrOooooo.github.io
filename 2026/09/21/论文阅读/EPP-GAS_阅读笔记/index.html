@@ -94,7 +94,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://mroooooo.github.io/images/redefine-og.webp">
 <meta property="article:published_time" content="2026-09-21T04:02:31.000Z">
-<meta property="article:modified_time" content="2026-09-21T06:24:14.521Z">
+<meta property="article:modified_time" content="2026-10-13T13:40:52.737Z">
 <meta property="article:author" content="G-Clara">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://mroooooo.github.io/images/redefine-og.webp">
@@ -267,15 +267,15 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">15</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -324,8 +324,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-09-21 14:24:14</span>
-            <span class="mobile">2026-09-21 14:24:14</span>
+            <span class="desktop">2026-10-13 21:40:52</span>
+            <span class="mobile">2026-10-13 21:40:52</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -961,6 +961,455 @@
 <p><strong>相关阅读：</strong> 同一团队的 CD-BASA 见 IEEE TITS 25(10):14560-14571, 2024；LETA 见你目录中的 PDF 文件。</p>
 <p><strong>实际部署参考：</strong> 苏州高铁新城车联网试点项目（杭州电子科技大学芯片与安全实验室 CSL 成果转化）</p>
 </blockquote>
+<p><strong>第 1 天产出：实体职责与信任假设表</strong></p>
+<p>对应原文 <strong>III-A System Model、III-B Threat Model</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>实体</th>
+<th>主要职责</th>
+<th>信任假设及阅读要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>TA：可信机构</strong></td>
+<td>管理本域实体注册；生成域参数；为车辆生成身份材料；签署编队认证参数；保存真实身份与假名的映射。</td>
+<td>每个域的 TA 始终安全可靠。论文不把 TA 被攻陷作为其攻击场景。</td>
+</tr>
+<tr>
+<td><strong>ECS：边缘计算服务器</strong></td>
+<td>接收编队认证请求；恢复群组假名；查询链上认证参数；执行批量认证和重认证；参与区块链共识。</td>
+<td><strong>诚实但好奇</strong>：遵守协议，却可能试图获取成员身份信息。攻击者不能取得 ECS 的长期密钥。</td>
+</tr>
+<tr>
+<td><strong>RSU：路侧单元</strong></td>
+<td>转发车辆编队与 ECS 之间的信息。</td>
+<td>计算、存储能力有限，是不可靠中继；与邻近 ECS 通过安全有线信道通信，与车辆通过无线信道通信。</td>
+</tr>
+<tr>
+<td><strong>PL：领航车</strong></td>
+<td>汇集成员认证请求；检查请求新鲜性；形成群组请求；通过 RSU 与 ECS 通信。</td>
+<td>属于编队成员。需要另行关注其被攻陷后的影响，不能把“外部攻击者无法冒充车辆”直接扩展为“恶意领航车也安全”。</td>
+</tr>
+<tr>
+<td><strong>PF：跟随车</strong></td>
+<td>生成自己的认证请求；参与编队认证；接收 PL 的协同控制指令。</td>
+<td>持有 TA 分发的车辆身份材料与假名份额。</td>
+</tr>
+<tr>
+<td><strong>BC：联盟区块链</strong></td>
+<td>保存、共享编队认证参数；管理 ECS 的访问权限；维护跨域参数一致性。</td>
+<td>账本被假设为不可篡改且始终可用；攻击者可以查询账本，但不能发起交易或攻破区块链。协议层面的读写操作由授权 ECS 执行。</td>
+</tr>
+</tbody></table>
+<p><strong>攻击者能力记录：</strong></p>
+<blockquote>
+<p>论文采用 Dolev–Yao 威胁模型。攻击者可以读取、修改、伪造、重放或删除公开信道中的消息，但不能取得 ECS 的长期密钥、攻陷 TA 或破坏区块链。</p>
+</blockquote>
+<p><strong>我对系统模型的理解：</strong></p>
+<blockquote>
+<p>车辆在注册域取得身份材料，跨入认证域后，由新域 ECS 利用共享的链上参数验证整个编队。跨域信任主要通过注册域 TA 的签名及联盟链中的认证参数建立。</p>
+</blockquote>
+<hr>
+<p><strong>第 2 天产出：身份材料“谁生成、谁掌握、谁可见”表</strong></p>
+<p>对应原文 <strong>V-A System Initialization、V-B Group Pseudonym Construction</strong>。</p>
+<p>记注册域为 (\xi)，认证域为 (\psi)。</p>
+<table>
+<thead>
+<tr>
+<th>材料</th>
+<th>符号</th>
+<th>谁生成／掌握</th>
+<th>用途及可见范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>域私钥</td>
+<td>(trk_\xi)</td>
+<td>注册域 TA</td>
+<td>生成车辆身份材料、签署参数；不公开。</td>
+</tr>
+<tr>
+<td>域公钥与参数</td>
+<td>(tpk_\xi,\ param_\xi)</td>
+<td>TA 生成并发布／交换</td>
+<td>验证该域签名，支撑跨域密码运算。</td>
+</tr>
+<tr>
+<td>车辆真实身份标识</td>
+<td>(rid_i)</td>
+<td>TA 生成，分发给对应车辆</td>
+<td>由车辆资料和域私钥参与计算；认证中不会以明文直接发送。</td>
+</tr>
+<tr>
+<td>车辆私钥</td>
+<td>(vrk_i)</td>
+<td>TA 生成，分发给对应车辆</td>
+<td>车辆生成身份认证证明；不直接公开。</td>
+</tr>
+<tr>
+<td>车辆公钥</td>
+<td>(vpk_i)</td>
+<td>TA 生成</td>
+<td>作为编队认证参数交给 ECS，并编码进链上结构。</td>
+</tr>
+<tr>
+<td>成员假名</td>
+<td>(pid_i)</td>
+<td>TA 随机选择，分发给车辆</td>
+<td>隐藏真实身份；会出现在认证请求中，所以它本身不是秘密。</td>
+</tr>
+<tr>
+<td>假名对应的秘密份额</td>
+<td>(y_i&#x3D;f(pid_i))</td>
+<td>TA 生成，分发给对应车辆</td>
+<td>与成员假名共同构成秘密键值对；车辆发送的是派生量 (Y_i)。</td>
+</tr>
+<tr>
+<td>群组秘密</td>
+<td>(s)</td>
+<td>TA 选择</td>
+<td>用于构造群组假名，不等同于公开群组标识。</td>
+</tr>
+<tr>
+<td>群组假名</td>
+<td>(Gid&#x3D;sP_\xi)</td>
+<td>TA 生成，ECS 可从请求恢复</td>
+<td>标识编队并检索链上认证参数；不应理解为只有 TA 才知道。</td>
+</tr>
+<tr>
+<td>身份映射</td>
+<td>(rid_i\leftrightarrow(pid_i,y_i))</td>
+<td>TA 保存</td>
+<td>出现异常行为时，根据假名追踪车辆身份。</td>
+</tr>
+<tr>
+<td>参数签名与有效时间</td>
+<td>(sig,\ ts)</td>
+<td>TA 生成</td>
+<td>让其他域验证参数来源，并限制参数有效期。</td>
+</tr>
+</tbody></table>
+<p><strong>构造过程的文字版：</strong></p>
+<ol>
+<li>TA 生成车辆真实身份标识和公私钥。</li>
+<li>TA 选择群组秘密 (s)，构造群组假名 (Gid&#x3D;sP_\xi)。</li>
+<li>TA 通过 Shamir 相关的多项式结构，为成员分配 ((pid_i,y_i))。</li>
+<li>TA 通过安全离线方式向车辆分发身份材料。</li>
+<li>TA 保存身份映射，签署编队公钥参数并发送给 ECS。</li>
+<li>ECS 将参数编码为 BM-Tree，完成共识后写入联盟链。</li>
+</ol>
+<p><strong>必须记住的区别：</strong></p>
+<blockquote>
+<p>成员假名 (pid_i)、真实身份 (rid_i)、群组假名 (Gid) 是三个不同概念。假名隐藏实名，并不自动证明长期使用该假名的多条消息无法被关联。</p>
+</blockquote>
+<hr>
+<p><strong>第 3 天产出：完整认证时序图</strong></p>
+<p>对应原文 <strong>III-C、V-A—V-C、Fig. 4</strong>。图中省略公式细节，保留参与者与验证步骤。</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">​```mermaid</span><br><span class="line">sequenceDiagram</span><br><span class="line">    participant TA as 注册域 TA</span><br><span class="line">    participant V as 成员车辆 Vi</span><br><span class="line">    participant PL as 领航车 PL</span><br><span class="line">    participant RSU as 路侧单元 RSU</span><br><span class="line">    participant ECS as ECS</span><br><span class="line">    participant BC as 联盟区块链</span><br><span class="line"></span><br><span class="line">    Note over TA,BC: 认证前的初始化与参数共享</span><br><span class="line">    TA-&gt;&gt;V: 安全分发身份、私钥及假名份额</span><br><span class="line">    TA-&gt;&gt;ECS: 编队公钥、群组假名、签名、有效时间</span><br><span class="line">    ECS-&gt;&gt;BC: 构造 BM-Tree 并完成共识上链</span><br><span class="line"></span><br><span class="line">    Note over V,BC: 编队进入另一个信任域</span><br><span class="line">    V-&gt;&gt;V: 生成认证请求 Ri</span><br><span class="line">    V-&gt;&gt;PL: pid_i、Xi、Fi、Yi、Tsi</span><br><span class="line">    PL-&gt;&gt;PL: 检查成员请求新鲜性，计算汇总哈希 HM</span><br><span class="line">    PL-&gt;&gt;RSU: HM、Ts、全部成员请求</span><br><span class="line">    RSU-&gt;&gt;ECS: 转发群组认证请求</span><br><span class="line">    ECS-&gt;&gt;ECS: 检查汇总哈希及请求新鲜性</span><br><span class="line">    ECS-&gt;&gt;ECS: 根据成员请求恢复群组假名</span><br><span class="line">    ECS-&gt;&gt;BC: 根据群组假名检索 BM-Tree 参数</span><br><span class="line">    BC--&gt;&gt;ECS: 链上编队认证参数</span><br><span class="line">    ECS-&gt;&gt;ECS: 执行批量身份验证</span><br><span class="line"></span><br><span class="line">    alt 验证成功</span><br><span class="line">        ECS-&gt;&gt;ECS: 允许编队访问跨域服务</span><br><span class="line">    else 群组合法但批量验证失败</span><br><span class="line">        ECS-&gt;&gt;ECS: 运行 BM-Tree 重认证，识别剩余合法成员</span><br><span class="line">    end</span><br><span class="line">​```</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>关键消息字段解释：</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>应当怎样理解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>(pid_i)</td>
+<td>成员假名。</td>
+</tr>
+<tr>
+<td>(X_i)</td>
+<td>包含随机曲线点，以及被掩蔽的真实身份标识。</td>
+</tr>
+<tr>
+<td>(F_i)</td>
+<td>由私钥、份额和随机量等生成的认证证明分量。</td>
+</tr>
+<tr>
+<td>(Y_i&#x3D;y_iP_\xi)</td>
+<td>由秘密份额生成的曲线点，参与群组假名恢复。</td>
+</tr>
+<tr>
+<td>(Ts_i)</td>
+<td>单车请求时间戳。</td>
+</tr>
+<tr>
+<td>(H_M)</td>
+<td>全部请求和群组时间戳的汇总哈希。</td>
+</tr>
+<tr>
+<td>(Ts)</td>
+<td>群组请求生成时间戳。</td>
+</tr>
+</tbody></table>
+<p><strong>两个重要理解：</strong></p>
+<ul>
+<li>ECS 查询到群组假名，只说明找到了对应编队参数；还必须通过批量验证才能认证成员。</li>
+<li>普通哈希本身不提供发送者身份认证。EPP-GAS 的合法性判断还依赖后续密码验证，不能把 (H_M) 单独当作认证机制。</li>
+</ul>
+<hr>
+<p><strong>第 4 天产出：四车编队中第 3 辆退出的重认证示例</strong></p>
+<p>对应原文 <strong>V-B、V-D、Algorithm 1、Algorithm 2</strong>。</p>
+<p>首先区分两件事：</p>
+<table>
+<thead>
+<tr>
+<th>过程</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>退出后的份额更新</strong></td>
+<td>论文 V-B 描述退出车辆向剩余车辆发送更新材料，剩余车辆更新自己的份额，以便继续恢复群组假名。</td>
+</tr>
+<tr>
+<td><strong>认证失败后的重认证</strong></td>
+<td>论文 V-D 利用 BM-Tree 处理成员请求与原认证参数不匹配，定位缺失位置，认证剩余成员。</td>
+</tr>
+</tbody></table>
+<p>正常退出时的协作更新，与车辆故障、突然失联不是完全相同的条件。不能直接认为退出车辆在所有情况下都会发送更新材料。</p>
+<p><strong>简化示例：</strong></p>
+<p>原编队：</p>
+<p>[VP&#x3D;{V_1,V_2,V_3,V_4}]</p>
+<p>第 3 辆退出后，ECS 收到：</p>
+<p>[RL&#x3D;{R_1,R_2,R_4}]</p>
+<p>原文给出的处理思路是识别缺失位置，并将列表对齐为：</p>
+<p>[RL’&#x3D;{R_1,R_2,NULL,R_4}]</p>
+<p>这里的 (NULL) 是缺失位置占位符，<strong>不是通过认证的成员</strong>。</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">​```mermaid</span><br><span class="line">flowchart TD</span><br><span class="line">    A[&quot;原编队 V1、V2、V3、V4&quot;] --&gt; B[&quot;V3 退出，收到 R1、R2、R4&quot;]</span><br><span class="line">    B --&gt; C[&quot;请求与原编队参数不匹配，触发重认证&quot;]</span><br><span class="line">    C --&gt; D[&quot;借助 BM-Tree 子区间参数缩小检查范围&quot;]</span><br><span class="line">    D --&gt; E[&quot;确定第 3 个位置缺失&quot;]</span><br><span class="line">    E --&gt; F[&quot;列表对齐为 R1、R2、NULL、R4&quot;]</span><br><span class="line">    F --&gt; G[&quot;验证剩余成员，得到合法成员集合&quot;]</span><br><span class="line">​```</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>BM-Tree 为什么有帮助？</strong></p>
+<p>设四个车辆公钥为 (P_1,P_2,P_3,P_4)。按原文的二进制区间编码，可存储：</p>
+<table>
+<thead>
+<tr>
+<th>编码节点</th>
+<th>聚合参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>(seq_1)</td>
+<td>(P_1)</td>
+</tr>
+<tr>
+<td>(seq_2)</td>
+<td>(P_1+P_2)</td>
+</tr>
+<tr>
+<td>(seq_3)</td>
+<td>(P_3)</td>
+</tr>
+<tr>
+<td>(seq_4)</td>
+<td>(P_1+P_2+P_3+P_4)</td>
+</tr>
+</tbody></table>
+<p>例如区间 ([3,4]) 的公钥聚合量可由 (seq_4-seq_2) 得到。预先编码的区间参数帮助验证方分区检查，减少重复计算。</p>
+<p>这个表说明<strong>数据结构的作用</strong>；实际验证还涉及请求证明和双线性配对，不能仅靠公钥求和判断车辆是否合法。</p>
+<p><strong>我的理解：</strong></p>
+<blockquote>
+<p>EPP-GAS 的重认证不是简单地把全部车辆再逐个验证一遍，而是利用预存的区间认证参数缩小检查范围，识别缺失成员并认证剩余车辆。</p>
+</blockquote>
+<hr>
+<p><strong>第 5 天产出：安全性质及证据清单</strong></p>
+<p>对应原文 <strong>VI-A Security Goals、VI-B Proof of Correctness、VI-C Security Analysis、Table I</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>性质</th>
+<th>作者的主要论据</th>
+<th>阅读时应记录的边界</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>正确性</strong></td>
+<td>推导份额更新后仍能恢复群组秘密，以及合法成员满足批量验证等式。</td>
+<td>正确性说明合法执行能成功，不等于证明所有攻击都不可能成功。</td>
+</tr>
+<tr>
+<td><strong>抗伪造</strong></td>
+<td>车辆身份材料依赖 TA；链上参数带有 TA 签名，并经过共识。</td>
+<td>依赖 TA 私钥安全、签名机制及账本假设。</td>
+</tr>
+<tr>
+<td><strong>抗冒充</strong></td>
+<td>合法请求需要成员秘密份额与车辆私钥等材料。</td>
+<td>不能直接扩展为“已泄露车辆私钥后仍安全”。</td>
+</tr>
+<tr>
+<td><strong>抗重放</strong></td>
+<td>PL、ECS 检查时间戳；ECS 检查汇总请求哈希。</td>
+<td>原文据此主张抗重放。阅读时仍应检查：有效时间窗口内的重复消息是否另有处理。</td>
+</tr>
+<tr>
+<td><strong>条件匿名性</strong></td>
+<td>认证使用成员假名；真实身份映射由 TA 保存，异常时可追踪。</td>
+<td>不向 TA 隐藏车辆身份；TA 是被信任的追踪方。</td>
+</tr>
+<tr>
+<td><strong>身份不可关联性</strong></td>
+<td>随机生成假名，并在参数有效期后更新认证参数。</td>
+<td>原文有该性质的文字分析；不能因此直接认定已证明多域串通或结合时间、编队结构的轨迹不可关联性。</td>
+</tr>
+</tbody></table>
+<p><strong>安全证据类型记录：</strong></p>
+<blockquote>
+<p>论文包含正确性公式推导，以及五项安全性质的分析和对照。第 VI 节未给出 ProVerif&#x2F;Tamarin 验证，也未展示按攻击游戏组织的完整安全归约。因此笔记应写“正确性证明与安全分析”，不要笼统写成“所有安全性质均已形式化证明”。</p>
+</blockquote>
+<hr>
+<p><strong>第 6 天产出：实验设置与指标表</strong></p>
+<p>对应原文 <strong>VII-A—VII-E、Table II—III、Fig. 5—8</strong>。</p>
+<p><strong>基础实验环境：</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>原文设置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>操作系统</td>
+<td>Ubuntu 18.04.6 LTS</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>Intel Core i7-9700，3.00 GHz</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>4 GB</td>
+</tr>
+<tr>
+<td>存储</td>
+<td>100 GB</td>
+</tr>
+<tr>
+<td>密码库</td>
+<td>PBC：Pairing-Based Cryptography Library</td>
+</tr>
+<tr>
+<td>基础运算测量</td>
+<td>每类运算重复 1000 次，取平均时延</td>
+</tr>
+<tr>
+<td>椭圆曲线点加法 (T_A)</td>
+<td>0.008 ms</td>
+</tr>
+<tr>
+<td>椭圆曲线标量乘法 (T_M)</td>
+<td>1.672 ms</td>
+</tr>
+<tr>
+<td>双线性配对 (T_B)</td>
+<td>1.538 ms</td>
+</tr>
+<tr>
+<td>区块链实验</td>
+<td>Hyperledger Fabric，使用 Go 编写相关链码</td>
+</tr>
+</tbody></table>
+<p>注意：这里的 (T_A) 是<strong>点加法时间</strong>，不是可信机构 TA。</p>
+<table>
+<thead>
+<tr>
+<th>实验</th>
+<th>自变量／横轴</th>
+<th>指标／纵轴</th>
+<th>对比方案</th>
+<th>能说明什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>群组认证</strong></td>
+<td>编队规模：8、16、24、32、40、48</td>
+<td>请求侧计算开销、验证侧计算开销、群组认证时延</td>
+<td>BLA、MDPA、BBAS</td>
+<td>在给定运算成本下，不同规模的认证开销差异。</td>
+</tr>
+<tr>
+<td><strong>成员离开后的重认证</strong></td>
+<td>编队规模：10、12、14、16、18、20；离开成员数：1—6</td>
+<td>重认证时延</td>
+<td>IV、BSV</td>
+<td>成员缺失情况下，BM-Tree 重认证的效率。</td>
+</tr>
+<tr>
+<td><strong>区块共识</strong></td>
+<td>ECS 数量和编队规模</td>
+<td>平均共识时延</td>
+<td>主要评估自身方案</td>
+<td>参数上链带来的额外等待。</td>
+</tr>
+<tr>
+<td><strong>通信开销</strong></td>
+<td>群元素、哈希及身份字段等不同长度设置</td>
+<td>认证消息字节数</td>
+<td>BLA、MDPA、BBAS</td>
+<td>不同方案的认证字段传输开销。</td>
+</tr>
+</tbody></table>
+<p><strong>值得保留的结果与测量口径：</strong></p>
+<ul>
+<li>论文报告，群组认证总计算开销相对三个比较方案平均降低 **31%、22%、57%**。</li>
+<li>ECS 数量为 20、编队规模为 48 时，论文报告平均共识时延约 <strong>878 ms</strong>。作者将其放在群组假名构造阶段讨论，不能直接加到每次在线认证上。</li>
+<li>认证计算开销分析使用基础运算耗时和运算次数；请求生成考虑成员并行执行。因此<strong>总计算工作量与完成一次认证的时延不是同一个指标</strong>。</li>
+<li>通信开销主要根据消息字段长度计算，不能据此认定已经测量真实无线链路的传输时延。</li>
+</ul>
+<p><strong>实验未覆盖的内容记录：</strong></p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>可以写的结论</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>成员加入、编队拆分或合并</td>
+<td>第 VII 节未见对应实验。</td>
+</tr>
+<tr>
+<td>领航车切换或失陷</td>
+<td>未见对应实验。</td>
+</tr>
+<tr>
+<td>丢包、拥塞、移动导致的链路变化</td>
+<td>未见相应的端到端网络评估。</td>
+</tr>
+<tr>
+<td>跨 RSU 的完整切换认证</td>
+<td>未见完整切换实验；结论将切换认证列为未来方向。</td>
+</tr>
+<tr>
+<td>多域观察者的轨迹关联攻击</td>
+<td>未见定量隐私攻击实验。</td>
+</tr>
+<tr>
+<td>完整系统原型</td>
+<td>作者将原型系统实现列为未来工作；这不意味着论文完全没有实现，已有密码运算和 Fabric 实验。</td>
+</tr>
+</tbody></table>
+<hr>
+<p><strong>第 7 天产出：可直接整理成两页的综合阅读笔记</strong></p>
+<p><strong>第一页：研究问题、模型与方法</strong></p>
+<p><strong>论文信息。</strong><br>Yingjie Xia 等，<em>EPP-GAS: An Efficient and Privacy-Preserving Cross Trust-Domain Group Authentication Scheme for Vehicle Platoon Based on Blockchain</em>，IEEE Transactions on Intelligent Transportation Systems，2024。DOI：<a class="link"   target="_blank" rel="noopener" href="https://doi.org/10.1109/TITS.2024.3446618" >10.1109&#x2F;TITS.2024.3446618<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>。</p>
+<p><strong>研究问题。</strong><br>车辆编队跨越不同信任域时，新域需要验证成员合法性，同时保护车辆真实身份。成员离开会使当前请求与原编队认证参数不一致，导致批量验证失败。论文希望同时降低正常群组认证和失败后重认证的成本。</p>
+<p><strong>系统与信任假设。</strong><br>系统由 TA、ECS、RSU、领航车、跟随车和联盟链组成。TA 安全可靠，ECS 诚实但好奇，RSU 是不可靠中继。攻击者可控制公开信道上的消息，但不能取得 ECS 长期密钥、攻陷 TA 或破坏区块链。</p>
+<p><strong>核心方法。</strong></p>
+<ol>
+<li><strong>Shamir 相关的群组假名构造：</strong> 为成员分配假名与份额，使 ECS 能恢复群组标识，并由 TA 保留追踪映射。</li>
+<li><strong>BM-Tree：</strong> 按二进制区间编码编队认证参数，再结合 Merkle 树和区块链保证参数完整性，支持区间验证。</li>
+<li><strong>批量认证：</strong> 成员生成请求，领航车汇总，新域 ECS 利用链上参数验证。</li>
+<li><strong>失败后的重认证：</strong> 根据 BM-Tree 缩小检查范围，识别缺失位置，验证剩余合法成员。</li>
+</ol>
+<p><strong>我的理解。</strong><br>联盟链用于跨域共享可信认证参数；群组假名负责将请求关联到对应编队；批量验证负责确认成员合法性；BM-Tree 负责降低成员变化后重新验证的成本。这四部分承担不同任务。</p>
+<p><strong>第二页：安全、实验、边界与研究启发</strong></p>
+<p><strong>安全分析。</strong><br>论文给出份额更新与批量验证的正确性推导，并分析抗伪造、抗冒充、抗重放、条件匿名和身份不可关联性。上述结论依赖明确的可信实体假设。安全分析不应自动扩展到 TA 被攻陷、领航车恶意或多个管理域串通的场景。</p>
+<p><strong>性能评估。</strong><br>实验使用 PBC 测量基础密码运算时延，并分析不同编队规模的认证计算开销。成员退出实验比较 EPP-GAS、IV 和 BSV 的重认证时延；Fabric 实验评估共识延迟；通信开销按消息字段长度比较。结果支持论文在其设置下的效率优势，但不等于真实道路环境中的完整切换性能。</p>
+<p><strong>适用边界。</strong><br>实验明确覆盖成员退出后的重认证，不能说论文没有处理动态成员。加入、拆分合并、领航车切换、无线丢包与完整切换认证未见对应实验。原文退出份额更新需要退出车辆提供材料；突然失联时如何保证更新，应进一步检查。作者将完整原型和切换认证列为未来工作。</p>
+<p><strong>对我的研究的启发。</strong><br>可以进一步考察“跨域切换与成员变更同时发生”的认证流程，包括新域如何获取当前成员状态、旧请求如何失效，以及通信延迟下的状态一致性。但这些只是候选问题，必须与 PPCDA 等后续工作比较后才能确定创新点。</p>
 
 		</div>
 
@@ -975,7 +1424,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2026-09-21 14:24:14
+                    :</strong> 2026-10-13 21:40:52
             </li>
         
         <li>
@@ -1005,12 +1454,12 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BVPM_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+				<a class="prev" rel="prev" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/MF-IIoT_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">BVPM 论文完整阅读笔记</span>
+						<span class="post-nav-title-item truncate max-w-48">MF-IIoT 论文完整阅读笔记</span>
 						<span class="post-nav-item">上一篇</span>
 					</span>
 				</a>
@@ -1018,9 +1467,9 @@
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LETA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+				<a class="next" rel="next" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/PPCDA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">LETA论文完整阅读笔记</span>
+						<span class="post-nav-title-item truncate max-w-48">PPCDA论文完整阅读笔记</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -1132,7 +1581,7 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 15 篇文章
+                        共撰写了 17 篇文章
                     </span>
                     
                 </p>

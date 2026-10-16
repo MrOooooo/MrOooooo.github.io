@@ -119,6 +119,16 @@
 
     <!--- Inject Part-->
     
+        
+            
+    
+            
+    
+            
+                
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+                
+    
 
     
 <link rel="stylesheet" href="/css/style.css">
@@ -368,39 +378,53 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1 id="CRT-群组密钥协商-论文完整阅读笔记"><a href="#CRT-群组密钥协商-论文完整阅读笔记" class="headerlink" title="CRT 群组密钥协商 论文完整阅读笔记"></a>CRT 群组密钥协商 论文完整阅读笔记</h1><blockquote>
-<p><strong>论文信息：</strong> Zisang Xu, Peng Huang (通讯), Kuan-Ching Li, Wei Liang (通讯), Hao Peng, “An Efficient Vehicle Group Key Agreement Scheme Based on the Chinese Remainder Theorem in VANETs”<br><strong>期刊：</strong> IEEE Transactions on Vehicular Technology (IEEE TVT), 2026<br><strong>DOI：</strong> 10.1109&#x2F;TVT.2026.3672450<br><strong>所属团队：</strong> 长沙理工大学 + 湖南科技大学<br><strong>阅读日期：</strong> 2026-07-15</p>
+			<h1>CRT 群组密钥协商 论文完整阅读笔记</h1>
+<blockquote>
+<p><strong>论文信息：</strong> Zisang Xu, Peng Huang (通讯), Kuan-Ching Li, Wei Liang (通讯), Hao Peng, &quot;An Efficient Vehicle Group Key Agreement Scheme Based on the Chinese Remainder Theorem in VANETs&quot;<br>
+<strong>期刊：</strong> IEEE Transactions on Vehicular Technology (IEEE TVT), 2026<br>
+<strong>DOI：</strong> 10.1109/TVT.2026.3672450<br>
+<strong>所属团队：</strong> 长沙理工大学 + 湖南科技大学<br>
+<strong>阅读日期：</strong> 2026-07-15</p>
 </blockquote>
 <hr>
-<h2 id="📌-定位：群组密钥协商子问题"><a href="#📌-定位：群组密钥协商子问题" class="headerlink" title="📌 定位：群组密钥协商子问题"></a>📌 定位：群组密钥协商子问题</h2><p>这篇论文不直接做跨域认证，而是解决一个更基础的子问题：<strong>群组内部如何高效协商共享的群组密钥</strong>。认证通过后，群组需要一把共享密钥来加密内部通信——CRT 方案就是用来生成这把密钥的。</p>
+<h2 id="📌-定位：群组密钥协商子问题">📌 定位：群组密钥协商子问题</h2>
+<p>这篇论文不直接做跨域认证，而是解决一个更基础的子问题：<strong>群组内部如何高效协商共享的群组密钥</strong>。认证通过后，群组需要一把共享密钥来加密内部通信——CRT 方案就是用来生成这把密钥的。</p>
 <hr>
-<h2 id="🧠-密码学小白课堂"><a href="#🧠-密码学小白课堂" class="headerlink" title="🧠 密码学小白课堂"></a>🧠 密码学小白课堂</h2><h3 id="中国剩余定理（CRT）"><a href="#中国剩余定理（CRT）" class="headerlink" title="中国剩余定理（CRT）"></a>中国剩余定理（CRT）</h3><blockquote>
+<h2 id="🧠-密码学小白课堂">🧠 密码学小白课堂</h2>
+<h3 id="中国剩余定理（CRT）">中国剩余定理（CRT）</h3>
+<blockquote>
 <p><strong>经典问题（韩信点兵）：</strong> 有一堆士兵，3人一排剩2人，5人一排剩3人，7人一排剩2人。最少多少？→ 23。</p>
 <p>CRT 说：如果知道一个数除以几个互素的数的余数，就能唯一确定这个数（在它们的乘积范围内）。</p>
-<p><strong>在群组密钥中的应用：</strong> RSU 给每辆车发一个”同余方程”（一个模数和余数）。每辆车用自己的方程独立算出同一个群组密钥。<strong>关键优势：不需要车与车之间实时交互！</strong></p>
+<p><strong>在群组密钥中的应用：</strong> RSU 给每辆车发一个&quot;同余方程&quot;（一个模数和余数）。每辆车用自己的方程独立算出同一个群组密钥。<strong>关键优势：不需要车与车之间实时交互！</strong></p>
 </blockquote>
-<h3 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h3><blockquote>
-<p><code>a^&#123;φ(n)&#125; ≡ 1 (mod n)</code>（当 gcd(a,n)&#x3D;1）。<br>φ(n) &#x3D; 小于 n 且与 n 互素的正整数个数。<br>例如 φ(7)&#x3D;6（因为 1,2,3,4,5,6 都和 7 互素）；φ(10)&#x3D;4（1,3,7,9）。</p>
+<h3 id="欧拉定理">欧拉定理</h3>
+<blockquote>
+<p><code>a^&#123;φ(n)&#125; ≡ 1 (mod n)</code>（当 gcd(a,n)=1）。<br>
+φ(n) = 小于 n 且与 n 互素的正整数个数。<br>
+例如 φ(7)=6（因为 1,2,3,4,5,6 都和 7 互素）；φ(10)=4（1,3,7,9）。</p>
 </blockquote>
-<h3 id="本文的核心创新：用欧拉定理替代扩展欧几里得"><a href="#本文的核心创新：用欧拉定理替代扩展欧几里得" class="headerlink" title="本文的核心创新：用欧拉定理替代扩展欧几里得"></a>本文的核心创新：用欧拉定理替代扩展欧几里得</h3><blockquote>
-<p>传统 CRT 方案需要算”逆元（modular inverse）”——要求 <code>gcd(a,n)=1</code>，否则逆元不存在。算逆元用扩展欧几里得算法（麻烦）。</p>
+<h3 id="本文的核心创新：用欧拉定理替代扩展欧几里得">本文的核心创新：用欧拉定理替代扩展欧几里得</h3>
+<blockquote>
+<p>传统 CRT 方案需要算&quot;逆元（modular inverse）&quot;——要求 <code>gcd(a,n)=1</code>，否则逆元不存在。算逆元用扩展欧几里得算法（麻烦）。</p>
 <p>本文用欧拉定理：<code>a^&#123;φ(n)-1&#125; ≡ a^&#123;-1&#125; (mod n)</code> → 不需要扩展欧几里得！直接模幂就行。更快、更稳。</p>
 </blockquote>
 <hr>
-<h2 id="核心贡献"><a href="#核心贡献" class="headerlink" title="核心贡献"></a>核心贡献</h2><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">贡献1：欧拉定理替代扩展欧几里得</span><br><span class="line">  → 不用算逆元 → 避免&quot;逆元不存在&quot;的边界情况 → 更快更稳</span><br><span class="line"></span><br><span class="line">贡献2：支持批量加入/离开</span><br><span class="line">  → 传统 CRT 方案只能单车进/出，每次进出一辆车就要更新一次群密钥</span><br><span class="line">  → 本文：RSU 广播一次更新消息 → 所有变动（多车进+多车出）一起处理</span><br><span class="line">  → 更新后前后向安全（新车看不到旧消息，旧车看不到新消息）</span><br><span class="line"></span><br><span class="line">贡献3：三因素认证（防车辆被捕获攻击）</span><br><span class="line">  → 密码（你知道的）+ PUF（你拥有的）+ 生物特征（你是的）</span><br><span class="line">  → 攻击者捕获了 OBU 也无法恢复密钥材料</span><br></pre></td></tr></table></figure></div>
-
+<h2 id="核心贡献">核心贡献</h2>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">贡献1：欧拉定理替代扩展欧几里得</span><br><span class="line">  → 不用算逆元 → 避免&quot;逆元不存在&quot;的边界情况 → 更快更稳</span><br><span class="line"></span><br><span class="line">贡献2：支持批量加入/离开</span><br><span class="line">  → 传统 CRT 方案只能单车进/出，每次进出一辆车就要更新一次群密钥</span><br><span class="line">  → 本文：RSU 广播一次更新消息 → 所有变动（多车进+多车出）一起处理</span><br><span class="line">  → 更新后前后向安全（新车看不到旧消息，旧车看不到新消息）</span><br><span class="line"></span><br><span class="line">贡献3：三因素认证（防车辆被捕获攻击）</span><br><span class="line">  → 密码（你知道的）+ PUF（你拥有的）+ 生物特征（你是的）</span><br><span class="line">  → 攻击者捕获了 OBU 也无法恢复密钥材料</span><br></pre></td></tr></table></figure></div>
 <hr>
-<h2 id="核心方案"><a href="#核心方案" class="headerlink" title="核心方案"></a>核心方案</h2><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Phase 1：群组密钥生成（RSU 广播群组密钥计算消息）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># RSU 为每辆车 Vi 生成密钥份额 Ki：</span></span><br><span class="line"><span class="comment"># RSU 选 n 个互素的模数 y1,...,yn</span></span><br><span class="line"><span class="comment"># 用欧拉定理和 CRT 构造群组密钥 GK</span></span><br><span class="line"></span><br><span class="line">RSU 广播：&#123;K1, K2, ..., Kn, 公共参数, 时间戳, RSU签名&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 每辆车 Vi 独立计算：</span></span><br><span class="line">GK = (Σ Ki · Yi^&#123;φ(yi)&#125; · si) mod Y</span><br><span class="line"><span class="comment"># 哪辆车算出来都是同一个 GK！</span></span><br><span class="line"><span class="comment"># 关键：Yi^&#123;φ(yi)&#125; ≡ 1 (mod yi)（欧拉定理）</span></span><br><span class="line"><span class="comment"># 这保证了对其他模数 yj (j≠i) 的项归零，只留下自己那一项</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Phase 2：动态更新（批量加入/离开）</span></span><br><span class="line"><span class="comment"># 车辆加入 → RSU 选新模数 → 广播一条更新消息</span></span><br><span class="line"><span class="comment"># 所有车用欧拉定理重算 → 得到新 GK</span></span><br><span class="line"><span class="comment"># 离开的车无法算新 GK（因为没有新的模数和份额）</span></span><br><span class="line"><span class="comment"># 新加入的车无法算旧 GK（因为不知道旧的模数和份额）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Phase 3：三因素认证</span></span><br><span class="line"><span class="comment"># 用户输入密码 + 指纹 → OBU PUF 激活 → 恢复密钥材料</span></span><br><span class="line"><span class="comment"># 三重保护：密码 + 物理芯片 + 生物特征</span></span><br></pre></td></tr></table></figure></div>
-
+<h2 id="核心方案">核心方案</h2>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Phase 1：群组密钥生成（RSU 广播群组密钥计算消息）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># RSU 为每辆车 Vi 生成密钥份额 Ki：</span></span><br><span class="line"><span class="comment"># RSU 选 n 个互素的模数 y1,...,yn</span></span><br><span class="line"><span class="comment"># 用欧拉定理和 CRT 构造群组密钥 GK</span></span><br><span class="line"></span><br><span class="line">RSU 广播：&#123;K1, K2, ..., Kn, 公共参数, 时间戳, RSU签名&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 每辆车 Vi 独立计算：</span></span><br><span class="line">GK = (Σ Ki · Yi^&#123;φ(yi)&#125; · si) mod Y</span><br><span class="line"><span class="comment"># 哪辆车算出来都是同一个 GK！</span></span><br><span class="line"><span class="comment"># 关键：Yi^&#123;φ(yi)&#125; ≡ 1 (mod yi)（欧拉定理）</span></span><br><span class="line"><span class="comment"># 这保证了对其他模数 yj (j≠i) 的项归零，只留下自己那一项</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Phase 2：动态更新（批量加入/离开）</span></span><br><span class="line"><span class="comment"># 车辆加入 → RSU 选新模数 → 广播一条更新消息</span></span><br><span class="line"><span class="comment"># 所有车用欧拉定理重算 → 得到新 GK</span></span><br><span class="line"><span class="comment"># 离开的车无法算新 GK（因为没有新的模数和份额）</span></span><br><span class="line"><span class="comment"># 新加入的车无法算旧 GK（因为不知道旧的模数和份额）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Phase 3：三因素认证</span></span><br><span class="line"><span class="comment"># 用户输入密码 + 指纹 → OBU PUF 激活 → 恢复密钥材料</span></span><br><span class="line"><span class="comment"># 三重保护：密码 + 物理芯片 + 生物特征</span></span><br></pre></td></tr></table></figure></div>
 <hr>
-<h2 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h2><table>
+<h2 id="安全性">安全性</h2>
+<table>
 <thead>
 <tr>
 <th>方法</th>
 <th>内容</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>形式化</td>
 <td>ROR（Real-or-Random）模型 — 5 个游戏跳转证明群组密钥安全</td>
 </tr>
@@ -412,9 +436,11 @@
 <td>攻击抵抗</td>
 <td>物理捕获（三因素保护）、重放（时间戳+签名）、中间人、群组密钥泄露</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
-<h2 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h2><table>
+<h2 id="局限性">局限性</h2>
+<table>
 <thead>
 <tr>
 <th>#</th>
@@ -422,7 +448,8 @@
 <th>改进方向</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>L1</strong></td>
 <td>依赖 RSU 集中生成群组密钥（单点）</td>
 <td>去中心化群组密钥生成（成员贡献份额）</td>
@@ -440,9 +467,10 @@
 <tr>
 <td><strong>L4</strong></td>
 <td>三因素的 PUF 依赖增加硬件成本</td>
-<td>TEE&#x2F;TrustZone 替代方案</td>
+<td>TEE/TrustZone 替代方案</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
 <blockquote>
 <p><strong>论文文件：</strong> <code>An_Efficient_Vehicle_Group_Key_Agreement_Scheme_Based_on_the_Chinese_Remainder_Theorem_in_VANETs.pdf</code></p>
@@ -491,12 +519,12 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BVPM_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+				<a class="prev" rel="prev" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/MF-IIoT_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">BVPM 论文完整阅读笔记</span>
+						<span class="post-nav-title-item truncate max-w-48">MF-IIoT 论文完整阅读笔记</span>
 						<span class="post-nav-item">上一篇</span>
 					</span>
 				</a>
@@ -504,9 +532,9 @@
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BCCG_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+				<a class="next" rel="next" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/EPP-GAS_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">BCCG 论文阅读笔记</span>
+						<span class="post-nav-title-item truncate max-w-48">EPP-GAS群组密钥协商论文完整阅读笔记</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -590,7 +618,7 @@
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
 		<div class="page-title">CRT 群组密钥协商论文完整阅读笔记</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CRT-%E7%BE%A4%E7%BB%84%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86-%E8%AE%BA%E6%96%87%E5%AE%8C%E6%95%B4%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0"><span class="nav-text">CRT 群组密钥协商 论文完整阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-%E5%AE%9A%E4%BD%8D%EF%BC%9A%E7%BE%A4%E7%BB%84%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86%E5%AD%90%E9%97%AE%E9%A2%98"><span class="nav-text">📌 定位：群组密钥协商子问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%A7%A0-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%B0%8F%E7%99%BD%E8%AF%BE%E5%A0%82"><span class="nav-text">🧠 密码学小白课堂</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86%EF%BC%88CRT%EF%BC%89"><span class="nav-text">中国剩余定理（CRT）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86"><span class="nav-text">欧拉定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E7%9A%84%E6%A0%B8%E5%BF%83%E5%88%9B%E6%96%B0%EF%BC%9A%E7%94%A8%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86%E6%9B%BF%E4%BB%A3%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97"><span class="nav-text">本文的核心创新：用欧拉定理替代扩展欧几里得</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E8%B4%A1%E7%8C%AE"><span class="nav-text">核心贡献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%96%B9%E6%A1%88"><span class="nav-text">核心方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7"><span class="nav-text">安全性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%80%E9%99%90%E6%80%A7"><span class="nav-text">局限性</span></a></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">CRT 群组密钥协商 论文完整阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-%E5%AE%9A%E4%BD%8D%EF%BC%9A%E7%BE%A4%E7%BB%84%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86%E5%AD%90%E9%97%AE%E9%A2%98"><span class="nav-text">📌 定位：群组密钥协商子问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%A7%A0-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%B0%8F%E7%99%BD%E8%AF%BE%E5%A0%82"><span class="nav-text">🧠 密码学小白课堂</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86%EF%BC%88CRT%EF%BC%89"><span class="nav-text">中国剩余定理（CRT）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86"><span class="nav-text">欧拉定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E7%9A%84%E6%A0%B8%E5%BF%83%E5%88%9B%E6%96%B0%EF%BC%9A%E7%94%A8%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86%E6%9B%BF%E4%BB%A3%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97"><span class="nav-text">本文的核心创新：用欧拉定理替代扩展欧几里得</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E8%B4%A1%E7%8C%AE"><span class="nav-text">核心贡献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%96%B9%E6%A1%88"><span class="nav-text">核心方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7"><span class="nav-text">安全性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%80%E9%99%90%E6%80%A7"><span class="nav-text">局限性</span></a></li></ol></li></ol>
 
 	</div>
 </div>
@@ -668,6 +696,11 @@
                 } catch (error) {}
             </script>
         
+        
+            
+                
+        
+                
         
         
     </div>  

@@ -119,6 +119,16 @@
 
     <!--- Inject Part-->
     
+        
+            
+    
+            
+    
+            
+                
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+                
+    
 
     
 <link rel="stylesheet" href="/css/style.css">
@@ -368,23 +378,40 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1 id="RTRA-论文完整阅读笔记"><a href="#RTRA-论文完整阅读笔记" class="headerlink" title="RTRA 论文完整阅读笔记"></a>RTRA 论文完整阅读笔记</h1><blockquote>
-<p><strong>论文信息：</strong> Hang Yu, Hao Sun, Shuqin Luo, Ziyuan Pu (通讯, 东南大学交通学院), “RTRA: A Robust and Trustworthy Real-Time V2V Authentication Protocol Based on Geohash and Reputation Mechanisms”<br><strong>期刊：</strong> IEEE Transactions on Intelligent Transportation Systems (IEEE TITS) — <strong>中科院一区 TOP</strong><br><strong>年份：</strong> 2026<br><strong>DOI：</strong> 10.1109&#x2F;TITS.2026.3679471<br><strong>所属团队：</strong> 东南大学（交通学院+网安学院+电子学院跨学科）<br><strong>阅读日期：</strong> 2026-07-15</p>
+			<h1>RTRA 论文完整阅读笔记</h1>
+<blockquote>
+<p><strong>论文信息：</strong> Hang Yu, Hao Sun, Shuqin Luo, Ziyuan Pu (通讯, 东南大学交通学院), &quot;RTRA: A Robust and Trustworthy Real-Time V2V Authentication Protocol Based on Geohash and Reputation Mechanisms&quot;<br>
+<strong>期刊：</strong> IEEE Transactions on Intelligent Transportation Systems (IEEE TITS) — <strong>中科院一区 TOP</strong><br>
+<strong>年份：</strong> 2026<br>
+<strong>DOI：</strong> 10.1109/TITS.2026.3679471<br>
+<strong>所属团队：</strong> 东南大学（交通学院+网安学院+电子学院跨学科）<br>
+<strong>阅读日期：</strong> 2026-07-15</p>
 </blockquote>
 <hr>
-<h2 id="📌-RTRA-的独特定位"><a href="#📌-RTRA-的独特定位" class="headerlink" title="📌 RTRA 的独特定位"></a>📌 RTRA 的独特定位</h2><p>RTRA 和前面读的所有论文有一个根本不同：<strong>它不是靠加强密码学来提升安全，而是靠「位置绑定 + 声誉机制」来增强信任。</strong> 这是一种非密码学的安全增强思路。</p>
+<h2 id="📌-RTRA-的独特定位">📌 RTRA 的独特定位</h2>
+<p>RTRA 和前面读的所有论文有一个根本不同：<strong>它不是靠加强密码学来提升安全，而是靠「位置绑定 + 声誉机制」来增强信任。</strong> 这是一种非密码学的安全增强思路。</p>
 <hr>
-<h2 id="🧠-密码学小白课堂"><a href="#🧠-密码学小白课堂" class="headerlink" title="🧠 密码学小白课堂"></a>🧠 密码学小白课堂</h2><h3 id="Geohash（地理哈希）"><a href="#Geohash（地理哈希）" class="headerlink" title="Geohash（地理哈希）"></a>Geohash（地理哈希）</h3><blockquote>
-<p>把地球切成小格子，每个格子有个唯一编号。例如上海外滩 &#x3D; <code>wtw3sj</code>。<br><strong>核心性质：前缀匹配</strong> — 两个位置的 Geohash 前缀越像，地理上越接近。去掉后缀 &#x3D; 模糊位置（保护隐私）。<br><strong>RTRA 中的用法：</strong> 签名时绑定 Geohash 前缀 → 确保消息来自事故现场附近（远处的攻击者伪造不了）</p>
+<h2 id="🧠-密码学小白课堂">🧠 密码学小白课堂</h2>
+<h3 id="Geohash（地理哈希）">Geohash（地理哈希）</h3>
+<blockquote>
+<p>把地球切成小格子，每个格子有个唯一编号。例如上海外滩 = <code>wtw3sj</code>。<br>
+<strong>核心性质：前缀匹配</strong> — 两个位置的 Geohash 前缀越像，地理上越接近。去掉后缀 = 模糊位置（保护隐私）。<br>
+<strong>RTRA 中的用法：</strong> 签名时绑定 Geohash 前缀 → 确保消息来自事故现场附近（远处的攻击者伪造不了）</p>
 </blockquote>
-<h3 id="Schnorr-签名"><a href="#Schnorr-签名" class="headerlink" title="Schnorr 签名"></a>Schnorr 签名</h3><blockquote>
-<p>ECDSA 的”老大哥”，更简洁。签名 &#x3D; (e, s)，只需一个哈希值 e 和一个标量 s。<br>RTRA 用 Schnorr 的变体 — 在签名中嵌入 Geohash 和多项式承诺</p>
+<h3 id="Schnorr-签名">Schnorr 签名</h3>
+<blockquote>
+<p>ECDSA 的&quot;老大哥&quot;，更简洁。签名 = (e, s)，只需一个哈希值 e 和一个标量 s。<br>
+RTRA 用 Schnorr 的变体 — 在签名中嵌入 Geohash 和多项式承诺</p>
 </blockquote>
-<h3 id="声誉机制"><a href="#声誉机制" class="headerlink" title="声誉机制"></a>声誉机制</h3><blockquote>
-<p>每辆车有”信用分”。发真实消息 → 分升；发虚假消息 → 分降。<br><strong>RTRA 的创新：加权反馈</strong> — 高信用分的车给出的评价权重大。防止恶意车用大量假评价洗白自己。</p>
+<h3 id="声誉机制">声誉机制</h3>
+<blockquote>
+<p>每辆车有&quot;信用分&quot;。发真实消息 → 分升；发虚假消息 → 分降。<br>
+<strong>RTRA 的创新：加权反馈</strong> — 高信用分的车给出的评价权重大。防止恶意车用大量假评价洗白自己。</p>
 </blockquote>
 <hr>
-<h2 id="第一遍：5-分钟快速筛选"><a href="#第一遍：5-分钟快速筛选" class="headerlink" title="第一遍：5 分钟快速筛选"></a>第一遍：5 分钟快速筛选</h2><h3 id="①-标题拆解"><a href="#①-标题拆解" class="headerlink" title="① 标题拆解"></a>① 标题拆解</h3><blockquote>
+<h2 id="第一遍：5-分钟快速筛选">第一遍：5 分钟快速筛选</h2>
+<h3 id="①-标题拆解">① 标题拆解</h3>
+<blockquote>
 <p><strong>RTRA: Robust and Trustworthy Real-Time V2V Authentication Based on Geohash and Reputation</strong></p>
 </blockquote>
 <table>
@@ -394,7 +421,8 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>Robust</strong></td>
 <td>鲁棒（抗攻击）</td>
 </tr>
@@ -408,7 +436,7 @@
 </tr>
 <tr>
 <td><strong>V2V</strong></td>
-<td>车-车直连（不经过 RSU&#x2F;TEC）</td>
+<td>车-车直连（不经过 RSU/TEC）</td>
 </tr>
 <tr>
 <td><strong>Geohash</strong></td>
@@ -418,34 +446,42 @@
 <td><strong>Reputation</strong></td>
 <td>声誉机制</td>
 </tr>
-</tbody></table>
-<h3 id="②-Abstract-三句话"><a href="#②-Abstract-三句话" class="headerlink" title="② Abstract 三句话"></a>② Abstract 三句话</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">问题：交通事故场景下需要快速生成可信事故报告 + 跨域传播告警 + 防止虚假信息。</span><br><span class="line">     现有 V2V 认证协议没考虑事故场景的特殊性。</span><br><span class="line"></span><br><span class="line">方案：① Geohash 位置绑定的 Schnorr 变体签名（域内+跨域认证+批量验证）</span><br><span class="line">      ② 动态声誉反馈（加权聚合，高声誉评价权重大）</span><br><span class="line">      ③ 可追溯的动态伪名（定期更新 + 恶意车可被 TA 追溯撤销）</span><br><span class="line"></span><br><span class="line">亮点：Geohash 确保消息来自事故现场附近、声誉加权防虚假评价、</span><br><span class="line">      假名可追溯防匿名作恶</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="③-三大贡献"><a href="#③-三大贡献" class="headerlink" title="③ 三大贡献"></a>③ 三大贡献</h3><blockquote>
-<p><strong>贡献1：</strong> Geohash 位置绑定的 V2V 认证协议 — 基于 Schnorr 变体，支持域内认证、跨域认证、批量验证、安全密钥协商<br><strong>贡献2：</strong> 轻量级动态声誉反馈机制 — 接收方验证事故报告真实性 → TA 加权聚合声誉反馈（评价者声誉×评价结果）<br><strong>贡献3：</strong> 可追溯的动态假名管理 — TA 维护身份映射和假名-声誉表，恶意车可追溯+撤销</p>
+</tbody>
+</table>
+<h3 id="②-Abstract-三句话">② Abstract 三句话</h3>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">问题：交通事故场景下需要快速生成可信事故报告 + 跨域传播告警 + 防止虚假信息。</span><br><span class="line">     现有 V2V 认证协议没考虑事故场景的特殊性。</span><br><span class="line"></span><br><span class="line">方案：① Geohash 位置绑定的 Schnorr 变体签名（域内+跨域认证+批量验证）</span><br><span class="line">      ② 动态声誉反馈（加权聚合，高声誉评价权重大）</span><br><span class="line">      ③ 可追溯的动态伪名（定期更新 + 恶意车可被 TA 追溯撤销）</span><br><span class="line"></span><br><span class="line">亮点：Geohash 确保消息来自事故现场附近、声誉加权防虚假评价、</span><br><span class="line">      假名可追溯防匿名作恶</span><br></pre></td></tr></table></figure></div>
+<h3 id="③-三大贡献">③ 三大贡献</h3>
+<blockquote>
+<p><strong>贡献1：</strong> Geohash 位置绑定的 V2V 认证协议 — 基于 Schnorr 变体，支持域内认证、跨域认证、批量验证、安全密钥协商<br>
+<strong>贡献2：</strong> 轻量级动态声誉反馈机制 — 接收方验证事故报告真实性 → TA 加权聚合声誉反馈（评价者声誉×评价结果）<br>
+<strong>贡献3：</strong> 可追溯的动态假名管理 — TA 维护身份映射和假名-声誉表，恶意车可追溯+撤销</p>
 </blockquote>
-<h3 id="✅-第一遍判断：RTRA-的场景太窄（只做交通事故），但「声誉-跨域认证」是一个可以移植到编队场景的思路。"><a href="#✅-第一遍判断：RTRA-的场景太窄（只做交通事故），但「声誉-跨域认证」是一个可以移植到编队场景的思路。" class="headerlink" title="✅ 第一遍判断：RTRA 的场景太窄（只做交通事故），但「声誉+跨域认证」是一个可以移植到编队场景的思路。"></a>✅ 第一遍判断：RTRA 的场景太窄（只做交通事故），但「声誉+跨域认证」是一个可以移植到编队场景的思路。</h3><hr>
-<h2 id="第二遍：方案结构"><a href="#第二遍：方案结构" class="headerlink" title="第二遍：方案结构"></a>第二遍：方案结构</h2><h3 id="系统模型"><a href="#系统模型" class="headerlink" title="系统模型"></a>系统模型</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">TA (完全可信)</span><br><span class="line">  ├── 系统初始化（椭圆曲线参数 + 主私钥 s）</span><br><span class="line">  ├── 为 RSU 和车辆注册并签发签名</span><br><span class="line">  ├── 维护&quot;假名-声誉&quot;映射表</span><br><span class="line">  ├── 声誉更新（加权聚合反馈）</span><br><span class="line">  ├── 追溯恶意车辆（解密假名 → 真实身份）</span><br><span class="line">  └── 撤销（修改链上状态 → 假名失效）</span><br><span class="line"></span><br><span class="line">RSU（路边中继）</span><br><span class="line"></span><br><span class="line">卫星 → 提供 GPS 坐标用于 Geohash 编码</span><br><span class="line"></span><br><span class="line">车辆 (OBU + TPD 防篡改)</span><br><span class="line">  ├── 事故车 (Accident Vehicle)</span><br><span class="line">  └── 目击车 (Witness Vehicle)</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="协议七阶段"><a href="#协议七阶段" class="headerlink" title="协议七阶段"></a>协议七阶段</h3><p><strong>Phase 1: Setup</strong> — TA 生成椭圆曲线 + 选主私钥 s，<code>Ppub = s·P</code>，Hash函数 H1&#x2F;H2。<code>Params = &#123;q, P, G, g, Ppub, H1, H2&#125;</code></p>
-<p><strong>Phase 2-3: RSU&#x2F;车辆注册</strong> — TA 基于 ECDLP 签名方案为 RSU 签发 yi、为车辆签发 xi。车辆获得初始假名 PIDi</p>
-<p><strong>Phase 4&amp;5: 域内&#x2F;跨域认证流程</strong></p>
+<h3 id="✅-第一遍判断：RTRA-的场景太窄（只做交通事故），但「声誉-跨域认证」是一个可以移植到编队场景的思路。">✅ 第一遍判断：RTRA 的场景太窄（只做交通事故），但「声誉+跨域认证」是一个可以移植到编队场景的思路。</h3>
+<hr>
+<h2 id="第二遍：方案结构">第二遍：方案结构</h2>
+<h3 id="系统模型">系统模型</h3>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">TA (完全可信)</span><br><span class="line">  ├── 系统初始化（椭圆曲线参数 + 主私钥 s）</span><br><span class="line">  ├── 为 RSU 和车辆注册并签发签名</span><br><span class="line">  ├── 维护&quot;假名-声誉&quot;映射表</span><br><span class="line">  ├── 声誉更新（加权聚合反馈）</span><br><span class="line">  ├── 追溯恶意车辆（解密假名 → 真实身份）</span><br><span class="line">  └── 撤销（修改链上状态 → 假名失效）</span><br><span class="line"></span><br><span class="line">RSU（路边中继）</span><br><span class="line"></span><br><span class="line">卫星 → 提供 GPS 坐标用于 Geohash 编码</span><br><span class="line"></span><br><span class="line">车辆 (OBU + TPD 防篡改)</span><br><span class="line">  ├── 事故车 (Accident Vehicle)</span><br><span class="line">  └── 目击车 (Witness Vehicle)</span><br></pre></td></tr></table></figure></div>
+<h3 id="协议七阶段">协议七阶段</h3>
+<p><strong>Phase 1: Setup</strong> — TA 生成椭圆曲线 + 选主私钥 s，<code>Ppub = s·P</code>，Hash函数 H1/H2。<code>Params = &#123;q, P, G, g, Ppub, H1, H2&#125;</code></p>
+<p><strong>Phase 2-3: RSU/车辆注册</strong> — TA 基于 ECDLP 签名方案为 RSU 签发 yi、为车辆签发 xi。车辆获得初始假名 PIDi</p>
+<p><strong>Phase 4&amp;5: 域内/跨域认证流程</strong></p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">目击车 → 事故车：σ_i = v_i + x_i·H(GH_i||PID_i||V_i||t_i) + ...</span><br><span class="line">事故车 → 目击车：验证+协商临时会话密钥 SK_ji</span><br><span class="line">目击车 → 事故车：加密事故报告+签名</span><br><span class="line">事故车 → TA：验证报告真实性 → 发送声誉反馈 RF_j</span><br></pre></td></tr></table></figure></div>
-
 <p><strong>Phase 6: 声誉反馈机制</strong></p>
 <div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 事故车收到目击车的报告后验证真实性</span></span><br><span class="line"><span class="comment"># → 如果报告真实：RF_j 正面（目击车声誉上升）</span></span><br><span class="line"><span class="comment"># → 如果报告虚假：RF_j 负面</span></span><br><span class="line"></span><br><span class="line">RF_j = H(AR_i || V_i || U_i || PID_i || PID_j || H(ar_i))</span><br><span class="line"></span><br><span class="line"><span class="comment"># TA 更新声誉：</span></span><br><span class="line">new_rep_j = Σ(w_k × feedback_k) / Σ(w_k)</span><br><span class="line"><span class="comment"># w_k = 评价者的当前声誉值（高声誉权重大）</span></span><br><span class="line"><span class="comment"># feedback_k = 评价结果（正面/负面）</span></span><br></pre></td></tr></table></figure></div>
-
 <p><strong>Phase 7: 假名更新</strong> — 定期刷新假名，TA 维护映射</p>
-<h3 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h3><p>RTRA 的形式化证明基于 <strong>ECDLP + CDH</strong> 问题，采用 <strong>Forking Lemma</strong>（分叉引理——让攻击者运行两次产生两个伪造，从中提取私钥）。非形式化分析涵盖抗重放、中间人、假冒、伪造。但<strong>没有 ProVerif 验证</strong>。</p>
+<h3 id="安全性">安全性</h3>
+<p>RTRA 的形式化证明基于 <strong>ECDLP + CDH</strong> 问题，采用 <strong>Forking Lemma</strong>（分叉引理——让攻击者运行两次产生两个伪造，从中提取私钥）。非形式化分析涵盖抗重放、中间人、假冒、伪造。但<strong>没有 ProVerif 验证</strong>。</p>
 <hr>
-<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><table>
+<h3 id="实验">实验</h3>
+<table>
 <thead>
 <tr>
 <th>项目</th>
 <th>配置</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>密码运算</td>
 <td>椭圆曲线加法群 G（256-bit 素数）</td>
 </tr>
@@ -453,10 +489,12 @@
 <td>对比方案</td>
 <td>[12] 事故报告, [15] 声誉检测, [20] LWAKA 假名</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>实验评估了：(1) 签名生成+验证的计算耗时随车辆数变化 (2) 通信开销随消息数变化 (3) 声誉反馈的准确性随恶意车比例变化（论文的实验部分在PDF后半段，提取内容有限）</p>
 <hr>
-<h3 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h3><table>
+<h3 id="局限性">局限性</h3>
+<table>
 <thead>
 <tr>
 <th>#</th>
@@ -464,9 +502,10 @@
 <th>改进方向</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>L1</strong></td>
-<td>场景太窄 — 只针对交通事故，通用性不如 EPP-GAS&#x2F;PPCDA</td>
+<td>场景太窄 — 只针对交通事故，通用性不如 EPP-GAS/PPCDA</td>
 <td>扩展到编队日常认证</td>
 </tr>
 <tr>
@@ -476,7 +515,7 @@
 </tr>
 <tr>
 <td><strong>L3</strong></td>
-<td>依赖卫星 GPS（隧道&#x2F;室内不可用）</td>
+<td>依赖卫星 GPS（隧道/室内不可用）</td>
 <td>多源定位融合</td>
 </tr>
 <tr>
@@ -489,9 +528,11 @@
 <td>声誉冷启动（新车的初始声誉）没有讨论</td>
 <td>默认声誉 + 贝叶斯更新</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
-<h2 id="🔗-和你研究的关系"><a href="#🔗-和你研究的关系" class="headerlink" title="🔗 和你研究的关系"></a>🔗 和你研究的关系</h2><blockquote>
+<h2 id="🔗-和你研究的关系">🔗 和你研究的关系</h2>
+<blockquote>
 <p><strong>声誉机制可以融入编队跨域认证。</strong> 如果你的方案中编队成员有声誉评分 → 声誉高的编队跨域时获得轻量级认证（快速通道）→ 这样既提升了效率、又增加了信任维度。</p>
 </blockquote>
 <hr>
@@ -542,12 +583,12 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/PPCDA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+				<a class="prev" rel="prev" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E7%BB%BC%E5%90%88%E5%AF%B9%E6%AF%94%E6%80%BB%E7%BB%93%E4%B8%8E%E5%8F%AF%E8%A1%8C%E7%A0%94%E7%A9%B6%E8%B7%AF%E7%BA%BF/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">PPCDA论文完整阅读笔记</span>
+						<span class="post-nav-title-item truncate max-w-48">车辆队列跨域认证 —— 16 篇论文全对比与可行研究路线</span>
 						<span class="post-nav-item">上一篇</span>
 					</span>
 				</a>
@@ -555,9 +596,9 @@
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E7%BB%BC%E8%BF%B0/%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E5%90%88%E9%9B%86_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+				<a class="next" rel="next" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/LETA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">综述论文合集 阅读笔记</span>
+						<span class="post-nav-title-item truncate max-w-48">LETA论文完整阅读笔记</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -641,7 +682,7 @@
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
 		<div class="page-title">RTRA论文完整阅读笔记</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RTRA-%E8%AE%BA%E6%96%87%E5%AE%8C%E6%95%B4%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0"><span class="nav-text">RTRA 论文完整阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-RTRA-%E7%9A%84%E7%8B%AC%E7%89%B9%E5%AE%9A%E4%BD%8D"><span class="nav-text">📌 RTRA 的独特定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%A7%A0-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%B0%8F%E7%99%BD%E8%AF%BE%E5%A0%82"><span class="nav-text">🧠 密码学小白课堂</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Geohash%EF%BC%88%E5%9C%B0%E7%90%86%E5%93%88%E5%B8%8C%EF%BC%89"><span class="nav-text">Geohash（地理哈希）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Schnorr-%E7%AD%BE%E5%90%8D"><span class="nav-text">Schnorr 签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E8%AA%89%E6%9C%BA%E5%88%B6"><span class="nav-text">声誉机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%81%8D%EF%BC%9A5-%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E7%AD%9B%E9%80%89"><span class="nav-text">第一遍：5 分钟快速筛选</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A0-%E6%A0%87%E9%A2%98%E6%8B%86%E8%A7%A3"><span class="nav-text">① 标题拆解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A1-Abstract-%E4%B8%89%E5%8F%A5%E8%AF%9D"><span class="nav-text">② Abstract 三句话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A2-%E4%B8%89%E5%A4%A7%E8%B4%A1%E7%8C%AE"><span class="nav-text">③ 三大贡献</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E7%AC%AC%E4%B8%80%E9%81%8D%E5%88%A4%E6%96%AD%EF%BC%9ARTRA-%E7%9A%84%E5%9C%BA%E6%99%AF%E5%A4%AA%E7%AA%84%EF%BC%88%E5%8F%AA%E5%81%9A%E4%BA%A4%E9%80%9A%E4%BA%8B%E6%95%85%EF%BC%89%EF%BC%8C%E4%BD%86%E3%80%8C%E5%A3%B0%E8%AA%89-%E8%B7%A8%E5%9F%9F%E8%AE%A4%E8%AF%81%E3%80%8D%E6%98%AF%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%BB%E6%A4%8D%E5%88%B0%E7%BC%96%E9%98%9F%E5%9C%BA%E6%99%AF%E7%9A%84%E6%80%9D%E8%B7%AF%E3%80%82"><span class="nav-text">✅ 第一遍判断：RTRA 的场景太窄（只做交通事故），但「声誉+跨域认证」是一个可以移植到编队场景的思路。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%81%8D%EF%BC%9A%E6%96%B9%E6%A1%88%E7%BB%93%E6%9E%84"><span class="nav-text">第二遍：方案结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B"><span class="nav-text">系统模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%8F%E8%AE%AE%E4%B8%83%E9%98%B6%E6%AE%B5"><span class="nav-text">协议七阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7"><span class="nav-text">安全性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C"><span class="nav-text">实验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%80%E9%99%90%E6%80%A7"><span class="nav-text">局限性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%97-%E5%92%8C%E4%BD%A0%E7%A0%94%E7%A9%B6%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">🔗 和你研究的关系</span></a></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">RTRA 论文完整阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-RTRA-%E7%9A%84%E7%8B%AC%E7%89%B9%E5%AE%9A%E4%BD%8D"><span class="nav-text">📌 RTRA 的独特定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%A7%A0-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%B0%8F%E7%99%BD%E8%AF%BE%E5%A0%82"><span class="nav-text">🧠 密码学小白课堂</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Geohash%EF%BC%88%E5%9C%B0%E7%90%86%E5%93%88%E5%B8%8C%EF%BC%89"><span class="nav-text">Geohash（地理哈希）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Schnorr-%E7%AD%BE%E5%90%8D"><span class="nav-text">Schnorr 签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E8%AA%89%E6%9C%BA%E5%88%B6"><span class="nav-text">声誉机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%81%8D%EF%BC%9A5-%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E7%AD%9B%E9%80%89"><span class="nav-text">第一遍：5 分钟快速筛选</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A0-%E6%A0%87%E9%A2%98%E6%8B%86%E8%A7%A3"><span class="nav-text">① 标题拆解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A1-Abstract-%E4%B8%89%E5%8F%A5%E8%AF%9D"><span class="nav-text">② Abstract 三句话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A2-%E4%B8%89%E5%A4%A7%E8%B4%A1%E7%8C%AE"><span class="nav-text">③ 三大贡献</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E7%AC%AC%E4%B8%80%E9%81%8D%E5%88%A4%E6%96%AD%EF%BC%9ARTRA-%E7%9A%84%E5%9C%BA%E6%99%AF%E5%A4%AA%E7%AA%84%EF%BC%88%E5%8F%AA%E5%81%9A%E4%BA%A4%E9%80%9A%E4%BA%8B%E6%95%85%EF%BC%89%EF%BC%8C%E4%BD%86%E3%80%8C%E5%A3%B0%E8%AA%89-%E8%B7%A8%E5%9F%9F%E8%AE%A4%E8%AF%81%E3%80%8D%E6%98%AF%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%BB%E6%A4%8D%E5%88%B0%E7%BC%96%E9%98%9F%E5%9C%BA%E6%99%AF%E7%9A%84%E6%80%9D%E8%B7%AF%E3%80%82"><span class="nav-text">✅ 第一遍判断：RTRA 的场景太窄（只做交通事故），但「声誉+跨域认证」是一个可以移植到编队场景的思路。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%81%8D%EF%BC%9A%E6%96%B9%E6%A1%88%E7%BB%93%E6%9E%84"><span class="nav-text">第二遍：方案结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B"><span class="nav-text">系统模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%8F%E8%AE%AE%E4%B8%83%E9%98%B6%E6%AE%B5"><span class="nav-text">协议七阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7"><span class="nav-text">安全性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C"><span class="nav-text">实验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%80%E9%99%90%E6%80%A7"><span class="nav-text">局限性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%97-%E5%92%8C%E4%BD%A0%E7%A0%94%E7%A9%B6%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">🔗 和你研究的关系</span></a></li></ol></li></ol>
 
 	</div>
 </div>
@@ -719,6 +760,11 @@
                 } catch (error) {}
             </script>
         
+        
+            
+                
+        
+                
         
         
     </div>  

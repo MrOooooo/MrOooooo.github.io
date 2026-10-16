@@ -117,6 +117,16 @@
 
     <!--- Inject Part-->
     
+        
+            
+    
+            
+    
+            
+                
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+                
+    
 
     
 <link rel="stylesheet" href="/css/style.css">
@@ -507,19 +517,22 @@
 
                     <div class="home-article-content markdown-body">
                         
-                            <h1 id="EEGAP-论文阅读笔记"><a href="#EEGAP-论文阅读笔记" class="headerlink" title="EEGAP 论文阅读笔记"></a>EEGAP 论文阅读笔记</h1><blockquote>
-<p><strong>阅读依据：</strong>用户提供的 EEGAP 正式发表版 PDF，共 15 页，已逐页提取正文，并对注册、协议算法、功能表、参数表与实验图进行视觉核对。</p>
+                            <h1>EEGAP 论文阅读笔记</h1>
+<blockquote>
+<p>**阅读依据：**用户提供的 EEGAP 正式发表版 PDF，共 15 页，已逐页提取正文，并对注册、协议算法、功能表、参数表与实验图进行视觉核对。</p>
 <p><strong>笔记约定：</strong>“论文提出／报告”表示作者的机制或结论；“阅读核查”表示根据原文进行的独立推导与检查；“研究建议”表示后续可以设计和验证的工作。阅读核查不等于已经完成攻击实验或正式密码分析。</p>
-<p><strong>页码说明：</strong>本文同时给出 PDF 页码与期刊页码。PDF 第 1 页对应期刊第 20392 页，因此期刊页码 &#x3D; 20391 + PDF 页码。</p>
+<p>**页码说明：**本文同时给出 PDF 页码与期刊页码。PDF 第 1 页对应期刊第 20392 页，因此期刊页码 = 20391 + PDF 页码。</p>
 </blockquote>
-<h2 id="1-论文信息与一句话理解"><a href="#1-论文信息与一句话理解" class="headerlink" title="1. 论文信息与一句话理解"></a>1. 论文信息与一句话理解</h2><table>
+<h2 id="1-论文信息与一句话理解">1. 论文信息与一句话理解</h2>
+<table>
 <thead>
 <tr>
 <th>项目</th>
 <th>内容</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>英文题名</td>
 <td>EEGAP: ECC-Based Efficient Group Authentication Protocol for Dynamic Vehicular Platoon</td>
 </tr>
@@ -549,7 +562,7 @@
 </tr>
 <tr>
 <td>DOI</td>
-<td><a class="link"   target="_blank" rel="noopener" href="https://doi.org/10.1109/TITS.2025.3589792" >10.1109&#x2F;TITS.2025.3589792<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></td>
+<td><a class="link"   target="_blank" rel="noopener" href="https://doi.org/10.1109/TITS.2025.3589792" >10.1109/TITS.2025.3589792<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></td>
 </tr>
 <tr>
 <td>主要技术</td>
@@ -563,9 +576,10 @@
 <td>原文代码链接</td>
 <td><a class="link"   target="_blank" rel="noopener" href="https://github.com/wzh199808/EEGAP" >https://github.com/wzh199808/EEGAP<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></td>
 </tr>
-</tbody></table>
-<p><strong>一句话理解：</strong>多个车辆编队合并，或者一个编队拆成多个子编队后，需要重新建立安全通信关系。EEGAP 用椭圆曲线认证与密钥协商处理合并，用成员与领航车之间的共享秘密配合多项式插值分发拆分后的群密钥。</p>
-<p><strong>最重要的定位：</strong>EEGAP 已经研究“合并与拆分中的匿名认证和群密钥管理”。它的正式模型采用一个 TA 和统一系统参数，没有给出多个独立 TA 之间的信任映射或跨管理域成员迁移协议。因此，它是研究多编队跨域重构时必须比较的基础文献，但不能仅凭多个编队、多个雾节点就把它归为独立管理域之间的跨域认证方案。</p>
+</tbody>
+</table>
+<p>**一句话理解：**多个车辆编队合并，或者一个编队拆成多个子编队后，需要重新建立安全通信关系。EEGAP 用椭圆曲线认证与密钥协商处理合并，用成员与领航车之间的共享秘密配合多项式插值分发拆分后的群密钥。</p>
+<p>**最重要的定位：**EEGAP 已经研究“合并与拆分中的匿名认证和群密钥管理”。它的正式模型采用一个 TA 和统一系统参数，没有给出多个独立 TA 之间的信任映射或跨管理域成员迁移协议。因此，它是研究多编队跨域重构时必须比较的基础文献，但不能仅凭多个编队、多个雾节点就把它归为独立管理域之间的跨域认证方案。</p>
                         
                     </div>
 
@@ -643,9 +657,12 @@
                     <div class="home-article-content markdown-body">
                         
                             
-                            Security Challenges in Internet of Vehicles (IoV) for ITS: A Survey一、车载自适应网络技术1.VANETS体系结构
-OBU（车载单元）：OBU是安装在车辆内的一种设备，用于与VANET中的其他OBU和RSU交换信息。
-RSU（路侧单元）：RSU是安...
+                            Security Challenges in Internet of Vehicles (IoV) for ITS: A Survey
+一、车载自适应网络技术
+1.VANETS体系结构
+
+**OBU（车载单元）：**OBU是安装在车辆内的一种设备，用于与VANET中的其他OBU和RSU交换信息。
+**RSU（路侧...
                         
                     </div>
 
@@ -713,10 +730,13 @@ RSU（路侧单元）：RSU是安...
                     <div class="home-article-content markdown-body">
                         
                             
-                            一、面向对象基础1.什么是对象：​	对象是一种特殊的数据结构，可以用来记住一个事物的数据，而不代表事物
+                            一、面向对象基础
+1.什么是对象：
+​	对象是一种特殊的数据结构，可以用来记住一个事物的数据，而不代表事物
 ​	可以理解成一张表
-2.面向对象编程快速入门①先设计对象的模板：类 class
-123456public class Star&#123;    String name;    int age;    dou...
+2.面向对象编程快速入门
+①先设计对象的模板：类 class
+123456public class Star&#123;    String name;    int age;    ...
                         
                     </div>
 
@@ -773,7 +793,8 @@ RSU（路侧单元）：RSU是安...
                         
                             
                             BCADS 论文阅读笔记
-论文信息： Jiayin Wang, Chang Xu, Liehuang Zhu 等, “BCADS: Blockchain-Assisted Cross-Domain Authentication with Decentralized Identity for VANETs unde...
+
+论文信息： Jiayin Wang, Chang Xu, Liehuang Zhu 等, &quot;BCADS: Blockchain-Assisted Cross-Domain Authentication with Decentralized Identity for VANET...
                         
                     </div>
 
@@ -830,7 +851,8 @@ RSU（路侧单元）：RSU是安...
                         
                             
                             BMMHSC 论文完整阅读笔记
-论文信息： Guangheng Wang, Liangliang Wang (通讯), Zhiquan Liu (暨南大学翁健组), Kai Zhang, Mingze He, Weiwei Li, “An Innovative Blockchain-Assisted Multi-...
+
+论文信息： Guangheng Wang, Liangliang Wang (通讯), Zhiquan Liu (暨南大学翁健组), Kai Zhang, Mingze He, Weiwei Li, &quot;An Innovative Blockchain-Assisted ...
                         
                     </div>
 
@@ -878,120 +900,6 @@ RSU（路侧单元）：RSU是安...
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
-                        <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BVPM_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
-                            BVPM 论文完整阅读笔记
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            BVPM 论文完整阅读笔记
-论文信息： Piaoxiong Huang, Lin Wan, Zhiquan Liu (通讯, 暨南大学), Libo Wang, Heng Sun, Feixiang Ye, Jianfeng Ma, “BVPM: A Blockchain-Based Scheme for Sec...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Sep 21 2026 12:02:31 GMT+0800">
-                
-                    2026-09-21
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BVPM_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读全文<span class="seo-reader-text">BVPM 论文完整阅读笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/CRT_%E7%BE%A4%E7%BB%84%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
-                            CRT 群组密钥协商论文完整阅读笔记
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            CRT 群组密钥协商 论文完整阅读笔记
-论文信息： Zisang Xu, Peng Huang (通讯), Kuan-Ching Li, Wei Liang (通讯), Hao Peng, “An Efficient Vehicle Group Key Agreement Scheme Based on the ...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Sep 21 2026 12:02:31 GMT+0800">
-                
-                    2026-09-21
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/CRT_%E7%BE%A4%E7%BB%84%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读全文<span class="seo-reader-text">CRT 群组密钥协商论文完整阅读笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
                         <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BCCG_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
                             BCCG 论文阅读笔记
                         </a>
@@ -1001,7 +909,8 @@ RSU（路侧单元）：RSU是安...
                         
                             
                             BCCG 论文阅读笔记
-论文信息： Lizhe Liu (刘力哲), Weijie Tan (谭伟杰), Zhimin He (何志敏), Shangyu Lv, Kun Niu, Rui Zhao, Yangmei Zhang, Chunguo Li, “BCCG: Blockchain-Assisted Cr...
+
+论文信息： Lizhe Liu (刘力哲), Weijie Tan (谭伟杰), Zhimin He (何志敏), Shangyu Lv, Kun Niu, Rui Zhao, Yangmei Zhang, Chunguo Li, &quot;BCCG: Blockchain-Assis...
                         
                     </div>
 
@@ -1049,6 +958,64 @@ RSU（路侧单元）：RSU是安...
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
+                        <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BVPM_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+                            BVPM 论文完整阅读笔记
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            BVPM 论文完整阅读笔记
+
+论文信息： Piaoxiong Huang, Lin Wan, Zhiquan Liu (通讯, 暨南大学), Libo Wang, Heng Sun, Feixiang Ye, Jianfeng Ma, &quot;BVPM: A Blockchain-Based Scheme f...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Mon Sep 21 2026 12:02:31 GMT+0800">
+                
+                    2026-09-21
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+        
+        
+    </div>
+
+    <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BVPM_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读全文<span class="seo-reader-text">BVPM 论文完整阅读笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
                         <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/CD-BASA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
                             CD-BASA 论文完整阅读笔记
                         </a>
@@ -1058,7 +1025,8 @@ RSU（路侧单元）：RSU是安...
                         
                             
                             CD-BASA 论文阅读笔记
-论文信息： Qiang Zhong (钟强), Xiang Zhao (赵翔), Yingjie Xia (夏莹杰), Xuejiao Liu (刘雪娇), “CD-BASA: An Efficient Cross-Domain Batch Authentication Scheme...
+
+论文信息： Qiang Zhong (钟强), Xiang Zhao (赵翔), Yingjie Xia (夏莹杰), Xuejiao Liu (刘雪娇), &quot;CD-BASA: An Efficient Cross-Domain Batch Authentication ...
                         
                     </div>
 
@@ -1115,7 +1083,11 @@ RSU（路侧单元）：RSU是安...
                         
                             
                             EPP-GAS 的 ROR（Real-or-Random）形式化安全证明示例
-编写日期： 2026-07-23目的： 以你熟悉的 EPP-GAS 方案为实例，展示 ROR 模型从建模到证明的全过程难度： 密码学初学友好——每一步都有”人话翻译”参考格式： BCCG 论文的 ROR 证明结构（Section V-A...
+
+编写日期： 2026-07-23
+目的： 以你熟悉的 EPP-GAS 方案为实例，展示 ROR 模型从建模到证明的全过程
+难度： 密码学初学友好——每一步都有&quot;人话翻译&quot;
+参考格式： BCCG 论文的 ROR 证明...
                         
                     </div>
 
@@ -1149,6 +1121,64 @@ RSU（路侧单元）：RSU是安...
     </div>
 
     <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/EPP-GAS_ROR%E5%BD%A2%E5%BC%8F%E5%8C%96%E8%AF%81%E6%98%8E%E7%A4%BA%E4%BE%8B/">阅读全文<span class="seo-reader-text">EPP-GAS 的 ROR（Real-or-Random）形式化安全证明示例</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/MF-IIoT_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+                            MF-IIoT 论文完整阅读笔记
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            MF-IIoT 论文完整阅读笔记
+
+论文信息： Yan Zhang, Bing Li (通讯, 东南大学), Jiaxin Wu, Bo Liu, Rui Chen, Jinke Chang, &quot;Efficient and Privacy-Preserving Blockchain-Based Mult...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Mon Sep 21 2026 12:02:31 GMT+0800">
+                
+                    2026-09-21
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+        
+        
+    </div>
+
+    <a href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/MF-IIoT_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读全文<span class="seo-reader-text">MF-IIoT 论文完整阅读笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>
@@ -1234,6 +1264,11 @@ RSU（路侧单元）：RSU是安...
                 } catch (error) {}
             </script>
         
+        
+            
+                
+        
+                
         
         
     </div>  

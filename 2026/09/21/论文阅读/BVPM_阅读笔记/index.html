@@ -119,6 +119,16 @@
 
     <!--- Inject Part-->
     
+        
+            
+    
+            
+    
+            
+                
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+                
+    
 
     
 <link rel="stylesheet" href="/css/style.css">
@@ -368,47 +378,59 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1 id="BVPM-论文完整阅读笔记"><a href="#BVPM-论文完整阅读笔记" class="headerlink" title="BVPM 论文完整阅读笔记"></a>BVPM 论文完整阅读笔记</h1><blockquote>
-<p><strong>论文信息：</strong> Piaoxiong Huang, Lin Wan, Zhiquan Liu (通讯, 暨南大学), Libo Wang, Heng Sun, Feixiang Ye, Jianfeng Ma, “BVPM: A Blockchain-Based Scheme for Secure and Efficient Vehicle Platoon Management”<br><strong>期刊：</strong> Computer Networks (Elsevier), Vol. 277, 2026, Article 112009<br><strong>DOI：</strong> 10.1016&#x2F;j.comnet.2026.112009<br><strong>所属团队：</strong> 暨南大学翁健组（PPCDA&#x2F;BMMHSC同一团队）+ 武汉大学 + 海南大学 + 西电马建峰组<br><strong>阅读日期：</strong> 2026-07-15</p>
+			<h1>BVPM 论文完整阅读笔记</h1>
+<blockquote>
+<p><strong>论文信息：</strong> Piaoxiong Huang, Lin Wan, Zhiquan Liu (通讯, 暨南大学), Libo Wang, Heng Sun, Feixiang Ye, Jianfeng Ma, &quot;BVPM: A Blockchain-Based Scheme for Secure and Efficient Vehicle Platoon Management&quot;<br>
+<strong>期刊：</strong> Computer Networks (Elsevier), Vol. 277, 2026, Article 112009<br>
+<strong>DOI：</strong> 10.1016/j.comnet.2026.112009<br>
+<strong>所属团队：</strong> 暨南大学翁健组（PPCDA/BMMHSC同一团队）+ 武汉大学 + 海南大学 + 西电马建峰组<br>
+<strong>阅读日期：</strong> 2026-07-15</p>
 </blockquote>
 <hr>
-<h2 id="📌-BVPM-的独特定位"><a href="#📌-BVPM-的独特定位" class="headerlink" title="📌 BVPM 的独特定位"></a>📌 BVPM 的独特定位</h2><p>BVPM <strong>不做认证协议</strong>。它做的是<strong>认证之下的基础设施层</strong>——区块链共识优化和 Leader 选举。换句话说：EPP-GAS 解决”怎么验证编队身份”，BVPM 解决”验证过程中用的区块链怎么跑得快、Leader 怎么选得快”。</p>
+<h2 id="📌-BVPM-的独特定位">📌 BVPM 的独特定位</h2>
+<p>BVPM <strong>不做认证协议</strong>。它做的是<strong>认证之下的基础设施层</strong>——区块链共识优化和 Leader 选举。换句话说：EPP-GAS 解决&quot;怎么验证编队身份&quot;，BVPM 解决&quot;验证过程中用的区块链怎么跑得快、Leader 怎么选得快&quot;。</p>
 <hr>
-<h2 id="🧠-密码学小白课堂"><a href="#🧠-密码学小白课堂" class="headerlink" title="🧠 密码学小白课堂"></a>🧠 密码学小白课堂</h2><h3 id="PBFT-→-CS-PBFT（集体签名优化的共识）"><a href="#PBFT-→-CS-PBFT（集体签名优化的共识）" class="headerlink" title="PBFT → CS-PBFT（集体签名优化的共识）"></a>PBFT → CS-PBFT（集体签名优化的共识）</h3><blockquote>
-<p><strong>PBFT 的问题：</strong> 共识的通信复杂度是 O(n²)。100 个节点 &#x3D; 9900 条消息。车联网受不了。</p>
+<h2 id="🧠-密码学小白课堂">🧠 密码学小白课堂</h2>
+<h3 id="PBFT-→-CS-PBFT（集体签名优化的共识）">PBFT → CS-PBFT（集体签名优化的共识）</h3>
+<blockquote>
+<p><strong>PBFT 的问题：</strong> 共识的通信复杂度是 O(n²)。100 个节点 = 9900 条消息。车联网受不了。</p>
 <p><strong>CS-PBFT 的改进：</strong> 用 Schnorr 多重签名（CoSi 协议） + 通信树结构。</p>
 <ul>
 <li>自底向上聚合签名（而非每个节点两两通信）</li>
-<li>聚合后的签名大小 &#x3D; 一个 Schnorr 签名的大小（无论多少节点参与）</li>
+<li>聚合后的签名大小 = 一个 Schnorr 签名的大小（无论多少节点参与）</li>
 <li>通信复杂度从 O(n²) 降到 O(n)</li>
 </ul>
 </blockquote>
-<h3 id="STM-→-SS-Raft（子路径签名优化的-Leader-选举）"><a href="#STM-→-SS-Raft（子路径签名优化的-Leader-选举）" class="headerlink" title="STM → SS-Raft（子路径签名优化的 Leader 选举）"></a>STM → SS-Raft（子路径签名优化的 Leader 选举）</h3><blockquote>
+<h3 id="STM-→-SS-Raft（子路径签名优化的-Leader-选举）">STM → SS-Raft（子路径签名优化的 Leader 选举）</h3>
+<blockquote>
 <p><strong>旧方法 STM（简单树匹配）：</strong> 计算两辆车的导航路径有多少重叠 → 计算量大</p>
-<p><strong>新方法 SS-Raft（子路径签名+MinHash）：</strong> </p>
+<p><strong>新方法 SS-Raft（子路径签名+MinHash）：</strong></p>
 <ul>
-<li>把路径切成”子路径” → 构造子路径签名的 multiset</li>
+<li>把路径切成&quot;子路径&quot; → 构造子路径签名的 multiset</li>
 <li>MinHash 快速估算两棵路径树的 Jaccard 相似度</li>
 <li>相似度最高的 → 选为 Leader → 比其他车更合适带队</li>
 </ul>
-<p><strong>MinHash 原理：</strong> 两个集合的 MinHash 值相等的概率 &#x3D; 它们的 Jaccard 相似度。一遍哈希就能估算相似度，不用一个个匹配。</p>
+<p><strong>MinHash 原理：</strong> 两个集合的 MinHash 值相等的概率 = 它们的 Jaccard 相似度。一遍哈希就能估算相似度，不用一个个匹配。</p>
 </blockquote>
 <hr>
-<h2 id="核心方案"><a href="#核心方案" class="headerlink" title="核心方案"></a>核心方案</h2><h3 id="两大贡献"><a href="#两大贡献" class="headerlink" title="两大贡献"></a>两大贡献</h3><p><strong>贡献1：CS-PBFT（集体签名增强的 PBFT）</strong></p>
+<h2 id="核心方案">核心方案</h2>
+<h3 id="两大贡献">两大贡献</h3>
+<p><strong>贡献1：CS-PBFT（集体签名增强的 PBFT）</strong></p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 阶段流程：</span><br><span class="line">  Announcement → Commitment（底→顶聚合）→ Challenge（顶→底广播）→ Response（底→顶聚合）</span><br><span class="line"></span><br><span class="line">通信树结构：避免每个节点广播给所有节点</span><br><span class="line">CoSi 聚合：= Schnorr 多重签名 — 所有验证者的签名聚合为一个</span><br></pre></td></tr></table></figure></div>
-
 <p><strong>贡献2：SS-Raft（子路径签名 + Raft 选举）</strong></p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Raft 共识选 Leader + Subpath Signature 计算路径相似度</span><br><span class="line">替代了传统 STM 算法的 O(n²) 匹配</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="Table-1-—-方案属性对比"><a href="#Table-1-—-方案属性对比" class="headerlink" title="Table 1 — 方案属性对比"></a>Table 1 — 方案属性对比</h3><p>BVPM 和 10 篇已有方案的对比表。只有 BVPM 同时支持：Leader 选举 + 分布式选举 + 编队管理 + 多链架构 + 轻量共识。</p>
-<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><table>
+<h3 id="Table-1-—-方案属性对比">Table 1 — 方案属性对比</h3>
+<p>BVPM 和 10 篇已有方案的对比表。只有 BVPM 同时支持：Leader 选举 + 分布式选举 + 编队管理 + 多链架构 + 轻量共识。</p>
+<h3 id="实验">实验</h3>
+<table>
 <thead>
 <tr>
 <th>项目</th>
 <th>详情</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>仿真</td>
 <td>Python 实现</td>
 </tr>
@@ -424,8 +446,10 @@
 <td>编队管理</td>
 <td>上链存储和查询开销</td>
 </tr>
-</tbody></table>
-<h3 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h3><table>
+</tbody>
+</table>
+<h3 id="局限性">局限性</h3>
+<table>
 <thead>
 <tr>
 <th>#</th>
@@ -433,7 +457,8 @@
 <th>改进方向</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>L1</strong></td>
 <td>不做认证 — BVPM 关注的是编队管理（共识+选举），不涉及安全认证</td>
 <td>将 CS-PBFT+SS-Raft 作为你认证方案的基础设施</td>
@@ -448,10 +473,14 @@
 <td>没有跨域共识</td>
 <td>跨域编队时的多域共识</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
-<h2 id="🔗-和你研究的关系"><a href="#🔗-和你研究的关系" class="headerlink" title="🔗 和你研究的关系"></a>🔗 和你研究的关系</h2><blockquote>
-<p>BVPM 提供了”基础设施层”参考。你的编队跨域认证方案需要一个高效的底层。<br>CS-PBFT → 你方案中区块链的共识算法<br>SS-Raft → 你方案中编队 Leader 的选举（如果 Leader 不事先指定）</p>
+<h2 id="🔗-和你研究的关系">🔗 和你研究的关系</h2>
+<blockquote>
+<p>BVPM 提供了&quot;基础设施层&quot;参考。你的编队跨域认证方案需要一个高效的底层。<br>
+CS-PBFT → 你方案中区块链的共识算法<br>
+SS-Raft → 你方案中编队 Leader 的选举（如果 Leader 不事先指定）</p>
 </blockquote>
 <hr>
 <blockquote>
@@ -501,12 +530,12 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BMMHSC_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+				<a class="prev" rel="prev" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BCCG_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">BMMHSC 论文完整阅读笔记</span>
+						<span class="post-nav-title-item truncate max-w-48">BCCG 论文阅读笔记</span>
 						<span class="post-nav-item">上一篇</span>
 					</span>
 				</a>
@@ -514,9 +543,9 @@
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/CRT_%E7%BE%A4%E7%BB%84%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+				<a class="next" rel="next" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/CD-BASA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">CRT 群组密钥协商论文完整阅读笔记</span>
+						<span class="post-nav-title-item truncate max-w-48">CD-BASA 论文完整阅读笔记</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -600,7 +629,7 @@
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
 		<div class="page-title">BVPM 论文完整阅读笔记</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BVPM-%E8%AE%BA%E6%96%87%E5%AE%8C%E6%95%B4%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0"><span class="nav-text">BVPM 论文完整阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-BVPM-%E7%9A%84%E7%8B%AC%E7%89%B9%E5%AE%9A%E4%BD%8D"><span class="nav-text">📌 BVPM 的独特定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%A7%A0-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%B0%8F%E7%99%BD%E8%AF%BE%E5%A0%82"><span class="nav-text">🧠 密码学小白课堂</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PBFT-%E2%86%92-CS-PBFT%EF%BC%88%E9%9B%86%E4%BD%93%E7%AD%BE%E5%90%8D%E4%BC%98%E5%8C%96%E7%9A%84%E5%85%B1%E8%AF%86%EF%BC%89"><span class="nav-text">PBFT → CS-PBFT（集体签名优化的共识）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STM-%E2%86%92-SS-Raft%EF%BC%88%E5%AD%90%E8%B7%AF%E5%BE%84%E7%AD%BE%E5%90%8D%E4%BC%98%E5%8C%96%E7%9A%84-Leader-%E9%80%89%E4%B8%BE%EF%BC%89"><span class="nav-text">STM → SS-Raft（子路径签名优化的 Leader 选举）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%96%B9%E6%A1%88"><span class="nav-text">核心方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E5%A4%A7%E8%B4%A1%E7%8C%AE"><span class="nav-text">两大贡献</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Table-1-%E2%80%94-%E6%96%B9%E6%A1%88%E5%B1%9E%E6%80%A7%E5%AF%B9%E6%AF%94"><span class="nav-text">Table 1 — 方案属性对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C"><span class="nav-text">实验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%80%E9%99%90%E6%80%A7"><span class="nav-text">局限性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%97-%E5%92%8C%E4%BD%A0%E7%A0%94%E7%A9%B6%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">🔗 和你研究的关系</span></a></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">BVPM 论文完整阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-BVPM-%E7%9A%84%E7%8B%AC%E7%89%B9%E5%AE%9A%E4%BD%8D"><span class="nav-text">📌 BVPM 的独特定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%A7%A0-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%B0%8F%E7%99%BD%E8%AF%BE%E5%A0%82"><span class="nav-text">🧠 密码学小白课堂</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PBFT-%E2%86%92-CS-PBFT%EF%BC%88%E9%9B%86%E4%BD%93%E7%AD%BE%E5%90%8D%E4%BC%98%E5%8C%96%E7%9A%84%E5%85%B1%E8%AF%86%EF%BC%89"><span class="nav-text">PBFT → CS-PBFT（集体签名优化的共识）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STM-%E2%86%92-SS-Raft%EF%BC%88%E5%AD%90%E8%B7%AF%E5%BE%84%E7%AD%BE%E5%90%8D%E4%BC%98%E5%8C%96%E7%9A%84-Leader-%E9%80%89%E4%B8%BE%EF%BC%89"><span class="nav-text">STM → SS-Raft（子路径签名优化的 Leader 选举）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%96%B9%E6%A1%88"><span class="nav-text">核心方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E5%A4%A7%E8%B4%A1%E7%8C%AE"><span class="nav-text">两大贡献</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Table-1-%E2%80%94-%E6%96%B9%E6%A1%88%E5%B1%9E%E6%80%A7%E5%AF%B9%E6%AF%94"><span class="nav-text">Table 1 — 方案属性对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C"><span class="nav-text">实验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%80%E9%99%90%E6%80%A7"><span class="nav-text">局限性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%97-%E5%92%8C%E4%BD%A0%E7%A0%94%E7%A9%B6%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">🔗 和你研究的关系</span></a></li></ol></li></ol>
 
 	</div>
 </div>
@@ -678,6 +707,11 @@
                 } catch (error) {}
             </script>
         
+        
+            
+                
+        
+                
         
         
     </div>  

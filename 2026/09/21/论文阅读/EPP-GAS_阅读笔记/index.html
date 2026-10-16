@@ -119,6 +119,16 @@
 
     <!--- Inject Part-->
     
+        
+            
+    
+            
+    
+            
+                
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+                
+    
 
     
 <link rel="stylesheet" href="/css/style.css">
@@ -368,20 +378,31 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1 id="EPP-GAS-论文阅读笔记"><a href="#EPP-GAS-论文阅读笔记" class="headerlink" title="EPP-GAS 论文阅读笔记"></a>EPP-GAS 论文阅读笔记</h1><blockquote>
-<p><strong>论文信息：</strong> Yingjie Xia (夏莹杰), Siyu Zhu (朱思宇), Xuejiao Liu (刘雪娇), Qiang Zhong (钟强), “EPP-GAS: An Efficient and Privacy-Preserving Cross Trust-Domain Group Authentication Scheme for Vehicle Platoon Based on Blockchain”<br><strong>期刊：</strong> IEEE Transactions on Intelligent Transportation Systems (IEEE TITS) — <strong>中科院一区 TOP 期刊</strong><br><strong>年份：</strong> 2024 年 8 月（在线发表），2024 年 12 月正式出版<br><strong>DOI：</strong> 10.1109&#x2F;TITS.2024.3446618<br><strong>所属团队：</strong> 杭州电子科技大学微电子研究院芯片与安全实验室（CSL）+ 浙江大学 + 杭州师范大学<br><strong>资助项目：</strong> 浙江省自然科学基金重点项目 (LZ22F030004)、浙江省”尖兵领雁”重大研发攻关项目 (2024C01179)<br><strong>实际落地：</strong> 已应用于苏州高铁新城车联网试点项目，服务全国近 100 个城市<br><strong>阅读日期：</strong> 2026-07-15</p>
+			<h1>EPP-GAS 论文阅读笔记</h1>
+<blockquote>
+<p><strong>论文信息：</strong> Yingjie Xia (夏莹杰), Siyu Zhu (朱思宇), Xuejiao Liu (刘雪娇), Qiang Zhong (钟强), &quot;EPP-GAS: An Efficient and Privacy-Preserving Cross Trust-Domain Group Authentication Scheme for Vehicle Platoon Based on Blockchain&quot;<br>
+<strong>期刊：</strong> IEEE Transactions on Intelligent Transportation Systems (IEEE TITS) — <strong>中科院一区 TOP 期刊</strong><br>
+<strong>年份：</strong> 2024 年 8 月（在线发表），2024 年 12 月正式出版<br>
+<strong>DOI：</strong> 10.1109/TITS.2024.3446618<br>
+<strong>所属团队：</strong> 杭州电子科技大学微电子研究院芯片与安全实验室（CSL）+ 浙江大学 + 杭州师范大学<br>
+<strong>资助项目：</strong> 浙江省自然科学基金重点项目 (LZ22F030004)、浙江省&quot;尖兵领雁&quot;重大研发攻关项目 (2024C01179)<br>
+<strong>实际落地：</strong> 已应用于苏州高铁新城车联网试点项目，服务全国近 100 个城市<br>
+<strong>阅读日期：</strong> 2026-07-15</p>
 </blockquote>
 <blockquote>
 <p>⚠️ <strong>特别说明：</strong> EPP-GAS 论文 PDF 未在你的论文目录中。本阅读笔记基于 IEEE Xplore 论文摘要、同一作者团队在 Springer 2025 书章中的详细描述、以及杭州电子科技大学官方报道中的技术细节综合整理。建议尽快从 IEEE Xplore 下载论文全文进行补充精读。</p>
 </blockquote>
 <hr>
-<h2 id="📌-先说明：为什么-EPP-GAS-是你最重要的论文"><a href="#📌-先说明：为什么-EPP-GAS-是你最重要的论文" class="headerlink" title="📌 先说明：为什么 EPP-GAS 是你最重要的论文"></a>📌 先说明：为什么 EPP-GAS 是你最重要的论文</h2><p>EPP-GAS 是你的<strong>入门论文</strong>——你第一次论文汇报讲的就是这篇，导师听完后决定让你做「车辆队列跨域认证」这个方向。所以这篇论文对你的意义不是”多学一个方案”，而是：</p>
+<h2 id="📌-先说明：为什么-EPP-GAS-是你最重要的论文">📌 先说明：为什么 EPP-GAS 是你最重要的论文</h2>
+<p>EPP-GAS 是你的<strong>入门论文</strong>——你第一次论文汇报讲的就是这篇，导师听完后决定让你做「车辆队列跨域认证」这个方向。所以这篇论文对你的意义不是&quot;多学一个方案&quot;，而是：</p>
 <blockquote>
 <p><strong>EPP-GAS 定义了你的研究方向。</strong></p>
 </blockquote>
 <p>理解这篇论文，你就理解了导师为什么给你这个方向、这个方向在学术圈中的位置、以及还有哪些事情没有做。</p>
 <hr>
-<h2 id="第一遍：5-分钟快速筛选"><a href="#第一遍：5-分钟快速筛选" class="headerlink" title="第一遍：5 分钟快速筛选"></a>第一遍：5 分钟快速筛选</h2><h3 id="标题拆解"><a href="#标题拆解" class="headerlink" title="标题拆解"></a>标题拆解</h3><blockquote>
+<h2 id="第一遍：5-分钟快速筛选">第一遍：5 分钟快速筛选</h2>
+<h3 id="标题拆解">标题拆解</h3>
+<blockquote>
 <p><strong>EPP-GAS: An Efficient and Privacy-Preserving Cross Trust-Domain Group Authentication Scheme for Vehicle Platoon Based on Blockchain</strong></p>
 </blockquote>
 <table>
@@ -392,7 +413,8 @@
 <th>为什么重要</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>Efficient</strong></td>
 <td>高效的</td>
 <td>车载环境资源受限，效率是第一指标</td>
@@ -414,7 +436,7 @@
 </tr>
 <tr>
 <td><strong>Vehicle Platoon</strong></td>
-<td>车辆编队&#x2F;队列</td>
+<td>车辆编队/队列</td>
 <td>明确针对编队场景，不是通用 VANET</td>
 </tr>
 <tr>
@@ -422,31 +444,38 @@
 <td>基于区块链</td>
 <td>用区块链解决跨域信任问题</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <blockquote>
-<p><strong>关键理解：</strong> “Cross Trust-Domain” 中的 “Trust” 很重要——它强调的是不同信任域（有各自的信任根&#x2F;管理机构），域之间天然不互信。这是比 PPCDA 的 “Cross-Domain” 更强的假设。</p>
+<p><strong>关键理解：</strong> &quot;Cross Trust-Domain&quot; 中的 &quot;Trust&quot; 很重要——它强调的是不同信任域（有各自的信任根/管理机构），域之间天然不互信。这是比 PPCDA 的 &quot;Cross-Domain&quot; 更强的假设。</p>
 </blockquote>
-<h3 id="Abstract-三句话提炼"><a href="#Abstract-三句话提炼" class="headerlink" title="Abstract 三句话提炼"></a>Abstract 三句话提炼</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">问题：车辆编队长途行驶时需要跨越多个信任域，现有方案认证效率低、隐私保护不足、</span><br><span class="line">      编队动态变化时需要全队重新认证。</span><br><span class="line">方案：BM-Tree 扩展区块链 + Shamir 门限群组假名 + 批量动态认证。</span><br><span class="line">效果：跨域群组认证效率提高 31%，通信开销降低 43.9%。</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="三大核心技术组件"><a href="#三大核心技术组件" class="headerlink" title="三大核心技术组件"></a>三大核心技术组件</h3><blockquote>
-<p><strong>组件1：BM-Tree（扩展区块链模型）</strong><br>将车辆编队的认证参数编码到 BM-Tree 区块中，实现跨信任域的安全共享。不同信任域的边缘服务器通过区块链获取编队的认证参数，无需每次都回到原域验证。</p>
-<p><strong>组件2：基于 Shamir 门限方案的群组假名</strong><br>利用 Shamir 秘密共享方案构造群组假名——需要达到门限数量的 RA 节点协作才能重构秘密。这实现了匿名群组认证，同时防止单点失败。</p>
-<p><strong>组件3：批量身份认证 + 动态重认证</strong><br>一次认证请求处理整个编队。当编队成员变化（加入&#x2F;离开）或认证失败时，支持增量的动态重认证，不需要整个编队重新认证。</p>
+<h3 id="Abstract-三句话提炼">Abstract 三句话提炼</h3>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">问题：车辆编队长途行驶时需要跨越多个信任域，现有方案认证效率低、隐私保护不足、</span><br><span class="line">      编队动态变化时需要全队重新认证。</span><br><span class="line">方案：BM-Tree 扩展区块链 + Shamir 门限群组假名 + 批量动态认证。</span><br><span class="line">效果：跨域群组认证效率提高 31%，通信开销降低 43.9%。</span><br></pre></td></tr></table></figure></div>
+<h3 id="三大核心技术组件">三大核心技术组件</h3>
+<blockquote>
+<p><strong>组件1：BM-Tree（扩展区块链模型）</strong><br>
+将车辆编队的认证参数编码到 BM-Tree 区块中，实现跨信任域的安全共享。不同信任域的边缘服务器通过区块链获取编队的认证参数，无需每次都回到原域验证。</p>
+<p><strong>组件2：基于 Shamir 门限方案的群组假名</strong><br>
+利用 Shamir 秘密共享方案构造群组假名——需要达到门限数量的 RA 节点协作才能重构秘密。这实现了匿名群组认证，同时防止单点失败。</p>
+<p><strong>组件3：批量身份认证 + 动态重认证</strong><br>
+一次认证请求处理整个编队。当编队成员变化（加入/离开）或认证失败时，支持增量的动态重认证，不需要整个编队重新认证。</p>
 </blockquote>
-<h3 id="Table-I-—-方案对比（推断）"><a href="#Table-I-—-方案对比（推断）" class="headerlink" title="Table I — 方案对比（推断）"></a>Table I — 方案对比（推断）</h3><p>基于 PPCDA 论文的 Table I（其中引用了 EPP-GAS 作为 [17]）：</p>
+<h3 id="Table-I-—-方案对比（推断）">Table I — 方案对比（推断）</h3>
+<p>基于 PPCDA 论文的 Table I（其中引用了 EPP-GAS 作为 [17]）：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Properties               [9]  [17]EPP-GAS  [26] [27] [28] [29] [31]  PPCDA</span><br><span class="line">─────────────────────────────────────────────────────────────────────────</span><br><span class="line">跨域认证                  ✓       ✓        ✓    ✓    ✓    ✓    ✓     ✓</span><br><span class="line">针对车辆队列的跨域认证     ✗       ✓        ✗    ✗    ✗    ✗    ✗     ✓</span><br><span class="line">支持多个车辆队列           ✗       ✗        ✗    ✗    ✗    ✗    ✗     ✓  ← PPCDA 独有</span><br><span class="line">身份隐私保护              ✓       ✓        ✓    ✓    ✓    ✓    ✓     ✓</span><br><span class="line">批量认证                  ✗       ✗        ✗    ✗    ✓    ✓    ✓     ✓</span><br><span class="line">动态认证                  ✗       ✓        ✗    ✗    ✗    ✗    ✗     ✓  ← EPP-GAS 也有！</span><br><span class="line">不使用区块链              ✓       ✗        ✗    ✗    ✓    ✗    ✓     ✓  ← EPP-GAS 用区块链</span><br></pre></td></tr></table></figure></div>
-
 <blockquote>
 <p><strong>读这张表的关键发现：</strong> EPP-GAS 是 PPCDA 之前唯一同时做「队列跨域 + 动态认证」的方案。PPCDA 对其的改进是：去掉了区块链（降低开销）、增加了多队列支持。</p>
 </blockquote>
 <hr>
-<h2 id="第二遍：结构化提取"><a href="#第二遍：结构化提取" class="headerlink" title="第二遍：结构化提取"></a>第二遍：结构化提取</h2><h3 id="1-研究背景与动机（为什么需要这个方案）"><a href="#1-研究背景与动机（为什么需要这个方案）" class="headerlink" title="1. 研究背景与动机（为什么需要这个方案）"></a>1. 研究背景与动机（为什么需要这个方案）</h3><p><strong>场景描述：</strong><br>一辆自动驾驶卡车编队从杭州出发去北京。沿途经过浙江、江苏、安徽、山东、河北等多个省份。每个省份的车联网管理平台是独立的信任域——有自己的密钥体系、自己的认证标准、自己的管理机构。</p>
+<h2 id="第二遍：结构化提取">第二遍：结构化提取</h2>
+<h3 id="1-研究背景与动机（为什么需要这个方案）">1. 研究背景与动机（为什么需要这个方案）</h3>
+<p><strong>场景描述：</strong><br>
+一辆自动驾驶卡车编队从杭州出发去北京。沿途经过浙江、江苏、安徽、山东、河北等多个省份。每个省份的车联网管理平台是独立的信任域——有自己的密钥体系、自己的认证标准、自己的管理机构。</p>
 <p><strong>四个核心痛点：</strong></p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">痛点1 ── 跨信任域认证困难</span><br><span class="line">         ├── 不同信任域之间互不信任（没有共享的信任根）</span><br><span class="line">         ├── 编队进入新域时，新域凭什么相信这些车是合法的？</span><br><span class="line">         └── 每次都要回原域验证 → 延迟大、效率低</span><br><span class="line"></span><br><span class="line">痛点2 ── 逐车认证效率低</span><br><span class="line">         ├── 编队有 10 辆车 → 传统方案要认证 10 次</span><br><span class="line">         ├── 每辆车和 RSU 交互一轮 → 10 轮通信</span><br><span class="line">         └── 在高速移动场景下根本来不及</span><br><span class="line"></span><br><span class="line">痛点3 ── 隐私保护不足</span><br><span class="line">         ├── 认证过程中车辆身份信息容易泄露</span><br><span class="line">         ├── 跨域认证涉及的参与方更多 → 泄露面更大</span><br><span class="line">         └── 需要既能认证又不暴露真实身份</span><br><span class="line"></span><br><span class="line">痛点4 ── 编队动态变化</span><br><span class="line">         ├── 有车中途离开（目的地不同）</span><br><span class="line">         ├── 有新成员加入（中途汇合）</span><br><span class="line">         ├── 传统方案：任何变化 → 全部重新认证 → 极大的浪费</span><br><span class="line">         └── 需要支持增量式的认证更新</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="2-系统模型"><a href="#2-系统模型" class="headerlink" title="2. 系统模型"></a>2. 系统模型</h3><p>EPP-GAS 的系统模型是理解这篇论文的基石。</p>
+<h3 id="2-系统模型">2. 系统模型</h3>
+<p>EPP-GAS 的系统模型是理解这篇论文的基石。</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">┌────────────────────────────────────────────────────────────────┐</span><br><span class="line">│                      区块链网络 (Consortium Blockchain)          │</span><br><span class="line">│                                                                 │</span><br><span class="line">│   ┌──────────────────┐  ┌──────────────────┐                    │</span><br><span class="line">│   │    BM-Tree 区块   │  │   BM-Tree 区块   │                    │</span><br><span class="line">│   │  (存储编队认证参数) │  │  (存储编队认证参数) │  ...             │</span><br><span class="line">│   └──────────────────┘  └──────────────────┘                    │</span><br><span class="line">│         ▲                      ▲                                │</span><br><span class="line">└─────────┼──────────────────────┼────────────────────────────────┘</span><br><span class="line">          │                      │</span><br><span class="line">    ┌─────┴─────────┐    ┌───────┴─────────┐</span><br><span class="line">    │  ROA (根权威)  │    │                  │</span><br><span class="line">    │  系统初始化    │    │                  │</span><br><span class="line">    │  主密钥管理    │    │                  │</span><br><span class="line">    └─────┬─────────┘    │                  │</span><br><span class="line">          │ Shamir分发   │                  │</span><br><span class="line">    ┌─────┼─────────┐    │                  │</span><br><span class="line">    │     │         │    │                  │</span><br><span class="line">┌───┴──┐ ┌───┴──┐ ┌───┴──┐          ┌──────┴──────┐</span><br><span class="line">│ RA_A  │ │ RA_B │ │ RA_C │  ...     │   RA_K     │</span><br><span class="line">│(域A)  │ │(域B) │ │(域C) │          │  (域K)     │</span><br><span class="line">│Edge   │ │Edge  │ │Edge  │          │  Edge      │</span><br><span class="line">│Server │ │Server│ │Server│          │  Server    │</span><br><span class="line">└───┬──┘ └───┬──┘ └───┬──┘          └──────┬─────┘</span><br><span class="line">    │         │        │                    │</span><br><span class="line">    │  V2I通信 │        │                    │</span><br><span class="line">    │         │        │                    │</span><br><span class="line">    └─────────┼────────┼────────────────────┘</span><br><span class="line">              │        │</span><br><span class="line">         ┌────┴────────┴────┐</span><br><span class="line">         │   车辆编队 (VP)   │</span><br><span class="line">         │  ┌────┐          │</span><br><span class="line">         │  │Leader│ ← PL   │  负责与外部通信</span><br><span class="line">         │  └────┘          │</span><br><span class="line">         │  ┌──┐┌──┐┌──┐   │</span><br><span class="line">         │  │F1││F2││F3│← PF│  跟随Leader行驶</span><br><span class="line">         │  └──┘└──┘└──┘   │</span><br><span class="line">         └─────────────────┘</span><br></pre></td></tr></table></figure></div>
-
 <p><strong>四类核心实体：</strong></p>
 <table>
 <thead>
@@ -457,7 +486,8 @@
 <th>核心职责</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>根权威</strong></td>
 <td>ROA</td>
 <td><strong>完全可信</strong></td>
@@ -481,38 +511,42 @@
 <td><strong>不可信</strong></td>
 <td>PL 负责编队管理和外部通信，PF 跟随指令</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <blockquote>
 <p><strong>EPP-GAS 的信任模型（与 PPCDA 对比）：</strong></p>
 <ul>
 <li>PPCDA：信任完全集中在 RTA 一个点上</li>
 <li>EPP-GAS：信任分散在多个 RA 上（门限机制），≥t 个 RA 诚实即可</li>
-<li>这个设计更接近实际部署（多个运营商&#x2F;省份协作）</li>
+<li>这个设计更接近实际部署（多个运营商/省份协作）</li>
 </ul>
 </blockquote>
-<h3 id="3-BM-Tree-的核心设计思想"><a href="#3-BM-Tree-的核心设计思想" class="headerlink" title="3. BM-Tree 的核心设计思想"></a>3. BM-Tree 的核心设计思想</h3><p>BM-Tree 是 EPP-GAS 最关键的结构创新，对应 PPCDA 的 IBF。理解它才能理解这篇论文。</p>
+<h3 id="3-BM-Tree-的核心设计思想">3. BM-Tree 的核心设计思想</h3>
+<p>BM-Tree 是 EPP-GAS 最关键的结构创新，对应 PPCDA 的 IBF。理解它才能理解这篇论文。</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">传统区块链的局限：</span><br><span class="line">  - 区块只存储交易记录</span><br><span class="line">  - 要获取认证参数需要遍历整个链 → 太慢</span><br><span class="line">  </span><br><span class="line">BM-Tree 的改进：</span><br><span class="line">  - 区块结构扩展为树形，支持按&quot;编队ID&quot;快速检索认证参数</span><br><span class="line">  - 每个 BM-Tree 区块存储的是&quot;编队认证参数&quot;而非&quot;交易&quot;</span><br><span class="line">  - 本质：把区块链当作&quot;跨域分布式数据库&quot;使用</span><br><span class="line">  </span><br><span class="line">BM-Tree 解决的核心问题：</span><br><span class="line">  &quot;编队的认证参数如何在多个互不信任的域之间安全共享？&quot;</span><br><span class="line">  → 写入区块链 → 所有域都能看到 → 不可篡改 → 无需信任单一方</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="4-Shamir-门限方案在群组假名中的应用"><a href="#4-Shamir-门限方案在群组假名中的应用" class="headerlink" title="4. Shamir 门限方案在群组假名中的应用"></a>4. Shamir 门限方案在群组假名中的应用</h3><p>这是 EPP-GAS 的第二个核心创新：</p>
+<h3 id="4-Shamir-门限方案在群组假名中的应用">4. Shamir 门限方案在群组假名中的应用</h3>
+<p>这是 EPP-GAS 的第二个核心创新：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Shamir (t, n) 门限方案的基本原理：</span><br><span class="line">  1. 构造一个 (t-1) 次多项式 f(x) = a_0 + a_1·x + ... + a_&#123;t-1&#125;·x^&#123;t-1&#125;</span><br><span class="line">     其中 a_0 = 主密钥 S</span><br><span class="line">  2. 计算 n 个秘密份额：s_i = f(x_i)，分发给 n 个 RA</span><br><span class="line">  3. 任意 ≥t 个 RA 可用拉格朗日插值恢复 S</span><br><span class="line">  4. 任意 &lt;t 个 RA 无法获取 S 的任何信息</span><br><span class="line"></span><br><span class="line">在 EPP-GAS 中的应用：</span><br><span class="line">  1. ROA 用 Shamir 方案将编队主密钥分成 n 份，分给 n 个域的 RA</span><br><span class="line">  2. 编队的群组假名 = f(编队ID) 的某种密码学构造</span><br><span class="line">  3. 当编队进入新域时，新域的 RA 需要 ≥t 个 RA 协作才能验证群组假名</span><br><span class="line">  4. 好处：</span><br><span class="line">     - 匿名性：群组假名不暴露个体车辆身份</span><br><span class="line">     - 门限安全：少数 RA 被攻破不影响整体安全</span><br><span class="line">     - 跨域可用：只要有 ≥t 个 RA 在线，任何域都能完成认证</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="5-核心方案-—-协议阶段（推断性重构）"><a href="#5-核心方案-—-协议阶段（推断性重构）" class="headerlink" title="5. 核心方案 — 协议阶段（推断性重构）"></a>5. 核心方案 — 协议阶段（推断性重构）</h3><p>基于 Springer 书章和多个来源的技术描述，EPP-GAS 的协议流程如下：</p>
+<h3 id="5-核心方案-—-协议阶段（推断性重构）">5. 核心方案 — 协议阶段（推断性重构）</h3>
+<p>基于 Springer 书章和多个来源的技术描述，EPP-GAS 的协议流程如下：</p>
 <hr>
-<h4 id="Phase-1：系统初始化（System-Initialization）"><a href="#Phase-1：系统初始化（System-Initialization）" class="headerlink" title="Phase 1：系统初始化（System Initialization）"></a>Phase 1：系统初始化（System Initialization）</h4><p><strong>谁做：</strong> ROA（根权威）</p>
+<h4 id="Phase-1：系统初始化（System-Initialization）">Phase 1：系统初始化（System Initialization）</h4>
+<p><strong>谁做：</strong> ROA（根权威）</p>
 <div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ROA 做的事：</span></span><br><span class="line"><span class="comment"># 1. 生成椭圆曲线参数</span></span><br><span class="line">选择椭圆曲线 E(F_p)，基点 G，阶为素数 q</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 生成系统主密钥</span></span><br><span class="line">s = 随机数 ∈ Z_q*          <span class="comment"># 主密钥</span></span><br><span class="line">P_pub = s · G               <span class="comment"># 主公钥</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 用 Shamir 方案分发主密钥</span></span><br><span class="line">构造 (t-<span class="number">1</span>) 次多项式 f(x) = s + a_1·x + ... + a_&#123;t-<span class="number">1</span>&#125;·x^&#123;t-<span class="number">1</span>&#125;</span><br><span class="line"><span class="keyword">for</span> i = <span class="number">1</span> to n:              <span class="comment"># n = RA 的数量</span></span><br><span class="line">    share_i = f(i)           <span class="comment"># 第 i 个 RA 的密钥份额</span></span><br><span class="line">    通过安全信道发送 share_i 给 RA_i</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 部署区块链和智能合约</span></span><br><span class="line">部署联盟链（各 RA 作为节点）</span><br><span class="line">部署认证参数管理的智能合约</span><br><span class="line">广播系统参数：&#123;E, G, q, P_pub, H(), 区块链地址&#125;</span><br></pre></td></tr></table></figure></div>
-
 <hr>
-<h4 id="Phase-2：车辆注册（Vehicle-Registration）"><a href="#Phase-2：车辆注册（Vehicle-Registration）" class="headerlink" title="Phase 2：车辆注册（Vehicle Registration）"></a>Phase 2：车辆注册（Vehicle Registration）</h4><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 每辆车在本地 ROA/RA 注册：</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 车辆 Vi 提交真实身份</span></span><br><span class="line">VID_i = 车辆真实身份标识（如 VIN 码）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. ROA/RA 生成假名种子</span></span><br><span class="line">seed_i = 随机数</span><br><span class="line">将 (VID_i, seed_i) 映射关系安全存储在 ROA</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 注入车载 HSM（硬件安全模块）</span></span><br><span class="line">HSM 存储：&#123;seed_i, 系统参数&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 注册信息上链</span></span><br><span class="line">交易 = &#123;h(VID_i), 注册时间戳, RA 签名&#125;</span><br></pre></td></tr></table></figure></div>
-
+<h4 id="Phase-2：车辆注册（Vehicle-Registration）">Phase 2：车辆注册（Vehicle Registration）</h4>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 每辆车在本地 ROA/RA 注册：</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 车辆 Vi 提交真实身份</span></span><br><span class="line">VID_i = 车辆真实身份标识（如 VIN 码）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. ROA/RA 生成假名种子</span></span><br><span class="line">seed_i = 随机数</span><br><span class="line">将 (VID_i, seed_i) 映射关系安全存储在 ROA</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 注入车载 HSM（硬件安全模块）</span></span><br><span class="line">HSM 存储：&#123;seed_i, 系统参数&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 注册信息上链</span></span><br><span class="line">交易 = &#123;h(VID_i), 注册时间戳, RA 签名&#125;</span><br></pre></td></tr></table></figure></div>
 <hr>
-<h4 id="Phase-3：编队组建与群组假名生成"><a href="#Phase-3：编队组建与群组假名生成" class="headerlink" title="Phase 3：编队组建与群组假名生成"></a>Phase 3：编队组建与群组假名生成</h4><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当编队组建时（在出发域）：</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. Leader 收集编队成员信息</span></span><br><span class="line">编队 Pi = &#123;Leader, F1, F2, ..., F_&#123;v-<span class="number">1</span>&#125;&#125;</span><br><span class="line">每辆车用自己的 seed 生成临时假名 TID_j</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 基于 Shamir 门限生成群组假名</span></span><br><span class="line">GP_i = 群组假名 = f(编队ID || 成员TID集合)</span><br><span class="line"><span class="comment"># 群组假名的验证需要 ≥t 个 RA 协作</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. Leader 将编队认证参数写入 BM-Tree 区块</span></span><br><span class="line">认证参数 = &#123;GP_i, 成员TID列表, 有效期, Leader签名&#125;</span><br><span class="line">通过智能合约写入区块链</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. BM-Tree 区块被广播至所有域的 RA</span></span><br></pre></td></tr></table></figure></div>
-
+<h4 id="Phase-3：编队组建与群组假名生成">Phase 3：编队组建与群组假名生成</h4>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当编队组建时（在出发域）：</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. Leader 收集编队成员信息</span></span><br><span class="line">编队 Pi = &#123;Leader, F1, F2, ..., F_&#123;v-<span class="number">1</span>&#125;&#125;</span><br><span class="line">每辆车用自己的 seed 生成临时假名 TID_j</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 基于 Shamir 门限生成群组假名</span></span><br><span class="line">GP_i = 群组假名 = f(编队ID || 成员TID集合)</span><br><span class="line"><span class="comment"># 群组假名的验证需要 ≥t 个 RA 协作</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. Leader 将编队认证参数写入 BM-Tree 区块</span></span><br><span class="line">认证参数 = &#123;GP_i, 成员TID列表, 有效期, Leader签名&#125;</span><br><span class="line">通过智能合约写入区块链</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. BM-Tree 区块被广播至所有域的 RA</span></span><br></pre></td></tr></table></figure></div>
 <blockquote>
-<p><strong>BM-Tree 在这里的作用：</strong><br>编队还没出发，它的认证参数已经通过区块链同步到了所有可能的途经域。<br>等编队到了新域 → 新域 RA 直接从 BM-Tree 查认证参数 → 无需回原域查询！</p>
+<p><strong>BM-Tree 在这里的作用：</strong><br>
+编队还没出发，它的认证参数已经通过区块链同步到了所有可能的途经域。<br>
+等编队到了新域 → 新域 RA 直接从 BM-Tree 查认证参数 → 无需回原域查询！</p>
 </blockquote>
 <hr>
-<h4 id="Phase-4：跨域群组认证"><a href="#Phase-4：跨域群组认证" class="headerlink" title="Phase 4：跨域群组认证"></a>Phase 4：跨域群组认证</h4><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 场景：编队 Pi 从域 A 进入域 B</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ====== Step 1：Leader 生成认证请求 ======</span></span><br><span class="line"><span class="comment"># Leader 收集编队当前的动态信息</span></span><br><span class="line">更新临时假名 TID_j<span class="string">&#x27;（防止关联攻击）</span></span><br><span class="line"><span class="string">生成 Ed25519 风格的签名 σ_j</span></span><br><span class="line"><span class="string">聚合编队签名：Σ = 聚合(&#123;σ_j&#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 构造认证请求</span></span><br><span class="line"><span class="string">Req = &#123;GP_i, Σ, 时间戳, Leader签名&#125;</span></span><br><span class="line"><span class="string">发送给域B的 RA_B（通过 RSU 转发）</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># ====== Step 2：RA_B 验证群组假名 ======</span></span><br><span class="line"><span class="string"># RA_B 从 BM-Tree 区块获取编队 Pi 的认证参数</span></span><br><span class="line"><span class="string"># 但 RA_B 单方面无法验证群组假名 GP_i！</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># RA_B 发起门限签名验证请求</span></span><br><span class="line"><span class="string">广播验证请求给其他 RA</span></span><br><span class="line"><span class="string">≥t 个 RA 响应后：</span></span><br><span class="line"><span class="string">  用拉格朗日插值恢复编队主密钥</span></span><br><span class="line"><span class="string">  验证 GP_i 是否为有效群组假名</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">if 验证通过:</span></span><br><span class="line"><span class="string">    # ====== Step 3：密钥协商 ======</span></span><br><span class="line"><span class="string">    RA_B 和 Leader 执行 ECDHE 密钥交换</span></span><br><span class="line"><span class="string">    生成会话密钥 SK</span></span><br><span class="line"><span class="string">    后续编队内通信使用 SK 保护</span></span><br><span class="line"><span class="string">else:</span></span><br><span class="line"><span class="string">    拒绝认证</span></span><br></pre></td></tr></table></figure></div>
-
+<h4 id="Phase-4：跨域群组认证">Phase 4：跨域群组认证</h4>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 场景：编队 Pi 从域 A 进入域 B</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ====== Step 1：Leader 生成认证请求 ======</span></span><br><span class="line"><span class="comment"># Leader 收集编队当前的动态信息</span></span><br><span class="line">更新临时假名 TID_j<span class="string">&#x27;（防止关联攻击）</span></span><br><span class="line"><span class="string">生成 Ed25519 风格的签名 σ_j</span></span><br><span class="line"><span class="string">聚合编队签名：Σ = 聚合(&#123;σ_j&#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 构造认证请求</span></span><br><span class="line"><span class="string">Req = &#123;GP_i, Σ, 时间戳, Leader签名&#125;</span></span><br><span class="line"><span class="string">发送给域B的 RA_B（通过 RSU 转发）</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># ====== Step 2：RA_B 验证群组假名 ======</span></span><br><span class="line"><span class="string"># RA_B 从 BM-Tree 区块获取编队 Pi 的认证参数</span></span><br><span class="line"><span class="string"># 但 RA_B 单方面无法验证群组假名 GP_i！</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># RA_B 发起门限签名验证请求</span></span><br><span class="line"><span class="string">广播验证请求给其他 RA</span></span><br><span class="line"><span class="string">≥t 个 RA 响应后：</span></span><br><span class="line"><span class="string">  用拉格朗日插值恢复编队主密钥</span></span><br><span class="line"><span class="string">  验证 GP_i 是否为有效群组假名</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">if 验证通过:</span></span><br><span class="line"><span class="string">    # ====== Step 3：密钥协商 ======</span></span><br><span class="line"><span class="string">    RA_B 和 Leader 执行 ECDHE 密钥交换</span></span><br><span class="line"><span class="string">    生成会话密钥 SK</span></span><br><span class="line"><span class="string">    后续编队内通信使用 SK 保护</span></span><br><span class="line"><span class="string">else:</span></span><br><span class="line"><span class="string">    拒绝认证</span></span><br></pre></td></tr></table></figure></div>
 <blockquote>
 <p><strong>这个流程的精妙之处：</strong></p>
 <ul>
@@ -523,12 +557,13 @@
 </ul>
 </blockquote>
 <hr>
-<h4 id="Phase-5：动态成员调整"><a href="#Phase-5：动态成员调整" class="headerlink" title="Phase 5：动态成员调整"></a>Phase 5：动态成员调整</h4><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 场景：编队中途有车加入或离开</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ====== 车辆加入 ======</span></span><br><span class="line">新成员 FN 向 Leader 发起加入请求</span><br><span class="line">FN 提供自己的临时假名 TID_N 和签名</span><br><span class="line">Leader 验证 FN 合法性后：</span><br><span class="line">  更新成员列表</span><br><span class="line">  重新计算群组假名 GP_i<span class="string">&#x27;（增量更新！）</span></span><br><span class="line"><span class="string">  写入新的 BM-Tree 交易：&#123;GP_i&#x27;</span>, 新成员列表, 更新原因=<span class="string">&quot;加入&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># ====== 车辆离开 ======</span></span><br><span class="line">离队车辆 FL 向 Leader 发离开通知</span><br><span class="line">Leader 确认后：</span><br><span class="line">  更新成员列表</span><br><span class="line">  移除 FL 的临时假名</span><br><span class="line">  重新计算 GP_i<span class="string">&#x27;（增量更新！）</span></span><br><span class="line"><span class="string">  写入新的 BM-Tree 交易</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 关键：增量更新 — 不需要整个编队重新认证！</span></span><br><span class="line"><span class="string"># 只需要更新群组假名和 BM-Tree 中的参数</span></span><br></pre></td></tr></table></figure></div>
-
+<h4 id="Phase-5：动态成员调整">Phase 5：动态成员调整</h4>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 场景：编队中途有车加入或离开</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ====== 车辆加入 ======</span></span><br><span class="line">新成员 FN 向 Leader 发起加入请求</span><br><span class="line">FN 提供自己的临时假名 TID_N 和签名</span><br><span class="line">Leader 验证 FN 合法性后：</span><br><span class="line">  更新成员列表</span><br><span class="line">  重新计算群组假名 GP_i<span class="string">&#x27;（增量更新！）</span></span><br><span class="line"><span class="string">  写入新的 BM-Tree 交易：&#123;GP_i&#x27;</span>, 新成员列表, 更新原因=<span class="string">&quot;加入&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># ====== 车辆离开 ======</span></span><br><span class="line">离队车辆 FL 向 Leader 发离开通知</span><br><span class="line">Leader 确认后：</span><br><span class="line">  更新成员列表</span><br><span class="line">  移除 FL 的临时假名</span><br><span class="line">  重新计算 GP_i<span class="string">&#x27;（增量更新！）</span></span><br><span class="line"><span class="string">  写入新的 BM-Tree 交易</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 关键：增量更新 — 不需要整个编队重新认证！</span></span><br><span class="line"><span class="string"># 只需要更新群组假名和 BM-Tree 中的参数</span></span><br></pre></td></tr></table></figure></div>
 <hr>
-<h4 id="Phase-6：认证失败与重认证"><a href="#Phase-6：认证失败与重认证" class="headerlink" title="Phase 6：认证失败与重认证"></a>Phase 6：认证失败与重认证</h4><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果某辆车认证失败（如假名过期、签名无效）：</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 不是让整个编队重新认证！</span></span><br><span class="line"><span class="comment"># 只对失败的车辆进行增量重认证：</span></span><br><span class="line"><span class="number">1.</span> Leader 识别失败车辆 Fj</span><br><span class="line"><span class="number">2.</span> 验证是临时错误还是恶意行为</span><br><span class="line"><span class="number">3.</span> 如果是临时错误：Fj 重新生成签名 → Leader 更新聚合签名</span><br><span class="line"><span class="number">4.</span> 如果是恶意行为：Fj 被排除出编队 → 更新群组假名 → 上链</span><br><span class="line"><span class="number">5.</span> 编队其他成员的认证不受影响</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="6-安全性分析（要点）"><a href="#6-安全性分析（要点）" class="headerlink" title="6. 安全性分析（要点）"></a>6. 安全性分析（要点）</h3><p>基于现有资料，EPP-GAS 的安全保障体系：</p>
+<h4 id="Phase-6：认证失败与重认证">Phase 6：认证失败与重认证</h4>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果某辆车认证失败（如假名过期、签名无效）：</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 不是让整个编队重新认证！</span></span><br><span class="line"><span class="comment"># 只对失败的车辆进行增量重认证：</span></span><br><span class="line"><span class="number">1.</span> Leader 识别失败车辆 Fj</span><br><span class="line"><span class="number">2.</span> 验证是临时错误还是恶意行为</span><br><span class="line"><span class="number">3.</span> 如果是临时错误：Fj 重新生成签名 → Leader 更新聚合签名</span><br><span class="line"><span class="number">4.</span> 如果是恶意行为：Fj 被排除出编队 → 更新群组假名 → 上链</span><br><span class="line"><span class="number">5.</span> 编队其他成员的认证不受影响</span><br></pre></td></tr></table></figure></div>
+<h3 id="6-安全性分析（要点）">6. 安全性分析（要点）</h3>
+<p>基于现有资料，EPP-GAS 的安全保障体系：</p>
 <table>
 <thead>
 <tr>
@@ -536,7 +571,8 @@
 <th>如何实现</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>匿名性</strong></td>
 <td>群组假名 → 不暴露个体车辆身份</td>
 </tr>
@@ -568,8 +604,10 @@
 <td><strong>去中心化信任</strong></td>
 <td>区块链 + 门限机制消除单点故障</td>
 </tr>
-</tbody></table>
-<h3 id="7-实验与性能"><a href="#7-实验与性能" class="headerlink" title="7. 实验与性能"></a>7. 实验与性能</h3><p><strong>关键性能数据：</strong></p>
+</tbody>
+</table>
+<h3 id="7-实验与性能">7. 实验与性能</h3>
+<p><strong>关键性能数据：</strong></p>
 <table>
 <thead>
 <tr>
@@ -578,7 +616,8 @@
 <th>对比基线</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>跨域群组认证效率</td>
 <td>平均<strong>提升 31%</strong></td>
 <td>vs 已有跨域认证方案</td>
@@ -598,15 +637,17 @@
 <td>增量更新，O(1) 复杂度</td>
 <td>vs 全队重认证 O(n)</td>
 </tr>
-</tbody></table>
-<h3 id="8-与同一团队后续工作的关系"><a href="#8-与同一团队后续工作的关系" class="headerlink" title="8. 与同一团队后续工作的关系"></a>8. 与同一团队后续工作的关系</h3><p>理解 EPP-GAS 在团队研究脉络中的位置很重要：</p>
+</tbody>
+</table>
+<h3 id="8-与同一团队后续工作的关系">8. 与同一团队后续工作的关系</h3>
+<p>理解 EPP-GAS 在团队研究脉络中的位置很重要：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">夏莹杰教授团队的研究线索：</span><br><span class="line">  </span><br><span class="line">EPP-GAS (IEEE TITS, 2024年8月)</span><br><span class="line">  │  区块链 + Shamir 门限 + BM-Tree + 群组认证</span><br><span class="line">  │  编队级跨域认证</span><br><span class="line">  │</span><br><span class="line">  ├─→ CD-BASA (IEEE TITS, 2024年10月)  ← 同一个研究线的平行工作</span><br><span class="line">  │    区块链 + 累加器(Accumulator) + IPFS + 批量认证</span><br><span class="line">  │    通用 VANET（不限于编队）</span><br><span class="line">  │</span><br><span class="line">  ├─→ LETA (IEEE JSAC, 2026)  ← 格密码方向的延伸</span><br><span class="line">  │    格密码 + VPD-Tree + ZKP + 批量认证</span><br><span class="line">  │    抗量子 + 编队场景</span><br><span class="line">  │</span><br><span class="line">  └─→ [你的研究方向 ← 导师的期待]</span><br><span class="line">      在 EPP-GAS 的基础上，还能做什么？</span><br></pre></td></tr></table></figure></div>
-
 <blockquote>
-<p><strong>这一条研究脉络告诉你：</strong> 导师让你做这个方向，是因为团队在车联网跨域认证这个课题上有深厚的积累。你的工作是站在 EPP-GAS&#x2F;LETA 这些”肩膀”上继续推进。</p>
+<p><strong>这一条研究脉络告诉你：</strong> 导师让你做这个方向，是因为团队在车联网跨域认证这个课题上有深厚的积累。你的工作是站在 EPP-GAS/LETA 这些&quot;肩膀&quot;上继续推进。</p>
 </blockquote>
 <hr>
-<h2 id="🆚-EPP-GAS-vs-PPCDA-vs-BCADS-三方对比"><a href="#🆚-EPP-GAS-vs-PPCDA-vs-BCADS-三方对比" class="headerlink" title="🆚 EPP-GAS vs PPCDA vs BCADS 三方对比"></a>🆚 EPP-GAS vs PPCDA vs BCADS 三方对比</h2><table>
+<h2 id="🆚-EPP-GAS-vs-PPCDA-vs-BCADS-三方对比">🆚 EPP-GAS vs PPCDA vs BCADS 三方对比</h2>
+<table>
 <thead>
 <tr>
 <th>维度</th>
@@ -615,7 +656,8 @@
 <th>BCADS (2026)</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>期刊</strong></td>
 <td>IEEE TITS (一区TOP)</td>
 <td>IEEE TDSC (CCF-A)</td>
@@ -681,7 +723,8 @@
 <td>BGLS (BLS聚合)</td>
 <td>Fiat-Shamir (Schnorr风格)</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <blockquote>
 <p><strong>三篇论文代表了三种不同的设计哲学：</strong></p>
 <ul>
@@ -691,7 +734,8 @@
 </ul>
 </blockquote>
 <hr>
-<h2 id="局限性分析"><a href="#局限性分析" class="headerlink" title="局限性分析"></a>局限性分析</h2><table>
+<h2 id="局限性分析">局限性分析</h2>
+<table>
 <thead>
 <tr>
 <th>#</th>
@@ -700,7 +744,8 @@
 <th>可能的改进方向</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>L1</strong></td>
 <td><strong>区块链存储和共识开销大</strong></td>
 <td>BM-Tree 需要所有 RA 同步，编队越多→链上数据越多→同步越慢</td>
@@ -727,13 +772,13 @@
 <tr>
 <td><strong>L5</strong></td>
 <td><strong>不支持多编队协同</strong></td>
-<td>如果两个编队需要合并&#x2F;交错&#x2F;超车，方案没有考虑</td>
+<td>如果两个编队需要合并/交错/超车，方案没有考虑</td>
 <td>设计跨编队认证协议</td>
 </tr>
 <tr>
 <td><strong>L6</strong></td>
 <td><strong>未考虑后量子安全</strong></td>
-<td>ECC&#x2F;ECDHE 在量子计算机下不安全</td>
+<td>ECC/ECDHE 在量子计算机下不安全</td>
 <td>替换为格密码（LETA 方向）</td>
 </tr>
 <tr>
@@ -752,19 +797,23 @@
 <td><strong>L9</strong></td>
 <td><strong>编队切换信任域没有优化</strong></td>
 <td>编队高速移动时可能在短时间内切换多个域</td>
-<td>加入预认证&#x2F;预测切换机制</td>
+<td>加入预认证/预测切换机制</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
-<h2 id="🎯-研究方向精进指南"><a href="#🎯-研究方向精进指南" class="headerlink" title="🎯 研究方向精进指南"></a>🎯 研究方向精进指南</h2><blockquote>
+<h2 id="🎯-研究方向精进指南">🎯 研究方向精进指南</h2>
+<blockquote>
 <p>这是最重要的部分。EPP-GAS 是你的起点，本节讨论：<strong>从这个起点出发，可以往哪些方向走、怎么精进、看哪些论文。</strong></p>
 </blockquote>
-<h3 id="一、沿着-EPP-GAS-的学术脉络纵向深入"><a href="#一、沿着-EPP-GAS-的学术脉络纵向深入" class="headerlink" title="一、沿着 EPP-GAS 的学术脉络纵向深入"></a>一、沿着 EPP-GAS 的学术脉络纵向深入</h3><p>EPP-GAS 的技术栈由三个组件构成，每个组件都可以单独精进：</p>
-<h4 id="方向-1：优化-BM-Tree-→-更高效的区块链存储"><a href="#方向-1：优化-BM-Tree-→-更高效的区块链存储" class="headerlink" title="方向 1：优化 BM-Tree → 更高效的区块链存储"></a>方向 1：优化 BM-Tree → 更高效的区块链存储</h4><p><strong>当前问题：</strong> BM-Tree 本质是把区块链当作分布式数据库，但区块链的存储和检索效率远低于传统数据库。</p>
+<h3 id="一、沿着-EPP-GAS-的学术脉络纵向深入">一、沿着 EPP-GAS 的学术脉络纵向深入</h3>
+<p>EPP-GAS 的技术栈由三个组件构成，每个组件都可以单独精进：</p>
+<h4 id="方向-1：优化-BM-Tree-→-更高效的区块链存储">方向 1：优化 BM-Tree → 更高效的区块链存储</h4>
+<p><strong>当前问题：</strong> BM-Tree 本质是把区块链当作分布式数据库，但区块链的存储和检索效率远低于传统数据库。</p>
 <p><strong>精进思路：</strong></p>
 <ul>
 <li>用 <strong>IPFS + 链上存哈希</strong> 替代链上存完整认证参数（CD-BASA 已走这个方向）</li>
-<li>用 <strong>轻节点&#x2F;SPV 验证</strong> 让车辆不需要同步全量链数据</li>
+<li>用 <strong>轻节点/SPV 验证</strong> 让车辆不需要同步全量链数据</li>
 <li>用 <strong>有向无环图(DAG)</strong> 替代链式结构提高吞吐</li>
 </ul>
 <p><strong>参考论文：</strong></p>
@@ -772,32 +821,36 @@
 <li>CD-BASA (Zhong et al., IEEE TITS 2024) — 同一团队的后续工作</li>
 <li>IOTA Tangle 相关论文（DAG 结构）</li>
 </ul>
-<h4 id="方向-2：优化-Shamir-门限-→-更灵活的分布式认证"><a href="#方向-2：优化-Shamir-门限-→-更灵活的分布式认证" class="headerlink" title="方向 2：优化 Shamir 门限 → 更灵活的分布式认证"></a>方向 2：优化 Shamir 门限 → 更灵活的分布式认证</h4><p><strong>当前问题：</strong> Shamir 方案要求 (t,n) 参数固定，且重构时的通信开销不小。</p>
+<h4 id="方向-2：优化-Shamir-门限-→-更灵活的分布式认证">方向 2：优化 Shamir 门限 → 更灵活的分布式认证</h4>
+<p><strong>当前问题：</strong> Shamir 方案要求 (t,n) 参数固定，且重构时的通信开销不小。</p>
 <p><strong>精进思路：</strong></p>
 <ul>
-<li>用 <strong>门限签名（Threshold BLS&#x2F;ECDSA）</strong> 替代 Shamir+独立签名 → 认证更紧凑</li>
+<li>用 <strong>门限签名（Threshold BLS/ECDSA）</strong> 替代 Shamir+独立签名 → 认证更紧凑</li>
 <li>用 <strong>主动秘密共享（Proactive Secret Sharing）</strong> 定期刷新密钥份额 → 防止长期攻击</li>
 <li><strong>动态调整</strong> 门限值（当 RA 数量变化时）</li>
 </ul>
 <p><strong>参考论文：</strong></p>
 <ul>
-<li>搜索 “threshold BLS signature” + “distributed key generation”</li>
+<li>搜索 &quot;threshold BLS signature&quot; + &quot;distributed key generation&quot;</li>
 <li>BCCG (你目录里有) — 也用了门限秘密共享做群组认证</li>
 </ul>
-<h4 id="方向-3：优化群组假名-→-更强的隐私保护"><a href="#方向-3：优化群组假名-→-更强的隐私保护" class="headerlink" title="方向 3：优化群组假名 → 更强的隐私保护"></a>方向 3：优化群组假名 → 更强的隐私保护</h4><p><strong>当前问题：</strong> 群组假名虽然隐藏了个体身份，但编队作为一个整体仍然可被追踪。</p>
+<h4 id="方向-3：优化群组假名-→-更强的隐私保护">方向 3：优化群组假名 → 更强的隐私保护</h4>
+<p><strong>当前问题：</strong> 群组假名虽然隐藏了个体身份，但编队作为一个整体仍然可被追踪。</p>
 <p><strong>精进思路：</strong></p>
 <ul>
 <li>用 <strong>环签名（Ring Signature）</strong> 让签名者在群组中完全隐藏</li>
-<li>用 <strong>零知识证明</strong> 替代假名，做到”我合法但我什么都不会透露”</li>
+<li>用 <strong>零知识证明</strong> 替代假名，做到&quot;我合法但我什么都不会透露&quot;</li>
 <li>引入 <strong>群签名（Group Signature）</strong> 实现可追责的匿名</li>
 </ul>
 <p><strong>参考论文：</strong></p>
 <ul>
 <li>LETA (你目录里有) — VPD-Tree + ZKP 实现匿名追溯</li>
-<li>搜索 “group signature VANET” 的相关文献</li>
+<li>搜索 &quot;group signature VANET&quot; 的相关文献</li>
 </ul>
 <hr>
-<h3 id="二、从-EPP-GAS-的局限性横向拓展"><a href="#二、从-EPP-GAS-的局限性横向拓展" class="headerlink" title="二、从 EPP-GAS 的局限性横向拓展"></a>二、从 EPP-GAS 的局限性横向拓展</h3><h4 id="方向-4：无区块链的跨域认证（PPCDA-路线）"><a href="#方向-4：无区块链的跨域认证（PPCDA-路线）" class="headerlink" title="方向 4：无区块链的跨域认证（PPCDA 路线）"></a>方向 4：无区块链的跨域认证（PPCDA 路线）</h4><p><strong>为什么要做：</strong> EPP-GAS 的最大开销来自区块链。如果能在保持去中心化的前提下，砍掉区块链，就是重大贡献。</p>
+<h3 id="二、从-EPP-GAS-的局限性横向拓展">二、从 EPP-GAS 的局限性横向拓展</h3>
+<h4 id="方向-4：无区块链的跨域认证（PPCDA-路线）">方向 4：无区块链的跨域认证（PPCDA 路线）</h4>
+<p><strong>为什么要做：</strong> EPP-GAS 的最大开销来自区块链。如果能在保持去中心化的前提下，砍掉区块链，就是重大贡献。</p>
 <p><strong>怎么做：</strong></p>
 <ul>
 <li>用纯密码学构造（如 IBF + 聚合签名）替代区块链存储</li>
@@ -813,7 +866,8 @@
 <li>PPCDA (你目录里有) — 直接对标</li>
 <li>CD-BASA (Zhong et al., IEEE TITS 2024)</li>
 </ul>
-<h4 id="方向-5：面向-6G-边缘计算的超低延迟跨域认证"><a href="#方向-5：面向-6G-边缘计算的超低延迟跨域认证" class="headerlink" title="方向 5：面向 6G&#x2F;边缘计算的超低延迟跨域认证"></a>方向 5：面向 6G&#x2F;边缘计算的超低延迟跨域认证</h4><p><strong>为什么要做：</strong> EPP-GAS 需要 ≥t 个 RA 协作，跨域通信有延迟。6G 场景需要 &lt;1ms 级响应。</p>
+<h4 id="方向-5：面向-6G-边缘计算的超低延迟跨域认证">方向 5：面向 6G/边缘计算的超低延迟跨域认证</h4>
+<p><strong>为什么要做：</strong> EPP-GAS 需要 ≥t 个 RA 协作，跨域通信有延迟。6G 场景需要 &lt;1ms 级响应。</p>
 <p><strong>怎么做：</strong></p>
 <ul>
 <li>引入 <strong>MEC（移动边缘计算）</strong> 在边缘侧预缓存认证参数</li>
@@ -822,26 +876,28 @@
 </ul>
 <p><strong>参考论文：</strong></p>
 <ul>
-<li>搜索 “predictive authentication handover” + “MEC VANET”</li>
+<li>搜索 &quot;predictive authentication handover&quot; + &quot;MEC VANET&quot;</li>
 <li>Wei et al. (PPCDA 的 [1]) — fog-based VANET 认证</li>
 </ul>
-<h4 id="方向-6：多编队协同场景的跨域认证"><a href="#方向-6：多编队协同场景的跨域认证" class="headerlink" title="方向 6：多编队协同场景的跨域认证"></a>方向 6：多编队协同场景的跨域认证</h4><p><strong>为什么要做：</strong> EPP-GAS 只考虑了单编队。现实中多编队协同（合并、拆分、超车、交错）才是常态。</p>
+<h4 id="方向-6：多编队协同场景的跨域认证">方向 6：多编队协同场景的跨域认证</h4>
+<p><strong>为什么要做：</strong> EPP-GAS 只考虑了单编队。现实中多编队协同（合并、拆分、超车、交错）才是常态。</p>
 <p><strong>怎么做：</strong></p>
 <ul>
 <li>设计 <strong>编队间认证协议</strong>（两个编队相遇时如何互认）</li>
-<li>设计 <strong>编队合并&#x2F;拆分时的认证传递</strong>机制</li>
+<li>设计 <strong>编队合并/拆分时的认证传递</strong>机制</li>
 <li>这是<strong>目前几乎空白的领域</strong>！</li>
 </ul>
 <p><strong>参考论文：</strong></p>
 <ul>
-<li>PPCDA 的 future work 提到了 “platoon merging and splitting”</li>
-<li>搜索 “multi-platoon cooperative driving” + “security&#x2F;authentication”</li>
+<li>PPCDA 的 future work 提到了 &quot;platoon merging and splitting&quot;</li>
+<li>搜索 &quot;multi-platoon cooperative driving&quot; + &quot;security/authentication&quot;</li>
 </ul>
-<h4 id="方向-7：后量子安全的跨域编队认证（LETA-路线）"><a href="#方向-7：后量子安全的跨域编队认证（LETA-路线）" class="headerlink" title="方向 7：后量子安全的跨域编队认证（LETA 路线）"></a>方向 7：后量子安全的跨域编队认证（LETA 路线）</h4><p><strong>为什么要做：</strong> 量子计算对 ECC 的威胁是真实存在的。EPP-GAS 的基础密码学在量子下不安全。</p>
+<h4 id="方向-7：后量子安全的跨域编队认证（LETA-路线）">方向 7：后量子安全的跨域编队认证（LETA 路线）</h4>
+<p><strong>为什么要做：</strong> 量子计算对 ECC 的威胁是真实存在的。EPP-GAS 的基础密码学在量子下不安全。</p>
 <p><strong>怎么做：</strong></p>
 <ul>
-<li>用 NIST 后量子标准算法（CRYSTALS-Kyber&#x2F;Dilithium）替换 ECDSA</li>
-<li>设计格密码下的门限签名&#x2F;聚合签名方案</li>
+<li>用 NIST 后量子标准算法（CRYSTALS-Kyber/Dilithium）替换 ECDSA</li>
+<li>设计格密码下的门限签名/聚合签名方案</li>
 </ul>
 <p><strong>这个方向 LETA 已经走了一步，但你可以：</strong></p>
 <ul>
@@ -853,29 +909,32 @@
 <li>LETA (你目录里有) — 同一团队的后量子方向</li>
 <li>NIST PQC 标准化文档（Kyber, Dilithium）</li>
 </ul>
-<h4 id="方向-8：面向真实监管环境的合规跨域认证（BCADS-路线）"><a href="#方向-8：面向真实监管环境的合规跨域认证（BCADS-路线）" class="headerlink" title="方向 8：面向真实监管环境的合规跨域认证（BCADS 路线）"></a>方向 8：面向真实监管环境的合规跨域认证（BCADS 路线）</h4><p><strong>为什么要做：</strong> EPP-GAS 假设 RA 半可信，但没有考虑监管机构拥有强制权力的情况。</p>
+<h4 id="方向-8：面向真实监管环境的合规跨域认证（BCADS-路线）">方向 8：面向真实监管环境的合规跨域认证（BCADS 路线）</h4>
+<p><strong>为什么要做：</strong> EPP-GAS 假设 RA 半可信，但没有考虑监管机构拥有强制权力的情况。</p>
 <p><strong>怎么做：</strong></p>
 <ul>
 <li>在 EPP-GAS 的群组假名中引入 <strong>变形签名</strong> 思路</li>
-<li>设计”监管者可以审计但不能窃取隐私”的机制</li>
-<li>设计满足 GDPR&#x2F;“数据二十条”合规要求的认证方案</li>
+<li>设计&quot;监管者可以审计但不能窃取隐私&quot;的机制</li>
+<li>设计满足 GDPR/&quot;数据二十条&quot;合规要求的认证方案</li>
 </ul>
 <p><strong>参考论文：</strong></p>
 <ul>
 <li>BCADS (你目录里有) — 直接对标</li>
-<li>搜索 “GDPR compliant VANET authentication”</li>
+<li>搜索 &quot;GDPR compliant VANET authentication&quot;</li>
 </ul>
 <hr>
-<h3 id="三、怎样具体精进——从科研方法论角度"><a href="#三、怎样具体精进——从科研方法论角度" class="headerlink" title="三、怎样具体精进——从科研方法论角度"></a>三、怎样具体精进——从科研方法论角度</h3><h4 id="步骤-1：完整复现-EPP-GAS-的实验"><a href="#步骤-1：完整复现-EPP-GAS-的实验" class="headerlink" title="步骤 1：完整复现 EPP-GAS 的实验"></a>步骤 1：完整复现 EPP-GAS 的实验</h4><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">为什么：你自己的方向是建立在 EPP-GAS 之上的。只有亲自跑过一遍实验，</span><br><span class="line">       你才能真正理解方案的计算瓶颈在哪里、优化空间有多大。</span><br><span class="line"></span><br><span class="line">具体做法：</span><br><span class="line">1. 找到或推算出 EPP-GAS 的密码学操作清单</span><br><span class="line">   - Ed25519 签名/验证</span><br><span class="line">   - 椭圆曲线标量乘法</span><br><span class="line">   - 哈希运算</span><br><span class="line">2. 用 JPBC 或 Python 库跑一遍，测量各操作耗时</span><br><span class="line">3. 画出和论文中类似的计算/通信开销对比图</span><br><span class="line">4. 复现他们的对比实验（vs 他们选的 baseline 方案）</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="步骤-2：找出-EPP-GAS-的”最慢操作”"><a href="#步骤-2：找出-EPP-GAS-的”最慢操作”" class="headerlink" title="步骤 2：找出 EPP-GAS 的”最慢操作”"></a>步骤 2：找出 EPP-GAS 的”最慢操作”</h4><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">为什么：性能优化的论文，本质上就是 &quot;把最慢的操作替换掉或减少其调用次数&quot;。</span><br><span class="line"></span><br><span class="line">具体做法：</span><br><span class="line">1. 从实验数据中找出耗时最多的操作（大概率是区块链同步或门限重构）</span><br><span class="line">2. 针对这个瓶颈设计改进方案</span><br><span class="line">3. 你的论文的核心贡献 = &quot;我们发现 EPP-GAS 的瓶颈在 X，</span><br><span class="line">   我们提出了方法 Y 来优化 X，在保持相同安全性的前提下，性能提升了 Z%&quot;</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="步骤-3：在-Plexe-Veins-中仿真-EPP-GAS"><a href="#步骤-3：在-Plexe-Veins-中仿真-EPP-GAS" class="headerlink" title="步骤 3：在 Plexe + Veins 中仿真 EPP-GAS"></a>步骤 3：在 Plexe + Veins 中仿真 EPP-GAS</h4><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">为什么：EPP-GAS 只有密码运算测试 + 区块链原型，没有车载网络仿真。</span><br><span class="line">       如果你在 Plexe 里跑了一个端到端的仿真 → 这是一个独特的贡献。</span><br><span class="line"></span><br><span class="line">具体做法：</span><br><span class="line">1. 搭建 Plexe + Veins + OMNeT++ + SUMO（参考我之前的指南）</span><br><span class="line">2. 在 Plexe 的编队通信协议中加入 EPP-GAS 的认证流程</span><br><span class="line">3. 模拟编队跨域场景：一条 map 上有多个 RSU 覆盖区</span><br><span class="line">4. 测量：端到端认证延迟、丢包率下的认证成功率</span><br><span class="line">5. 这和论文作者在单机上测密码运算是完全不同层次的工作</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="步骤-4：做”组合式创新”"><a href="#步骤-4：做”组合式创新”" class="headerlink" title="步骤 4：做”组合式创新”"></a>步骤 4：做”组合式创新”</h4><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">为什么：最高效的创新方式不是从零发明，而是把已有组件重新组合。</span><br><span class="line"></span><br><span class="line">EPP-GAS 的三组件 + 你读到的新组件：</span><br><span class="line">  EPP-GAS: BM-Tree + Shamir + 群组认证</span><br><span class="line">  PPCDA:   无区块链 + IBF + BGLS聚合签名 + Paillier</span><br><span class="line">  BCADS:   DID + MGSD + 变形签名</span><br><span class="line">  LETA:    格密码 + VPD-Tree + ZKP</span><br><span class="line"></span><br><span class="line">可能的组合式创新：</span><br><span class="line">  - EPP-GAS 的场景 + PPCDA 的 IBF（替代 BM-Tree 降低存储开销）</span><br><span class="line">  - EPP-GAS 的场景 + BCADS 的 DID（让编队车辆自主管理身份）</span><br><span class="line">  - EPP-GAS 的场景 + LETA 的格密码（抗量子跨域认证）</span><br><span class="line">  - EPP-GAS 的 Shamir + PPCDA 的 BGLS（门限聚合签名做跨域认证）</span><br></pre></td></tr></table></figure></div>
-
+<h3 id="三、怎样具体精进——从科研方法论角度">三、怎样具体精进——从科研方法论角度</h3>
+<h4 id="步骤-1：完整复现-EPP-GAS-的实验">步骤 1：完整复现 EPP-GAS 的实验</h4>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">为什么：你自己的方向是建立在 EPP-GAS 之上的。只有亲自跑过一遍实验，</span><br><span class="line">       你才能真正理解方案的计算瓶颈在哪里、优化空间有多大。</span><br><span class="line"></span><br><span class="line">具体做法：</span><br><span class="line">1. 找到或推算出 EPP-GAS 的密码学操作清单</span><br><span class="line">   - Ed25519 签名/验证</span><br><span class="line">   - 椭圆曲线标量乘法</span><br><span class="line">   - 哈希运算</span><br><span class="line">2. 用 JPBC 或 Python 库跑一遍，测量各操作耗时</span><br><span class="line">3. 画出和论文中类似的计算/通信开销对比图</span><br><span class="line">4. 复现他们的对比实验（vs 他们选的 baseline 方案）</span><br></pre></td></tr></table></figure></div>
+<h4 id="步骤-2：找出-EPP-GAS-的-最慢操作">步骤 2：找出 EPP-GAS 的&quot;最慢操作&quot;</h4>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">为什么：性能优化的论文，本质上就是 &quot;把最慢的操作替换掉或减少其调用次数&quot;。</span><br><span class="line"></span><br><span class="line">具体做法：</span><br><span class="line">1. 从实验数据中找出耗时最多的操作（大概率是区块链同步或门限重构）</span><br><span class="line">2. 针对这个瓶颈设计改进方案</span><br><span class="line">3. 你的论文的核心贡献 = &quot;我们发现 EPP-GAS 的瓶颈在 X，</span><br><span class="line">   我们提出了方法 Y 来优化 X，在保持相同安全性的前提下，性能提升了 Z%&quot;</span><br></pre></td></tr></table></figure></div>
+<h4 id="步骤-3：在-Plexe-Veins-中仿真-EPP-GAS">步骤 3：在 Plexe + Veins 中仿真 EPP-GAS</h4>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">为什么：EPP-GAS 只有密码运算测试 + 区块链原型，没有车载网络仿真。</span><br><span class="line">       如果你在 Plexe 里跑了一个端到端的仿真 → 这是一个独特的贡献。</span><br><span class="line"></span><br><span class="line">具体做法：</span><br><span class="line">1. 搭建 Plexe + Veins + OMNeT++ + SUMO（参考我之前的指南）</span><br><span class="line">2. 在 Plexe 的编队通信协议中加入 EPP-GAS 的认证流程</span><br><span class="line">3. 模拟编队跨域场景：一条 map 上有多个 RSU 覆盖区</span><br><span class="line">4. 测量：端到端认证延迟、丢包率下的认证成功率</span><br><span class="line">5. 这和论文作者在单机上测密码运算是完全不同层次的工作</span><br></pre></td></tr></table></figure></div>
+<h4 id="步骤-4：做-组合式创新">步骤 4：做&quot;组合式创新&quot;</h4>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">为什么：最高效的创新方式不是从零发明，而是把已有组件重新组合。</span><br><span class="line"></span><br><span class="line">EPP-GAS 的三组件 + 你读到的新组件：</span><br><span class="line">  EPP-GAS: BM-Tree + Shamir + 群组认证</span><br><span class="line">  PPCDA:   无区块链 + IBF + BGLS聚合签名 + Paillier</span><br><span class="line">  BCADS:   DID + MGSD + 变形签名</span><br><span class="line">  LETA:    格密码 + VPD-Tree + ZKP</span><br><span class="line"></span><br><span class="line">可能的组合式创新：</span><br><span class="line">  - EPP-GAS 的场景 + PPCDA 的 IBF（替代 BM-Tree 降低存储开销）</span><br><span class="line">  - EPP-GAS 的场景 + BCADS 的 DID（让编队车辆自主管理身份）</span><br><span class="line">  - EPP-GAS 的场景 + LETA 的格密码（抗量子跨域认证）</span><br><span class="line">  - EPP-GAS 的 Shamir + PPCDA 的 BGLS（门限聚合签名做跨域认证）</span><br></pre></td></tr></table></figure></div>
 <hr>
-<h3 id="四、你应该补充阅读的论文清单"><a href="#四、你应该补充阅读的论文清单" class="headerlink" title="四、你应该补充阅读的论文清单"></a>四、你应该补充阅读的论文清单</h3><p>按优先级排列：</p>
+<h3 id="四、你应该补充阅读的论文清单">四、你应该补充阅读的论文清单</h3>
+<p>按优先级排列：</p>
 <table>
 <thead>
 <tr>
@@ -885,7 +944,8 @@
 <th>为什么要读</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>⭐⭐⭐</td>
 <td><strong>EPP-GAS 原文</strong></td>
 <td>IEEE Xplore 下载</td>
@@ -936,24 +996,26 @@
 <tr>
 <td>⭐</td>
 <td><strong>Shamir 1979 原始论文</strong></td>
-<td>“How to share a secret”, CACM</td>
+<td>&quot;How to share a secret&quot;, CACM</td>
 <td>理解门限方案</td>
 </tr>
 <tr>
 <td>⭐</td>
 <td><strong>Boneh 2003 (BGLS)</strong></td>
-<td>“Aggregate and verifiably encrypted signatures”</td>
+<td>&quot;Aggregate and verifiably encrypted signatures&quot;</td>
 <td>理解聚合签名</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
-<h3 id="五、可以用这些角度向导师汇报下一步工作"><a href="#五、可以用这些角度向导师汇报下一步工作" class="headerlink" title="五、可以用这些角度向导师汇报下一步工作"></a>五、可以用这些角度向导师汇报下一步工作</h3><blockquote>
-<p>“导师，我深入读了 EPP-GAS 以及后续的相关工作。我发现目前有几个可以推进的方向：”</p>
+<h3 id="五、可以用这些角度向导师汇报下一步工作">五、可以用这些角度向导师汇报下一步工作</h3>
+<blockquote>
+<p>&quot;导师，我深入读了 EPP-GAS 以及后续的相关工作。我发现目前有几个可以推进的方向：&quot;</p>
 <p><strong>（方案A，低风险）</strong> 在 Plexe 仿真器中实现 EPP-GAS 的端到端仿真，分析在真实车载网络条件下的性能瓶颈，这是 EPP-GAS 论文没有做的。</p>
 <p><strong>（方案B，中等风险）</strong> 借鉴 PPCDA 的 IBF 替换 EPP-GAS 的 BM-Tree，目的是降低区块链存储开销，但保留门限机制的去中心化优势。</p>
-<p><strong>（方案C，较高风险但创新性强）</strong> 针对 EPP-GAS 没有覆盖的「多编队协同」场景，设计编队合并&#x2F;拆分时的跨域认证机制。这是目前公开文献中的空白。</p>
+<p><strong>（方案C，较高风险但创新性强）</strong> 针对 EPP-GAS 没有覆盖的「多编队协同」场景，设计编队合并/拆分时的跨域认证机制。这是目前公开文献中的空白。</p>
 <p><strong>（方案D，前沿方向）</strong> 将 LETA 的格密码与 EPP-GAS 的跨域框架结合，设计后量子安全的跨域编队认证方案。</p>
-<p>“另外我还注意到，夏莹杰教授团队的 LETA 论文（2026 JSAC）已经开始走格密码路线，CD-BASA 走了累加器路线。我们可以在不同的技术维度上做出差异化贡献。”</p>
+<p>&quot;另外我还注意到，夏莹杰教授团队的 LETA 论文（2026 JSAC）已经开始走格密码路线，CD-BASA 走了累加器路线。我们可以在不同的技术维度上做出差异化贡献。&quot;</p>
 </blockquote>
 <hr>
 <blockquote>
@@ -971,7 +1033,8 @@
 <th>信任假设及阅读要点</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>TA：可信机构</strong></td>
 <td>管理本域实体注册；生成域参数；为车辆生成身份材料；签署编队认证参数；保存真实身份与假名的映射。</td>
 <td>每个域的 TA 始终安全可靠。论文不把 TA 被攻陷作为其攻击场景。</td>
@@ -1001,7 +1064,8 @@
 <td>保存、共享编队认证参数；管理 ECS 的访问权限；维护跨域参数一致性。</td>
 <td>账本被假设为不可篡改且始终可用；攻击者可以查询账本，但不能发起交易或攻破区块链。协议层面的读写操作由授权 ECS 执行。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><strong>攻击者能力记录：</strong></p>
 <blockquote>
 <p>论文采用 Dolev–Yao 威胁模型。攻击者可以读取、修改、伪造、重放或删除公开信道中的消息，但不能取得 ECS 的长期密钥、攻陷 TA 或破坏区块链。</p>
@@ -1023,7 +1087,8 @@
 <th>用途及可见范围</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>域私钥</td>
 <td>(trk_\xi)</td>
 <td>注册域 TA</td>
@@ -1061,7 +1126,7 @@
 </tr>
 <tr>
 <td>假名对应的秘密份额</td>
-<td>(y_i&#x3D;f(pid_i))</td>
+<td>(y_i=f(pid_i))</td>
 <td>TA 生成，分发给对应车辆</td>
 <td>与成员假名共同构成秘密键值对；车辆发送的是派生量 (Y_i)。</td>
 </tr>
@@ -1073,7 +1138,7 @@
 </tr>
 <tr>
 <td>群组假名</td>
-<td>(Gid&#x3D;sP_\xi)</td>
+<td>(Gid=sP_\xi)</td>
 <td>TA 生成，ECS 可从请求恢复</td>
 <td>标识编队并检索链上认证参数；不应理解为只有 TA 才知道。</td>
 </tr>
@@ -1089,11 +1154,12 @@
 <td>TA 生成</td>
 <td>让其他域验证参数来源，并限制参数有效期。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><strong>构造过程的文字版：</strong></p>
 <ol>
 <li>TA 生成车辆真实身份标识和公私钥。</li>
-<li>TA 选择群组秘密 (s)，构造群组假名 (Gid&#x3D;sP_\xi)。</li>
+<li>TA 选择群组秘密 (s)，构造群组假名 (Gid=sP_\xi)。</li>
 <li>TA 通过 Shamir 相关的多项式结构，为成员分配 ((pid_i,y_i))。</li>
 <li>TA 通过安全离线方式向车辆分发身份材料。</li>
 <li>TA 保存身份映射，签署编队公钥参数并发送给 ECS。</li>
@@ -1107,7 +1173,6 @@
 <p><strong>第 3 天产出：完整认证时序图</strong></p>
 <p>对应原文 <strong>III-C、V-A—V-C、Fig. 4</strong>。图中省略公式细节，保留参与者与验证步骤。</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">​```mermaid</span><br><span class="line">sequenceDiagram</span><br><span class="line">    participant TA as 注册域 TA</span><br><span class="line">    participant V as 成员车辆 Vi</span><br><span class="line">    participant PL as 领航车 PL</span><br><span class="line">    participant RSU as 路侧单元 RSU</span><br><span class="line">    participant ECS as ECS</span><br><span class="line">    participant BC as 联盟区块链</span><br><span class="line"></span><br><span class="line">    Note over TA,BC: 认证前的初始化与参数共享</span><br><span class="line">    TA-&gt;&gt;V: 安全分发身份、私钥及假名份额</span><br><span class="line">    TA-&gt;&gt;ECS: 编队公钥、群组假名、签名、有效时间</span><br><span class="line">    ECS-&gt;&gt;BC: 构造 BM-Tree 并完成共识上链</span><br><span class="line"></span><br><span class="line">    Note over V,BC: 编队进入另一个信任域</span><br><span class="line">    V-&gt;&gt;V: 生成认证请求 Ri</span><br><span class="line">    V-&gt;&gt;PL: pid_i、Xi、Fi、Yi、Tsi</span><br><span class="line">    PL-&gt;&gt;PL: 检查成员请求新鲜性，计算汇总哈希 HM</span><br><span class="line">    PL-&gt;&gt;RSU: HM、Ts、全部成员请求</span><br><span class="line">    RSU-&gt;&gt;ECS: 转发群组认证请求</span><br><span class="line">    ECS-&gt;&gt;ECS: 检查汇总哈希及请求新鲜性</span><br><span class="line">    ECS-&gt;&gt;ECS: 根据成员请求恢复群组假名</span><br><span class="line">    ECS-&gt;&gt;BC: 根据群组假名检索 BM-Tree 参数</span><br><span class="line">    BC--&gt;&gt;ECS: 链上编队认证参数</span><br><span class="line">    ECS-&gt;&gt;ECS: 执行批量身份验证</span><br><span class="line"></span><br><span class="line">    alt 验证成功</span><br><span class="line">        ECS-&gt;&gt;ECS: 允许编队访问跨域服务</span><br><span class="line">    else 群组合法但批量验证失败</span><br><span class="line">        ECS-&gt;&gt;ECS: 运行 BM-Tree 重认证，识别剩余合法成员</span><br><span class="line">    end</span><br><span class="line">​```</span><br></pre></td></tr></table></figure></div>
-
 <p><strong>关键消息字段解释：</strong></p>
 <table>
 <thead>
@@ -1116,7 +1181,8 @@
 <th>应当怎样理解</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>(pid_i)</td>
 <td>成员假名。</td>
 </tr>
@@ -1129,7 +1195,7 @@
 <td>由私钥、份额和随机量等生成的认证证明分量。</td>
 </tr>
 <tr>
-<td>(Y_i&#x3D;y_iP_\xi)</td>
+<td>(Y_i=y_iP_\xi)</td>
 <td>由秘密份额生成的曲线点，参与群组假名恢复。</td>
 </tr>
 <tr>
@@ -1144,7 +1210,8 @@
 <td>(Ts)</td>
 <td>群组请求生成时间戳。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><strong>两个重要理解：</strong></p>
 <ul>
 <li>ECS 查询到群组假名，只说明找到了对应编队参数；还必须通过批量验证才能认证成员。</li>
@@ -1161,7 +1228,8 @@
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>退出后的份额更新</strong></td>
 <td>论文 V-B 描述退出车辆向剩余车辆发送更新材料，剩余车辆更新自己的份额，以便继续恢复群组假名。</td>
 </tr>
@@ -1169,18 +1237,18 @@
 <td><strong>认证失败后的重认证</strong></td>
 <td>论文 V-D 利用 BM-Tree 处理成员请求与原认证参数不匹配，定位缺失位置，认证剩余成员。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>正常退出时的协作更新，与车辆故障、突然失联不是完全相同的条件。不能直接认为退出车辆在所有情况下都会发送更新材料。</p>
 <p><strong>简化示例：</strong></p>
 <p>原编队：</p>
-<p>[VP&#x3D;{V_1,V_2,V_3,V_4}]</p>
+<p>[VP={V_1,V_2,V_3,V_4}]</p>
 <p>第 3 辆退出后，ECS 收到：</p>
-<p>[RL&#x3D;{R_1,R_2,R_4}]</p>
+<p>[RL={R_1,R_2,R_4}]</p>
 <p>原文给出的处理思路是识别缺失位置，并将列表对齐为：</p>
-<p>[RL’&#x3D;{R_1,R_2,NULL,R_4}]</p>
+<p>[RL'={R_1,R_2,NULL,R_4}]</p>
 <p>这里的 (NULL) 是缺失位置占位符，<strong>不是通过认证的成员</strong>。</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">​```mermaid</span><br><span class="line">flowchart TD</span><br><span class="line">    A[&quot;原编队 V1、V2、V3、V4&quot;] --&gt; B[&quot;V3 退出，收到 R1、R2、R4&quot;]</span><br><span class="line">    B --&gt; C[&quot;请求与原编队参数不匹配，触发重认证&quot;]</span><br><span class="line">    C --&gt; D[&quot;借助 BM-Tree 子区间参数缩小检查范围&quot;]</span><br><span class="line">    D --&gt; E[&quot;确定第 3 个位置缺失&quot;]</span><br><span class="line">    E --&gt; F[&quot;列表对齐为 R1、R2、NULL、R4&quot;]</span><br><span class="line">    F --&gt; G[&quot;验证剩余成员，得到合法成员集合&quot;]</span><br><span class="line">​```</span><br></pre></td></tr></table></figure></div>
-
 <p><strong>BM-Tree 为什么有帮助？</strong></p>
 <p>设四个车辆公钥为 (P_1,P_2,P_3,P_4)。按原文的二进制区间编码，可存储：</p>
 <table>
@@ -1190,7 +1258,8 @@
 <th>聚合参数</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>(seq_1)</td>
 <td>(P_1)</td>
 </tr>
@@ -1206,7 +1275,8 @@
 <td>(seq_4)</td>
 <td>(P_1+P_2+P_3+P_4)</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>例如区间 ([3,4]) 的公钥聚合量可由 (seq_4-seq_2) 得到。预先编码的区间参数帮助验证方分区检查，减少重复计算。</p>
 <p>这个表说明<strong>数据结构的作用</strong>；实际验证还涉及请求证明和双线性配对，不能仅靠公钥求和判断车辆是否合法。</p>
 <p><strong>我的理解：</strong></p>
@@ -1224,7 +1294,8 @@
 <th>阅读时应记录的边界</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>正确性</strong></td>
 <td>推导份额更新后仍能恢复群组秘密，以及合法成员满足批量验证等式。</td>
 <td>正确性说明合法执行能成功，不等于证明所有攻击都不可能成功。</td>
@@ -1254,10 +1325,11 @@
 <td>随机生成假名，并在参数有效期后更新认证参数。</td>
 <td>原文有该性质的文字分析；不能因此直接认定已证明多域串通或结合时间、编队结构的轨迹不可关联性。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><strong>安全证据类型记录：</strong></p>
 <blockquote>
-<p>论文包含正确性公式推导，以及五项安全性质的分析和对照。第 VI 节未给出 ProVerif&#x2F;Tamarin 验证，也未展示按攻击游戏组织的完整安全归约。因此笔记应写“正确性证明与安全分析”，不要笼统写成“所有安全性质均已形式化证明”。</p>
+<p>论文包含正确性公式推导，以及五项安全性质的分析和对照。第 VI 节未给出 ProVerif/Tamarin 验证，也未展示按攻击游戏组织的完整安全归约。因此笔记应写“正确性证明与安全分析”，不要笼统写成“所有安全性质均已形式化证明”。</p>
 </blockquote>
 <hr>
 <p><strong>第 6 天产出：实验设置与指标表</strong></p>
@@ -1270,7 +1342,8 @@
 <th>原文设置</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>操作系统</td>
 <td>Ubuntu 18.04.6 LTS</td>
 </tr>
@@ -1310,7 +1383,8 @@
 <td>区块链实验</td>
 <td>Hyperledger Fabric，使用 Go 编写相关链码</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>注意：这里的 (T_A) 是<strong>点加法时间</strong>，不是可信机构 TA。</p>
 <table>
 <thead>
@@ -1322,7 +1396,8 @@
 <th>能说明什么</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>群组认证</strong></td>
 <td>编队规模：8、16、24、32、40、48</td>
 <td>请求侧计算开销、验证侧计算开销、群组认证时延</td>
@@ -1350,10 +1425,11 @@
 <td>BLA、MDPA、BBAS</td>
 <td>不同方案的认证字段传输开销。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><strong>值得保留的结果与测量口径：</strong></p>
 <ul>
-<li>论文报告，群组认证总计算开销相对三个比较方案平均降低 **31%、22%、57%**。</li>
+<li>论文报告，群组认证总计算开销相对三个比较方案平均降低 <strong>31%、22%、57%</strong>。</li>
 <li>ECS 数量为 20、编队规模为 48 时，论文报告平均共识时延约 <strong>878 ms</strong>。作者将其放在群组假名构造阶段讨论，不能直接加到每次在线认证上。</li>
 <li>认证计算开销分析使用基础运算耗时和运算次数；请求生成考虑成员并行执行。因此<strong>总计算工作量与完成一次认证的时延不是同一个指标</strong>。</li>
 <li>通信开销主要根据消息字段长度计算，不能据此认定已经测量真实无线链路的传输时延。</li>
@@ -1366,7 +1442,8 @@
 <th>可以写的结论</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>成员加入、编队拆分或合并</td>
 <td>第 VII 节未见对应实验。</td>
 </tr>
@@ -1390,13 +1467,17 @@
 <td>完整系统原型</td>
 <td>作者将原型系统实现列为未来工作；这不意味着论文完全没有实现，已有密码运算和 Fabric 实验。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
 <p><strong>第 7 天产出：可直接整理成两页的综合阅读笔记</strong></p>
 <p><strong>第一页：研究问题、模型与方法</strong></p>
-<p><strong>论文信息。</strong><br>Yingjie Xia 等，<em>EPP-GAS: An Efficient and Privacy-Preserving Cross Trust-Domain Group Authentication Scheme for Vehicle Platoon Based on Blockchain</em>，IEEE Transactions on Intelligent Transportation Systems，2024。DOI：<a class="link"   target="_blank" rel="noopener" href="https://doi.org/10.1109/TITS.2024.3446618" >10.1109&#x2F;TITS.2024.3446618<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>。</p>
-<p><strong>研究问题。</strong><br>车辆编队跨越不同信任域时，新域需要验证成员合法性，同时保护车辆真实身份。成员离开会使当前请求与原编队认证参数不一致，导致批量验证失败。论文希望同时降低正常群组认证和失败后重认证的成本。</p>
-<p><strong>系统与信任假设。</strong><br>系统由 TA、ECS、RSU、领航车、跟随车和联盟链组成。TA 安全可靠，ECS 诚实但好奇，RSU 是不可靠中继。攻击者可控制公开信道上的消息，但不能取得 ECS 长期密钥、攻陷 TA 或破坏区块链。</p>
+<p><strong>论文信息。</strong><br>
+Yingjie Xia 等，<em>EPP-GAS: An Efficient and Privacy-Preserving Cross Trust-Domain Group Authentication Scheme for Vehicle Platoon Based on Blockchain</em>，IEEE Transactions on Intelligent Transportation Systems，2024。DOI：<a class="link"   target="_blank" rel="noopener" href="https://doi.org/10.1109/TITS.2024.3446618" >10.1109/TITS.2024.3446618<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>。</p>
+<p><strong>研究问题。</strong><br>
+车辆编队跨越不同信任域时，新域需要验证成员合法性，同时保护车辆真实身份。成员离开会使当前请求与原编队认证参数不一致，导致批量验证失败。论文希望同时降低正常群组认证和失败后重认证的成本。</p>
+<p><strong>系统与信任假设。</strong><br>
+系统由 TA、ECS、RSU、领航车、跟随车和联盟链组成。TA 安全可靠，ECS 诚实但好奇，RSU 是不可靠中继。攻击者可控制公开信道上的消息，但不能取得 ECS 长期密钥、攻陷 TA 或破坏区块链。</p>
 <p><strong>核心方法。</strong></p>
 <ol>
 <li><strong>Shamir 相关的群组假名构造：</strong> 为成员分配假名与份额，使 ECS 能恢复群组标识，并由 TA 保留追踪映射。</li>
@@ -1404,12 +1485,17 @@
 <li><strong>批量认证：</strong> 成员生成请求，领航车汇总，新域 ECS 利用链上参数验证。</li>
 <li><strong>失败后的重认证：</strong> 根据 BM-Tree 缩小检查范围，识别缺失位置，验证剩余合法成员。</li>
 </ol>
-<p><strong>我的理解。</strong><br>联盟链用于跨域共享可信认证参数；群组假名负责将请求关联到对应编队；批量验证负责确认成员合法性；BM-Tree 负责降低成员变化后重新验证的成本。这四部分承担不同任务。</p>
+<p><strong>我的理解。</strong><br>
+联盟链用于跨域共享可信认证参数；群组假名负责将请求关联到对应编队；批量验证负责确认成员合法性；BM-Tree 负责降低成员变化后重新验证的成本。这四部分承担不同任务。</p>
 <p><strong>第二页：安全、实验、边界与研究启发</strong></p>
-<p><strong>安全分析。</strong><br>论文给出份额更新与批量验证的正确性推导，并分析抗伪造、抗冒充、抗重放、条件匿名和身份不可关联性。上述结论依赖明确的可信实体假设。安全分析不应自动扩展到 TA 被攻陷、领航车恶意或多个管理域串通的场景。</p>
-<p><strong>性能评估。</strong><br>实验使用 PBC 测量基础密码运算时延，并分析不同编队规模的认证计算开销。成员退出实验比较 EPP-GAS、IV 和 BSV 的重认证时延；Fabric 实验评估共识延迟；通信开销按消息字段长度比较。结果支持论文在其设置下的效率优势，但不等于真实道路环境中的完整切换性能。</p>
-<p><strong>适用边界。</strong><br>实验明确覆盖成员退出后的重认证，不能说论文没有处理动态成员。加入、拆分合并、领航车切换、无线丢包与完整切换认证未见对应实验。原文退出份额更新需要退出车辆提供材料；突然失联时如何保证更新，应进一步检查。作者将完整原型和切换认证列为未来工作。</p>
-<p><strong>对我的研究的启发。</strong><br>可以进一步考察“跨域切换与成员变更同时发生”的认证流程，包括新域如何获取当前成员状态、旧请求如何失效，以及通信延迟下的状态一致性。但这些只是候选问题，必须与 PPCDA 等后续工作比较后才能确定创新点。</p>
+<p><strong>安全分析。</strong><br>
+论文给出份额更新与批量验证的正确性推导，并分析抗伪造、抗冒充、抗重放、条件匿名和身份不可关联性。上述结论依赖明确的可信实体假设。安全分析不应自动扩展到 TA 被攻陷、领航车恶意或多个管理域串通的场景。</p>
+<p><strong>性能评估。</strong><br>
+实验使用 PBC 测量基础密码运算时延，并分析不同编队规模的认证计算开销。成员退出实验比较 EPP-GAS、IV 和 BSV 的重认证时延；Fabric 实验评估共识延迟；通信开销按消息字段长度比较。结果支持论文在其设置下的效率优势，但不等于真实道路环境中的完整切换性能。</p>
+<p><strong>适用边界。</strong><br>
+实验明确覆盖成员退出后的重认证，不能说论文没有处理动态成员。加入、拆分合并、领航车切换、无线丢包与完整切换认证未见对应实验。原文退出份额更新需要退出车辆提供材料；突然失联时如何保证更新，应进一步检查。作者将完整原型和切换认证列为未来工作。</p>
+<p><strong>对我的研究的启发。</strong><br>
+可以进一步考察“跨域切换与成员变更同时发生”的认证流程，包括新域如何获取当前成员状态、旧请求如何失效，以及通信延迟下的状态一致性。但这些只是候选问题，必须与 PPCDA 等后续工作比较后才能确定创新点。</p>
 
 		</div>
 
@@ -1454,12 +1540,12 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/EPP-GAS_ROR%E5%BD%A2%E5%BC%8F%E5%8C%96%E8%AF%81%E6%98%8E%E7%A4%BA%E4%BE%8B/">
+				<a class="prev" rel="prev" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/CRT_%E7%BE%A4%E7%BB%84%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">EPP-GAS 的 ROR（Real-or-Random）形式化安全证明示例</span>
+						<span class="post-nav-title-item truncate max-w-48">CRT 群组密钥协商论文完整阅读笔记</span>
 						<span class="post-nav-item">上一篇</span>
 					</span>
 				</a>
@@ -1467,9 +1553,9 @@
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/MF-IIoT_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+				<a class="next" rel="next" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/PPCDA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">MF-IIoT 论文完整阅读笔记</span>
+						<span class="post-nav-title-item truncate max-w-48">PPCDA论文完整阅读笔记</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -1553,7 +1639,7 @@
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
 		<div class="page-title">EPP-GAS群组密钥协商论文完整阅读笔记</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#EPP-GAS-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0"><span class="nav-text">EPP-GAS 论文阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-%E5%85%88%E8%AF%B4%E6%98%8E%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88-EPP-GAS-%E6%98%AF%E4%BD%A0%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E8%AE%BA%E6%96%87"><span class="nav-text">📌 先说明：为什么 EPP-GAS 是你最重要的论文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%81%8D%EF%BC%9A5-%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E7%AD%9B%E9%80%89"><span class="nav-text">第一遍：5 分钟快速筛选</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%E6%8B%86%E8%A7%A3"><span class="nav-text">标题拆解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-%E4%B8%89%E5%8F%A5%E8%AF%9D%E6%8F%90%E7%82%BC"><span class="nav-text">Abstract 三句话提炼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%A4%A7%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E7%BB%84%E4%BB%B6"><span class="nav-text">三大核心技术组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Table-I-%E2%80%94-%E6%96%B9%E6%A1%88%E5%AF%B9%E6%AF%94%EF%BC%88%E6%8E%A8%E6%96%AD%EF%BC%89"><span class="nav-text">Table I — 方案对比（推断）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%81%8D%EF%BC%9A%E7%BB%93%E6%9E%84%E5%8C%96%E6%8F%90%E5%8F%96"><span class="nav-text">第二遍：结构化提取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%A0%94%E7%A9%B6%E8%83%8C%E6%99%AF%E4%B8%8E%E5%8A%A8%E6%9C%BA%EF%BC%88%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%BF%99%E4%B8%AA%E6%96%B9%E6%A1%88%EF%BC%89"><span class="nav-text">1. 研究背景与动机（为什么需要这个方案）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B"><span class="nav-text">2. 系统模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-BM-Tree-%E7%9A%84%E6%A0%B8%E5%BF%83%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3"><span class="nav-text">3. BM-Tree 的核心设计思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Shamir-%E9%97%A8%E9%99%90%E6%96%B9%E6%A1%88%E5%9C%A8%E7%BE%A4%E7%BB%84%E5%81%87%E5%90%8D%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-text">4. Shamir 门限方案在群组假名中的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%A0%B8%E5%BF%83%E6%96%B9%E6%A1%88-%E2%80%94-%E5%8D%8F%E8%AE%AE%E9%98%B6%E6%AE%B5%EF%BC%88%E6%8E%A8%E6%96%AD%E6%80%A7%E9%87%8D%E6%9E%84%EF%BC%89"><span class="nav-text">5. 核心方案 — 协议阶段（推断性重构）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%AE%89%E5%85%A8%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88%E8%A6%81%E7%82%B9%EF%BC%89"><span class="nav-text">6. 安全性分析（要点）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%AE%9E%E9%AA%8C%E4%B8%8E%E6%80%A7%E8%83%BD"><span class="nav-text">7. 实验与性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E4%B8%8E%E5%90%8C%E4%B8%80%E5%9B%A2%E9%98%9F%E5%90%8E%E7%BB%AD%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">8. 与同一团队后续工作的关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%86%9A-EPP-GAS-vs-PPCDA-vs-BCADS-%E4%B8%89%E6%96%B9%E5%AF%B9%E6%AF%94"><span class="nav-text">🆚 EPP-GAS vs PPCDA vs BCADS 三方对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%80%E9%99%90%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-text">局限性分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8E%AF-%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91%E7%B2%BE%E8%BF%9B%E6%8C%87%E5%8D%97"><span class="nav-text">🎯 研究方向精进指南</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%B2%BF%E7%9D%80-EPP-GAS-%E7%9A%84%E5%AD%A6%E6%9C%AF%E8%84%89%E7%BB%9C%E7%BA%B5%E5%90%91%E6%B7%B1%E5%85%A5"><span class="nav-text">一、沿着 EPP-GAS 的学术脉络纵向深入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%8E-EPP-GAS-%E7%9A%84%E5%B1%80%E9%99%90%E6%80%A7%E6%A8%AA%E5%90%91%E6%8B%93%E5%B1%95"><span class="nav-text">二、从 EPP-GAS 的局限性横向拓展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%80%8E%E6%A0%B7%E5%85%B7%E4%BD%93%E7%B2%BE%E8%BF%9B%E2%80%94%E2%80%94%E4%BB%8E%E7%A7%91%E7%A0%94%E6%96%B9%E6%B3%95%E8%AE%BA%E8%A7%92%E5%BA%A6"><span class="nav-text">三、怎样具体精进——从科研方法论角度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%BD%A0%E5%BA%94%E8%AF%A5%E8%A1%A5%E5%85%85%E9%98%85%E8%AF%BB%E7%9A%84%E8%AE%BA%E6%96%87%E6%B8%85%E5%8D%95"><span class="nav-text">四、你应该补充阅读的论文清单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%8F%AF%E4%BB%A5%E7%94%A8%E8%BF%99%E4%BA%9B%E8%A7%92%E5%BA%A6%E5%90%91%E5%AF%BC%E5%B8%88%E6%B1%87%E6%8A%A5%E4%B8%8B%E4%B8%80%E6%AD%A5%E5%B7%A5%E4%BD%9C"><span class="nav-text">五、可以用这些角度向导师汇报下一步工作</span></a></li></ol></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">EPP-GAS 论文阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-%E5%85%88%E8%AF%B4%E6%98%8E%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88-EPP-GAS-%E6%98%AF%E4%BD%A0%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E8%AE%BA%E6%96%87"><span class="nav-text">📌 先说明：为什么 EPP-GAS 是你最重要的论文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%81%8D%EF%BC%9A5-%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E7%AD%9B%E9%80%89"><span class="nav-text">第一遍：5 分钟快速筛选</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%E6%8B%86%E8%A7%A3"><span class="nav-text">标题拆解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-%E4%B8%89%E5%8F%A5%E8%AF%9D%E6%8F%90%E7%82%BC"><span class="nav-text">Abstract 三句话提炼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%A4%A7%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E7%BB%84%E4%BB%B6"><span class="nav-text">三大核心技术组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Table-I-%E2%80%94-%E6%96%B9%E6%A1%88%E5%AF%B9%E6%AF%94%EF%BC%88%E6%8E%A8%E6%96%AD%EF%BC%89"><span class="nav-text">Table I — 方案对比（推断）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%81%8D%EF%BC%9A%E7%BB%93%E6%9E%84%E5%8C%96%E6%8F%90%E5%8F%96"><span class="nav-text">第二遍：结构化提取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%A0%94%E7%A9%B6%E8%83%8C%E6%99%AF%E4%B8%8E%E5%8A%A8%E6%9C%BA%EF%BC%88%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%BF%99%E4%B8%AA%E6%96%B9%E6%A1%88%EF%BC%89"><span class="nav-text">1. 研究背景与动机（为什么需要这个方案）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B"><span class="nav-text">2. 系统模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-BM-Tree-%E7%9A%84%E6%A0%B8%E5%BF%83%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3"><span class="nav-text">3. BM-Tree 的核心设计思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Shamir-%E9%97%A8%E9%99%90%E6%96%B9%E6%A1%88%E5%9C%A8%E7%BE%A4%E7%BB%84%E5%81%87%E5%90%8D%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-text">4. Shamir 门限方案在群组假名中的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%A0%B8%E5%BF%83%E6%96%B9%E6%A1%88-%E2%80%94-%E5%8D%8F%E8%AE%AE%E9%98%B6%E6%AE%B5%EF%BC%88%E6%8E%A8%E6%96%AD%E6%80%A7%E9%87%8D%E6%9E%84%EF%BC%89"><span class="nav-text">5. 核心方案 — 协议阶段（推断性重构）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%AE%89%E5%85%A8%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88%E8%A6%81%E7%82%B9%EF%BC%89"><span class="nav-text">6. 安全性分析（要点）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%AE%9E%E9%AA%8C%E4%B8%8E%E6%80%A7%E8%83%BD"><span class="nav-text">7. 实验与性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E4%B8%8E%E5%90%8C%E4%B8%80%E5%9B%A2%E9%98%9F%E5%90%8E%E7%BB%AD%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">8. 与同一团队后续工作的关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%86%9A-EPP-GAS-vs-PPCDA-vs-BCADS-%E4%B8%89%E6%96%B9%E5%AF%B9%E6%AF%94"><span class="nav-text">🆚 EPP-GAS vs PPCDA vs BCADS 三方对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%80%E9%99%90%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-text">局限性分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8E%AF-%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91%E7%B2%BE%E8%BF%9B%E6%8C%87%E5%8D%97"><span class="nav-text">🎯 研究方向精进指南</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%B2%BF%E7%9D%80-EPP-GAS-%E7%9A%84%E5%AD%A6%E6%9C%AF%E8%84%89%E7%BB%9C%E7%BA%B5%E5%90%91%E6%B7%B1%E5%85%A5"><span class="nav-text">一、沿着 EPP-GAS 的学术脉络纵向深入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%8E-EPP-GAS-%E7%9A%84%E5%B1%80%E9%99%90%E6%80%A7%E6%A8%AA%E5%90%91%E6%8B%93%E5%B1%95"><span class="nav-text">二、从 EPP-GAS 的局限性横向拓展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%80%8E%E6%A0%B7%E5%85%B7%E4%BD%93%E7%B2%BE%E8%BF%9B%E2%80%94%E2%80%94%E4%BB%8E%E7%A7%91%E7%A0%94%E6%96%B9%E6%B3%95%E8%AE%BA%E8%A7%92%E5%BA%A6"><span class="nav-text">三、怎样具体精进——从科研方法论角度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%BD%A0%E5%BA%94%E8%AF%A5%E8%A1%A5%E5%85%85%E9%98%85%E8%AF%BB%E7%9A%84%E8%AE%BA%E6%96%87%E6%B8%85%E5%8D%95"><span class="nav-text">四、你应该补充阅读的论文清单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%8F%AF%E4%BB%A5%E7%94%A8%E8%BF%99%E4%BA%9B%E8%A7%92%E5%BA%A6%E5%90%91%E5%AF%BC%E5%B8%88%E6%B1%87%E6%8A%A5%E4%B8%8B%E4%B8%80%E6%AD%A5%E5%B7%A5%E4%BD%9C"><span class="nav-text">五、可以用这些角度向导师汇报下一步工作</span></a></li></ol></li></ol></li></ol>
 
 	</div>
 </div>
@@ -1631,6 +1717,11 @@
                 } catch (error) {}
             </script>
         
+        
+            
+                
+        
+                
         
         
     </div>  

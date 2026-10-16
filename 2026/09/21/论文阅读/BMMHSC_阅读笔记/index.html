@@ -119,6 +119,16 @@
 
     <!--- Inject Part-->
     
+        
+            
+    
+            
+    
+            
+                
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+                
+    
 
     
 <link rel="stylesheet" href="/css/style.css">
@@ -368,15 +378,23 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1 id="BMMHSC-论文完整阅读笔记"><a href="#BMMHSC-论文完整阅读笔记" class="headerlink" title="BMMHSC 论文完整阅读笔记"></a>BMMHSC 论文完整阅读笔记</h1><blockquote>
-<p><strong>论文信息：</strong> Guangheng Wang, Liangliang Wang (通讯), Zhiquan Liu (暨南大学翁健组), Kai Zhang, Mingze He, Weiwei Li, “An Innovative Blockchain-Assisted Multi-Message and Multi-Receiver Heterogeneous Signcryption for Cross-Domain Vehicle Platoon Communication”<br><strong>期刊：</strong> IEEE Transactions on Vehicular Technology (IEEE TVT), Vol. 75, No. 4, April 2026<br><strong>DOI：</strong> 10.1109&#x2F;TVT.2025.3618325<br><strong>所属团队：</strong> 上海电力大学 + 暨南大学翁健组（PPCDA 的团队！）+ 四川警察学院<br><strong>阅读日期：</strong> 2026-07-15</p>
+			<h1>BMMHSC 论文完整阅读笔记</h1>
+<blockquote>
+<p><strong>论文信息：</strong> Guangheng Wang, Liangliang Wang (通讯), Zhiquan Liu (暨南大学翁健组), Kai Zhang, Mingze He, Weiwei Li, &quot;An Innovative Blockchain-Assisted Multi-Message and Multi-Receiver Heterogeneous Signcryption for Cross-Domain Vehicle Platoon Communication&quot;<br>
+<strong>期刊：</strong> IEEE Transactions on Vehicular Technology (IEEE TVT), Vol. 75, No. 4, April 2026<br>
+<strong>DOI：</strong> 10.1109/TVT.2025.3618325<br>
+<strong>所属团队：</strong> 上海电力大学 + 暨南大学翁健组（PPCDA 的团队！）+ 四川警察学院<br>
+<strong>阅读日期：</strong> 2026-07-15</p>
 </blockquote>
 <hr>
-<h2 id="📌-BMMHSC-的独特定位：第一个解决「异构跨域编队通信」的方案"><a href="#📌-BMMHSC-的独特定位：第一个解决「异构跨域编队通信」的方案" class="headerlink" title="📌 BMMHSC 的独特定位：第一个解决「异构跨域编队通信」的方案"></a>📌 BMMHSC 的独特定位：第一个解决「异构跨域编队通信」的方案</h2><p>你前面读的 EPP-GAS、PPCDA、BCCG、CD-BASA、LETA 都在做<strong>认证</strong>（Authentication）——验证”你是谁”。</p>
+<h2 id="📌-BMMHSC-的独特定位：第一个解决「异构跨域编队通信」的方案">📌 BMMHSC 的独特定位：第一个解决「异构跨域编队通信」的方案</h2>
+<p>你前面读的 EPP-GAS、PPCDA、BCCG、CD-BASA、LETA 都在做<strong>认证</strong>（Authentication）——验证&quot;你是谁&quot;。</p>
 <p>BMMHSC 做的是<strong>安全通信</strong>（Secure Communication）——认证通过之后，怎么安全地发消息。</p>
 <p><strong>更关键的是：</strong> BMMHSC 解决了一个所有认证方案都忽视的问题——不同密码体系的互通。</p>
 <hr>
-<h2 id="第一遍：5分钟快速筛选"><a href="#第一遍：5分钟快速筛选" class="headerlink" title="第一遍：5分钟快速筛选"></a>第一遍：5分钟快速筛选</h2><h3 id="①-标题拆解"><a href="#①-标题拆解" class="headerlink" title="① 标题拆解"></a>① 标题拆解</h3><blockquote>
+<h2 id="第一遍：5分钟快速筛选">第一遍：5分钟快速筛选</h2>
+<h3 id="①-标题拆解">① 标题拆解</h3>
+<blockquote>
 <p><strong>BMMHSC: Blockchain-Assisted Multi-Message and Multi-Receiver Heterogeneous Signcryption for Cross-Domain Vehicle Platoon Communication</strong></p>
 </blockquote>
 <table>
@@ -386,7 +404,8 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>Blockchain-Assisted</strong></td>
 <td>区块链辅助，智能合约管理编队和公钥</td>
 </tr>
@@ -400,7 +419,7 @@
 </tr>
 <tr>
 <td><strong>Heterogeneous</strong></td>
-<td>异构 — 接收者可能来自 PKI&#x2F;IBC&#x2F;CLC 不同密码体系</td>
+<td>异构 — 接收者可能来自 PKI/IBC/CLC 不同密码体系</td>
 </tr>
 <tr>
 <td><strong>Signcryption</strong></td>
@@ -410,35 +429,41 @@
 <td><strong>Cross-Domain Vehicle Platoon</strong></td>
 <td>跨域车辆编队通信</td>
 </tr>
-</tbody></table>
-<h3 id="②-Abstract-三句话提炼"><a href="#②-Abstract-三句话提炼" class="headerlink" title="② Abstract 三句话提炼"></a>② Abstract 三句话提炼</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">问题：编队跨域时，跟随者可能来自不同密码域（PKI/IBC/CLC），PL 需要向多组接收者</span><br><span class="line">     同时发送不同的控制指令。现有签密方案要么不支持多消息+多接收者，要么不支持</span><br><span class="line">     接收组内的异构性。</span><br><span class="line"></span><br><span class="line">方案：区块链+智能合约管理编队 → PL 通过一次签密操作向多组异构接收者发不同消息</span><br><span class="line">     → 每个接收者用自己体系的私钥独立解签密。</span><br><span class="line"></span><br><span class="line">效果：IND-CCA（机密性）+ EUF-CMA（不可伪造性）全部形式化证明。</span><br><span class="line">      20个接收者时效率比类似方案提升40%+。</span><br><span class="line">      Raspberry Pi 5（模拟OBU） + Veins 4.7.1（网络仿真） + Sepolia 以太坊测试网（区块链）。</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="③-Introduction-末尾-—-三大贡献"><a href="#③-Introduction-末尾-—-三大贡献" class="headerlink" title="③ Introduction 末尾 — 三大贡献"></a>③ Introduction 末尾 — 三大贡献</h3><blockquote>
+</tbody>
+</table>
+<h3 id="②-Abstract-三句话提炼">② Abstract 三句话提炼</h3>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">问题：编队跨域时，跟随者可能来自不同密码域（PKI/IBC/CLC），PL 需要向多组接收者</span><br><span class="line">     同时发送不同的控制指令。现有签密方案要么不支持多消息+多接收者，要么不支持</span><br><span class="line">     接收组内的异构性。</span><br><span class="line"></span><br><span class="line">方案：区块链+智能合约管理编队 → PL 通过一次签密操作向多组异构接收者发不同消息</span><br><span class="line">     → 每个接收者用自己体系的私钥独立解签密。</span><br><span class="line"></span><br><span class="line">效果：IND-CCA（机密性）+ EUF-CMA（不可伪造性）全部形式化证明。</span><br><span class="line">      20个接收者时效率比类似方案提升40%+。</span><br><span class="line">      Raspberry Pi 5（模拟OBU） + Veins 4.7.1（网络仿真） + Sepolia 以太坊测试网（区块链）。</span><br></pre></td></tr></table></figure></div>
+<h3 id="③-Introduction-末尾-—-三大贡献">③ Introduction 末尾 — 三大贡献</h3>
+<blockquote>
 <p><strong>贡献1：</strong> 提出 BMMHSC 方案 — 第一个解决 IBC 和 PKI 域车辆加入 CLC 域编队的异构通信问题。通过区块链统一各域的椭圆曲线参数，PL 一次签密兼容三种体系。</p>
 <p><strong>贡献2：</strong> 设计了一对多并发通信机制 — 通过多项式构造实现同一密文中<strong>多消息→多组接收者</strong>的对应，Bloom Filter 实现<strong>接收者匿名</strong>（接收者不知道自己之外还有谁在接收组里）。</p>
-<p><strong>贡献3：</strong> 完整的 IND-CCA + EUF-CMA 安全证明（CDH + DL 困难性）。20 个接收方时效率比 [12][13][14][15] 分别提升 43.73%&#x2F;40.90%&#x2F;41.18%&#x2F;42.34%。</p>
+<p><strong>贡献3：</strong> 完整的 IND-CCA + EUF-CMA 安全证明（CDH + DL 困难性）。20 个接收方时效率比 [12][13][14][15] 分别提升 43.73%/40.90%/41.18%/42.34%。</p>
 </blockquote>
-<h3 id="✅-第一遍判断：BMMHSC-和你关系间接但重要。它解决的「异构互通」是你未来设计跨域认证时可能要面对的问题。"><a href="#✅-第一遍判断：BMMHSC-和你关系间接但重要。它解决的「异构互通」是你未来设计跨域认证时可能要面对的问题。" class="headerlink" title="✅ 第一遍判断：BMMHSC 和你关系间接但重要。它解决的「异构互通」是你未来设计跨域认证时可能要面对的问题。"></a>✅ 第一遍判断：BMMHSC 和你关系间接但重要。它解决的「异构互通」是你未来设计跨域认证时可能要面对的问题。</h3><hr>
-<h2 id="🧠-密码学小白课堂：签密（Signcryption）"><a href="#🧠-密码学小白课堂：签密（Signcryption）" class="headerlink" title="🧠 密码学小白课堂：签密（Signcryption）"></a>🧠 密码学小白课堂：签密（Signcryption）</h2><blockquote>
+<h3 id="✅-第一遍判断：BMMHSC-和你关系间接但重要。它解决的「异构互通」是你未来设计跨域认证时可能要面对的问题。">✅ 第一遍判断：BMMHSC 和你关系间接但重要。它解决的「异构互通」是你未来设计跨域认证时可能要面对的问题。</h3>
+<hr>
+<h2 id="🧠-密码学小白课堂：签密（Signcryption）">🧠 密码学小白课堂：签密（Signcryption）</h2>
+<blockquote>
 <p><strong>传统做法「Sign-then-Encrypt」：</strong> 先签名（证明是你发的）→ 再加密（保证只有他能看）。两步，两倍开销。</p>
 <p><strong>签密「Signcryption」：</strong> 一步操作同时完成签名+加密。省计算、省通信。</p>
 <p><strong>在 BMMHSC 中怎么用：</strong> PL 要同时向组 A（刹车指令）、组 B（变道指令）、组 C（速度调整）发消息。</p>
 <ul>
 <li>传统做法：分别签名+加密 → 3 轮 → 3 个密文</li>
-<li>BMMHSC：<strong>一次签密</strong> → 1 个密文 → 组 A&#x2F;B&#x2F;C 各自用自己的私钥解出属于自己的消息</li>
+<li>BMMHSC：<strong>一次签密</strong> → 1 个密文 → 组 A/B/C 各自用自己的私钥解出属于自己的消息</li>
 </ul>
 <p><strong>异构（Heterogeneous）的含义：</strong></p>
 <ul>
 <li>PKI 域的车：用证书体系，私钥是一个随机数 x_IDi</li>
 <li>IBC 域的车：用身份基体系，私钥由 PKG（密钥生成中心）基于身份生成</li>
-<li>CLC 域的车：用无证书体系，私钥 &#x3D; KGC 生成的部分私钥 d_IDi + 用户自选的秘密值 x_IDi</li>
+<li>CLC 域的车：用无证书体系，私钥 = KGC 生成的部分私钥 d_IDi + 用户自选的秘密值 x_IDi</li>
 <li>这三种体系<strong>签名格式不兼容、验签算法不同</strong>。BMMHSC 通过在区块链上统一椭圆曲线参数 + 统一签密框架来兼容所有三种体系。</li>
 </ul>
 </blockquote>
 <hr>
-<h2 id="第二遍：结构化提取"><a href="#第二遍：结构化提取" class="headerlink" title="第二遍：结构化提取"></a>第二遍：结构化提取</h2><h3 id="1-系统模型"><a href="#1-系统模型" class="headerlink" title="1. 系统模型"></a>1. 系统模型</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">┌────────────────────────────────────────────────────────────┐</span><br><span class="line">│                Blockchain（联盟链/公链）                      │</span><br><span class="line">│                                                             │</span><br><span class="line">│  存储两个智能合约：                                           │</span><br><span class="line">│  ┌──────────────────────────────────────────────────────┐  │</span><br><span class="line">│  │ EPPKT 合约 (车辆公钥管理)                              │  │</span><br><span class="line">│  │  - 存储 &#123;ID_i, PK_i, RID_i&#125;                          │  │</span><br><span class="line">│  │  - 支持增删改查                                       │  │</span><br><span class="line">│  ├──────────────────────────────────────────────────────┤  │</span><br><span class="line">│  │ 编队管理合约                                           │  │</span><br><span class="line">│  │  - InitPlatoon() / AddMember() / RemoveMember()      │  │</span><br><span class="line">│  └──────────────────────────────────────────────────────┘  │</span><br><span class="line">└──────────┬─────────────────────────────────────────────────┘</span><br><span class="line">           │ 读写</span><br><span class="line">┌──────────┼──────────┬──────────────┐</span><br><span class="line">│          │          │              │</span><br><span class="line">┌──┴───┐  ┌──┴───┐  ┌──┴───┐       │</span><br><span class="line">│ KGC  │  │ PKG  │  │  RA  │       │</span><br><span class="line">│(CLC域)│  │(IBC域)│  │(PKI域)│      │</span><br><span class="line">│部分私钥│  │身份私钥│  │证书签发│     │</span><br><span class="line">└──┬───┘  └──┬───┘  └──┬───┘       │</span><br><span class="line">   │         │         │           │</span><br><span class="line">   │    所有域共享同一套椭圆曲线参数    │</span><br><span class="line">   │    （由第一个 KGC 初始化并上传链） │</span><br><span class="line">   │         │         │           │</span><br><span class="line">   └─────────┼─────────┘           │</span><br><span class="line">             │                     │</span><br><span class="line">      ┌──────┴──────┐              │</span><br><span class="line">      │ RSU（中继）  │              │</span><br><span class="line">      └──────┬──────┘              │</span><br><span class="line">             │                     │</span><br><span class="line">      ┌──────┴───────────────────┐ │</span><br><span class="line">      │     车辆编队              │ │</span><br><span class="line">      │  PL ──→ &#123;PF_PKI, PF_IBC, PF_CLC&#125; │</span><br><span class="line">      │  Msg1(刹车) → 组1         │ │</span><br><span class="line">      │  Msg2(变道) → 组2         │ │</span><br><span class="line">      │  Msg3(加速) → 组3         │ │</span><br><span class="line">      └──────────────────────────┘ │</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="2-签密框架（6个算法）"><a href="#2-签密框架（6个算法）" class="headerlink" title="2. 签密框架（6个算法）"></a>2. 签密框架（6个算法）</h3><table>
+<h2 id="第二遍：结构化提取">第二遍：结构化提取</h2>
+<h3 id="1-系统模型">1. 系统模型</h3>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">┌────────────────────────────────────────────────────────────┐</span><br><span class="line">│                Blockchain（联盟链/公链）                      │</span><br><span class="line">│                                                             │</span><br><span class="line">│  存储两个智能合约：                                           │</span><br><span class="line">│  ┌──────────────────────────────────────────────────────┐  │</span><br><span class="line">│  │ EPPKT 合约 (车辆公钥管理)                              │  │</span><br><span class="line">│  │  - 存储 &#123;ID_i, PK_i, RID_i&#125;                          │  │</span><br><span class="line">│  │  - 支持增删改查                                       │  │</span><br><span class="line">│  ├──────────────────────────────────────────────────────┤  │</span><br><span class="line">│  │ 编队管理合约                                           │  │</span><br><span class="line">│  │  - InitPlatoon() / AddMember() / RemoveMember()      │  │</span><br><span class="line">│  └──────────────────────────────────────────────────────┘  │</span><br><span class="line">└──────────┬─────────────────────────────────────────────────┘</span><br><span class="line">           │ 读写</span><br><span class="line">┌──────────┼──────────┬──────────────┐</span><br><span class="line">│          │          │              │</span><br><span class="line">┌──┴───┐  ┌──┴───┐  ┌──┴───┐       │</span><br><span class="line">│ KGC  │  │ PKG  │  │  RA  │       │</span><br><span class="line">│(CLC域)│  │(IBC域)│  │(PKI域)│      │</span><br><span class="line">│部分私钥│  │身份私钥│  │证书签发│     │</span><br><span class="line">└──┬───┘  └──┬───┘  └──┬───┘       │</span><br><span class="line">   │         │         │           │</span><br><span class="line">   │    所有域共享同一套椭圆曲线参数    │</span><br><span class="line">   │    （由第一个 KGC 初始化并上传链） │</span><br><span class="line">   │         │         │           │</span><br><span class="line">   └─────────┼─────────┘           │</span><br><span class="line">             │                     │</span><br><span class="line">      ┌──────┴──────┐              │</span><br><span class="line">      │ RSU（中继）  │              │</span><br><span class="line">      └──────┬──────┘              │</span><br><span class="line">             │                     │</span><br><span class="line">      ┌──────┴───────────────────┐ │</span><br><span class="line">      │     车辆编队              │ │</span><br><span class="line">      │  PL ──→ &#123;PF_PKI, PF_IBC, PF_CLC&#125; │</span><br><span class="line">      │  Msg1(刹车) → 组1         │ │</span><br><span class="line">      │  Msg2(变道) → 组2         │ │</span><br><span class="line">      │  Msg3(加速) → 组3         │ │</span><br><span class="line">      └──────────────────────────┘ │</span><br></pre></td></tr></table></figure></div>
+<h3 id="2-签密框架（6个算法）">2. 签密框架（6个算法）</h3>
+<table>
 <thead>
 <tr>
 <th>算法</th>
@@ -447,7 +472,8 @@
 <th>谁执行</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>Setup</strong></td>
 <td>安全参数 λ</td>
 <td>系统参数 + 主密钥 msk0</td>
@@ -474,7 +500,7 @@
 <tr>
 <td><strong>Signcryption</strong></td>
 <td>IDs, S, T, PK_S, SKs, M</td>
-<td>密文 ct &#x3D; (S, F, C)</td>
+<td>密文 ct = (S, F, C)</td>
 <td>PL(发送方)</td>
 </tr>
 <tr>
@@ -483,19 +509,22 @@
 <td>消息 Mi 或 ⊥</td>
 <td>PF(接收方)</td>
 </tr>
-</tbody></table>
-<h3 id="3-核心方案-—-签密-解签密"><a href="#3-核心方案-—-签密-解签密" class="headerlink" title="3. 核心方案 — 签密&#x2F;解签密"></a>3. 核心方案 — 签密&#x2F;解签密</h3><h4 id="Signcryption（PL-做的事）"><a href="#Signcryption（PL-做的事）" class="headerlink" title="Signcryption（PL 做的事）"></a>Signcryption（PL 做的事）</h4><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入：发送方身份 IDs、接收者集合 S、每组接收者 Ti、消息集合 M</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 1：为每个消息 Mi 的多项式构造</span></span><br><span class="line"><span class="comment"># 对于每个消息 Mi，向 ki 个接收者发送</span></span><br><span class="line"><span class="comment"># 对每个接收者集合 Ti 中的 IDr：</span></span><br><span class="line"><span class="comment">#   查询链上接收者公钥 P_Kr</span></span><br><span class="line"><span class="comment">#   计算 Vr = H(f · PKr)     # f 是临时随机数</span></span><br><span class="line"><span class="comment">#   构造多项式 fi(x) = Π_&#123;IDr∈Ti&#125; (x - Vr) + Ki</span></span><br><span class="line"><span class="comment">#       展开：fi(x) = x^&#123;ki&#125; + a1·x^&#123;ki-1&#125; + ... + a_ki  (mod q)</span></span><br><span class="line"><span class="comment">#   Ki = 会话密钥（用于加密 Mi）</span></span><br><span class="line"><span class="comment">#   ci = Mi ⊕ H3(Ki)       # 用 Ki 加密消息</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 2：使用 Bloom Filter</span></span><br><span class="line"><span class="comment"># 将每对 &#123;IDr, Vr&#125; 插入 Bloom Filter Bi</span></span><br><span class="line"><span class="comment"># → 接收方解密时通过 Bloom Filter 检查自己是否有权限</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 3：构造密文 C</span></span><br><span class="line">C = &#123;c1||a11...a_k1||B1, c2||a12...a_k2||B2, ...&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 4：对密文签名（CLC体系的签名）</span></span><br><span class="line">F = f · P           <span class="comment"># 临时公钥</span></span><br><span class="line">h2 = H2(IDs||X_IDs||R_IDs||F||C||ti)</span><br><span class="line">h4 = H4(IDs||X_IDs||R_IDs||F||C||h2)</span><br><span class="line">S = f + h2·(x_IDs + h4·d_IDs)   <span class="comment"># 签名值（CLC体系的Schnorr变体）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 最终密文：ct = (S, F, C)</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="Unsigncryption（PF-做的事）"><a href="#Unsigncryption（PF-做的事）" class="headerlink" title="Unsigncryption（PF 做的事）"></a>Unsigncryption（PF 做的事）</h4><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Step 1：验证签名</span></span><br><span class="line"><span class="comment"># 从链上获取发送方公钥 PKs = (X_IDs, R_IDs)</span></span><br><span class="line"><span class="comment"># 验证：S·P ?= F + h2·(X_IDs + h4·(R_IDs + mpk0·h1))</span></span><br><span class="line"><span class="comment"># 如果等式不成立 → 签名无效 → 丢弃</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 2：计算 Vr（根据接收者所在密码体系）</span></span><br><span class="line"><span class="keyword">if</span> 我是 CLC 域的车:</span><br><span class="line">    Vr = H(F · (SKr1 + SKr2))   <span class="comment"># CLC私钥 = (x_IDr, d_IDr)</span></span><br><span class="line"><span class="keyword">elif</span> 我是 IBC 域的车:</span><br><span class="line">    Vr = H(F · SKr)              <span class="comment"># IBC私钥 = x_IDr</span></span><br><span class="line"><span class="keyword">elif</span> 我是 PKI 域的车:</span><br><span class="line">    Vr = H(F · SKr)              <span class="comment"># PKI私钥 = x_IDr</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 3：遍历 Bloom Filter</span></span><br><span class="line"><span class="comment"># 检查 &#123;IDr, Vr&#125; 是否在 Bi 中</span></span><br><span class="line"><span class="comment"># 如果匹配 → 我是消息 Mi 的合法接收者！</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 4：恢复密钥并解密</span></span><br><span class="line">Ki = fi(Vr)          <span class="comment"># 代入多项式计算：fi(Vr) = 0 + Ki = Ki</span></span><br><span class="line">Mi = ci ⊕ H3(Ki)     <span class="comment"># 解密获得消息！</span></span><br></pre></td></tr></table></figure></div>
-
+</tbody>
+</table>
+<h3 id="3-核心方案-—-签密-解签密">3. 核心方案 — 签密/解签密</h3>
+<h4 id="Signcryption（PL-做的事）">Signcryption（PL 做的事）</h4>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入：发送方身份 IDs、接收者集合 S、每组接收者 Ti、消息集合 M</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 1：为每个消息 Mi 的多项式构造</span></span><br><span class="line"><span class="comment"># 对于每个消息 Mi，向 ki 个接收者发送</span></span><br><span class="line"><span class="comment"># 对每个接收者集合 Ti 中的 IDr：</span></span><br><span class="line"><span class="comment">#   查询链上接收者公钥 P_Kr</span></span><br><span class="line"><span class="comment">#   计算 Vr = H(f · PKr)     # f 是临时随机数</span></span><br><span class="line"><span class="comment">#   构造多项式 fi(x) = Π_&#123;IDr∈Ti&#125; (x - Vr) + Ki</span></span><br><span class="line"><span class="comment">#       展开：fi(x) = x^&#123;ki&#125; + a1·x^&#123;ki-1&#125; + ... + a_ki  (mod q)</span></span><br><span class="line"><span class="comment">#   Ki = 会话密钥（用于加密 Mi）</span></span><br><span class="line"><span class="comment">#   ci = Mi ⊕ H3(Ki)       # 用 Ki 加密消息</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 2：使用 Bloom Filter</span></span><br><span class="line"><span class="comment"># 将每对 &#123;IDr, Vr&#125; 插入 Bloom Filter Bi</span></span><br><span class="line"><span class="comment"># → 接收方解密时通过 Bloom Filter 检查自己是否有权限</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 3：构造密文 C</span></span><br><span class="line">C = &#123;c1||a11...a_k1||B1, c2||a12...a_k2||B2, ...&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 4：对密文签名（CLC体系的签名）</span></span><br><span class="line">F = f · P           <span class="comment"># 临时公钥</span></span><br><span class="line">h2 = H2(IDs||X_IDs||R_IDs||F||C||ti)</span><br><span class="line">h4 = H4(IDs||X_IDs||R_IDs||F||C||h2)</span><br><span class="line">S = f + h2·(x_IDs + h4·d_IDs)   <span class="comment"># 签名值（CLC体系的Schnorr变体）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 最终密文：ct = (S, F, C)</span></span><br></pre></td></tr></table></figure></div>
+<h4 id="Unsigncryption（PF-做的事）">Unsigncryption（PF 做的事）</h4>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Step 1：验证签名</span></span><br><span class="line"><span class="comment"># 从链上获取发送方公钥 PKs = (X_IDs, R_IDs)</span></span><br><span class="line"><span class="comment"># 验证：S·P ?= F + h2·(X_IDs + h4·(R_IDs + mpk0·h1))</span></span><br><span class="line"><span class="comment"># 如果等式不成立 → 签名无效 → 丢弃</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 2：计算 Vr（根据接收者所在密码体系）</span></span><br><span class="line"><span class="keyword">if</span> 我是 CLC 域的车:</span><br><span class="line">    Vr = H(F · (SKr1 + SKr2))   <span class="comment"># CLC私钥 = (x_IDr, d_IDr)</span></span><br><span class="line"><span class="keyword">elif</span> 我是 IBC 域的车:</span><br><span class="line">    Vr = H(F · SKr)              <span class="comment"># IBC私钥 = x_IDr</span></span><br><span class="line"><span class="keyword">elif</span> 我是 PKI 域的车:</span><br><span class="line">    Vr = H(F · SKr)              <span class="comment"># PKI私钥 = x_IDr</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 3：遍历 Bloom Filter</span></span><br><span class="line"><span class="comment"># 检查 &#123;IDr, Vr&#125; 是否在 Bi 中</span></span><br><span class="line"><span class="comment"># 如果匹配 → 我是消息 Mi 的合法接收者！</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 4：恢复密钥并解密</span></span><br><span class="line">Ki = fi(Vr)          <span class="comment"># 代入多项式计算：fi(Vr) = 0 + Ki = Ki</span></span><br><span class="line">Mi = ci ⊕ H3(Ki)     <span class="comment"># 解密获得消息！</span></span><br></pre></td></tr></table></figure></div>
 <p><strong>关键理解：多项式 fi(x) 的精妙之处</strong></p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fi(x) = Π_&#123;IDr∈Ti&#125; (x - Vr) + Ki</span><br><span class="line"></span><br><span class="line">如果我是 IDj，且我是合法接收者：</span><br><span class="line">  Vj 是 fi(x) 的一个根 → fi(Vj) = 0 + Ki = Ki → 能解密！</span><br><span class="line"></span><br><span class="line">如果我不是合法接收者：</span><br><span class="line">  对任何接收者集合中的 Vr，x ≠ Vr → Π(x - Vr) ≠ 0</span><br><span class="line">  → fi(my_V) ≠ Ki → 解密失败（得到乱码）</span><br><span class="line"></span><br><span class="line">→ 一个多项式同时实现&quot;多接收者的访问控制&quot;！</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="4-安全模型"><a href="#4-安全模型" class="headerlink" title="4. 安全模型"></a>4. 安全模型</h3><p>BMMHSC 有本领域最复杂的安全模型之一——两种攻击者 × 两个安全目标 &#x3D; 4个博弈：</p>
+<h3 id="4-安全模型">4. 安全模型</h3>
+<p>BMMHSC 有本领域最复杂的安全模型之一——两种攻击者 × 两个安全目标 = 4个博弈：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Type-I 攻击者 A1（外部攻击者）：</span><br><span class="line">  ✅ 可以替换用户公钥</span><br><span class="line">  ❌ 不能获取系统主密钥 msk0</span><br><span class="line">  目标：破解机密性 (IND-CCA) / 伪造签名 (EUF-CMA)</span><br><span class="line"></span><br><span class="line">Type-II 攻击者 A2（内部攻击者，如恶意KGC）：</span><br><span class="line">  ❌ 不能替换用户公钥</span><br><span class="line">  ✅ 有系统主密钥 msk0</span><br><span class="line">  目标：同上</span><br><span class="line"></span><br><span class="line">→ Theorem 1：IND-CCA 安全（Confidentiality, vs Type-I A1）</span><br><span class="line">→ Theorem 2：IND-CCA 安全（Confidentiality, vs Type-II A2）</span><br><span class="line">→ Theorem 3：EUF-CMA 安全（Unforgeability, vs both）</span><br><span class="line">  安全性最终归结到 CDH 问题和 DL 问题的困难性</span><br></pre></td></tr></table></figure></div>
-
 <hr>
-<h3 id="5-实验设置与结果"><a href="#5-实验设置与结果" class="headerlink" title="5. 实验设置与结果"></a>5. 实验设置与结果</h3><h4 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h4><table>
+<h3 id="5-实验设置与结果">5. 实验设置与结果</h3>
+<h4 id="实验环境">实验环境</h4>
+<table>
 <thead>
 <tr>
 <th>项目</th>
@@ -503,7 +532,8 @@
 <th>用途</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>Raspberry Pi 5</strong></td>
 <td>64位四核 Cortex-A76, 8GB RAM</td>
 <td>模拟车辆 OBU</td>
@@ -523,8 +553,10 @@
 <td>MetaMask + Remix</td>
 <td>智能合约部署和测试</td>
 </tr>
-</tbody></table>
-<h4 id="密码学运算耗时"><a href="#密码学运算耗时" class="headerlink" title="密码学运算耗时"></a>密码学运算耗时</h4><table>
+</tbody>
+</table>
+<h4 id="密码学运算耗时">密码学运算耗时</h4>
+<table>
 <thead>
 <tr>
 <th>操作</th>
@@ -532,7 +564,8 @@
 <th>耗时 (ms)</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>椭圆曲线点乘</td>
 <td>Tsm</td>
 <td>6.219</td>
@@ -542,8 +575,10 @@
 <td>Tpa</td>
 <td>0.034</td>
 </tr>
-</tbody></table>
-<h4 id="计算开销（20个接收者）"><a href="#计算开销（20个接收者）" class="headerlink" title="计算开销（20个接收者）"></a>计算开销（20个接收者）</h4><table>
+</tbody>
+</table>
+<h4 id="计算开销（20个接收者）">计算开销（20个接收者）</h4>
+<table>
 <thead>
 <tr>
 <th>方案</th>
@@ -551,7 +586,8 @@
 <th>解签密耗时</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>BMMHSC</td>
 <td>(n+1)·Tsm ≈ <strong>130.6 ms</strong></td>
 <td>5Tsm+3Tpa ≈ <strong>31.2 ms</strong></td>
@@ -561,27 +597,32 @@
 <td>(2n+1)·Tsm+2n·Tpa ≈ <strong>256.3 ms</strong></td>
 <td>≈ 31.2 ms</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <blockquote>
 <p>BMMHSC 签密效率比 Zhou 高约 49%。Fig. 6 显示所有编队规模下 BMMHSC 都是最低的。</p>
 </blockquote>
-<h4 id="通信开销（z-5条消息，n-20个接收者）"><a href="#通信开销（z-5条消息，n-20个接收者）" class="headerlink" title="通信开销（z&#x3D;5条消息，n&#x3D;20个接收者）"></a>通信开销（z&#x3D;5条消息，n&#x3D;20个接收者）</h4><table>
+<h4 id="通信开销（z-5条消息，n-20个接收者）">通信开销（z=5条消息，n=20个接收者）</h4>
+<table>
 <thead>
 <tr>
 <th>方案</th>
 <th>密文大小</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>BMMHSC</td>
-<td><strong>(512 + 5·(256+128) + 21·256)&#x2F;8 &#x3D; 976 bytes</strong></td>
+<td><strong>(512 + 5·(256+128) + 21·256)/8 = 976 bytes</strong></td>
 </tr>
 <tr>
 <td>Shen [14]</td>
-<td>(5·(512 + 5·256 + 256))&#x2F;8 &#x3D; 1280 bytes</td>
+<td>(5·(512 + 5·256 + 256))/8 = 1280 bytes</td>
 </tr>
-</tbody></table>
-<h4 id="区块链-Gas-消耗（Sepolia-测试网）"><a href="#区块链-Gas-消耗（Sepolia-测试网）" class="headerlink" title="区块链 Gas 消耗（Sepolia 测试网）"></a>区块链 Gas 消耗（Sepolia 测试网）</h4><table>
+</tbody>
+</table>
+<h4 id="区块链-Gas-消耗（Sepolia-测试网）">区块链 Gas 消耗（Sepolia 测试网）</h4>
+<table>
 <thead>
 <tr>
 <th>操作</th>
@@ -589,7 +630,8 @@
 <th>USD (ETH $4028.68)</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>部署 VehiclePK 合约</td>
 <td>727,338</td>
 <td>一次性约 $88</td>
@@ -609,39 +651,45 @@
 <td>42,048</td>
 <td>每次约 $5</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <blockquote>
-<p>合约部署是一次性的。成员注册&#x2F;移除的 Gas 固定（因为只做单次 mapping 写操作，不遍历）。</p>
+<p>合约部署是一次性的。成员注册/移除的 Gas 固定（因为只做单次 mapping 写操作，不遍历）。</p>
 </blockquote>
-<h4 id="Veins-4-7-1-网络仿真"><a href="#Veins-4-7-1-网络仿真" class="headerlink" title="Veins 4.7.1 网络仿真"></a>Veins 4.7.1 网络仿真</h4><table>
+<h4 id="Veins-4-7-1-网络仿真">Veins 4.7.1 网络仿真</h4>
+<table>
 <thead>
 <tr>
 <th>指标</th>
 <th>表现</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>编队规模 5→20</td>
 <td>延迟稳定（&lt; 30ms），受编队规模影响小</td>
 </tr>
 <tr>
-<td>编队速度 30→90 km&#x2F;h</td>
+<td>编队速度 30→90 km/h</td>
 <td>延迟和丢包率波动小（在可接受范围内）</td>
 </tr>
 <tr>
 <td>与 [12][14] 对比</td>
 <td>延迟和丢包率水平相当（BMMHSC 没有引入额外的网络瓶颈）</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
-<h3 id="6-安全性"><a href="#6-安全性" class="headerlink" title="6. 安全性"></a>6. 安全性</h3><table>
+<h3 id="6-安全性">6. 安全性</h3>
+<table>
 <thead>
 <tr>
 <th>安全属性</th>
 <th>如何实现</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>无在线 KGC</strong></td>
 <td>区块链存公钥 → 发送方不需要联系注册机构验证接收方身份</td>
 </tr>
@@ -654,16 +702,16 @@
 <td>Theorem 3，基于 DL 问题。攻击者无法伪造有效的签密密文</td>
 </tr>
 <tr>
-<td><strong>前向&#x2F;后向安全</strong></td>
+<td><strong>前向/后向安全</strong></td>
 <td>临时值 f 每次交互都重新随机生成 → 一个会话密钥泄露不影响其他会话</td>
 </tr>
 <tr>
 <td><strong>抗假冒攻击</strong></td>
-<td>伪造必须满足 S·P &#x3D; F + h2(…) 等式，攻击者无法在不求解 DL 的情况下生成</td>
+<td>伪造必须满足 S·P = F + h2(...) 等式，攻击者无法在不求解 DL 的情况下生成</td>
 </tr>
 <tr>
 <td><strong>抗篡改攻击</strong></td>
-<td>任何密文修改导致验证等式 S·P ≠ … 不成立</td>
+<td>任何密文修改导致验证等式 S·P ≠ ... 不成立</td>
 </tr>
 <tr>
 <td><strong>抗重放攻击</strong></td>
@@ -671,11 +719,13 @@
 </tr>
 <tr>
 <td><strong>接收者匿名</strong></td>
-<td>Bloom Filter → 接收者遍历消息时最多知道”我有某个消息”，但不知道还有谁也在接收组中</td>
+<td>Bloom Filter → 接收者遍历消息时最多知道&quot;我有某个消息&quot;，但不知道还有谁也在接收组中</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
-<h3 id="7-局限性"><a href="#7-局限性" class="headerlink" title="7. 局限性"></a>7. 局限性</h3><table>
+<h3 id="7-局限性">7. 局限性</h3>
+<table>
 <thead>
 <tr>
 <th>#</th>
@@ -684,7 +734,8 @@
 <th>可能的改进方向</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>L1</strong></td>
 <td><strong>不做认证协议</strong> — BMMHSC 先假设认证已完成、只做安全通信</td>
 <td>和你的研究方向是互补关系</td>
@@ -698,7 +749,7 @@
 </tr>
 <tr>
 <td><strong>L3</strong></td>
-<td>签密中的多项式 fi(x) 次数 &#x3D; 接收者数量</td>
+<td>签密中的多项式 fi(x) 次数 = 接收者数量</td>
 <td>接收者太多时多项式构造和计算开销变大</td>
 <td>用批量签密或分层签密</td>
 </tr>
@@ -720,7 +771,8 @@
 <td>实际编队可能更大</td>
 <td>更大规模仿真</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
 <blockquote>
 <p><strong>论文文件：</strong> <code>An_Innovative_Blockchain-Assisted_Multi-Message_and_Multi-Receiver_Heterogeneous_Signcryption_for_Cross-Domain_Vehicle_Platoon_Communication.pdf</code></p>
@@ -782,9 +834,9 @@
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BVPM_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+				<a class="next" rel="next" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BCCG_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">BVPM 论文完整阅读笔记</span>
+						<span class="post-nav-title-item truncate max-w-48">BCCG 论文阅读笔记</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -868,7 +920,7 @@
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
 		<div class="page-title">BMMHSC 论文完整阅读笔记</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BMMHSC-%E8%AE%BA%E6%96%87%E5%AE%8C%E6%95%B4%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0"><span class="nav-text">BMMHSC 论文完整阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-BMMHSC-%E7%9A%84%E7%8B%AC%E7%89%B9%E5%AE%9A%E4%BD%8D%EF%BC%9A%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%A7%A3%E5%86%B3%E3%80%8C%E5%BC%82%E6%9E%84%E8%B7%A8%E5%9F%9F%E7%BC%96%E9%98%9F%E9%80%9A%E4%BF%A1%E3%80%8D%E7%9A%84%E6%96%B9%E6%A1%88"><span class="nav-text">📌 BMMHSC 的独特定位：第一个解决「异构跨域编队通信」的方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%81%8D%EF%BC%9A5%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E7%AD%9B%E9%80%89"><span class="nav-text">第一遍：5分钟快速筛选</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A0-%E6%A0%87%E9%A2%98%E6%8B%86%E8%A7%A3"><span class="nav-text">① 标题拆解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A1-Abstract-%E4%B8%89%E5%8F%A5%E8%AF%9D%E6%8F%90%E7%82%BC"><span class="nav-text">② Abstract 三句话提炼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A2-Introduction-%E6%9C%AB%E5%B0%BE-%E2%80%94-%E4%B8%89%E5%A4%A7%E8%B4%A1%E7%8C%AE"><span class="nav-text">③ Introduction 末尾 — 三大贡献</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E7%AC%AC%E4%B8%80%E9%81%8D%E5%88%A4%E6%96%AD%EF%BC%9ABMMHSC-%E5%92%8C%E4%BD%A0%E5%85%B3%E7%B3%BB%E9%97%B4%E6%8E%A5%E4%BD%86%E9%87%8D%E8%A6%81%E3%80%82%E5%AE%83%E8%A7%A3%E5%86%B3%E7%9A%84%E3%80%8C%E5%BC%82%E6%9E%84%E4%BA%92%E9%80%9A%E3%80%8D%E6%98%AF%E4%BD%A0%E6%9C%AA%E6%9D%A5%E8%AE%BE%E8%AE%A1%E8%B7%A8%E5%9F%9F%E8%AE%A4%E8%AF%81%E6%97%B6%E5%8F%AF%E8%83%BD%E8%A6%81%E9%9D%A2%E5%AF%B9%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%82"><span class="nav-text">✅ 第一遍判断：BMMHSC 和你关系间接但重要。它解决的「异构互通」是你未来设计跨域认证时可能要面对的问题。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%A7%A0-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%B0%8F%E7%99%BD%E8%AF%BE%E5%A0%82%EF%BC%9A%E7%AD%BE%E5%AF%86%EF%BC%88Signcryption%EF%BC%89"><span class="nav-text">🧠 密码学小白课堂：签密（Signcryption）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%81%8D%EF%BC%9A%E7%BB%93%E6%9E%84%E5%8C%96%E6%8F%90%E5%8F%96"><span class="nav-text">第二遍：结构化提取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B"><span class="nav-text">1. 系统模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%AD%BE%E5%AF%86%E6%A1%86%E6%9E%B6%EF%BC%886%E4%B8%AA%E7%AE%97%E6%B3%95%EF%BC%89"><span class="nav-text">2. 签密框架（6个算法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%A0%B8%E5%BF%83%E6%96%B9%E6%A1%88-%E2%80%94-%E7%AD%BE%E5%AF%86-%E8%A7%A3%E7%AD%BE%E5%AF%86"><span class="nav-text">3. 核心方案 — 签密&#x2F;解签密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B"><span class="nav-text">4. 安全模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%AE%9E%E9%AA%8C%E8%AE%BE%E7%BD%AE%E4%B8%8E%E7%BB%93%E6%9E%9C"><span class="nav-text">5. 实验设置与结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%AE%89%E5%85%A8%E6%80%A7"><span class="nav-text">6. 安全性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%B1%80%E9%99%90%E6%80%A7"><span class="nav-text">7. 局限性</span></a></li></ol></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">BMMHSC 论文完整阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-BMMHSC-%E7%9A%84%E7%8B%AC%E7%89%B9%E5%AE%9A%E4%BD%8D%EF%BC%9A%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%A7%A3%E5%86%B3%E3%80%8C%E5%BC%82%E6%9E%84%E8%B7%A8%E5%9F%9F%E7%BC%96%E9%98%9F%E9%80%9A%E4%BF%A1%E3%80%8D%E7%9A%84%E6%96%B9%E6%A1%88"><span class="nav-text">📌 BMMHSC 的独特定位：第一个解决「异构跨域编队通信」的方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%81%8D%EF%BC%9A5%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E7%AD%9B%E9%80%89"><span class="nav-text">第一遍：5分钟快速筛选</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A0-%E6%A0%87%E9%A2%98%E6%8B%86%E8%A7%A3"><span class="nav-text">① 标题拆解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A1-Abstract-%E4%B8%89%E5%8F%A5%E8%AF%9D%E6%8F%90%E7%82%BC"><span class="nav-text">② Abstract 三句话提炼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A2-Introduction-%E6%9C%AB%E5%B0%BE-%E2%80%94-%E4%B8%89%E5%A4%A7%E8%B4%A1%E7%8C%AE"><span class="nav-text">③ Introduction 末尾 — 三大贡献</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E7%AC%AC%E4%B8%80%E9%81%8D%E5%88%A4%E6%96%AD%EF%BC%9ABMMHSC-%E5%92%8C%E4%BD%A0%E5%85%B3%E7%B3%BB%E9%97%B4%E6%8E%A5%E4%BD%86%E9%87%8D%E8%A6%81%E3%80%82%E5%AE%83%E8%A7%A3%E5%86%B3%E7%9A%84%E3%80%8C%E5%BC%82%E6%9E%84%E4%BA%92%E9%80%9A%E3%80%8D%E6%98%AF%E4%BD%A0%E6%9C%AA%E6%9D%A5%E8%AE%BE%E8%AE%A1%E8%B7%A8%E5%9F%9F%E8%AE%A4%E8%AF%81%E6%97%B6%E5%8F%AF%E8%83%BD%E8%A6%81%E9%9D%A2%E5%AF%B9%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%82"><span class="nav-text">✅ 第一遍判断：BMMHSC 和你关系间接但重要。它解决的「异构互通」是你未来设计跨域认证时可能要面对的问题。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%A7%A0-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%B0%8F%E7%99%BD%E8%AF%BE%E5%A0%82%EF%BC%9A%E7%AD%BE%E5%AF%86%EF%BC%88Signcryption%EF%BC%89"><span class="nav-text">🧠 密码学小白课堂：签密（Signcryption）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%81%8D%EF%BC%9A%E7%BB%93%E6%9E%84%E5%8C%96%E6%8F%90%E5%8F%96"><span class="nav-text">第二遍：结构化提取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B"><span class="nav-text">1. 系统模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%AD%BE%E5%AF%86%E6%A1%86%E6%9E%B6%EF%BC%886%E4%B8%AA%E7%AE%97%E6%B3%95%EF%BC%89"><span class="nav-text">2. 签密框架（6个算法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%A0%B8%E5%BF%83%E6%96%B9%E6%A1%88-%E2%80%94-%E7%AD%BE%E5%AF%86-%E8%A7%A3%E7%AD%BE%E5%AF%86"><span class="nav-text">3. 核心方案 — 签密&#x2F;解签密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B"><span class="nav-text">4. 安全模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%AE%9E%E9%AA%8C%E8%AE%BE%E7%BD%AE%E4%B8%8E%E7%BB%93%E6%9E%9C"><span class="nav-text">5. 实验设置与结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%AE%89%E5%85%A8%E6%80%A7"><span class="nav-text">6. 安全性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%B1%80%E9%99%90%E6%80%A7"><span class="nav-text">7. 局限性</span></a></li></ol></li></ol></li></ol>
 
 	</div>
 </div>
@@ -946,6 +998,11 @@
                 } catch (error) {}
             </script>
         
+        
+            
+                
+        
+                
         
         
     </div>  

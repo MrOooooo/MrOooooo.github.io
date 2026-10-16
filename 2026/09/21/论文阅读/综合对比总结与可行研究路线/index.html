@@ -119,6 +119,16 @@
 
     <!--- Inject Part-->
     
+        
+            
+    
+            
+    
+            
+                
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+                
+    
 
     
 <link rel="stylesheet" href="/css/style.css">
@@ -368,14 +378,20 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1 id="车辆队列跨域认证-——-16-篇论文全对比与可行研究路线"><a href="#车辆队列跨域认证-——-16-篇论文全对比与可行研究路线" class="headerlink" title="车辆队列跨域认证 —— 16 篇论文全对比与可行研究路线"></a>车辆队列跨域认证 —— 16 篇论文全对比与可行研究路线</h1><blockquote>
-<p><strong>整理日期：</strong> 2026-07-15<br><strong>研究课题：</strong> 车联网车辆队列跨域认证<br><strong>已读论文：</strong> 16 篇（10 篇核心研究 + 6 篇综述）<br><strong>核心问题：</strong> 读完这些论文后，我应该做什么方向？怎么做出有区分度的方案？</p>
+			<h1>车辆队列跨域认证 —— 16 篇论文全对比与可行研究路线</h1>
+<blockquote>
+<p><strong>整理日期：</strong> 2026-07-15<br>
+<strong>研究课题：</strong> 车联网车辆队列跨域认证<br>
+<strong>已读论文：</strong> 16 篇（10 篇核心研究 + 6 篇综述）<br>
+<strong>核心问题：</strong> 读完这些论文后，我应该做什么方向？怎么做出有区分度的方案？</p>
 </blockquote>
 <hr>
-<h2 id="第一部分：密码学知识速查手册"><a href="#第一部分：密码学知识速查手册" class="headerlink" title="第一部分：密码学知识速查手册"></a>第一部分：密码学知识速查手册</h2><blockquote>
+<h2 id="第一部分：密码学知识速查手册">第一部分：密码学知识速查手册</h2>
+<blockquote>
 <p>为了让你——一个安全方面的初学者——能看懂论文中的密码学，下面每个概念都有「一句话解释 + 类比」和「在这个领域的论文中怎么用」。</p>
 </blockquote>
-<h3 id="基础层"><a href="#基础层" class="headerlink" title="基础层"></a>基础层</h3><table>
+<h3 id="基础层">基础层</h3>
+<table>
 <thead>
 <tr>
 <th>概念</th>
@@ -384,7 +400,8 @@
 <th>在哪篇论文中出现</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>哈希函数</strong></td>
 <td>任意长输入→固定长输出，单向不可逆。改一个比特，输出全变</td>
 <td>碎纸机</td>
@@ -399,12 +416,12 @@
 <tr>
 <td><strong>公钥加密</strong></td>
 <td>公钥加密、私钥解密。公钥公开，私钥保密</td>
-<td>邮箱投信口（谁都能投）&#x2F; 钥匙取信（只有你能取）</td>
+<td>邮箱投信口（谁都能投）/ 钥匙取信（只有你能取）</td>
 <td>全部论文</td>
 </tr>
 <tr>
 <td><strong>数字签名</strong></td>
-<td>用私钥签名、用公钥验签。确保”消息是你发的，没被改过”</td>
+<td>用私钥签名、用公钥验签。确保&quot;消息是你发的，没被改过&quot;</td>
 <td>亲笔签名（别人能验笔迹但无法伪造）</td>
 <td><strong>全部论文</strong></td>
 </tr>
@@ -417,11 +434,13 @@
 <tr>
 <td><strong>ECC</strong></td>
 <td>椭圆曲线密码学。比 RSA 密钥短、运算快</td>
-<td>自行车 vs 大卡车（ECC&#x3D;自行车，RSA&#x3D;大卡车）</td>
+<td>自行车 vs 大卡车（ECC=自行车，RSA=大卡车）</td>
 <td>EPP-GAS, BCCG, CD-BASA, RTRA, CRT, BMMHSC</td>
 </tr>
-</tbody></table>
-<h3 id="进阶层"><a href="#进阶层" class="headerlink" title="进阶层"></a>进阶层</h3><table>
+</tbody>
+</table>
+<h3 id="进阶层">进阶层</h3>
+<table>
 <thead>
 <tr>
 <th>概念</th>
@@ -430,17 +449,18 @@
 <th>出现论文</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>双线性配对</strong></td>
-<td>一种特殊数学运算 <code>e(g^a, h^b) = e(g, h)^&#123;ab&#125;</code>。能实现”验证聚合签名”</td>
+<td>一种特殊数学运算 <code>e(g^a, h^b) = e(g, h)^&#123;ab&#125;</code>。能实现&quot;验证聚合签名&quot;</td>
 <td>魔法计算器</td>
 <td>PPCDA, MF-IIoT</td>
 </tr>
 <tr>
-<td><strong>聚合签名(BGLS&#x2F;Schnorr)</strong></td>
-<td>n个人的签名”揉”成一个，验证一次&#x3D;验证全部</td>
+<td><strong>聚合签名(BGLS/Schnorr)</strong></td>
+<td>n个人的签名&quot;揉&quot;成一个，验证一次=验证全部</td>
 <td>把n张便签用回形针夹成一张</td>
-<td>PPCDA(BGLS), BVPM(Schnorr&#x2F;CoSi), LETA(格聚合)</td>
+<td>PPCDA(BGLS), BVPM(Schnorr/CoSi), LETA(格聚合)</td>
 </tr>
 <tr>
 <td><strong>中国剩余定理(CRT)</strong></td>
@@ -456,7 +476,7 @@
 </tr>
 <tr>
 <td><strong>RSA累加器</strong></td>
-<td>把很多元素”压”成一个常数大小的数。每元素有witness证明自己在里面</td>
+<td>把很多元素&quot;压&quot;成一个常数大小的数。每元素有witness证明自己在里面</td>
 <td>压缩饼干：把一袋粮食压成一块饼干</td>
 <td>CD-BASA, MF-IIoT</td>
 </tr>
@@ -468,8 +488,8 @@
 </tr>
 <tr>
 <td><strong>零知识证明(ZKP)</strong></td>
-<td>证明”我知道某秘密”但不透露秘密本身</td>
-<td>“我知道保险箱密码”——开箱给你看里面的东西，但从不告诉你密码是多少</td>
+<td>证明&quot;我知道某秘密&quot;但不透露秘密本身</td>
+<td>&quot;我知道保险箱密码&quot;——开箱给你看里面的东西，但从不告诉你密码是多少</td>
 <td>LETA, MF-IIoT</td>
 </tr>
 <tr>
@@ -480,7 +500,7 @@
 </tr>
 <tr>
 <td><strong>PUF</strong></td>
-<td>芯片的物理”指纹”，无法复制。给输入→返回唯一输出</td>
+<td>芯片的物理&quot;指纹&quot;，无法复制。给输入→返回唯一输出</td>
 <td>你独一无二的指纹</td>
 <td>BCCG, MF-IIoT, CRT</td>
 </tr>
@@ -490,8 +510,10 @@
 <td>身份证→驾照（凭证）→出示时只露照片不露身份证号</td>
 <td>BCADS</td>
 </tr>
-</tbody></table>
-<h3 id="高级层"><a href="#高级层" class="headerlink" title="高级层"></a>高级层</h3><table>
+</tbody>
+</table>
+<h3 id="高级层">高级层</h3>
+<table>
 <thead>
 <tr>
 <th>概念</th>
@@ -500,10 +522,11 @@
 <th>出现论文</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>格密码(Lattice)</strong></td>
-<td>基于”高维格中找最短向量”的难题。量子计算机搞不动</td>
-<td>传统密码&#x3D;纸锁（量子&#x3D;剪刀）；格密码&#x3D;铁锁（量子&#x3D;还是撬不开）</td>
+<td>基于&quot;高维格中找最短向量&quot;的难题。量子计算机搞不动</td>
+<td>传统密码=纸锁（量子=剪刀）；格密码=铁锁（量子=还是撬不开）</td>
 <td><strong>只有 LETA</strong></td>
 </tr>
 <tr>
@@ -521,12 +544,15 @@
 <tr>
 <td><strong>MGSD</strong></td>
 <td>Merkle-Grid选择性披露。只需证明属性合格，不暴露具体值</td>
-<td>“我满18岁了”——但不告诉你我具体几岁</td>
+<td>&quot;我满18岁了&quot;——但不告诉你我具体几岁</td>
 <td><strong>只有 BCADS</strong></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
-<h2 id="第二部分：10-篇核心研究论文全维度对比"><a href="#第二部分：10-篇核心研究论文全维度对比" class="headerlink" title="第二部分：10 篇核心研究论文全维度对比"></a>第二部分：10 篇核心研究论文全维度对比</h2><h3 id="2-1-一张表看穿所有方案"><a href="#2-1-一张表看穿所有方案" class="headerlink" title="2.1 一张表看穿所有方案"></a>2.1 一张表看穿所有方案</h3><table>
+<h2 id="第二部分：10-篇核心研究论文全维度对比">第二部分：10 篇核心研究论文全维度对比</h2>
+<h3 id="2-1-一张表看穿所有方案">2.1 一张表看穿所有方案</h3>
+<table>
 <thead>
 <tr>
 <th>论文</th>
@@ -544,7 +570,8 @@
 <th>最独特卖点</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>EPP-GAS</strong></td>
 <td>TITS</td>
 <td>2024</td>
@@ -709,17 +736,20 @@
 <td>❌</td>
 <td>CRT群组密钥</td>
 </tr>
-</tbody></table>
-<h3 id="2-2-关键交叉维度分析"><a href="#2-2-关键交叉维度分析" class="headerlink" title="2.2 关键交叉维度分析"></a>2.2 关键交叉维度分析</h3><h4 id="维度1：和你方向的重合度"><a href="#维度1：和你方向的重合度" class="headerlink" title="维度1：和你方向的重合度"></a>维度1：和你方向的重合度</h4><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">高重合（编队+跨域）：</span><br><span class="line">  ★ EPP-GAS：你的起点</span><br><span class="line">  ★ PPCDA：你的对标</span><br><span class="line">  ▲ BCCG：集群不是编队但有群组+跨域</span><br><span class="line"></span><br><span class="line">中重合（部分相关）：</span><br><span class="line">  ▲ CD-BASA：通用VANET，但累加器可改编到编队</span><br><span class="line">  ▲ BMMHSC：编队场景但做签密不做认证</span><br><span class="line">  ▲ LETA：编队认证但缺跨域（最大延伸方向！）</span><br><span class="line"></span><br><span class="line">低重合（方法论/子问题参考）：</span><br><span class="line">  ▪ BVPM：共识+选举（基础设施层）</span><br><span class="line">  ▪ CRT：群组密钥协商（认证后阶段）</span><br><span class="line">  ▪ RTRA：声誉+位置（非密码学增强思路）</span><br><span class="line">  ▪ BCADS：DID+抗监管（范式参考）</span><br><span class="line">  ▪ MF-IIoT：CD-BASA的前驱</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="维度2：区块链-vs-无区块链"><a href="#维度2：区块链-vs-无区块链" class="headerlink" title="维度2：区块链 vs 无区块链"></a>维度2：区块链 vs 无区块链</h4><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">用区块链：EPP-GAS, CD-BASA, MF-IIoT, BCCG, BCADS, BMMHSC, LETA(联盟链轻用), BVPM, CRT</span><br><span class="line">不用区块链：PPCDA, RTRA</span><br><span class="line"></span><br><span class="line">区块链派的核心优势：去中心化信任、跨域天然可查、不可篡改</span><br><span class="line">区块链派的核心劣势：共识延迟、存储膨胀、Gas消耗</span><br><span class="line"></span><br><span class="line">PPCDA 是唯一一个&quot;刻意避开区块链&quot;的编队跨域方案</span><br><span class="line">→ 它的核心论点：区块链开销太大，纯密码学更轻量</span><br><span class="line">→ 这个论点是立得住的（看你信哪个）</span><br><span class="line">→ 你的方案可以选其中一条路线，或者搞折中</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="维度3：双线性配对-vs-无配对"><a href="#维度3：双线性配对-vs-无配对" class="headerlink" title="维度3：双线性配对 vs 无配对"></a>维度3：双线性配对 vs 无配对</h4><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">用配对的：PPCDA(BGLS验证)、MF-IIoT(累加器验证)</span><br><span class="line">不用配对的：EPP-GAS, CD-BASA, BCCG, BCADS, LETA, BMMHSC, RTRA, BVPM, CRT</span><br><span class="line"></span><br><span class="line">一句话：不用配对是趋势（配对太贵，一次≈5000次哈希）</span><br><span class="line">PPCDA 虽然用配对来验证聚合签名，但它通过BGLS聚合大幅减少了配对次数</span><br><span class="line">→ 从每个车队3n次配对降到(2n+1)次 → 仍是有意义的优化</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="维度4：形式化验证方法"><a href="#维度4：形式化验证方法" class="headerlink" title="维度4：形式化验证方法"></a>维度4：形式化验证方法</h4><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Game Hopping (ROM)：PPCDA, BCADS, BCCG, RTRA</span><br><span class="line">Q-ROM（量子增强）：LETA ★ 独有</span><br><span class="line">ROR模型：BCCG(Theorem 1+2), CRT</span><br><span class="line">BAN逻辑：MF-IIoT</span><br><span class="line">ProVerif工具：BCCG ★ 独有</span><br><span class="line"></span><br><span class="line">最佳实践：ROR 模型 + ProVerif + Game Hopping 三管齐下（BCCG接近做到）</span><br><span class="line">你的方案应该至少用 ROR/ROM + ProVerif/Tamarin</span><br></pre></td></tr></table></figure></div>
-
+</tbody>
+</table>
+<h3 id="2-2-关键交叉维度分析">2.2 关键交叉维度分析</h3>
+<h4 id="维度1：和你方向的重合度">维度1：和你方向的重合度</h4>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">高重合（编队+跨域）：</span><br><span class="line">  ★ EPP-GAS：你的起点</span><br><span class="line">  ★ PPCDA：你的对标</span><br><span class="line">  ▲ BCCG：集群不是编队但有群组+跨域</span><br><span class="line"></span><br><span class="line">中重合（部分相关）：</span><br><span class="line">  ▲ CD-BASA：通用VANET，但累加器可改编到编队</span><br><span class="line">  ▲ BMMHSC：编队场景但做签密不做认证</span><br><span class="line">  ▲ LETA：编队认证但缺跨域（最大延伸方向！）</span><br><span class="line"></span><br><span class="line">低重合（方法论/子问题参考）：</span><br><span class="line">  ▪ BVPM：共识+选举（基础设施层）</span><br><span class="line">  ▪ CRT：群组密钥协商（认证后阶段）</span><br><span class="line">  ▪ RTRA：声誉+位置（非密码学增强思路）</span><br><span class="line">  ▪ BCADS：DID+抗监管（范式参考）</span><br><span class="line">  ▪ MF-IIoT：CD-BASA的前驱</span><br></pre></td></tr></table></figure></div>
+<h4 id="维度2：区块链-vs-无区块链">维度2：区块链 vs 无区块链</h4>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">用区块链：EPP-GAS, CD-BASA, MF-IIoT, BCCG, BCADS, BMMHSC, LETA(联盟链轻用), BVPM, CRT</span><br><span class="line">不用区块链：PPCDA, RTRA</span><br><span class="line"></span><br><span class="line">区块链派的核心优势：去中心化信任、跨域天然可查、不可篡改</span><br><span class="line">区块链派的核心劣势：共识延迟、存储膨胀、Gas消耗</span><br><span class="line"></span><br><span class="line">PPCDA 是唯一一个&quot;刻意避开区块链&quot;的编队跨域方案</span><br><span class="line">→ 它的核心论点：区块链开销太大，纯密码学更轻量</span><br><span class="line">→ 这个论点是立得住的（看你信哪个）</span><br><span class="line">→ 你的方案可以选其中一条路线，或者搞折中</span><br></pre></td></tr></table></figure></div>
+<h4 id="维度3：双线性配对-vs-无配对">维度3：双线性配对 vs 无配对</h4>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">用配对的：PPCDA(BGLS验证)、MF-IIoT(累加器验证)</span><br><span class="line">不用配对的：EPP-GAS, CD-BASA, BCCG, BCADS, LETA, BMMHSC, RTRA, BVPM, CRT</span><br><span class="line"></span><br><span class="line">一句话：不用配对是趋势（配对太贵，一次≈5000次哈希）</span><br><span class="line">PPCDA 虽然用配对来验证聚合签名，但它通过BGLS聚合大幅减少了配对次数</span><br><span class="line">→ 从每个车队3n次配对降到(2n+1)次 → 仍是有意义的优化</span><br></pre></td></tr></table></figure></div>
+<h4 id="维度4：形式化验证方法">维度4：形式化验证方法</h4>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Game Hopping (ROM)：PPCDA, BCADS, BCCG, RTRA</span><br><span class="line">Q-ROM（量子增强）：LETA ★ 独有</span><br><span class="line">ROR模型：BCCG(Theorem 1+2), CRT</span><br><span class="line">BAN逻辑：MF-IIoT</span><br><span class="line">ProVerif工具：BCCG ★ 独有</span><br><span class="line"></span><br><span class="line">最佳实践：ROR 模型 + ProVerif + Game Hopping 三管齐下（BCCG接近做到）</span><br><span class="line">你的方案应该至少用 ROR/ROM + ProVerif/Tamarin</span><br></pre></td></tr></table></figure></div>
 <hr>
-<h2 id="第三部分：每篇论文的”还有什么没做”"><a href="#第三部分：每篇论文的”还有什么没做”" class="headerlink" title="第三部分：每篇论文的”还有什么没做”"></a>第三部分：每篇论文的”还有什么没做”</h2><table>
+<h2 id="第三部分：每篇论文的-还有什么没做">第三部分：每篇论文的&quot;还有什么没做&quot;</h2>
+<table>
 <thead>
 <tr>
 <th>论文</th>
@@ -728,7 +758,8 @@
 <th>你的直接机会</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>EPP-GAS</strong></td>
 <td>编队切换场景、BM-Tree检索效率</td>
 <td>无抗量子</td>
@@ -756,11 +787,11 @@
 <td><strong>BCADS</strong></td>
 <td>降低延迟、提高可扩展性</td>
 <td>不做编队、签名阶段模指数仍多</td>
-<td>DID+编队&#x3D;编队DID</td>
+<td>DID+编队=编队DID</td>
 </tr>
 <tr>
 <td><strong>LETA</strong></td>
-<td><strong>“will address cross-trust-domain”</strong> ← 最明确的缺口！</td>
+<td><strong>&quot;will address cross-trust-domain&quot;</strong> ← 最明确的缺口！</td>
 <td>VPD-Tree不支持跨域、无ProVerif</td>
 <td><strong>后量子跨域编队认证</strong> ← 最直接的延伸</td>
 </tr>
@@ -788,63 +819,86 @@
 <td>不做跨域、依赖RSU</td>
 <td>CRT群组密钥用于编队认证后</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
-<h2 id="第四部分：研究空白象限图"><a href="#第四部分：研究空白象限图" class="headerlink" title="第四部分：研究空白象限图"></a>第四部分：研究空白象限图</h2><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">                  有跨域支持</span><br><span class="line">                      │</span><br><span class="line">     CD-BASA(B)     │  EPP-GAS(A)  ★ 你的阵地</span><br><span class="line">     BCCG · BCADS   │  PPCDA(A)       </span><br><span class="line">     RTRA · BMMHSC  │  MF-IIoT(B)</span><br><span class="line">                      │</span><br><span class="line">通用VANET ────────────┼─────────────── 编队场景</span><br><span class="line">     (B类场景)        │        (A类场景)</span><br><span class="line">                      │</span><br><span class="line">     BVPM · CRT      │  LETA(无跨域!)</span><br><span class="line">                      │</span><br><span class="line">                  无跨域支持</span><br></pre></td></tr></table></figure></div>
-
+<h2 id="第四部分：研究空白象限图">第四部分：研究空白象限图</h2>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">                  有跨域支持</span><br><span class="line">                      │</span><br><span class="line">     CD-BASA(B)     │  EPP-GAS(A)  ★ 你的阵地</span><br><span class="line">     BCCG · BCADS   │  PPCDA(A)       </span><br><span class="line">     RTRA · BMMHSC  │  MF-IIoT(B)</span><br><span class="line">                      │</span><br><span class="line">通用VANET ────────────┼─────────────── 编队场景</span><br><span class="line">     (B类场景)        │        (A类场景)</span><br><span class="line">                      │</span><br><span class="line">     BVPM · CRT      │  LETA(无跨域!)</span><br><span class="line">                      │</span><br><span class="line">                  无跨域支持</span><br></pre></td></tr></table></figure></div>
 <blockquote>
 <p><strong>你的阵地：</strong> 右上象限——编队+跨域。这里只有 EPP-GAS 和 PPCDA。LETA 在右下（有编队无跨域）——从右下往右上推，就是最自然的延伸。</p>
 </blockquote>
 <hr>
-<h2 id="🎯-第五部分：具体研究路线推荐"><a href="#🎯-第五部分：具体研究路线推荐" class="headerlink" title="🎯 第五部分：具体研究路线推荐"></a>🎯 第五部分：具体研究路线推荐</h2><h3 id="路线-A（稳妥-—-硕士开题）：轻量化创新"><a href="#路线-A（稳妥-—-硕士开题）：轻量化创新" class="headerlink" title="路线 A（稳妥 — 硕士开题）：轻量化创新"></a>路线 A（稳妥 — 硕士开题）：轻量化创新</h3><p><strong>A1：去区块链的编队跨域认证</strong></p>
+<h2 id="🎯-第五部分：具体研究路线推荐">🎯 第五部分：具体研究路线推荐</h2>
+<h3 id="路线-A（稳妥-—-硕士开题）：轻量化创新">路线 A（稳妥 — 硕士开题）：轻量化创新</h3>
+<p><strong>A1：去区块链的编队跨域认证</strong></p>
 <blockquote>
-<p>基于 EPP-GAS 的场景 → 借鉴 PPCDA 的 IBF 替代 BM-Tree → 目标：在同等安全水平下降低存储开销<br><strong>核心实验：</strong> 对比 BM-Tree 和 IBF 的存储+查询开销<br><strong>难度：</strong> ⭐⭐</p>
+<p>基于 EPP-GAS 的场景 → 借鉴 PPCDA 的 IBF 替代 BM-Tree → 目标：在同等安全水平下降低存储开销<br>
+<strong>核心实验：</strong> 对比 BM-Tree 和 IBF 的存储+查询开销<br>
+<strong>难度：</strong> ⭐⭐</p>
 </blockquote>
 <p><strong>A2：去掉 PPCDA 的配对运算</strong></p>
 <blockquote>
-<p>把 PPCDA 的 BGLS（需配对）替换为 Schnorr 聚合签名（不需配对）<br><strong>核心实验：</strong> 对比两种聚合方案的签名&#x2F;验证耗时<br><strong>难度：</strong> ⭐⭐</p>
+<p>把 PPCDA 的 BGLS（需配对）替换为 Schnorr 聚合签名（不需配对）<br>
+<strong>核心实验：</strong> 对比两种聚合方案的签名/验证耗时<br>
+<strong>难度：</strong> ⭐⭐</p>
 </blockquote>
 <p><strong>A3：在 Plexe 中做完整端到端仿真</strong></p>
 <blockquote>
-<p>选 EPP-GAS 或 PPCDA → 在 Plexe+Veins 中实现完整认证流程 → 分析真实车载网络的影响<br><strong>核心实验：</strong> 编队规模&#x2F;通信范围&#x2F;丢包率 vs 认证延迟&#x2F;成功率<br><strong>难度：</strong> ⭐⭐⭐（但产出非常扎实）</p>
+<p>选 EPP-GAS 或 PPCDA → 在 Plexe+Veins 中实现完整认证流程 → 分析真实车载网络的影响<br>
+<strong>核心实验：</strong> 编队规模/通信范围/丢包率 vs 认证延迟/成功率<br>
+<strong>难度：</strong> ⭐⭐⭐（但产出非常扎实）</p>
 </blockquote>
-<h3 id="路线-B（进阶-—-硕士-博士过渡）：填补明确空白"><a href="#路线-B（进阶-—-硕士-博士过渡）：填补明确空白" class="headerlink" title="路线 B（进阶 — 硕士&#x2F;博士过渡）：填补明确空白"></a>路线 B（进阶 — 硕士&#x2F;博士过渡）：填补明确空白</h3><p><strong>B1：后量子安全的跨域编队认证 ★ 最推荐</strong></p>
+<h3 id="路线-B（进阶-—-硕士-博士过渡）：填补明确空白">路线 B（进阶 — 硕士/博士过渡）：填补明确空白</h3>
+<p><strong>B1：后量子安全的跨域编队认证 ★ 最推荐</strong></p>
 <blockquote>
-<p>LETA 的格密码 + EPP-GAS&#x2F;PPCDA 的跨域框架<br>&#x3D; 能抗量子计算机攻击的跨域编队认证方案<br><strong>为什么选这个：</strong> LETA 的 Future Work 自己说要这么做。你是第一个做的。两个 CCF-A 期刊团队（JSAC + TDSC）都背书这个方向<br><strong>难度：</strong> ⭐⭐⭐⭐</p>
+<p>LETA 的格密码 + EPP-GAS/PPCDA 的跨域框架<br>
+= 能抗量子计算机攻击的跨域编队认证方案<br>
+<strong>为什么选这个：</strong> LETA 的 Future Work 自己说要这么做。你是第一个做的。两个 CCF-A 期刊团队（JSAC + TDSC）都背书这个方向<br>
+<strong>难度：</strong> ⭐⭐⭐⭐</p>
 </blockquote>
 <p><strong>B2：多编队协同的跨域认证</strong></p>
 <blockquote>
-<p>两个编队合并、一个编队拆分、多编队交错时 → 认证如何传递？<br>目前任何论文都没有做这个<br><strong>难度：</strong> ⭐⭐⭐</p>
+<p>两个编队合并、一个编队拆分、多编队交错时 → 认证如何传递？<br>
+目前任何论文都没有做这个<br>
+<strong>难度：</strong> ⭐⭐⭐</p>
 </blockquote>
 <p><strong>B3：用 ProVerif 形式化验证现有方案</strong></p>
 <blockquote>
-<p>拿 EPP-GAS 或 PPCDA → 用 ProVerif&#x2F;Tamarin 建模 → 验证是否存在安全漏洞 → 修复漏洞 &#x3D; 新方案<br><strong>为什么选这个：</strong> 目前只有 BCCG 用了 ProVerif。EPP-GAS 和 PPCDA 都没有工具验证<br><strong>难度：</strong> ⭐⭐⭐</p>
+<p>拿 EPP-GAS 或 PPCDA → 用 ProVerif/Tamarin 建模 → 验证是否存在安全漏洞 → 修复漏洞 = 新方案<br>
+<strong>为什么选这个：</strong> 目前只有 BCCG 用了 ProVerif。EPP-GAS 和 PPCDA 都没有工具验证<br>
+<strong>难度：</strong> ⭐⭐⭐</p>
 </blockquote>
-<h3 id="路线-C（前沿-—-博士方向）：范式创新"><a href="#路线-C（前沿-—-博士方向）：范式创新" class="headerlink" title="路线 C（前沿 — 博士方向）：范式创新"></a>路线 C（前沿 — 博士方向）：范式创新</h3><p><strong>C1：DID 编队跨域认证</strong></p>
+<h3 id="路线-C（前沿-—-博士方向）：范式创新">路线 C（前沿 — 博士方向）：范式创新</h3>
+<p><strong>C1：DID 编队跨域认证</strong></p>
 <blockquote>
-<p>BCADS 的 DID&#x2F;VC 思想 + 编队场景 &#x3D; 每个编队成员自主管理身份<br><strong>为什么选这个：</strong> DID 是 W3C 国际标准，学术界+工业界双认可<br><strong>难度：</strong> ⭐⭐⭐⭐</p>
+<p>BCADS 的 DID/VC 思想 + 编队场景 = 每个编队成员自主管理身份<br>
+<strong>为什么选这个：</strong> DID 是 W3C 国际标准，学术界+工业界双认可<br>
+<strong>难度：</strong> ⭐⭐⭐⭐</p>
 </blockquote>
 <p><strong>C2：抗监管的编队跨域认证</strong></p>
 <blockquote>
-<p>BCADS 的变形签名 + 编队 &#x3D; 监管者能审计但解不开编队隐私<br><strong>难度：</strong> ⭐⭐⭐⭐⭐</p>
+<p>BCADS 的变形签名 + 编队 = 监管者能审计但解不开编队隐私<br>
+<strong>难度：</strong> ⭐⭐⭐⭐⭐</p>
 </blockquote>
 <p><strong>C3：异构编队跨域认证</strong></p>
 <blockquote>
-<p>BMMHSC 的异构思路 + 认证协议 → PKI&#x2F;IBC&#x2F;CLC 域的车组成同一个编队时如何统一认证<br><strong>难度：</strong> ⭐⭐⭐⭐⭐</p>
+<p>BMMHSC 的异构思路 + 认证协议 → PKI/IBC/CLC 域的车组成同一个编队时如何统一认证<br>
+<strong>难度：</strong> ⭐⭐⭐⭐⭐</p>
 </blockquote>
 <hr>
-<h2 id="📅-推荐的三学期执行计划"><a href="#📅-推荐的三学期执行计划" class="headerlink" title="📅 推荐的三学期执行计划"></a>📅 推荐的三学期执行计划</h2><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">第一学期（打基础）：</span><br><span class="line">  Week 1-4:  精读 EPP-GAS + PPCDA + LETA 三篇</span><br><span class="line">  Week 5-8:  密码学实验（JPBC实现ECDSA→BLS聚合→Paillier加密→格签名）</span><br><span class="line">  Week 9-12: 比较三篇方案的计算/通信开销（自己写脚本测量）</span><br><span class="line">  Week 13-16: 确定具体方向，写文献综述初稿</span><br><span class="line">  产出：文献综述 + 密码学实验代码 + 性能对比数据</span><br><span class="line"></span><br><span class="line">第二学期（攻方案）：</span><br><span class="line">  Month 1-2: 设计自己的方案（基于选定方向）</span><br><span class="line">  Month 3:   形式化安全分析（ROR + ProVerif）</span><br><span class="line">  Month 4:   性能评估（密码运算测试 + 网络仿真）</span><br><span class="line">  产出：方案设计 + 安全性证明 + 实验数据</span><br><span class="line"></span><br><span class="line">第三学期（写论文+投稿）：</span><br><span class="line">  Month 1-2: 写论文（参照 PPCDA 或 EPP-GAS 的结构）</span><br><span class="line">  Month 3:   投 TITS 或 TDSC 或 IoT-J</span><br><span class="line">  产出：一篇完整的期刊论文</span><br></pre></td></tr></table></figure></div>
-
+<h2 id="📅-推荐的三学期执行计划">📅 推荐的三学期执行计划</h2>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">第一学期（打基础）：</span><br><span class="line">  Week 1-4:  精读 EPP-GAS + PPCDA + LETA 三篇</span><br><span class="line">  Week 5-8:  密码学实验（JPBC实现ECDSA→BLS聚合→Paillier加密→格签名）</span><br><span class="line">  Week 9-12: 比较三篇方案的计算/通信开销（自己写脚本测量）</span><br><span class="line">  Week 13-16: 确定具体方向，写文献综述初稿</span><br><span class="line">  产出：文献综述 + 密码学实验代码 + 性能对比数据</span><br><span class="line"></span><br><span class="line">第二学期（攻方案）：</span><br><span class="line">  Month 1-2: 设计自己的方案（基于选定方向）</span><br><span class="line">  Month 3:   形式化安全分析（ROR + ProVerif）</span><br><span class="line">  Month 4:   性能评估（密码运算测试 + 网络仿真）</span><br><span class="line">  产出：方案设计 + 安全性证明 + 实验数据</span><br><span class="line"></span><br><span class="line">第三学期（写论文+投稿）：</span><br><span class="line">  Month 1-2: 写论文（参照 PPCDA 或 EPP-GAS 的结构）</span><br><span class="line">  Month 3:   投 TITS 或 TDSC 或 IoT-J</span><br><span class="line">  产出：一篇完整的期刊论文</span><br></pre></td></tr></table></figure></div>
 <hr>
-<h2 id="🏁-结语"><a href="#🏁-结语" class="headerlink" title="🏁 结语"></a>🏁 结语</h2><p>你读了 16 篇论文。你知道了：</p>
+<h2 id="🏁-结语">🏁 结语</h2>
+<p>你读了 16 篇论文。你知道了：</p>
 <ol>
 <li><strong>这个领域在做什么：</strong> 编队跨域时安全高效地认证身份、保护隐私、防止恶意行为</li>
-<li><strong>别人怎么做：</strong> 区块链路线（EPP-GAS&#x2F;BCCG&#x2F;CD-BASA&#x2F;BCADS）能去中心化但开销大；无区块链路线（PPCDA）轻量但有单点信任；后量子路线（LETA）有抗量子但没有跨域</li>
+<li><strong>别人怎么做：</strong> 区块链路线（EPP-GAS/BCCG/CD-BASA/BCADS）能去中心化但开销大；无区块链路线（PPCDA）轻量但有单点信任；后量子路线（LETA）有抗量子但没有跨域</li>
 <li><strong>最关键的空缺：</strong> LETA 自己没有跨域 — 论文 Future Work 明确说要扩展。这就是你的自然切入点</li>
 <li><strong>你可以做：</strong> A3(仿真补充) → B1(后量子跨域) → B2(多编队协同) → B3(ProVerif验证)</li>
 </ol>
 <blockquote>
-<p><strong>最后一条建议：先跑一个实验。</strong> 不管选哪个方向，先写一个能跑通的 Python 脚本。哪怕只是生成一个 ECDSA 签名然后验证。动手做比读一百篇论文更能帮你理解”我到底要解决什么问题”。</p>
+<p><strong>最后一条建议：先跑一个实验。</strong> 不管选哪个方向，先写一个能跑通的 Python 脚本。哪怕只是生成一个 ECDSA 签名然后验证。动手做比读一百篇论文更能帮你理解&quot;我到底要解决什么问题&quot;。</p>
 </blockquote>
 
 		</div>
@@ -901,6 +955,18 @@
 				</a>
 			</div>
 			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/RTRA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">RTRA论文完整阅读笔记</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
 			
 		</div>
 		
@@ -977,7 +1043,7 @@
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
 		<div class="page-title">车辆队列跨域认证 —— 16 篇论文全对比与可行研究路线</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BD%A6%E8%BE%86%E9%98%9F%E5%88%97%E8%B7%A8%E5%9F%9F%E8%AE%A4%E8%AF%81-%E2%80%94%E2%80%94-16-%E7%AF%87%E8%AE%BA%E6%96%87%E5%85%A8%E5%AF%B9%E6%AF%94%E4%B8%8E%E5%8F%AF%E8%A1%8C%E7%A0%94%E7%A9%B6%E8%B7%AF%E7%BA%BF"><span class="nav-text">车辆队列跨域认证 —— 16 篇论文全对比与可行研究路线</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C"><span class="nav-text">第一部分：密码学知识速查手册</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%B1%82"><span class="nav-text">基础层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E5%B1%82"><span class="nav-text">进阶层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E5%B1%82"><span class="nav-text">高级层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A10-%E7%AF%87%E6%A0%B8%E5%BF%83%E7%A0%94%E7%A9%B6%E8%AE%BA%E6%96%87%E5%85%A8%E7%BB%B4%E5%BA%A6%E5%AF%B9%E6%AF%94"><span class="nav-text">第二部分：10 篇核心研究论文全维度对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%B8%80%E5%BC%A0%E8%A1%A8%E7%9C%8B%E7%A9%BF%E6%89%80%E6%9C%89%E6%96%B9%E6%A1%88"><span class="nav-text">2.1 一张表看穿所有方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%85%B3%E9%94%AE%E4%BA%A4%E5%8F%89%E7%BB%B4%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-text">2.2 关键交叉维度分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%EF%BC%9A%E6%AF%8F%E7%AF%87%E8%AE%BA%E6%96%87%E7%9A%84%E2%80%9D%E8%BF%98%E6%9C%89%E4%BB%80%E4%B9%88%E6%B2%A1%E5%81%9A%E2%80%9D"><span class="nav-text">第三部分：每篇论文的”还有什么没做”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%EF%BC%9A%E7%A0%94%E7%A9%B6%E7%A9%BA%E7%99%BD%E8%B1%A1%E9%99%90%E5%9B%BE"><span class="nav-text">第四部分：研究空白象限图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8E%AF-%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86%EF%BC%9A%E5%85%B7%E4%BD%93%E7%A0%94%E7%A9%B6%E8%B7%AF%E7%BA%BF%E6%8E%A8%E8%8D%90"><span class="nav-text">🎯 第五部分：具体研究路线推荐</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%BA%BF-A%EF%BC%88%E7%A8%B3%E5%A6%A5-%E2%80%94-%E7%A1%95%E5%A3%AB%E5%BC%80%E9%A2%98%EF%BC%89%EF%BC%9A%E8%BD%BB%E9%87%8F%E5%8C%96%E5%88%9B%E6%96%B0"><span class="nav-text">路线 A（稳妥 — 硕士开题）：轻量化创新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%BA%BF-B%EF%BC%88%E8%BF%9B%E9%98%B6-%E2%80%94-%E7%A1%95%E5%A3%AB-%E5%8D%9A%E5%A3%AB%E8%BF%87%E6%B8%A1%EF%BC%89%EF%BC%9A%E5%A1%AB%E8%A1%A5%E6%98%8E%E7%A1%AE%E7%A9%BA%E7%99%BD"><span class="nav-text">路线 B（进阶 — 硕士&#x2F;博士过渡）：填补明确空白</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%BA%BF-C%EF%BC%88%E5%89%8D%E6%B2%BF-%E2%80%94-%E5%8D%9A%E5%A3%AB%E6%96%B9%E5%90%91%EF%BC%89%EF%BC%9A%E8%8C%83%E5%BC%8F%E5%88%9B%E6%96%B0"><span class="nav-text">路线 C（前沿 — 博士方向）：范式创新</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%85-%E6%8E%A8%E8%8D%90%E7%9A%84%E4%B8%89%E5%AD%A6%E6%9C%9F%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92"><span class="nav-text">📅 推荐的三学期执行计划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8F%81-%E7%BB%93%E8%AF%AD"><span class="nav-text">🏁 结语</span></a></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">车辆队列跨域认证 —— 16 篇论文全对比与可行研究路线</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C"><span class="nav-text">第一部分：密码学知识速查手册</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%B1%82"><span class="nav-text">基础层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E5%B1%82"><span class="nav-text">进阶层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E5%B1%82"><span class="nav-text">高级层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A10-%E7%AF%87%E6%A0%B8%E5%BF%83%E7%A0%94%E7%A9%B6%E8%AE%BA%E6%96%87%E5%85%A8%E7%BB%B4%E5%BA%A6%E5%AF%B9%E6%AF%94"><span class="nav-text">第二部分：10 篇核心研究论文全维度对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%B8%80%E5%BC%A0%E8%A1%A8%E7%9C%8B%E7%A9%BF%E6%89%80%E6%9C%89%E6%96%B9%E6%A1%88"><span class="nav-text">2.1 一张表看穿所有方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%85%B3%E9%94%AE%E4%BA%A4%E5%8F%89%E7%BB%B4%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-text">2.2 关键交叉维度分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%EF%BC%9A%E6%AF%8F%E7%AF%87%E8%AE%BA%E6%96%87%E7%9A%84-%E8%BF%98%E6%9C%89%E4%BB%80%E4%B9%88%E6%B2%A1%E5%81%9A"><span class="nav-text">第三部分：每篇论文的&quot;还有什么没做&quot;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%EF%BC%9A%E7%A0%94%E7%A9%B6%E7%A9%BA%E7%99%BD%E8%B1%A1%E9%99%90%E5%9B%BE"><span class="nav-text">第四部分：研究空白象限图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8E%AF-%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86%EF%BC%9A%E5%85%B7%E4%BD%93%E7%A0%94%E7%A9%B6%E8%B7%AF%E7%BA%BF%E6%8E%A8%E8%8D%90"><span class="nav-text">🎯 第五部分：具体研究路线推荐</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%BA%BF-A%EF%BC%88%E7%A8%B3%E5%A6%A5-%E2%80%94-%E7%A1%95%E5%A3%AB%E5%BC%80%E9%A2%98%EF%BC%89%EF%BC%9A%E8%BD%BB%E9%87%8F%E5%8C%96%E5%88%9B%E6%96%B0"><span class="nav-text">路线 A（稳妥 — 硕士开题）：轻量化创新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%BA%BF-B%EF%BC%88%E8%BF%9B%E9%98%B6-%E2%80%94-%E7%A1%95%E5%A3%AB-%E5%8D%9A%E5%A3%AB%E8%BF%87%E6%B8%A1%EF%BC%89%EF%BC%9A%E5%A1%AB%E8%A1%A5%E6%98%8E%E7%A1%AE%E7%A9%BA%E7%99%BD"><span class="nav-text">路线 B（进阶 — 硕士&#x2F;博士过渡）：填补明确空白</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%BA%BF-C%EF%BC%88%E5%89%8D%E6%B2%BF-%E2%80%94-%E5%8D%9A%E5%A3%AB%E6%96%B9%E5%90%91%EF%BC%89%EF%BC%9A%E8%8C%83%E5%BC%8F%E5%88%9B%E6%96%B0"><span class="nav-text">路线 C（前沿 — 博士方向）：范式创新</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%85-%E6%8E%A8%E8%8D%90%E7%9A%84%E4%B8%89%E5%AD%A6%E6%9C%9F%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92"><span class="nav-text">📅 推荐的三学期执行计划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8F%81-%E7%BB%93%E8%AF%AD"><span class="nav-text">🏁 结语</span></a></li></ol></li></ol>
 
 	</div>
 </div>
@@ -1055,6 +1121,11 @@
                 } catch (error) {}
             </script>
         
+        
+            
+                
+        
+                
         
         
     </div>  

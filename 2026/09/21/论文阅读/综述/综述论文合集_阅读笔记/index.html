@@ -119,6 +119,16 @@
 
     <!--- Inject Part-->
     
+        
+            
+    
+            
+    
+            
+                
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+                
+    
 
     
 <link rel="stylesheet" href="/css/style.css">
@@ -378,18 +388,24 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1 id="综述论文合集-阅读笔记"><a href="#综述论文合集-阅读笔记" class="headerlink" title="综述论文合集 阅读笔记"></a>综述论文合集 阅读笔记</h1><blockquote>
-<p><strong>阅读日期：</strong> 2026-07-15<br><strong>说明：</strong> 本文件包含目录中 5 篇综述论文的精炼笔记，每篇提取与你研究方向相关的核心内容。</p>
+			<h1>综述论文合集 阅读笔记</h1>
+<blockquote>
+<p><strong>阅读日期：</strong> 2026-07-15<br>
+<strong>说明：</strong> 本文件包含目录中 5 篇综述论文的精炼笔记，每篇提取与你研究方向相关的核心内容。</p>
 </blockquote>
 <hr>
-<h2 id="综述-1：车辆队列通信安全综述"><a href="#综述-1：车辆队列通信安全综述" class="headerlink" title="综述 1：车辆队列通信安全综述"></a>综述 1：车辆队列通信安全综述</h2><blockquote>
-<p><strong>论文：</strong> Sean Joe Taylor, Farhan Ahmad 等, “Vehicular Platoon Communication: Architecture, Security Threats and Open Challenges”<br><strong>期刊：</strong> Sensors, Vol. 23, No. 134, 2023<br><strong>文件：</strong> <code>sensors-23-00134.pdf</code></p>
+<h2 id="综述-1：车辆队列通信安全综述">综述 1：车辆队列通信安全综述</h2>
+<blockquote>
+<p><strong>论文：</strong> Sean Joe Taylor, Farhan Ahmad 等, &quot;Vehicular Platoon Communication: Architecture, Security Threats and Open Challenges&quot;<br>
+<strong>期刊：</strong> Sensors, Vol. 23, No. 134, 2023<br>
+<strong>文件：</strong> <code>sensors-23-00134.pdf</code></p>
 </blockquote>
-<h3 id="核心内容"><a href="#核心内容" class="headerlink" title="核心内容"></a>核心内容</h3><p><strong>车辆队列的架构（基本概念）：</strong></p>
+<h3 id="核心内容">核心内容</h3>
+<p><strong>车辆队列的架构（基本概念）：</strong></p>
 <ul>
-<li>队列 &#x3D; 领航车(PL，由有经验的驾驶员完全控制) + 跟随车(半自动驾驶)</li>
+<li>队列 = 领航车(PL，由有经验的驾驶员完全控制) + 跟随车(半自动驾驶)</li>
 <li>核心驱动力：降低油耗(跟随车可降 20%+，领航车也可降约 5%)、减少碳排放、提高道路容量</li>
-<li>关键技术：CACC（协同自适应巡航控制）+ V2V&#x2F;V2I 无线通信</li>
+<li>关键技术：CACC（协同自适应巡航控制）+ V2V/V2I 无线通信</li>
 <li>通信标准：IEEE 802.11p (DSRC) + 未来 C-V2X</li>
 </ul>
 <p><strong>安全威胁分类（对你最有价值的部分）：</strong></p>
@@ -401,7 +417,8 @@
 <th>影响</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>干扰攻击(Jamming)</strong></td>
 <td>无线信号干扰 → 阻断队列内部通信</td>
 <td>队列解体，碰撞风险</td>
@@ -423,8 +440,8 @@
 </tr>
 <tr>
 <td><strong>伪造消息(Falsified Message)</strong></td>
-<td>修改&#x2F;伪造队列控制指令</td>
-<td>速度&#x2F;方向失控</td>
+<td>修改/伪造队列控制指令</td>
+<td>速度/方向失控</td>
 </tr>
 <tr>
 <td><strong>窃听</strong></td>
@@ -436,37 +453,43 @@
 <td>大量无效请求淹没节点</td>
 <td>通信瘫痪</td>
 </tr>
-</tbody></table>
-<p><strong>SAE&#x2F;ISO 21434 风险评估：</strong> 论文做了正式的风险评估，最高风险的是<strong>干扰攻击和伪造消息攻击</strong>（直接影响安全）。</p>
+</tbody>
+</table>
+<p><strong>SAE/ISO 21434 风险评估：</strong> 论文做了正式的风险评估，最高风险的是<strong>干扰攻击和伪造消息攻击</strong>（直接影响安全）。</p>
 <p><strong>防御机制概览：</strong></p>
 <ul>
 <li>消息认证：数字签名、HMAC</li>
-<li>异常检测：基于物理模型的一致性检查（检测”不可能”的控制指令）</li>
+<li>异常检测：基于物理模型的一致性检查（检测&quot;不可能&quot;的控制指令）</li>
 <li>信任管理：声誉系统</li>
 <li>加密：AES 对称加密保护队列内部通信</li>
 </ul>
 <p><strong>开放挑战：</strong></p>
 <ul>
 <li>队列规模增大时，认证延迟挑战</li>
-<li>跨域&#x2F;跨运营商的互操作性</li>
+<li>跨域/跨运营商的互操作性</li>
 <li>混合交通（有人驾驶+自动驾驶队列共存）的安全</li>
 <li>物理层攻击的防御</li>
 </ul>
 <hr>
-<h2 id="综述-2：VANET-认证协议综述（最完整）"><a href="#综述-2：VANET-认证协议综述（最完整）" class="headerlink" title="综述 2：VANET 认证协议综述（最完整）"></a>综述 2：VANET 认证协议综述（最完整）</h2><blockquote>
-<p><strong>论文：</strong> Sheraz Mazhar, Abdur Rakib 等, “State-of-the-art authentication and verification schemes in VANETs: A survey”<br><strong>期刊：</strong> Vehicular Communications, Vol. 49, 2024, Article 100804<br><strong>文件：</strong> <code>state-of-the-art authentication.pdf</code></p>
+<h2 id="综述-2：VANET-认证协议综述（最完整）">综述 2：VANET 认证协议综述（最完整）</h2>
+<blockquote>
+<p><strong>论文：</strong> Sheraz Mazhar, Abdur Rakib 等, &quot;State-of-the-art authentication and verification schemes in VANETs: A survey&quot;<br>
+<strong>期刊：</strong> Vehicular Communications, Vol. 49, 2024, Article 100804<br>
+<strong>文件：</strong> <code>state-of-the-art authentication.pdf</code></p>
 </blockquote>
-<h3 id="核心贡献-—-认证协议分类"><a href="#核心贡献-—-认证协议分类" class="headerlink" title="核心贡献 — 认证协议分类"></a>核心贡献 — 认证协议分类</h3><p>这是你目录里最完整的 VANET 认证综述，提出了一个<strong>认证协议分类体系</strong>：</p>
+<h3 id="核心贡献-—-认证协议分类">核心贡献 — 认证协议分类</h3>
+<p>这是你目录里最完整的 VANET 认证综述，提出了一个<strong>认证协议分类体系</strong>：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">VANET 认证协议</span><br><span class="line">├── 基于密码学</span><br><span class="line">│   ├── PKI（公钥基础设施）</span><br><span class="line">│   ├── IBC（身份基密码学）  </span><br><span class="line">│   ├── CLC（无证书密码学）</span><br><span class="line">│   └── 群签名/环签名</span><br><span class="line">├── 基于批量验证</span><br><span class="line">│   ├── ECC 批量签名</span><br><span class="line">│   └── 双线性配对批量签名</span><br><span class="line">├── 基于 LTE</span><br><span class="line">│   └── 利用蜂窝网络的认证框架</span><br><span class="line">├── 基于群组通信</span><br><span class="line">│   └── 群组密钥协商 + 认证</span><br><span class="line">└── 基于 PKI</span><br><span class="line">    └── 证书管理 + 撤销</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="攻击向量总结"><a href="#攻击向量总结" class="headerlink" title="攻击向量总结"></a>攻击向量总结</h3><table>
+<h3 id="攻击向量总结">攻击向量总结</h3>
+<table>
 <thead>
 <tr>
 <th>攻击类别</th>
 <th>具体攻击</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>网络层</td>
 <td>黑洞攻击、灰洞攻击、虫洞攻击</td>
 </tr>
@@ -475,33 +498,40 @@
 <td>虚假消息注入、Sybil 攻击、冒充攻击</td>
 </tr>
 <tr>
-<td>物理&#x2F;链路层</td>
+<td>物理/链路层</td>
 <td>干扰、窃听</td>
 </tr>
 <tr>
 <td>密码学攻击</td>
 <td>密钥泄露、证书伪造</td>
 </tr>
-</tbody></table>
-<h3 id="形式化验证方法（方法论贡献！）"><a href="#形式化验证方法（方法论贡献！）" class="headerlink" title="形式化验证方法（方法论贡献！）"></a>形式化验证方法（方法论贡献！）</h3><p>Mazhar 等人提出了一个创新框架：</p>
+</tbody>
+</table>
+<h3 id="形式化验证方法（方法论贡献！）">形式化验证方法（方法论贡献！）</h3>
+<p>Mazhar 等人提出了一个创新框架：</p>
 <ul>
 <li><strong>威胁建模</strong>（STRIDE）→ 自动生成安全需求</li>
-<li><strong>形式化验证</strong>（ProVerif&#x2F;Tamarin&#x2F;SPIN）→ 自动验证协议是否满足需求</li>
+<li><strong>形式化验证</strong>（ProVerif/Tamarin/SPIN）→ 自动验证协议是否满足需求</li>
 <li>论文提出将这个框架应用于 VANET 领域（这是他们的未来工作）</li>
 </ul>
 <blockquote>
-<p><strong>对你的启发：</strong> 如果你用 STRIDE + ProVerif 来设计和验证你的方案，在方法论上就比 EPP-GAS&#x2F;CD-BASA 等人更严格。</p>
+<p><strong>对你的启发：</strong> 如果你用 STRIDE + ProVerif 来设计和验证你的方案，在方法论上就比 EPP-GAS/CD-BASA 等人更严格。</p>
 </blockquote>
-<h3 id="研究空白（论文指出的）"><a href="#研究空白（论文指出的）" class="headerlink" title="研究空白（论文指出的）"></a>研究空白（论文指出的）</h3><ul>
+<h3 id="研究空白（论文指出的）">研究空白（论文指出的）</h3>
+<ul>
 <li>现有方案很少同时考虑：频谱稀缺 + 资源分配 + 安全的组合</li>
 <li>跨域认证的形式化验证几乎空白</li>
 <li>真实 5G V2X 环境下的验证缺乏</li>
 </ul>
 <hr>
-<h2 id="综述-3：区块链-VANET-安全-全面综述"><a href="#综述-3：区块链-VANET-安全-全面综述" class="headerlink" title="综述 3：区块链+VANET 安全 全面综述"></a>综述 3：区块链+VANET 安全 全面综述</h2><blockquote>
-<p><strong>论文：</strong> Tejasvi Alladi 等, “A Comprehensive Survey on the Applications of Blockchain for Securing Vehicular Networks”<br><strong>期刊：</strong> IEEE Communications Surveys &amp; Tutorials (IEEE COMST), Vol. 24, No. 2, 2022<br><strong>文件：</strong> <code>Survey-A_Comprehensive_Survey_on_the_Applications_of_Blockchain_for_Securing_Vehicular_Networks.pdf</code></p>
+<h2 id="综述-3：区块链-VANET-安全-全面综述">综述 3：区块链+VANET 安全 全面综述</h2>
+<blockquote>
+<p><strong>论文：</strong> Tejasvi Alladi 等, &quot;A Comprehensive Survey on the Applications of Blockchain for Securing Vehicular Networks&quot;<br>
+<strong>期刊：</strong> IEEE Communications Surveys &amp; Tutorials (IEEE COMST), Vol. 24, No. 2, 2022<br>
+<strong>文件：</strong> <code>Survey-A_Comprehensive_Survey_on_the_Applications_of_Blockchain_for_Securing_Vehicular_Networks.pdf</code></p>
 </blockquote>
-<h3 id="核心价值-—-三维分类法"><a href="#核心价值-—-三维分类法" class="headerlink" title="核心价值 — 三维分类法"></a>核心价值 — 三维分类法</h3><p>这篇综述用<strong>三个维度</strong>分析区块链安全方案（约 75 篇论文）：</p>
+<h3 id="核心价值-—-三维分类法">核心价值 — 三维分类法</h3>
+<p>这篇综述用<strong>三个维度</strong>分析区块链安全方案（约 75 篇论文）：</p>
 <table>
 <thead>
 <tr>
@@ -509,30 +539,37 @@
 <th>分类</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>应用视角</strong></td>
-<td>交通管理、停车、数据共享&#x2F;交易、资源分享、<strong>编队(Platooning)</strong></td>
+<td>交通管理、停车、数据共享/交易、资源分享、<strong>编队(Platooning)</strong></td>
 </tr>
 <tr>
 <td><strong>安全视角</strong></td>
-<td>安全需求（认证&#x2F;隐私&#x2F;完整性&#x2F;可用性）+ 安全攻击（重放&#x2F;Sybil&#x2F;DoS）</td>
+<td>安全需求（认证/隐私/完整性/可用性）+ 安全攻击（重放/Sybil/DoS）</td>
 </tr>
 <tr>
 <td><strong>区块链视角</strong></td>
-<td>平台（以太坊&#x2F;超级账本）+ 类型（公有&#x2F;联盟&#x2F;私有）+ 共识（PoW&#x2F;PBFT&#x2F;Raft）</td>
+<td>平台（以太坊/超级账本）+ 类型（公有/联盟/私有）+ 共识（PoW/PBFT/Raft）</td>
 </tr>
-</tbody></table>
-<h3 id="安全需求详解（适用于任何方案）"><a href="#安全需求详解（适用于任何方案）" class="headerlink" title="安全需求详解（适用于任何方案）"></a>安全需求详解（适用于任何方案）</h3><p>论文明确列出了 VANET 安全需求，这些应该是你设计新方案时的 checklist：</p>
+</tbody>
+</table>
+<h3 id="安全需求详解（适用于任何方案）">安全需求详解（适用于任何方案）</h3>
+<p>论文明确列出了 VANET 安全需求，这些应该是你设计新方案时的 checklist：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">必备安全属性：</span><br><span class="line">1. 消息完整性和认证 — 确保消息未被篡改，来源可信</span><br><span class="line">2. 身份隐私保护 — 车辆真实身份不暴露</span><br><span class="line">3. 可追溯性 — 发生恶意行为时可追溯到真实身份</span><br><span class="line">4. 不可否认性 — 发送方不能抵赖已发送的消息</span><br><span class="line">5. 可用性 — 即使被攻击也能正常服务</span><br><span class="line">6. 条件隐私 — 对普通节点匿名，对 TA 可追溯</span><br><span class="line">7. 可撤销性 — 恶意车辆可被踢出网络</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="编队-Platooning-小节"><a href="#编队-Platooning-小节" class="headerlink" title="编队(Platooning) 小节"></a>编队(Platooning) 小节</h3><blockquote>
-<p>论文承认编队是”区块链+VANET”的一个研究推力领域，但当时（2022年）的方案还很少，集中在车辆管理而非安全认证。这说明你的方向在 2022 年时还是一片荒原。</p>
+<h3 id="编队-Platooning-小节">编队(Platooning) 小节</h3>
+<blockquote>
+<p>论文承认编队是&quot;区块链+VANET&quot;的一个研究推力领域，但当时（2022年）的方案还很少，集中在车辆管理而非安全认证。这说明你的方向在 2022 年时还是一片荒原。</p>
 </blockquote>
 <hr>
-<h2 id="综述-4：区块链认证在-IoV-中的应用"><a href="#综述-4：区块链认证在-IoV-中的应用" class="headerlink" title="综述 4：区块链认证在 IoV 中的应用"></a>综述 4：区块链认证在 IoV 中的应用</h2><blockquote>
-<p><strong>论文：</strong> Sohail Abbas 等, “Blockchain-Based Authentication in Internet of Vehicles: A Survey”<br><strong>期刊：</strong> Sensors, Vol. 21, No. 7927, 2021<br><strong>文件：</strong> <code>Survey-Blockchain-Based Authentication in Internet of Vehicles.pdf</code></p>
+<h2 id="综述-4：区块链认证在-IoV-中的应用">综述 4：区块链认证在 IoV 中的应用</h2>
+<blockquote>
+<p><strong>论文：</strong> Sohail Abbas 等, &quot;Blockchain-Based Authentication in Internet of Vehicles: A Survey&quot;<br>
+<strong>期刊：</strong> Sensors, Vol. 21, No. 7927, 2021<br>
+<strong>文件：</strong> <code>Survey-Blockchain-Based Authentication in Internet of Vehicles.pdf</code></p>
 </blockquote>
-<h3 id="核心内容-—-IoV-vs-VANET"><a href="#核心内容-—-IoV-vs-VANET" class="headerlink" title="核心内容 — IoV vs VANET"></a>核心内容 — IoV vs VANET</h3><p><strong>VANET → IoV 的演进：</strong></p>
+<h3 id="核心内容-—-IoV-vs-VANET">核心内容 — IoV vs VANET</h3>
+<p><strong>VANET → IoV 的演进：</strong></p>
 <ul>
 <li>VANET：V2V + V2I，以道路安全为中心</li>
 <li>IoV：融入云计算、物联网、5G、大数据 → 更广泛的服务（娱乐、导航、智能城市）</li>
@@ -545,16 +582,20 @@
 </ul>
 <p><strong>区块链认证方案的比较框架：</strong></p>
 <ul>
-<li>技术（ECC&#x2F;PKI&#x2F;群签名&#x2F;对称加密）</li>
-<li>网络模型（V2V&#x2F;V2I&#x2F;混合）</li>
+<li>技术（ECC/PKI/群签名/对称加密）</li>
+<li>网络模型（V2V/V2I/混合）</li>
 <li>攻击防御能力</li>
 <li>评估工具</li>
 </ul>
 <hr>
-<h2 id="综述-5：隐私保护认证协议综述"><a href="#综述-5：隐私保护认证协议综述" class="headerlink" title="综述 5：隐私保护认证协议综述"></a>综述 5：隐私保护认证协议综述</h2><blockquote>
-<p><strong>论文：</strong> Kartick Sutradhar 等, “A survey on privacy-preserving authentication protocols for secure vehicular communication”<br><strong>期刊：</strong> Computer Communications, Vol. 219, pp. 1-18, 2024<br><strong>文件：</strong> <code>Survey-on-privacy-preserving-authentication protocols for secure vehicular.pdf</code></p>
+<h2 id="综述-5：隐私保护认证协议综述">综述 5：隐私保护认证协议综述</h2>
+<blockquote>
+<p><strong>论文：</strong> Kartick Sutradhar 等, &quot;A survey on privacy-preserving authentication protocols for secure vehicular communication&quot;<br>
+<strong>期刊：</strong> Computer Communications, Vol. 219, pp. 1-18, 2024<br>
+<strong>文件：</strong> <code>Survey-on-privacy-preserving-authentication protocols for secure vehicular.pdf</code></p>
 </blockquote>
-<h3 id="核心贡献-—-7-类密码学认证技术的分类"><a href="#核心贡献-—-7-类密码学认证技术的分类" class="headerlink" title="核心贡献 — 7 类密码学认证技术的分类"></a>核心贡献 — 7 类密码学认证技术的分类</h3><ol>
+<h3 id="核心贡献-—-7-类密码学认证技术的分类">核心贡献 — 7 类密码学认证技术的分类</h3>
+<ol>
 <li><strong>基于 PKI 的认证</strong> — 证书管理复杂，CRL 查询效率低</li>
 <li><strong>基于 ID 的认证</strong> — 消除证书，但密钥托管问题</li>
 <li><strong>基于无证书的认证</strong> — PKI 和 IBC 的折中</li>
@@ -563,14 +604,16 @@
 <li><strong>基于批验证的认证</strong> — 一次验证多个签名，提高效率</li>
 <li><strong>基于区块链的认证</strong> — 去中心化存储，抗单点故障</li>
 </ol>
-<h3 id="安全需求总结"><a href="#安全需求总结" class="headerlink" title="安全需求总结"></a>安全需求总结</h3><table>
+<h3 id="安全需求总结">安全需求总结</h3>
+<table>
 <thead>
 <tr>
 <th>需求</th>
 <th>解释</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>可用性</td>
 <td>被攻击下仍能工作</td>
 </tr>
@@ -598,12 +641,17 @@
 <td>不可链接性</td>
 <td>同一车的不同消息不能关联</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
-<h2 id="综述-6：卡车队列通信综述"><a href="#综述-6：卡车队列通信综述" class="headerlink" title="综述 6：卡车队列通信综述"></a>综述 6：卡车队列通信综述</h2><blockquote>
-<p><strong>论文：</strong> Ali Balador 等, “A survey on vehicular communication for cooperative truck platooning application”<br><strong>期刊：</strong> Vehicular Communications, Vol. 35, 2022, Article 100460<br><strong>文件：</strong> <code>survey on vehicular.pdf</code></p>
+<h2 id="综述-6：卡车队列通信综述">综述 6：卡车队列通信综述</h2>
+<blockquote>
+<p><strong>论文：</strong> Ali Balador 等, &quot;A survey on vehicular communication for cooperative truck platooning application&quot;<br>
+<strong>期刊：</strong> Vehicular Communications, Vol. 35, 2022, Article 100460<br>
+<strong>文件：</strong> <code>survey on vehicular.pdf</code></p>
 </blockquote>
-<h3 id="核心内容-—-队列通信工程视角"><a href="#核心内容-—-队列通信工程视角" class="headerlink" title="核心内容 — 队列通信工程视角"></a>核心内容 — 队列通信工程视角</h3><p>这篇是工程视角的综述，专门针对<strong>卡车编队</strong>（不是普通汽车）：</p>
+<h3 id="核心内容-—-队列通信工程视角">核心内容 — 队列通信工程视角</h3>
+<p>这篇是工程视角的综述，专门针对<strong>卡车编队</strong>（不是普通汽车）：</p>
 <p><strong>队列的关键通信需求：</strong></p>
 <ul>
 <li>端到端延迟 &lt; 10ms（安全关键）</li>
@@ -617,12 +665,13 @@
 </ul>
 <p><strong>对安全研究的启发：</strong></p>
 <ul>
-<li>队列的通信不仅仅是”发消息”，还涉及物理控制(CACC)</li>
+<li>队列的通信不仅仅是&quot;发消息&quot;，还涉及物理控制(CACC)</li>
 <li>安全认证的延迟必须控制在毫秒级，否则会影响队列稳定性</li>
-<li>这就是为什么 EPP-GAS 和 PPCDA 都强调”批量认证减少延迟”</li>
+<li>这就是为什么 EPP-GAS 和 PPCDA 都强调&quot;批量认证减少延迟&quot;</li>
 </ul>
 <hr>
-<h2 id="六篇综述的交叉总结"><a href="#六篇综述的交叉总结" class="headerlink" title="六篇综述的交叉总结"></a>六篇综述的交叉总结</h2><table>
+<h2 id="六篇综述的交叉总结">六篇综述的交叉总结</h2>
+<table>
 <thead>
 <tr>
 <th>综述</th>
@@ -630,7 +679,8 @@
 <th>对你最有价值的部分</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>Sensors 队列安全</td>
 <td>2023</td>
 <td>队列的安全威胁全景 + ISO 21434 风险评估</td>
@@ -658,9 +708,10 @@
 <tr>
 <td>Balador 队列通信</td>
 <td>2022</td>
-<td>队列通信工程需求（延迟&#x2F;可靠性）</td>
+<td>队列通信工程需求（延迟/可靠性）</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 
 		</div>
 
@@ -705,12 +756,12 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/RTRA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+				<a class="prev" rel="prev" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/PPCDA_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">RTRA论文完整阅读笔记</span>
+						<span class="post-nav-title-item truncate max-w-48">PPCDA论文完整阅读笔记</span>
 						<span class="post-nav-item">上一篇</span>
 					</span>
 				</a>
@@ -804,7 +855,7 @@
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
 		<div class="page-title">综述论文合集 阅读笔记</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E5%90%88%E9%9B%86-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0"><span class="nav-text">综述论文合集 阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%BC%E8%BF%B0-1%EF%BC%9A%E8%BD%A6%E8%BE%86%E9%98%9F%E5%88%97%E9%80%9A%E4%BF%A1%E5%AE%89%E5%85%A8%E7%BB%BC%E8%BF%B0"><span class="nav-text">综述 1：车辆队列通信安全综述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9"><span class="nav-text">核心内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%BC%E8%BF%B0-2%EF%BC%9AVANET-%E8%AE%A4%E8%AF%81%E5%8D%8F%E8%AE%AE%E7%BB%BC%E8%BF%B0%EF%BC%88%E6%9C%80%E5%AE%8C%E6%95%B4%EF%BC%89"><span class="nav-text">综述 2：VANET 认证协议综述（最完整）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E8%B4%A1%E7%8C%AE-%E2%80%94-%E8%AE%A4%E8%AF%81%E5%8D%8F%E8%AE%AE%E5%88%86%E7%B1%BB"><span class="nav-text">核心贡献 — 认证协议分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%BB%E5%87%BB%E5%90%91%E9%87%8F%E6%80%BB%E7%BB%93"><span class="nav-text">攻击向量总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%A2%E5%BC%8F%E5%8C%96%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95%EF%BC%88%E6%96%B9%E6%B3%95%E8%AE%BA%E8%B4%A1%E7%8C%AE%EF%BC%81%EF%BC%89"><span class="nav-text">形式化验证方法（方法论贡献！）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E7%A9%BA%E7%99%BD%EF%BC%88%E8%AE%BA%E6%96%87%E6%8C%87%E5%87%BA%E7%9A%84%EF%BC%89"><span class="nav-text">研究空白（论文指出的）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%BC%E8%BF%B0-3%EF%BC%9A%E5%8C%BA%E5%9D%97%E9%93%BE-VANET-%E5%AE%89%E5%85%A8-%E5%85%A8%E9%9D%A2%E7%BB%BC%E8%BF%B0"><span class="nav-text">综述 3：区块链+VANET 安全 全面综述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E4%BB%B7%E5%80%BC-%E2%80%94-%E4%B8%89%E7%BB%B4%E5%88%86%E7%B1%BB%E6%B3%95"><span class="nav-text">核心价值 — 三维分类法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E9%9C%80%E6%B1%82%E8%AF%A6%E8%A7%A3%EF%BC%88%E9%80%82%E7%94%A8%E4%BA%8E%E4%BB%BB%E4%BD%95%E6%96%B9%E6%A1%88%EF%BC%89"><span class="nav-text">安全需求详解（适用于任何方案）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E9%98%9F-Platooning-%E5%B0%8F%E8%8A%82"><span class="nav-text">编队(Platooning) 小节</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%BC%E8%BF%B0-4%EF%BC%9A%E5%8C%BA%E5%9D%97%E9%93%BE%E8%AE%A4%E8%AF%81%E5%9C%A8-IoV-%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-text">综述 4：区块链认证在 IoV 中的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9-%E2%80%94-IoV-vs-VANET"><span class="nav-text">核心内容 — IoV vs VANET</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%BC%E8%BF%B0-5%EF%BC%9A%E9%9A%90%E7%A7%81%E4%BF%9D%E6%8A%A4%E8%AE%A4%E8%AF%81%E5%8D%8F%E8%AE%AE%E7%BB%BC%E8%BF%B0"><span class="nav-text">综述 5：隐私保护认证协议综述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E8%B4%A1%E7%8C%AE-%E2%80%94-7-%E7%B1%BB%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AE%A4%E8%AF%81%E6%8A%80%E6%9C%AF%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-text">核心贡献 — 7 类密码学认证技术的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E9%9C%80%E6%B1%82%E6%80%BB%E7%BB%93"><span class="nav-text">安全需求总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%BC%E8%BF%B0-6%EF%BC%9A%E5%8D%A1%E8%BD%A6%E9%98%9F%E5%88%97%E9%80%9A%E4%BF%A1%E7%BB%BC%E8%BF%B0"><span class="nav-text">综述 6：卡车队列通信综述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9-%E2%80%94-%E9%98%9F%E5%88%97%E9%80%9A%E4%BF%A1%E5%B7%A5%E7%A8%8B%E8%A7%86%E8%A7%92"><span class="nav-text">核心内容 — 队列通信工程视角</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E7%AF%87%E7%BB%BC%E8%BF%B0%E7%9A%84%E4%BA%A4%E5%8F%89%E6%80%BB%E7%BB%93"><span class="nav-text">六篇综述的交叉总结</span></a></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">综述论文合集 阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%BC%E8%BF%B0-1%EF%BC%9A%E8%BD%A6%E8%BE%86%E9%98%9F%E5%88%97%E9%80%9A%E4%BF%A1%E5%AE%89%E5%85%A8%E7%BB%BC%E8%BF%B0"><span class="nav-text">综述 1：车辆队列通信安全综述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9"><span class="nav-text">核心内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%BC%E8%BF%B0-2%EF%BC%9AVANET-%E8%AE%A4%E8%AF%81%E5%8D%8F%E8%AE%AE%E7%BB%BC%E8%BF%B0%EF%BC%88%E6%9C%80%E5%AE%8C%E6%95%B4%EF%BC%89"><span class="nav-text">综述 2：VANET 认证协议综述（最完整）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E8%B4%A1%E7%8C%AE-%E2%80%94-%E8%AE%A4%E8%AF%81%E5%8D%8F%E8%AE%AE%E5%88%86%E7%B1%BB"><span class="nav-text">核心贡献 — 认证协议分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%BB%E5%87%BB%E5%90%91%E9%87%8F%E6%80%BB%E7%BB%93"><span class="nav-text">攻击向量总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%A2%E5%BC%8F%E5%8C%96%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95%EF%BC%88%E6%96%B9%E6%B3%95%E8%AE%BA%E8%B4%A1%E7%8C%AE%EF%BC%81%EF%BC%89"><span class="nav-text">形式化验证方法（方法论贡献！）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E7%A9%BA%E7%99%BD%EF%BC%88%E8%AE%BA%E6%96%87%E6%8C%87%E5%87%BA%E7%9A%84%EF%BC%89"><span class="nav-text">研究空白（论文指出的）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%BC%E8%BF%B0-3%EF%BC%9A%E5%8C%BA%E5%9D%97%E9%93%BE-VANET-%E5%AE%89%E5%85%A8-%E5%85%A8%E9%9D%A2%E7%BB%BC%E8%BF%B0"><span class="nav-text">综述 3：区块链+VANET 安全 全面综述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E4%BB%B7%E5%80%BC-%E2%80%94-%E4%B8%89%E7%BB%B4%E5%88%86%E7%B1%BB%E6%B3%95"><span class="nav-text">核心价值 — 三维分类法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E9%9C%80%E6%B1%82%E8%AF%A6%E8%A7%A3%EF%BC%88%E9%80%82%E7%94%A8%E4%BA%8E%E4%BB%BB%E4%BD%95%E6%96%B9%E6%A1%88%EF%BC%89"><span class="nav-text">安全需求详解（适用于任何方案）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E9%98%9F-Platooning-%E5%B0%8F%E8%8A%82"><span class="nav-text">编队(Platooning) 小节</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%BC%E8%BF%B0-4%EF%BC%9A%E5%8C%BA%E5%9D%97%E9%93%BE%E8%AE%A4%E8%AF%81%E5%9C%A8-IoV-%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-text">综述 4：区块链认证在 IoV 中的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9-%E2%80%94-IoV-vs-VANET"><span class="nav-text">核心内容 — IoV vs VANET</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%BC%E8%BF%B0-5%EF%BC%9A%E9%9A%90%E7%A7%81%E4%BF%9D%E6%8A%A4%E8%AE%A4%E8%AF%81%E5%8D%8F%E8%AE%AE%E7%BB%BC%E8%BF%B0"><span class="nav-text">综述 5：隐私保护认证协议综述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E8%B4%A1%E7%8C%AE-%E2%80%94-7-%E7%B1%BB%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AE%A4%E8%AF%81%E6%8A%80%E6%9C%AF%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-text">核心贡献 — 7 类密码学认证技术的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E9%9C%80%E6%B1%82%E6%80%BB%E7%BB%93"><span class="nav-text">安全需求总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%BC%E8%BF%B0-6%EF%BC%9A%E5%8D%A1%E8%BD%A6%E9%98%9F%E5%88%97%E9%80%9A%E4%BF%A1%E7%BB%BC%E8%BF%B0"><span class="nav-text">综述 6：卡车队列通信综述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9-%E2%80%94-%E9%98%9F%E5%88%97%E9%80%9A%E4%BF%A1%E5%B7%A5%E7%A8%8B%E8%A7%86%E8%A7%92"><span class="nav-text">核心内容 — 队列通信工程视角</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E7%AF%87%E7%BB%BC%E8%BF%B0%E7%9A%84%E4%BA%A4%E5%8F%89%E6%80%BB%E7%BB%93"><span class="nav-text">六篇综述的交叉总结</span></a></li></ol></li></ol>
 
 	</div>
 </div>
@@ -882,6 +933,11 @@
                 } catch (error) {}
             </script>
         
+        
+            
+                
+        
+                
         
         
     </div>  

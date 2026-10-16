@@ -119,6 +119,16 @@
 
     <!--- Inject Part-->
     
+        
+            
+    
+            
+    
+            
+                
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+                
+    
 
     
 <link rel="stylesheet" href="/css/style.css">
@@ -368,18 +378,28 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1 id="CD-BASA-论文阅读笔记"><a href="#CD-BASA-论文阅读笔记" class="headerlink" title="CD-BASA 论文阅读笔记"></a>CD-BASA 论文阅读笔记</h1><blockquote>
-<p><strong>论文信息：</strong> Qiang Zhong (钟强), Xiang Zhao (赵翔), Yingjie Xia (夏莹杰), Xuejiao Liu (刘雪娇), “CD-BASA: An Efficient Cross-Domain Batch Authentication Scheme Based on Blockchain With Accumulator for VANETs”<br><strong>期刊：</strong> IEEE Transactions on Intelligent Transportation Systems (IEEE TITS) — <strong>中科院一区 TOP 期刊</strong><br><strong>年份：</strong> 2024 年 4 月（在线发表），2024 年 10 月正式出版<br><strong>卷号&#x2F;页码：</strong> Vol. 25, No. 10, pp. 14560–14571<br><strong>DOI：</strong> 10.1109&#x2F;TITS.2024.3386730<br><strong>所属团队：</strong> 杭州电子科技大学微电子研究院芯片与安全实验室（CSL）+ 杭州师范大学<br><strong>资助项目：</strong> 浙江省自然科学基金重点项目 (LZ22F030004)、浙江省”尖兵领雁”重大研发攻关项目 (2024C01179)<br><strong>阅读日期：</strong> 2026-07-15</p>
+			<h1>CD-BASA 论文阅读笔记</h1>
+<blockquote>
+<p><strong>论文信息：</strong> Qiang Zhong (钟强), Xiang Zhao (赵翔), Yingjie Xia (夏莹杰), Xuejiao Liu (刘雪娇), &quot;CD-BASA: An Efficient Cross-Domain Batch Authentication Scheme Based on Blockchain With Accumulator for VANETs&quot;<br>
+<strong>期刊：</strong> IEEE Transactions on Intelligent Transportation Systems (IEEE TITS) — <strong>中科院一区 TOP 期刊</strong><br>
+<strong>年份：</strong> 2024 年 4 月（在线发表），2024 年 10 月正式出版<br>
+<strong>卷号/页码：</strong> Vol. 25, No. 10, pp. 14560–14571<br>
+<strong>DOI：</strong> 10.1109/TITS.2024.3386730<br>
+<strong>所属团队：</strong> 杭州电子科技大学微电子研究院芯片与安全实验室（CSL）+ 杭州师范大学<br>
+<strong>资助项目：</strong> 浙江省自然科学基金重点项目 (LZ22F030004)、浙江省&quot;尖兵领雁&quot;重大研发攻关项目 (2024C01179)<br>
+<strong>阅读日期：</strong> 2026-07-15</p>
 </blockquote>
 <hr>
-<h2 id="📌-先说明：CD-BASA-在团队研究脉络中的位置"><a href="#📌-先说明：CD-BASA-在团队研究脉络中的位置" class="headerlink" title="📌 先说明：CD-BASA 在团队研究脉络中的位置"></a>📌 先说明：CD-BASA 在团队研究脉络中的位置</h2><p>CD-BASA 和 EPP-GAS 是夏莹杰教授团队在 <strong>同一时期（2024）、同一期刊（IEEE TITS）</strong> 发表的<strong>姐妹篇</strong>。两篇论文有共同的研究背景（跨域认证），但采用了不同的技术路线：</p>
+<h2 id="📌-先说明：CD-BASA-在团队研究脉络中的位置">📌 先说明：CD-BASA 在团队研究脉络中的位置</h2>
+<p>CD-BASA 和 EPP-GAS 是夏莹杰教授团队在 <strong>同一时期（2024）、同一期刊（IEEE TITS）</strong> 发表的<strong>姐妹篇</strong>。两篇论文有共同的研究背景（跨域认证），但采用了不同的技术路线：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">夏莹杰教授团队 2024 年双箭齐发：</span><br><span class="line"></span><br><span class="line">EPP-GAS (2024年8月)                CD-BASA (2024年4月)</span><br><span class="line">  ├─ 针对：车辆编队（Platoon）         ├─ 针对：通用 VANET（不限编队）</span><br><span class="line">  ├─ 核心技术：Shamir 门限+群组假名    ├─ 核心技术：RSA 累加器+IPFS</span><br><span class="line">  ├─ 认证粒度：编队级群组认证          ├─ 认证粒度：单车级批量认证</span><br><span class="line">  └─ 区块链角色：BM-Tree 存储认证参数  └─ 区块链角色：链上存累加器+IPFS存witness</span><br></pre></td></tr></table></figure></div>
-
 <blockquote>
 <p><strong>关键理解：</strong> CD-BASA 不是车辆编队方案！它是通用 VANET 跨域方案。但它提出的「累加器 + 区块链 + IPFS」的存储和计算基础设施，对你有重要的方法借鉴意义。</p>
 </blockquote>
 <hr>
-<h2 id="第一遍：5-分钟快速筛选"><a href="#第一遍：5-分钟快速筛选" class="headerlink" title="第一遍：5 分钟快速筛选"></a>第一遍：5 分钟快速筛选</h2><h3 id="标题拆解"><a href="#标题拆解" class="headerlink" title="标题拆解"></a>标题拆解</h3><blockquote>
+<h2 id="第一遍：5-分钟快速筛选">第一遍：5 分钟快速筛选</h2>
+<h3 id="标题拆解">标题拆解</h3>
+<blockquote>
 <p><strong>CD-BASA: An Efficient Cross-Domain Batch Authentication Scheme Based on Blockchain With Accumulator for VANETs</strong></p>
 </blockquote>
 <table>
@@ -389,7 +409,8 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>Cross-Domain</strong></td>
 <td>跨不同管理域</td>
 </tr>
@@ -409,15 +430,18 @@
 <td><strong>VANETs</strong></td>
 <td>通用车载自组网，不是专为编队设计的</td>
 </tr>
-</tbody></table>
-<h3 id="Abstract-三句话提炼"><a href="#Abstract-三句话提炼" class="headerlink" title="Abstract 三句话提炼"></a>Abstract 三句话提炼</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">问题：大量跨域车辆认证时，区块链存储开销爆炸、查询延迟高、累加器逐车证明效率低。</span><br><span class="line">方案：区块链只存累加值（极小） + IPFS 存 witness + 跨域批量认证协议 + 多累加器批量证明算法。</span><br><span class="line">效果：跨域批量认证开销降低 ≥18.2%，累加器证明开销降低 ≥69.9%。</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="三大贡献"><a href="#三大贡献" class="headerlink" title="三大贡献"></a>三大贡献</h3><blockquote>
-<p><strong>贡献1：存储计算基础设施</strong> — 累加器+区块链+IPFS 三位一体。链上只存累加值（极省存储），IPFS 存 witness，累加器将大量身份信息”压缩”为一个常数值。</p>
+</tbody>
+</table>
+<h3 id="Abstract-三句话提炼">Abstract 三句话提炼</h3>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">问题：大量跨域车辆认证时，区块链存储开销爆炸、查询延迟高、累加器逐车证明效率低。</span><br><span class="line">方案：区块链只存累加值（极小） + IPFS 存 witness + 跨域批量认证协议 + 多累加器批量证明算法。</span><br><span class="line">效果：跨域批量认证开销降低 ≥18.2%，累加器证明开销降低 ≥69.9%。</span><br></pre></td></tr></table></figure></div>
+<h3 id="三大贡献">三大贡献</h3>
+<blockquote>
+<p><strong>贡献1：存储计算基础设施</strong> — 累加器+区块链+IPFS 三位一体。链上只存累加值（极省存储），IPFS 存 witness，累加器将大量身份信息&quot;压缩&quot;为一个常数值。</p>
 <p><strong>贡献2：跨域批量认证协议</strong> — 将不同域的参数翻译为全局参数，实现一次性批量验证来自多个域的车辆。本质是 ECC 签名 + 域参数统一化。</p>
 <p><strong>贡献3：多累加器批量证明算法</strong> — 用<strong>动态规划</strong>优化多累加器的批量身份验证，将从属于不同 MEC 累加器的车辆身份一次性证明。这是本文最大的算法创新。</p>
 </blockquote>
-<h3 id="Table-V-—-安全性对比"><a href="#Table-V-—-安全性对比" class="headerlink" title="Table V — 安全性对比"></a>Table V — 安全性对比</h3><table>
+<h3 id="Table-V-—-安全性对比">Table V — 安全性对比</h3>
+<table>
 <thead>
 <tr>
 <th>安全属性</th>
@@ -428,7 +452,8 @@
 <th>EACA</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>相互认证</td>
 <td>✓</td>
 <td>✓</td>
@@ -492,17 +517,20 @@
 <td>✓</td>
 <td>✓</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <blockquote>
 <p><strong>CD-BASA 独有「跨域批量认证」</strong> — 其他方案要么不能跨域批量、要么只能逐车做累加器证明。</p>
 </blockquote>
-<h3 id="✅-第一遍判断：这篇论文的核心方法论（累加器-IPFS-动态规划批量证明）可能可以应用到你的编队场景中。精读它。"><a href="#✅-第一遍判断：这篇论文的核心方法论（累加器-IPFS-动态规划批量证明）可能可以应用到你的编队场景中。精读它。" class="headerlink" title="✅ 第一遍判断：这篇论文的核心方法论（累加器+IPFS+动态规划批量证明）可能可以应用到你的编队场景中。精读它。"></a>✅ 第一遍判断：这篇论文的核心方法论（累加器+IPFS+动态规划批量证明）可能可以应用到你的编队场景中。精读它。</h3><hr>
-<h2 id="第二遍：结构化提取"><a href="#第二遍：结构化提取" class="headerlink" title="第二遍：结构化提取"></a>第二遍：结构化提取</h2><h3 id="1-研究动机与问题"><a href="#1-研究动机与问题" class="headerlink" title="1. 研究动机与问题"></a>1. 研究动机与问题</h3><p><strong>场景：</strong> 灾难救援场景——多个域的救援车辆同时涌入灾区。灾区现场的 MEC 在短时间内收到海量跨域认证请求。如果不能快速批量认证，救援效率将严重受影响。</p>
+<h3 id="✅-第一遍判断：这篇论文的核心方法论（累加器-IPFS-动态规划批量证明）可能可以应用到你的编队场景中。精读它。">✅ 第一遍判断：这篇论文的核心方法论（累加器+IPFS+动态规划批量证明）可能可以应用到你的编队场景中。精读它。</h3>
+<hr>
+<h2 id="第二遍：结构化提取">第二遍：结构化提取</h2>
+<h3 id="1-研究动机与问题">1. 研究动机与问题</h3>
+<p><strong>场景：</strong> 灾难救援场景——多个域的救援车辆同时涌入灾区。灾区现场的 MEC 在短时间内收到海量跨域认证请求。如果不能快速批量认证，救援效率将严重受影响。</p>
 <p><strong>三个具体的技术痛点：</strong></p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">痛点1 ── 区块链存储爆炸</span><br><span class="line">         ├── 传统方案把每辆车的身份信息直接存链上</span><br><span class="line">         ├── 车辆越多 → 链上数据越多 → 存储开销线性增长</span><br><span class="line">         └── 如 MDPA 方案，每个域存储 65.4 kB 身份信息</span><br><span class="line"></span><br><span class="line">痛点2 ── 跨域逐车认证效率低</span><br><span class="line">         ├── 不同域有不同私钥和域参数 → 只能逐个验证</span><br><span class="line">         └── 低频、高延迟，无法满足车联网实时性要求</span><br><span class="line"></span><br><span class="line">痛点3 ── 累加器证明开销大</span><br><span class="line">         ├── 现有累加器方案（BBMDA用双线性配对、EACA用RSA）只能逐个证明</span><br><span class="line">         └── 不同累加器的证明算法不同 → 不能批量处理</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="2-系统模型"><a href="#2-系统模型" class="headerlink" title="2. 系统模型"></a>2. 系统模型</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────────────────────────────────┐</span><br><span class="line">│                  区块链 (Consortium Blockchain)               │</span><br><span class="line">│                                                              │</span><br><span class="line">│   ┌──────────┐  ┌──────────┐  ┌──────────┐                 │</span><br><span class="line">│   │ 区块 #1   │  │ 区块 #2   │  │ 区块 #n   │                │</span><br><span class="line">│   │ 存储:     │  │ 存储:     │  │ 存储:     │                │</span><br><span class="line">│   │ Am_1(累加值)│  │ Am_2(累加值)│  │ Am_n(累加值)│                │</span><br><span class="line">│   └──────────┘  └──────────┘  └──────────┘                 │</span><br><span class="line">│        ▲              ▲              ▲                       │</span><br><span class="line">└────────┼──────────────┼──────────────┼───────────────────────┘</span><br><span class="line">         │              │              │</span><br><span class="line">   ┌─────┴──────────────┴──────────────┴─────┐</span><br><span class="line">   │              IPFS (星际文件系统)          │</span><br><span class="line">   │   存储每辆车的 witness (身份证明密钥)      │</span><br><span class="line">   │   通过 IPNS 实现动态更新 (witness 随累加器更新而变) │</span><br><span class="line">   └─────┬──────────────┬──────────────┬─────┘</span><br><span class="line">         │              │              │</span><br><span class="line">   ┌─────┴─────┐  ┌─────┴─────┐  ┌─────┴─────┐</span><br><span class="line">   │   MEC_1   │  │   MEC_2   │  │   MEC_n   │</span><br><span class="line">   │ (域1边缘)  │  │ (域2边缘)  │  │ (域n边缘)  │</span><br><span class="line">   │ 维护:      │  │ 维护:      │  │           │</span><br><span class="line">   │ 累加器A_m1 │  │ 累加器A_m2 │  │           │</span><br><span class="line">   │ IPFS节点   │  │ IPFS节点   │  │           │</span><br><span class="line">   └─────┬─────┘  └─────┬─────┘  └─────┬─────┘</span><br><span class="line">         │              │              │</span><br><span class="line">         │   V2I 通信    │              │</span><br><span class="line">         │              │              │</span><br><span class="line">   ┌─────┴──────────────┴──────────────┴─────┐</span><br><span class="line">   │            车辆 (来自不同域)              │</span><br><span class="line">   │   每辆车持有：伪名 PID、witness、认证参数  │</span><br><span class="line">   └──────────────────────────────────────────┘</span><br></pre></td></tr></table></figure></div>
-
+<h3 id="2-系统模型">2. 系统模型</h3>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────────────────────────────────┐</span><br><span class="line">│                  区块链 (Consortium Blockchain)               │</span><br><span class="line">│                                                              │</span><br><span class="line">│   ┌──────────┐  ┌──────────┐  ┌──────────┐                 │</span><br><span class="line">│   │ 区块 #1   │  │ 区块 #2   │  │ 区块 #n   │                │</span><br><span class="line">│   │ 存储:     │  │ 存储:     │  │ 存储:     │                │</span><br><span class="line">│   │ Am_1(累加值)│  │ Am_2(累加值)│  │ Am_n(累加值)│                │</span><br><span class="line">│   └──────────┘  └──────────┘  └──────────┘                 │</span><br><span class="line">│        ▲              ▲              ▲                       │</span><br><span class="line">└────────┼──────────────┼──────────────┼───────────────────────┘</span><br><span class="line">         │              │              │</span><br><span class="line">   ┌─────┴──────────────┴──────────────┴─────┐</span><br><span class="line">   │              IPFS (星际文件系统)          │</span><br><span class="line">   │   存储每辆车的 witness (身份证明密钥)      │</span><br><span class="line">   │   通过 IPNS 实现动态更新 (witness 随累加器更新而变) │</span><br><span class="line">   └─────┬──────────────┬──────────────┬─────┘</span><br><span class="line">         │              │              │</span><br><span class="line">   ┌─────┴─────┐  ┌─────┴─────┐  ┌─────┴─────┐</span><br><span class="line">   │   MEC_1   │  │   MEC_2   │  │   MEC_n   │</span><br><span class="line">   │ (域1边缘)  │  │ (域2边缘)  │  │ (域n边缘)  │</span><br><span class="line">   │ 维护:      │  │ 维护:      │  │           │</span><br><span class="line">   │ 累加器A_m1 │  │ 累加器A_m2 │  │           │</span><br><span class="line">   │ IPFS节点   │  │ IPFS节点   │  │           │</span><br><span class="line">   └─────┬─────┘  └─────┬─────┘  └─────┬─────┘</span><br><span class="line">         │              │              │</span><br><span class="line">         │   V2I 通信    │              │</span><br><span class="line">         │              │              │</span><br><span class="line">   ┌─────┴──────────────┴──────────────┴─────┐</span><br><span class="line">   │            车辆 (来自不同域)              │</span><br><span class="line">   │   每辆车持有：伪名 PID、witness、认证参数  │</span><br><span class="line">   └──────────────────────────────────────────┘</span><br></pre></td></tr></table></figure></div>
 <p><strong>四类核心实体：</strong></p>
 <table>
 <thead>
@@ -512,7 +540,8 @@
 <th>核心职责</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>信任机构</strong></td>
 <td>TA</td>
 <td>各域的权威管理机构，签发伪名、管理域参数</td>
@@ -532,11 +561,13 @@
 <td>V</td>
 <td>持有伪名和 witness，发起跨域认证请求</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <blockquote>
-<p><strong>关键理解：</strong> CD-BASA 中，MEC 是主角。MEC 不只是”认证服务器”，它同时是区块链节点、IPFS 节点、累加器管理者。这种设计充分利用了 5G 边缘计算的优势——把重计算任务交给边缘而不是车辆。</p>
+<p><strong>关键理解：</strong> CD-BASA 中，MEC 是主角。MEC 不只是&quot;认证服务器&quot;，它同时是区块链节点、IPFS 节点、累加器管理者。这种设计充分利用了 5G 边缘计算的优势——把重计算任务交给边缘而不是车辆。</p>
 </blockquote>
-<h3 id="3-密码学工具箱（3-1-个核心工具）"><a href="#3-密码学工具箱（3-1-个核心工具）" class="headerlink" title="3. 密码学工具箱（3+1 个核心工具）"></a>3. 密码学工具箱（3+1 个核心工具）</h3><table>
+<h3 id="3-密码学工具箱（3-1-个核心工具）">3. 密码学工具箱（3+1 个核心工具）</h3>
+<table>
 <thead>
 <tr>
 <th>工具</th>
@@ -545,9 +576,10 @@
 <th>与其他论文对比</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>RSA 累加器</strong></td>
-<td>① 将域内所有合法车辆身份”压缩”为一个常数值 ② 每辆车持有一个 witness 证明自己在累加器中</td>
+<td>① 将域内所有合法车辆身份&quot;压缩&quot;为一个常数值 ② 每辆车持有一个 witness 证明自己在累加器中</td>
 <td>基于强 RSA 假设，证明计算不需要双线性配对</td>
 <td>EPP-GAS 用 BM-Tree，PPCDA 用 IBF</td>
 </tr>
@@ -559,72 +591,75 @@
 </tr>
 <tr>
 <td><strong>ECC（椭圆曲线）</strong></td>
-<td>① 签名&#x2F;验证 ② 密钥协商(ECDHE)</td>
+<td>① 签名/验证 ② 密钥协商(ECDHE)</td>
 <td>轻量级、无配对</td>
 <td>CD-BASA 不用双线性配对！</td>
 </tr>
 <tr>
 <td><strong>动态规划（算法优化）</strong></td>
 <td>用动态规划优化多累加器批量证明，减少模指数运算</td>
-<td>传统方法逐个证明 &#x3D; O(n) 次模指数，动态规划大幅减少</td>
+<td>传统方法逐个证明 = O(n) 次模指数，动态规划大幅减少</td>
 <td><strong>本文独创</strong></td>
 </tr>
-</tbody></table>
-<h3 id="4-累加器的工作原理（本文最核心的概念）"><a href="#4-累加器的工作原理（本文最核心的概念）" class="headerlink" title="4. 累加器的工作原理（本文最核心的概念）"></a>4. 累加器的工作原理（本文最核心的概念）</h3><p>在理解协议之前，必须先理解”累加器是什么”。</p>
+</tbody>
+</table>
+<h3 id="4-累加器的工作原理（本文最核心的概念）">4. 累加器的工作原理（本文最核心的概念）</h3>
+<p>在理解协议之前，必须先理解&quot;累加器是什么&quot;。</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">概念类比：</span><br><span class="line">  想象一个&quot;密码学搅拌机&quot;——</span><br><span class="line">  你把 100 辆车的身份信息倒进去 → 搅拌 → 输出一个固定大小的值（累加值 A）</span><br><span class="line">  </span><br><span class="line">  每辆车持有一把&quot;钥匙&quot;（witness），能证明&quot;我的身份在搅拌机里&quot;</span><br><span class="line">  验证者只需要检查：witness^x mod N ?= A</span><br><span class="line">  </span><br><span class="line">  关键性质：</span><br><span class="line">  1. 累加值 A 的大小是固定的（256 字节），不管里面有 100 辆还是 10000 辆车！</span><br><span class="line">  2. 不是成员的车无法构造有效的 witness</span><br><span class="line">  3. 有新成员加入 → 只需更新 A 和更新相关 witness（不需要全部重建）</span><br></pre></td></tr></table></figure></div>
-
 <p><strong>RSA 累加器的数学本质：</strong></p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">初始累加值：A_0 = g（随机生成元）</span><br><span class="line"></span><br><span class="line">加入车辆 b_1：</span><br><span class="line">  x_1 = Hprime(b_1)           # 将身份信息映射为素数</span><br><span class="line">  A_1 = A_0^&#123;x_1&#125; mod N      # 累加 = 指数运算</span><br><span class="line">  wit_1 = g                   # 第一辆车的 witness</span><br><span class="line"></span><br><span class="line">加入车辆 b_2：</span><br><span class="line">  x_2 = Hprime(b_2)</span><br><span class="line">  A_2 = A_1^&#123;x_2&#125; mod N = g^&#123;x_1·x_2&#125; mod N</span><br><span class="line">  wit_1 = g^&#123;x_2&#125; mod N       # 第一辆车的 witness 也要更新！</span><br><span class="line">  wit_2 = g^&#123;x_1&#125; mod N</span><br><span class="line"></span><br><span class="line">一般的：</span><br><span class="line">  A = g^&#123;x_1·x_2·...·x_n&#125; mod N</span><br><span class="line">  wit_i = g^&#123;∏_&#123;j≠i&#125; x_j&#125; mod N</span><br><span class="line"></span><br><span class="line">验证：wit_i^&#123;x_i&#125; mod N ?= A</span><br><span class="line">因为：wit_i^&#123;x_i&#125; = (g^&#123;∏_&#123;j≠i&#125; x_j&#125;)^&#123;x_i&#125; = g^&#123;∏_all x_j&#125; = A</span><br></pre></td></tr></table></figure></div>
-
 <blockquote>
 <p><strong>为什么用 IPFS？</strong> 因为每次有新成员加入，<strong>已有成员的 witness 都要更新</strong>。如果存链上，每次更新都要写链→开销太大。IPFS+IPNS 允许离线更新，通过名字映射自动指向最新 witness。</p>
 </blockquote>
-<h3 id="5-核心方案-—-四个阶段-批量证明算法"><a href="#5-核心方案-—-四个阶段-批量证明算法" class="headerlink" title="5. 核心方案 — 四个阶段 + 批量证明算法"></a>5. 核心方案 — 四个阶段 + 批量证明算法</h3><hr>
-<h4 id="Phase-1：系统初始化（Initialization）"><a href="#Phase-1：系统初始化（Initialization）" class="headerlink" title="Phase 1：系统初始化（Initialization）"></a>Phase 1：系统初始化（Initialization）</h4><p><strong>谁做：</strong> 各域 TA + MEC</p>
+<h3 id="5-核心方案-—-四个阶段-批量证明算法">5. 核心方案 — 四个阶段 + 批量证明算法</h3>
+<hr>
+<h4 id="Phase-1：系统初始化（Initialization）">Phase 1：系统初始化（Initialization）</h4>
+<p><strong>谁做：</strong> 各域 TA + MEC</p>
 <div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ====== 全局参数（所有域共享）======</span></span><br><span class="line">选择加法群 G，阶为 q，生成元 P</span><br><span class="line">r = 随机主密钥 ∈ Z_q</span><br><span class="line">P_mpk = r · P              <span class="comment"># 主公钥</span></span><br><span class="line">定义 <span class="number">4</span> 个哈希函数 H0, H1, H2, H3</span><br><span class="line"></span><br><span class="line">全局参数 = &#123;G, P, q, P_mpk, r, H0-H3&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># ====== RSA 累加器参数（各域统一模数 N）======</span></span><br><span class="line">选择安全参数 k</span><br><span class="line">p = <span class="number">2</span>·p_a + <span class="number">1</span>, q = <span class="number">2</span>·q_a + <span class="number">1</span>  <span class="comment"># 安全素数（p_a, q_a 也是素数）</span></span><br><span class="line">N = p · q                    <span class="comment"># RSA 模数（所有 MEC 共用同一个 N！）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ====== 各域个性化参数 ======</span></span><br><span class="line">TA_i 随机选 m_i ∈ Z_q</span><br><span class="line">计算 M_i = m_i · P</span><br><span class="line">η_i = H0(ID_i || M_i || P_r)</span><br><span class="line">域私钥 s_i = (m_i + η_i · r) mod q</span><br><span class="line">域公钥 P_i = s_i · P</span><br><span class="line"></span><br><span class="line"><span class="comment"># 域标识参数</span></span><br><span class="line">K_i = &#123;ID_i, M_i&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 广播域内公开参数</span></span><br><span class="line">&#123;G, P, q, K_i, P_i, P_r, H0-H3&#125;</span><br></pre></td></tr></table></figure></div>
-
 <hr>
-<h4 id="Phase-2：注册（Registration）"><a href="#Phase-2：注册（Registration）" class="headerlink" title="Phase 2：注册（Registration）"></a>Phase 2：注册（Registration）</h4><h5 id="2a：MEC-注册"><a href="#2a：MEC-注册" class="headerlink" title="2a：MEC 注册"></a>2a：MEC 注册</h5><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MEC_mj 在域 j 注册</span></span><br><span class="line">x_mj = 随机私钥</span><br><span class="line">RID_mj = x_mj · P            <span class="comment"># 公钥</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过安全信道发送注册请求</span></span><br><span class="line">&#123;MID_mj, RID_mj&#125; → TA_j</span><br><span class="line"></span><br><span class="line"><span class="comment"># TA_j 验证后生成 MEC 的注册凭证：</span></span><br><span class="line">a_mj = 随机数 ∈ Z_q</span><br><span class="line">A_mj = a_mj · P</span><br><span class="line">R_mj = x_mj + H2(MID_mj || RID_mj || A_mj || T_mj) · s_j</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回 &#123;R_mj, A_mj, T_mj&#125; 给 MEC_mj</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># MEC 验证：</span></span><br><span class="line">R_mj · P ?= RID_mj + H2(MID_mj||RID_mj||A_mj||T_mj) · P_j</span><br></pre></td></tr></table></figure></div>
-
-<h5 id="2b：车辆注册"><a href="#2b：车辆注册" class="headerlink" title="2b：车辆注册"></a>2b：车辆注册</h5><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 车辆 V_i 向 TA_i 注册</span></span><br><span class="line"><span class="comment"># 先用真实身份 RID_i 在 TA 注册</span></span><br><span class="line"><span class="comment"># TA 验证后返回注册身份</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 车辆生成第一个伪名组件</span></span><br><span class="line">pid_i = 随机数 ∈ Z_q</span><br><span class="line">PID_i,<span class="number">1</span> = pid_i · P</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送 &#123;RID_i, pid_i&#125; → TA_i</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># TA_i 计算第二个伪名组件</span></span><br><span class="line">PID_i,<span class="number">2</span> = RID_i ⊕ H0(s_j · PID_i,<span class="number">1</span> || P_j || T_pse)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成伪名</span></span><br><span class="line">PID_i = &#123;PID_i,<span class="number">2</span>, T_pse&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成伪名注册参数</span></span><br><span class="line">Rt_i = pid_i + H1(PID_i,<span class="number">2</span> || PID_i,<span class="number">1</span>) · s_i</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回 &#123;Rt_i, PID_i, K_i&#125; 给车辆</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 车辆验证：</span></span><br><span class="line">Rt_i · P ?= PID_i,<span class="number">1</span> + H1(PID_i,<span class="number">2</span>||PID_i,<span class="number">1</span>) · P_i</span><br></pre></td></tr></table></figure></div>
-
-<h5 id="2c：身份信息累加-区块生成"><a href="#2c：身份信息累加-区块生成" class="headerlink" title="2c：身份信息累加 + 区块生成"></a>2c：身份信息累加 + 区块生成</h5><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">🚀 这是 CD-BASA 基础设施的核心操作！</span><br><span class="line"></span><br><span class="line"># MEC_mi 做的事（Algorithm 1）：</span><br><span class="line">1. 接收获批车辆的身份信息 &#123;Rt_i, PID_i, ID_i&#125;</span><br><span class="line">2. 计算哈希 b_i = H(PID_i || Rt_i || ID_i)</span><br><span class="line">3. 映射为素数 x_i = Hprime(b_i)</span><br><span class="line">4. 累加：A_mi_new = A_mi^&#123;x_i&#125; mod N</span><br><span class="line">5. 计算 witness：wit_xi = g^&#123;Π_&#123;m≠i&#125; x_m&#125; mod N</span><br><span class="line">6. 上链：累加值 A_mi_new 写入区块链（Kafka 共识）</span><br><span class="line">7. 上 IPFS：witness wit_xi → 获得文件地址 Hwit_xi</span><br><span class="line">8. 返回 Hwit_xi 给车辆（车辆用它来在认证时取 witness）</span><br></pre></td></tr></table></figure></div>
-
+<h4 id="Phase-2：注册（Registration）">Phase 2：注册（Registration）</h4>
+<h5 id="2a：MEC-注册">2a：MEC 注册</h5>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MEC_mj 在域 j 注册</span></span><br><span class="line">x_mj = 随机私钥</span><br><span class="line">RID_mj = x_mj · P            <span class="comment"># 公钥</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过安全信道发送注册请求</span></span><br><span class="line">&#123;MID_mj, RID_mj&#125; → TA_j</span><br><span class="line"></span><br><span class="line"><span class="comment"># TA_j 验证后生成 MEC 的注册凭证：</span></span><br><span class="line">a_mj = 随机数 ∈ Z_q</span><br><span class="line">A_mj = a_mj · P</span><br><span class="line">R_mj = x_mj + H2(MID_mj || RID_mj || A_mj || T_mj) · s_j</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回 &#123;R_mj, A_mj, T_mj&#125; 给 MEC_mj</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># MEC 验证：</span></span><br><span class="line">R_mj · P ?= RID_mj + H2(MID_mj||RID_mj||A_mj||T_mj) · P_j</span><br></pre></td></tr></table></figure></div>
+<h5 id="2b：车辆注册">2b：车辆注册</h5>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 车辆 V_i 向 TA_i 注册</span></span><br><span class="line"><span class="comment"># 先用真实身份 RID_i 在 TA 注册</span></span><br><span class="line"><span class="comment"># TA 验证后返回注册身份</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 车辆生成第一个伪名组件</span></span><br><span class="line">pid_i = 随机数 ∈ Z_q</span><br><span class="line">PID_i,<span class="number">1</span> = pid_i · P</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送 &#123;RID_i, pid_i&#125; → TA_i</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># TA_i 计算第二个伪名组件</span></span><br><span class="line">PID_i,<span class="number">2</span> = RID_i ⊕ H0(s_j · PID_i,<span class="number">1</span> || P_j || T_pse)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成伪名</span></span><br><span class="line">PID_i = &#123;PID_i,<span class="number">2</span>, T_pse&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成伪名注册参数</span></span><br><span class="line">Rt_i = pid_i + H1(PID_i,<span class="number">2</span> || PID_i,<span class="number">1</span>) · s_i</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回 &#123;Rt_i, PID_i, K_i&#125; 给车辆</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 车辆验证：</span></span><br><span class="line">Rt_i · P ?= PID_i,<span class="number">1</span> + H1(PID_i,<span class="number">2</span>||PID_i,<span class="number">1</span>) · P_i</span><br></pre></td></tr></table></figure></div>
+<h5 id="2c：身份信息累加-区块生成">2c：身份信息累加 + 区块生成</h5>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">🚀 这是 CD-BASA 基础设施的核心操作！</span><br><span class="line"></span><br><span class="line"># MEC_mi 做的事（Algorithm 1）：</span><br><span class="line">1. 接收获批车辆的身份信息 &#123;Rt_i, PID_i, ID_i&#125;</span><br><span class="line">2. 计算哈希 b_i = H(PID_i || Rt_i || ID_i)</span><br><span class="line">3. 映射为素数 x_i = Hprime(b_i)</span><br><span class="line">4. 累加：A_mi_new = A_mi^&#123;x_i&#125; mod N</span><br><span class="line">5. 计算 witness：wit_xi = g^&#123;Π_&#123;m≠i&#125; x_m&#125; mod N</span><br><span class="line">6. 上链：累加值 A_mi_new 写入区块链（Kafka 共识）</span><br><span class="line">7. 上 IPFS：witness wit_xi → 获得文件地址 Hwit_xi</span><br><span class="line">8. 返回 Hwit_xi 给车辆（车辆用它来在认证时取 witness）</span><br></pre></td></tr></table></figure></div>
 <hr>
-<h4 id="Phase-3：跨域认证（核心协议）"><a href="#Phase-3：跨域认证（核心协议）" class="headerlink" title="Phase 3：跨域认证（核心协议）"></a>Phase 3：跨域认证（核心协议）</h4><p><strong>场景：</strong> 域 A 的车 V_i 驶入域 B 的 MEC_mj 覆盖范围。</p>
+<h4 id="Phase-3：跨域认证（核心协议）">Phase 3：跨域认证（核心协议）</h4>
+<p><strong>场景：</strong> 域 A 的车 V_i 驶入域 B 的 MEC_mj 覆盖范围。</p>
 <div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ====== Step 1: MEC 周期广播 ======</span></span><br><span class="line"><span class="comment"># MEC_mj 广播自己的信息</span></span><br><span class="line">&#123;R_mj, MID_mj, RID_mj, A_mj, T_mj&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># ====== Step 2: 车辆验证 MEC 并生成认证请求 ======</span></span><br><span class="line"><span class="comment"># 车辆先验证 MEC 的合法性：</span></span><br><span class="line">R_mj · P ?= RID_mj + H2(MID_mj||RID_mj||A_mj||T_mj) · P_j</span><br><span class="line"></span><br><span class="line"><span class="comment"># 选择通信伪名 PID_i</span></span><br><span class="line"><span class="comment"># 生成新鲜参数</span></span><br><span class="line">c_i = 随机数 ∈ Z_q</span><br><span class="line">C_i = c_i · P</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算辅助参数</span></span><br><span class="line">g_i = H3(C_i || RID_mj || MID_mj || PID_i,<span class="number">2</span> || T_aut)</span><br><span class="line">w_i = g_i · H1(PID_i,<span class="number">2</span> || PID_i,<span class="number">1</span>)^&#123;-<span class="number">1</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成认证签名参数</span></span><br><span class="line">Rt_i,<span class="number">2</span> = c_i + w_i · Rt_i</span><br><span class="line">Pt_i,<span class="number">1</span> = w_i · PID_i,<span class="number">1</span></span><br><span class="line">Pt_i,<span class="number">2</span> = g_i · M_i</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造跨域认证请求</span></span><br><span class="line">A_req = &#123;K_i, PID_i, Pt_i,<span class="number">1</span>, Pt_i,<span class="number">2</span>, Rt_i,<span class="number">2</span>, Hwit_xi, C_i, T_aut&#125;</span><br><span class="line">发送到 MEC_mj</span><br><span class="line"></span><br><span class="line"><span class="comment"># ====== Step 3: MEC 验证认证请求 ======</span></span><br><span class="line"><span class="comment"># 1. 检查时间戳 T_aut 和 T_pse 是否新鲜</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 计算 g_i&#x27;</span></span><br><span class="line">g_i<span class="string">&#x27; = H3(C_i || x_mj || MID_mj || PID_i,2 || T_aut)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 3. 验证 ECC 签名（公式(4)的单一版本）</span></span><br><span class="line"><span class="string">Rt_i,2 · P ?= C_i + Pt_i,1 + g_i&#x27;</span> · P_i</span><br><span class="line"><span class="comment"># 推导：Rt_i,2 · P = (c_i + w_i·Rt_i) · P</span></span><br><span class="line"><span class="comment">#       = c_i·P + w_i·(pid_i + H1(...)·s_i) · P</span></span><br><span class="line"><span class="comment">#       = C_i + Pt_i,1 + w_i·H1·s_i·P</span></span><br><span class="line"><span class="comment">#       = C_i + Pt_i,1 + g_i · P_i  ✓</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 从 IPFS 取 witness</span></span><br><span class="line">wit_PID_i = IPFS.get(Hwit_xi)  <span class="comment"># 通过 IPNS 获取最新 witness</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 从区块链取累加值</span></span><br><span class="line">A_mi = Blockchain.get(域A的累加值)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 6. 验证身份在累加器中（Algorithm 2）</span></span><br><span class="line">b_i = H(PID_i || Rt_i || ID_i)</span><br><span class="line">x_i = Hprime(b_i)</span><br><span class="line">result = wit_PID_i^&#123;x_i&#125; mod N</span><br><span class="line"><span class="keyword">if</span> result == A_mi: 身份合法 ✓</span><br><span class="line"><span class="keyword">else</span>: 拒绝 ✗</span><br><span class="line"></span><br><span class="line"><span class="comment"># ====== Step 4: 密钥协商 (ECDHE) ======</span></span><br><span class="line"><span class="comment"># MEC 选随机数 c_mj</span></span><br><span class="line">c_mj = 随机数</span><br><span class="line">C_mj = c_mj · P</span><br><span class="line"></span><br><span class="line"><span class="comment"># MEC 生成会话密钥</span></span><br><span class="line">sk_mj,i = H3(c_mj · C_i || C_mj || PID_i || MID_mj)</span><br><span class="line">B_mj,i = H3(sk_mj,i || g_i || T_s)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送 &#123;B_mj,i, PID_i, C_mj, T_s&#125; 给车辆</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 车辆计算并验证</span></span><br><span class="line">sk_i,mj = H3(c_i · C_mj || C_mj || PID_i || MID_mj)</span><br><span class="line">B_i,mj = H3(sk_i,mj || g_i || T_s)</span><br><span class="line"><span class="keyword">if</span> B_i,mj == B_mj,i: 密钥协商成功 ✓</span><br></pre></td></tr></table></figure></div>
-
 <hr>
-<h4 id="Phase-4：批量认证（核心创新！）"><a href="#Phase-4：批量认证（核心创新！）" class="headerlink" title="Phase 4：批量认证（核心创新！）"></a>Phase 4：批量认证（核心创新！）</h4><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MEC_mj 同时收到来自不同域的 n 辆车的认证请求</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 批量验证 ECC 签名（公式(4)）：</span></span><br><span class="line"><span class="comment"># 验证 n 辆车的签名是否都有效</span></span><br><span class="line"></span><br><span class="line">Σ (Rt_i,<span class="number">2</span>) · P ?= Σ C_i + Σ Pt_i,<span class="number">1</span> + Σ Pt_i,<span class="number">2</span> + Σ (g_i · η_i) · P_mpk</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推导过程（人话版）：</span></span><br><span class="line"><span class="comment"># 单车的验证等式：Rt_i,2 · P = C_i + Pt_i,1 + g_i · P_i</span></span><br><span class="line"><span class="comment"># 而 P_i = s_i · P = (m_i + η_i · r) · P = M_i + η_i · P_mpk</span></span><br><span class="line"><span class="comment"># 所以 g_i · P_i = g_i · M_i + g_i · η_i · P_mpk = Pt_i,2 + (g_i · η_i) · P_mpk</span></span><br><span class="line"><span class="comment"># 代回：Rt_i,2 · P = C_i + Pt_i,1 + Pt_i,2 + (g_i · η_i) · P_mpk</span></span><br><span class="line"><span class="comment"># 对所有 i 求和 → 批量验证等式(4)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 关键：需要一个补充参数 η_i = H1(TA_i || M_i || P_mpk)</span></span><br><span class="line"><span class="comment"># 这个参数统一了不同域的域公钥，使它们能用同一个批量等式验证！</span></span><br></pre></td></tr></table></figure></div>
-
+<h4 id="Phase-4：批量认证（核心创新！）">Phase 4：批量认证（核心创新！）</h4>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MEC_mj 同时收到来自不同域的 n 辆车的认证请求</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 批量验证 ECC 签名（公式(4)）：</span></span><br><span class="line"><span class="comment"># 验证 n 辆车的签名是否都有效</span></span><br><span class="line"></span><br><span class="line">Σ (Rt_i,<span class="number">2</span>) · P ?= Σ C_i + Σ Pt_i,<span class="number">1</span> + Σ Pt_i,<span class="number">2</span> + Σ (g_i · η_i) · P_mpk</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推导过程（人话版）：</span></span><br><span class="line"><span class="comment"># 单车的验证等式：Rt_i,2 · P = C_i + Pt_i,1 + g_i · P_i</span></span><br><span class="line"><span class="comment"># 而 P_i = s_i · P = (m_i + η_i · r) · P = M_i + η_i · P_mpk</span></span><br><span class="line"><span class="comment"># 所以 g_i · P_i = g_i · M_i + g_i · η_i · P_mpk = Pt_i,2 + (g_i · η_i) · P_mpk</span></span><br><span class="line"><span class="comment"># 代回：Rt_i,2 · P = C_i + Pt_i,1 + Pt_i,2 + (g_i · η_i) · P_mpk</span></span><br><span class="line"><span class="comment"># 对所有 i 求和 → 批量验证等式(4)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 关键：需要一个补充参数 η_i = H1(TA_i || M_i || P_mpk)</span></span><br><span class="line"><span class="comment"># 这个参数统一了不同域的域公钥，使它们能用同一个批量等式验证！</span></span><br></pre></td></tr></table></figure></div>
 <blockquote>
-<p><strong>批量认证的核心在于”域参数翻译”：</strong> 每个域有不同的 P_i（域公钥），但通过在全局参数 P_mpk 下的统一表示，可以在一个等式中同时验证来自不同域的签名。这就是「将域参数翻译为全局参数」的含义。</p>
+<p><strong>批量认证的核心在于&quot;域参数翻译&quot;：</strong> 每个域有不同的 P_i（域公钥），但通过在全局参数 P_mpk 下的统一表示，可以在一个等式中同时验证来自不同域的签名。这就是「将域参数翻译为全局参数」的含义。</p>
 </blockquote>
 <hr>
-<h4 id="Phase-5：多累加器批量证明算法（Algorithm-3-—-本文最大创新）"><a href="#Phase-5：多累加器批量证明算法（Algorithm-3-—-本文最大创新）" class="headerlink" title="Phase 5：多累加器批量证明算法（Algorithm 3 — 本文最大创新）"></a>Phase 5：多累加器批量证明算法（Algorithm 3 — 本文最大创新）</h4><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">问题：n 辆车可能来自不同域，它们的身份信息分布在不同的累加器中。</span><br><span class="line">      传统方案：对每辆车做一次独立的累加器证明 → n 次模指数运算 → 太慢。</span><br><span class="line"></span><br><span class="line">解决：用一个算法同时验证 n 个来自不同累加器的身份！</span><br><span class="line"></span><br><span class="line">算法思路（动态规划优化）：</span><br><span class="line">  本质要计算：w_1^&#123;x_1&#125; · w_2^&#123;x_2&#125; · ... · w_n^&#123;x_n&#125; mod N</span><br><span class="line">  并验证它是否等于 A_1 · A_2 · ... · A_n mod N</span><br><span class="line">  </span><br><span class="line">  直接计算需要 n 次模指数（每次都很贵）。</span><br><span class="line">  </span><br><span class="line">  优化思路：</span><br><span class="line">  1. 预计算：提前算好不同规模下批量组合的最优计算步长（动态规划）</span><br><span class="line">  2. 快速幂：用平方-乘算法将模指数转为一系列乘法和平方</span><br><span class="line">  3. 组合优化：将 n 个证明分批，每批内共用中间计算结果</span><br><span class="line">  </span><br><span class="line">  结果：证明开销从 O(n) 次模指数降为大幅更低（论文结果显示降了 69.9%）</span><br></pre></td></tr></table></figure></div>
-
+<h4 id="Phase-5：多累加器批量证明算法（Algorithm-3-—-本文最大创新）">Phase 5：多累加器批量证明算法（Algorithm 3 — 本文最大创新）</h4>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">问题：n 辆车可能来自不同域，它们的身份信息分布在不同的累加器中。</span><br><span class="line">      传统方案：对每辆车做一次独立的累加器证明 → n 次模指数运算 → 太慢。</span><br><span class="line"></span><br><span class="line">解决：用一个算法同时验证 n 个来自不同累加器的身份！</span><br><span class="line"></span><br><span class="line">算法思路（动态规划优化）：</span><br><span class="line">  本质要计算：w_1^&#123;x_1&#125; · w_2^&#123;x_2&#125; · ... · w_n^&#123;x_n&#125; mod N</span><br><span class="line">  并验证它是否等于 A_1 · A_2 · ... · A_n mod N</span><br><span class="line">  </span><br><span class="line">  直接计算需要 n 次模指数（每次都很贵）。</span><br><span class="line">  </span><br><span class="line">  优化思路：</span><br><span class="line">  1. 预计算：提前算好不同规模下批量组合的最优计算步长（动态规划）</span><br><span class="line">  2. 快速幂：用平方-乘算法将模指数转为一系列乘法和平方</span><br><span class="line">  3. 组合优化：将 n 个证明分批，每批内共用中间计算结果</span><br><span class="line">  </span><br><span class="line">  结果：证明开销从 O(n) 次模指数降为大幅更低（论文结果显示降了 69.9%）</span><br></pre></td></tr></table></figure></div>
 <p><strong>Algorithm 3 的逻辑流程（人话版）：</strong></p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">输入：n 个车辆的 (witness_i, x_i, 累加值 A_i, 模数 N)</span><br><span class="line">输出：True（全部合法）或 False（至少一个不合法）</span><br><span class="line"></span><br><span class="line">Step 1: 预计算最优分组</span><br><span class="line">  - 对前 t 个元素做穷举，找到最优分组步长</span><br><span class="line">  - 对于 i = t+1 到 n，用动态规划确定最优划分</span><br><span class="line"></span><br><span class="line">Step 2: 按分组批量计算</span><br><span class="line">  - 每个分组内，将所有 witness 组合为一个来减少乘法次数</span><br><span class="line">  - result = Π wit_com · 每个分组的累加值聚合</span><br><span class="line"></span><br><span class="line">Step 3: 验证</span><br><span class="line">  - 每个分组的 A_agg ?= result</span><br><span class="line">  - 全部匹配 → True，否则 → False</span><br></pre></td></tr></table></figure></div>
-
 <hr>
-<h3 id="6-安全性分析"><a href="#6-安全性分析" class="headerlink" title="6. 安全性分析"></a>6. 安全性分析</h3><table>
+<h3 id="6-安全性分析">6. 安全性分析</h3>
+<table>
 <thead>
 <tr>
 <th>安全属性</th>
 <th>实现方式</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>相互认证</strong></td>
 <td>车辆验证 MEC → 验证 <code>R_mj·P</code> 等式；MEC 验证车辆 → 验证 <code>Rt_i,2·P</code> 等式 + 累加器证明</td>
 </tr>
 <tr>
 <td><strong>密钥保密</strong></td>
-<td>ECDHE 密钥协商：&#96;sk &#x3D; H3(c_mj·C_i</td>
+<td>ECDHE 密钥协商：`sk = H3(c_mj·C_i</td>
 </tr>
 <tr>
 <td><strong>跨域批量认证</strong></td>
-<td>域参数统一化：&#96;η_i &#x3D; H1(TA_i</td>
+<td>域参数统一化：`η_i = H1(TA_i</td>
 </tr>
 <tr>
 <td><strong>匿名性</strong></td>
@@ -640,7 +675,7 @@
 </tr>
 <tr>
 <td><strong>可追溯性</strong></td>
-<td>&#96;RID_i &#x3D; PID_i,2 ⊕ H0(s_j·PID_i,1</td>
+<td>`RID_i = PID_i,2 ⊕ H0(s_j·PID_i,1</td>
 </tr>
 <tr>
 <td><strong>抗假冒</strong></td>
@@ -650,9 +685,11 @@
 <td><strong>抗重放</strong></td>
 <td>时间戳机制 (<code>T_mj</code>, <code>T_aut</code>)</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
-<h3 id="7-实验设置与结果"><a href="#7-实验设置与结果" class="headerlink" title="7. 实验设置与结果"></a>7. 实验设置与结果</h3><p><strong>实验环境：</strong></p>
+<h3 id="7-实验设置与结果">7. 实验设置与结果</h3>
+<p><strong>实验环境：</strong></p>
 <table>
 <thead>
 <tr>
@@ -660,7 +697,8 @@
 <th>配置</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>CPU</td>
 <td>Intel i5-10500, 3.10 GHz</td>
 </tr>
@@ -692,7 +730,8 @@
 <td>椭圆曲线</td>
 <td><code>y² = x³ + ax + b mod p</code>（256-bit 素数）</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><strong>核心性能数据：</strong></p>
 <table>
 <thead>
@@ -703,9 +742,10 @@
 <th>提升幅度</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>链上存储</strong></td>
-<td>1.125 kB&#x2F;域</td>
+<td>1.125 kB/域</td>
 <td>EACA: 31.6 kB, MDPA: 65.4 kB, CBMC: 68.8 kB</td>
 <td>降低 <strong>96%+</strong></td>
 </tr>
@@ -745,12 +785,14 @@
 <td>BBMDA: 730B, MDPA: 700B</td>
 <td>最低</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <blockquote>
 <p><strong>核心发现：</strong> CD-BASA 的批量认证开销几乎不随车辆数量线性增长，因为累加器 + 批量证明的优化。当验证 50 辆车时，优势最明显。</p>
 </blockquote>
 <hr>
-<h3 id="8-局限性分析"><a href="#8-局限性分析" class="headerlink" title="8. 局限性分析"></a>8. 局限性分析</h3><table>
+<h3 id="8-局限性分析">8. 局限性分析</h3>
+<table>
 <thead>
 <tr>
 <th>#</th>
@@ -759,10 +801,11 @@
 <th>可能的改进方向</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>L1</strong></td>
 <td><strong>Witness 更新同步开销</strong></td>
-<td>每次新成员加入累加器，所有已有成员的 witness 都要更新并同步到 IPFS。论文自己承认这是”巨大开销”</td>
+<td>每次新成员加入累加器，所有已有成员的 witness 都要更新并同步到 IPFS。论文自己承认这是&quot;巨大开销&quot;</td>
 <td>设计增量式 witness 更新或基于区块链事件通知的同步机制</td>
 </tr>
 <tr>
@@ -774,7 +817,7 @@
 <tr>
 <td><strong>L3</strong></td>
 <td><strong>RSA 模数 N 必须所有 MEC 共享</strong></td>
-<td>所有 MEC 使用相同的 N &#x3D; p·q。如果任何一个 MEC 泄露了 p 或 q → 所有域的安全崩溃</td>
+<td>所有 MEC 使用相同的 N = p·q。如果任何一个 MEC 泄露了 p 或 q → 所有域的安全崩溃</td>
 <td>用门限方式分散 N 的因子、或者用无需信任 setup 的累加器</td>
 </tr>
 <tr>
@@ -805,7 +848,7 @@
 <td><strong>L8</strong></td>
 <td><strong>无形式化安全证明</strong></td>
 <td>论文只做了非形式化安全分析（Section IV-E），没有 ROM 模型下的规约证明</td>
-<td>补充形式化安全证明（ProVerif&#x2F;Tamarin 或 ROM）</td>
+<td>补充形式化安全证明（ProVerif/Tamarin 或 ROM）</td>
 </tr>
 <tr>
 <td><strong>L9</strong></td>
@@ -813,12 +856,14 @@
 <td>RSA 累加器在 Shor 算法下不安全</td>
 <td>替换为格基累加器或哈希累加器</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
-<h3 id="9-论文自述的-Future-Work（从-Conclusion-中提取）"><a href="#9-论文自述的-Future-Work（从-Conclusion-中提取）" class="headerlink" title="9. 论文自述的 Future Work（从 Conclusion 中提取）"></a>9. 论文自述的 Future Work（从 Conclusion 中提取）</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. 高效的累加器更新生成机制</span><br><span class="line">   → 论文自认累加器频繁同步更新的开销是实际部署中的瓶颈</span><br><span class="line"></span><br><span class="line">2. 全局共识机制优化</span><br><span class="line">   → Kafka 共识（中心化程度较高）替换为更适合去中心化场景的共识</span><br><span class="line"></span><br><span class="line">3. 冗余和预测式认证方法</span><br><span class="line">   → 提高通信的可靠性和认证效率（预判车辆的行进方向，提前做认证）</span><br></pre></td></tr></table></figure></div>
-
+<h3 id="9-论文自述的-Future-Work（从-Conclusion-中提取）">9. 论文自述的 Future Work（从 Conclusion 中提取）</h3>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. 高效的累加器更新生成机制</span><br><span class="line">   → 论文自认累加器频繁同步更新的开销是实际部署中的瓶颈</span><br><span class="line"></span><br><span class="line">2. 全局共识机制优化</span><br><span class="line">   → Kafka 共识（中心化程度较高）替换为更适合去中心化场景的共识</span><br><span class="line"></span><br><span class="line">3. 冗余和预测式认证方法</span><br><span class="line">   → 提高通信的可靠性和认证效率（预判车辆的行进方向，提前做认证）</span><br></pre></td></tr></table></figure></div>
 <hr>
-<h2 id="🆚-CD-BASA-vs-EPP-GAS-vs-PPCDA-三方对比"><a href="#🆚-CD-BASA-vs-EPP-GAS-vs-PPCDA-三方对比" class="headerlink" title="🆚 CD-BASA vs EPP-GAS vs PPCDA 三方对比"></a>🆚 CD-BASA vs EPP-GAS vs PPCDA 三方对比</h2><table>
+<h2 id="🆚-CD-BASA-vs-EPP-GAS-vs-PPCDA-三方对比">🆚 CD-BASA vs EPP-GAS vs PPCDA 三方对比</h2>
+<table>
 <thead>
 <tr>
 <th>维度</th>
@@ -827,7 +872,8 @@
 <th>PPCDA (2026)</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>期刊</strong></td>
 <td>IEEE TITS (一区TOP)</td>
 <td>IEEE TITS (一区TOP)</td>
@@ -911,25 +957,34 @@
 <td>Shamir 门限 + ECDLP</td>
 <td>CDH + t-BSDH + t-SDH</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
-<h2 id="🔗-CD-BASA-和你的研究方向的关联"><a href="#🔗-CD-BASA-和你的研究方向的关联" class="headerlink" title="🔗 CD-BASA 和你的研究方向的关联"></a>🔗 CD-BASA 和你的研究方向的关联</h2><h3 id="CD-BASA-可以给你的编队跨域研究带来什么？"><a href="#CD-BASA-可以给你的编队跨域研究带来什么？" class="headerlink" title="CD-BASA 可以给你的编队跨域研究带来什么？"></a>CD-BASA 可以给你的编队跨域研究带来什么？</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">CD-BASA 的累加器思想 → 改编后可应用到编队场景：</span><br><span class="line"></span><br><span class="line">原始 CD-BASA：累加器存域内所有合法车辆的身份</span><br><span class="line">  → 每个域一个累加器，单车级证明</span><br><span class="line"></span><br><span class="line">改编版（你的方向）：</span><br><span class="line">  1. 编队累加器：每个编队一个累加器，存编队成员身份</span><br><span class="line">     → 编队跨域时，只需传递编队累加器值（常数大小）</span><br><span class="line">     → 每个编队成员持有自己的 witness </span><br><span class="line">     → 目标域验证：批量验证所有成员的 witness</span><br><span class="line">     → 优势：编队规模变大时，认证开销不变！</span><br><span class="line"></span><br><span class="line">  2. 动态编队累加器：</span><br><span class="line">     → 成员加入：A&#x27; = A^&#123;x_new&#125; mod N</span><br><span class="line">     → 成员离开：A&#x27; = A^&#123;x_leave^&#123;-1&#125;&#125; mod N（RSA累加器支持删除）</span><br><span class="line">     → 和 PPCDA 的 IBF 思路不同，但都能实现动态更新</span><br><span class="line">     </span><br><span class="line">  3. 多编队累加器批量证明：</span><br><span class="line">     → 多编队 → 多累加器 → 用 CD-BASA 的 Algorithm 3</span><br><span class="line">     → 多个编队同时跨域认证时，批量证明开销大幅降低</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="CD-BASA-EPP-GAS-PPCDA-的组合思路"><a href="#CD-BASA-EPP-GAS-PPCDA-的组合思路" class="headerlink" title="CD-BASA + EPP-GAS + PPCDA 的组合思路"></a>CD-BASA + EPP-GAS + PPCDA 的组合思路</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">三种技术路线的融合点：</span><br><span class="line"></span><br><span class="line">EPP-GAS 的场景 + CD-BASA 的累加器 + PPCDA 的无区块链路线</span><br><span class="line">  = &quot;基于累加器的无区块链车辆编队跨域认证方案&quot;</span><br><span class="line">  </span><br><span class="line">具体做法：</span><br><span class="line">  - EPP-GAS 的编队群组假名 → 替换为 CD-BASA 的编队累加器</span><br><span class="line">  - CD-BASA 的链上存储 → 替换为 PPCDA 的 IBF（去区块链）</span><br><span class="line">  - CD-BASA 的批量证明算法 → 直接复用（多队列 + 多累加器）</span><br></pre></td></tr></table></figure></div>
-
+<h2 id="🔗-CD-BASA-和你的研究方向的关联">🔗 CD-BASA 和你的研究方向的关联</h2>
+<h3 id="CD-BASA-可以给你的编队跨域研究带来什么？">CD-BASA 可以给你的编队跨域研究带来什么？</h3>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">CD-BASA 的累加器思想 → 改编后可应用到编队场景：</span><br><span class="line"></span><br><span class="line">原始 CD-BASA：累加器存域内所有合法车辆的身份</span><br><span class="line">  → 每个域一个累加器，单车级证明</span><br><span class="line"></span><br><span class="line">改编版（你的方向）：</span><br><span class="line">  1. 编队累加器：每个编队一个累加器，存编队成员身份</span><br><span class="line">     → 编队跨域时，只需传递编队累加器值（常数大小）</span><br><span class="line">     → 每个编队成员持有自己的 witness </span><br><span class="line">     → 目标域验证：批量验证所有成员的 witness</span><br><span class="line">     → 优势：编队规模变大时，认证开销不变！</span><br><span class="line"></span><br><span class="line">  2. 动态编队累加器：</span><br><span class="line">     → 成员加入：A&#x27; = A^&#123;x_new&#125; mod N</span><br><span class="line">     → 成员离开：A&#x27; = A^&#123;x_leave^&#123;-1&#125;&#125; mod N（RSA累加器支持删除）</span><br><span class="line">     → 和 PPCDA 的 IBF 思路不同，但都能实现动态更新</span><br><span class="line">     </span><br><span class="line">  3. 多编队累加器批量证明：</span><br><span class="line">     → 多编队 → 多累加器 → 用 CD-BASA 的 Algorithm 3</span><br><span class="line">     → 多个编队同时跨域认证时，批量证明开销大幅降低</span><br></pre></td></tr></table></figure></div>
+<h3 id="CD-BASA-EPP-GAS-PPCDA-的组合思路">CD-BASA + EPP-GAS + PPCDA 的组合思路</h3>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">三种技术路线的融合点：</span><br><span class="line"></span><br><span class="line">EPP-GAS 的场景 + CD-BASA 的累加器 + PPCDA 的无区块链路线</span><br><span class="line">  = &quot;基于累加器的无区块链车辆编队跨域认证方案&quot;</span><br><span class="line">  </span><br><span class="line">具体做法：</span><br><span class="line">  - EPP-GAS 的编队群组假名 → 替换为 CD-BASA 的编队累加器</span><br><span class="line">  - CD-BASA 的链上存储 → 替换为 PPCDA 的 IBF（去区块链）</span><br><span class="line">  - CD-BASA 的批量证明算法 → 直接复用（多队列 + 多累加器）</span><br></pre></td></tr></table></figure></div>
 <hr>
-<h2 id="🎓-读完-CD-BASA-你应该能回答的问题"><a href="#🎓-读完-CD-BASA-你应该能回答的问题" class="headerlink" title="🎓 读完 CD-BASA 你应该能回答的问题"></a>🎓 读完 CD-BASA 你应该能回答的问题</h2><ol>
-<li><p><strong>CD-BASA 的累加器是干什么的？</strong> → 把大量车辆身份信息”压缩”为一个固定大小的常数（256B）。链上只存这个常数，大幅节约存储。每辆车用 witness 证明”我在累加器里”。</p>
+<h2 id="🎓-读完-CD-BASA-你应该能回答的问题">🎓 读完 CD-BASA 你应该能回答的问题</h2>
+<ol>
+<li>
+<p><strong>CD-BASA 的累加器是干什么的？</strong> → 把大量车辆身份信息&quot;压缩&quot;为一个固定大小的常数（256B）。链上只存这个常数，大幅节约存储。每辆车用 witness 证明&quot;我在累加器里&quot;。</p>
 </li>
-<li><p><strong>为什么需要 IPFS？</strong> → 累加器每次有新成员加入，已有成员的 witness 都要更新。频繁更新写链太贵，用 IPFS+IPNS 可以低成本更新。</p>
+<li>
+<p><strong>为什么需要 IPFS？</strong> → 累加器每次有新成员加入，已有成员的 witness 都要更新。频繁更新写链太贵，用 IPFS+IPNS 可以低成本更新。</p>
 </li>
-<li><p><strong>CD-BASA 的批量认证为什么能批量处理不同域的车？</strong> → 通过域参数统一化：用全局参数 <code>η_i</code> 把不同域的域公钥转化为统一形式，然后求和验证。</p>
+<li>
+<p><strong>CD-BASA 的批量认证为什么能批量处理不同域的车？</strong> → 通过域参数统一化：用全局参数 <code>η_i</code> 把不同域的域公钥转化为统一形式，然后求和验证。</p>
 </li>
-<li><p><strong>多累加器批量证明算法（Algorithm 3）的核心优化是什么？</strong> → 动态规划：预计算最优分组步长，把 n 次模指数运算优化为更少的乘法和平方。</p>
+<li>
+<p><strong>多累加器批量证明算法（Algorithm 3）的核心优化是什么？</strong> → 动态规划：预计算最优分组步长，把 n 次模指数运算优化为更少的乘法和平方。</p>
 </li>
-<li><p><strong>CD-BASA 和 EPP-GAS 是什么关系？</strong> → 同一团队的姐妹篇，同一期刊同年发表。CD-BASA 面向通用 VANET 用累加器，EPP-GAS 面向编队用 Shamir 门限。</p>
+<li>
+<p><strong>CD-BASA 和 EPP-GAS 是什么关系？</strong> → 同一团队的姐妹篇，同一期刊同年发表。CD-BASA 面向通用 VANET 用累加器，EPP-GAS 面向编队用 Shamir 门限。</p>
 </li>
-<li><p><strong>CD-BASA 最大的不足是什么？</strong> → Witness 频繁同步更新（论文自认）、不支持编队场景、RSA 共享模数 N 的安全风险。</p>
+<li>
+<p><strong>CD-BASA 最大的不足是什么？</strong> → Witness 频繁同步更新（论文自认）、不支持编队场景、RSA 共享模数 N 的安全风险。</p>
 </li>
 </ol>
 <hr>
@@ -980,12 +1035,12 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BCCG_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+				<a class="prev" rel="prev" href="/2026/09/21/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/BVPM_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">BCCG 论文阅读笔记</span>
+						<span class="post-nav-title-item truncate max-w-48">BVPM 论文完整阅读笔记</span>
 						<span class="post-nav-item">上一篇</span>
 					</span>
 				</a>
@@ -1079,7 +1134,7 @@
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
 		<div class="page-title">CD-BASA 论文完整阅读笔记</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CD-BASA-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0"><span class="nav-text">CD-BASA 论文阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-%E5%85%88%E8%AF%B4%E6%98%8E%EF%BC%9ACD-BASA-%E5%9C%A8%E5%9B%A2%E9%98%9F%E7%A0%94%E7%A9%B6%E8%84%89%E7%BB%9C%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-text">📌 先说明：CD-BASA 在团队研究脉络中的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%81%8D%EF%BC%9A5-%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E7%AD%9B%E9%80%89"><span class="nav-text">第一遍：5 分钟快速筛选</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%E6%8B%86%E8%A7%A3"><span class="nav-text">标题拆解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-%E4%B8%89%E5%8F%A5%E8%AF%9D%E6%8F%90%E7%82%BC"><span class="nav-text">Abstract 三句话提炼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%A4%A7%E8%B4%A1%E7%8C%AE"><span class="nav-text">三大贡献</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Table-V-%E2%80%94-%E5%AE%89%E5%85%A8%E6%80%A7%E5%AF%B9%E6%AF%94"><span class="nav-text">Table V — 安全性对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E7%AC%AC%E4%B8%80%E9%81%8D%E5%88%A4%E6%96%AD%EF%BC%9A%E8%BF%99%E7%AF%87%E8%AE%BA%E6%96%87%E7%9A%84%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95%E8%AE%BA%EF%BC%88%E7%B4%AF%E5%8A%A0%E5%99%A8-IPFS-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%89%B9%E9%87%8F%E8%AF%81%E6%98%8E%EF%BC%89%E5%8F%AF%E8%83%BD%E5%8F%AF%E4%BB%A5%E5%BA%94%E7%94%A8%E5%88%B0%E4%BD%A0%E7%9A%84%E7%BC%96%E9%98%9F%E5%9C%BA%E6%99%AF%E4%B8%AD%E3%80%82%E7%B2%BE%E8%AF%BB%E5%AE%83%E3%80%82"><span class="nav-text">✅ 第一遍判断：这篇论文的核心方法论（累加器+IPFS+动态规划批量证明）可能可以应用到你的编队场景中。精读它。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%81%8D%EF%BC%9A%E7%BB%93%E6%9E%84%E5%8C%96%E6%8F%90%E5%8F%96"><span class="nav-text">第二遍：结构化提取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%A0%94%E7%A9%B6%E5%8A%A8%E6%9C%BA%E4%B8%8E%E9%97%AE%E9%A2%98"><span class="nav-text">1. 研究动机与问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B"><span class="nav-text">2. 系统模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%B7%A5%E5%85%B7%E7%AE%B1%EF%BC%883-1-%E4%B8%AA%E6%A0%B8%E5%BF%83%E5%B7%A5%E5%85%B7%EF%BC%89"><span class="nav-text">3. 密码学工具箱（3+1 个核心工具）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%B4%AF%E5%8A%A0%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%88%E6%9C%AC%E6%96%87%E6%9C%80%E6%A0%B8%E5%BF%83%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%89"><span class="nav-text">4. 累加器的工作原理（本文最核心的概念）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%A0%B8%E5%BF%83%E6%96%B9%E6%A1%88-%E2%80%94-%E5%9B%9B%E4%B8%AA%E9%98%B6%E6%AE%B5-%E6%89%B9%E9%87%8F%E8%AF%81%E6%98%8E%E7%AE%97%E6%B3%95"><span class="nav-text">5. 核心方案 — 四个阶段 + 批量证明算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%AE%89%E5%85%A8%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-text">6. 安全性分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%AE%9E%E9%AA%8C%E8%AE%BE%E7%BD%AE%E4%B8%8E%E7%BB%93%E6%9E%9C"><span class="nav-text">7. 实验设置与结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E5%B1%80%E9%99%90%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-text">8. 局限性分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E8%AE%BA%E6%96%87%E8%87%AA%E8%BF%B0%E7%9A%84-Future-Work%EF%BC%88%E4%BB%8E-Conclusion-%E4%B8%AD%E6%8F%90%E5%8F%96%EF%BC%89"><span class="nav-text">9. 论文自述的 Future Work（从 Conclusion 中提取）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%86%9A-CD-BASA-vs-EPP-GAS-vs-PPCDA-%E4%B8%89%E6%96%B9%E5%AF%B9%E6%AF%94"><span class="nav-text">🆚 CD-BASA vs EPP-GAS vs PPCDA 三方对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%97-CD-BASA-%E5%92%8C%E4%BD%A0%E7%9A%84%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91%E7%9A%84%E5%85%B3%E8%81%94"><span class="nav-text">🔗 CD-BASA 和你的研究方向的关联</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CD-BASA-%E5%8F%AF%E4%BB%A5%E7%BB%99%E4%BD%A0%E7%9A%84%E7%BC%96%E9%98%9F%E8%B7%A8%E5%9F%9F%E7%A0%94%E7%A9%B6%E5%B8%A6%E6%9D%A5%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">CD-BASA 可以给你的编队跨域研究带来什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CD-BASA-EPP-GAS-PPCDA-%E7%9A%84%E7%BB%84%E5%90%88%E6%80%9D%E8%B7%AF"><span class="nav-text">CD-BASA + EPP-GAS + PPCDA 的组合思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8E%93-%E8%AF%BB%E5%AE%8C-CD-BASA-%E4%BD%A0%E5%BA%94%E8%AF%A5%E8%83%BD%E5%9B%9E%E7%AD%94%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">🎓 读完 CD-BASA 你应该能回答的问题</span></a></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">CD-BASA 论文阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-%E5%85%88%E8%AF%B4%E6%98%8E%EF%BC%9ACD-BASA-%E5%9C%A8%E5%9B%A2%E9%98%9F%E7%A0%94%E7%A9%B6%E8%84%89%E7%BB%9C%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-text">📌 先说明：CD-BASA 在团队研究脉络中的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%81%8D%EF%BC%9A5-%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E7%AD%9B%E9%80%89"><span class="nav-text">第一遍：5 分钟快速筛选</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%E6%8B%86%E8%A7%A3"><span class="nav-text">标题拆解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-%E4%B8%89%E5%8F%A5%E8%AF%9D%E6%8F%90%E7%82%BC"><span class="nav-text">Abstract 三句话提炼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%A4%A7%E8%B4%A1%E7%8C%AE"><span class="nav-text">三大贡献</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Table-V-%E2%80%94-%E5%AE%89%E5%85%A8%E6%80%A7%E5%AF%B9%E6%AF%94"><span class="nav-text">Table V — 安全性对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E7%AC%AC%E4%B8%80%E9%81%8D%E5%88%A4%E6%96%AD%EF%BC%9A%E8%BF%99%E7%AF%87%E8%AE%BA%E6%96%87%E7%9A%84%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95%E8%AE%BA%EF%BC%88%E7%B4%AF%E5%8A%A0%E5%99%A8-IPFS-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%89%B9%E9%87%8F%E8%AF%81%E6%98%8E%EF%BC%89%E5%8F%AF%E8%83%BD%E5%8F%AF%E4%BB%A5%E5%BA%94%E7%94%A8%E5%88%B0%E4%BD%A0%E7%9A%84%E7%BC%96%E9%98%9F%E5%9C%BA%E6%99%AF%E4%B8%AD%E3%80%82%E7%B2%BE%E8%AF%BB%E5%AE%83%E3%80%82"><span class="nav-text">✅ 第一遍判断：这篇论文的核心方法论（累加器+IPFS+动态规划批量证明）可能可以应用到你的编队场景中。精读它。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%81%8D%EF%BC%9A%E7%BB%93%E6%9E%84%E5%8C%96%E6%8F%90%E5%8F%96"><span class="nav-text">第二遍：结构化提取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%A0%94%E7%A9%B6%E5%8A%A8%E6%9C%BA%E4%B8%8E%E9%97%AE%E9%A2%98"><span class="nav-text">1. 研究动机与问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B"><span class="nav-text">2. 系统模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%B7%A5%E5%85%B7%E7%AE%B1%EF%BC%883-1-%E4%B8%AA%E6%A0%B8%E5%BF%83%E5%B7%A5%E5%85%B7%EF%BC%89"><span class="nav-text">3. 密码学工具箱（3+1 个核心工具）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%B4%AF%E5%8A%A0%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%88%E6%9C%AC%E6%96%87%E6%9C%80%E6%A0%B8%E5%BF%83%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%89"><span class="nav-text">4. 累加器的工作原理（本文最核心的概念）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%A0%B8%E5%BF%83%E6%96%B9%E6%A1%88-%E2%80%94-%E5%9B%9B%E4%B8%AA%E9%98%B6%E6%AE%B5-%E6%89%B9%E9%87%8F%E8%AF%81%E6%98%8E%E7%AE%97%E6%B3%95"><span class="nav-text">5. 核心方案 — 四个阶段 + 批量证明算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%AE%89%E5%85%A8%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-text">6. 安全性分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%AE%9E%E9%AA%8C%E8%AE%BE%E7%BD%AE%E4%B8%8E%E7%BB%93%E6%9E%9C"><span class="nav-text">7. 实验设置与结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E5%B1%80%E9%99%90%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-text">8. 局限性分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E8%AE%BA%E6%96%87%E8%87%AA%E8%BF%B0%E7%9A%84-Future-Work%EF%BC%88%E4%BB%8E-Conclusion-%E4%B8%AD%E6%8F%90%E5%8F%96%EF%BC%89"><span class="nav-text">9. 论文自述的 Future Work（从 Conclusion 中提取）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%86%9A-CD-BASA-vs-EPP-GAS-vs-PPCDA-%E4%B8%89%E6%96%B9%E5%AF%B9%E6%AF%94"><span class="nav-text">🆚 CD-BASA vs EPP-GAS vs PPCDA 三方对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%97-CD-BASA-%E5%92%8C%E4%BD%A0%E7%9A%84%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91%E7%9A%84%E5%85%B3%E8%81%94"><span class="nav-text">🔗 CD-BASA 和你的研究方向的关联</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CD-BASA-%E5%8F%AF%E4%BB%A5%E7%BB%99%E4%BD%A0%E7%9A%84%E7%BC%96%E9%98%9F%E8%B7%A8%E5%9F%9F%E7%A0%94%E7%A9%B6%E5%B8%A6%E6%9D%A5%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">CD-BASA 可以给你的编队跨域研究带来什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CD-BASA-EPP-GAS-PPCDA-%E7%9A%84%E7%BB%84%E5%90%88%E6%80%9D%E8%B7%AF"><span class="nav-text">CD-BASA + EPP-GAS + PPCDA 的组合思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8E%93-%E8%AF%BB%E5%AE%8C-CD-BASA-%E4%BD%A0%E5%BA%94%E8%AF%A5%E8%83%BD%E5%9B%9E%E7%AD%94%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">🎓 读完 CD-BASA 你应该能回答的问题</span></a></li></ol></li></ol>
 
 	</div>
 </div>
@@ -1157,6 +1212,11 @@
                 } catch (error) {}
             </script>
         
+        
+            
+                
+        
+                
         
         
     </div>  
